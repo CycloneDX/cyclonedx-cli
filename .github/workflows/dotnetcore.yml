@@ -39,7 +39,7 @@ jobs:
           dotnet-version: '5.0.100-rc.2.20479.15'
 
       - name: Build
-        run: dotnet build CycloneDX.CLI/CycloneDX.CLI.csproj -r ${{ matrix.runtime }}
+        run: dotnet build cyclonedx/cyclonedx.csproj -r ${{ matrix.runtime }}
 
   # Fail if there are any failed tests
   #

@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		semver.txt = semver.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CycloneDX.CLI", "CycloneDX.CLI\CycloneDX.CLI.csproj", "{14FDEC6A-9E00-4CDD-ACD5-EDD7CA4C3741}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cyclonedx", "cyclonedx\cyclonedx.csproj", "{14FDEC6A-9E00-4CDD-ACD5-EDD7CA4C3741}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

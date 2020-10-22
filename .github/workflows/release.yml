@@ -46,5 +46,5 @@ jobs:
           mkdir bin
           for runtime in linux-x64 linux-musl-x64 linux-arm linux-arm64 win-x64 win-x86 win-arm win-arm64 osx-x64
           do
-            dotnet publish CycloneDX.CLI/CycloneDX.CLI.csproj -r $runtime /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true --configuration Release --version-suffix $VERSION --output bin/$runtime
+            dotnet publish cyclonedx/cyclonedx.csproj -r $runtime /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true --configuration Release --version-suffix $VERSION --output bin/$runtime
           done
