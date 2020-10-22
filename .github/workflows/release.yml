@@ -48,3 +48,104 @@ jobs:
           do
             dotnet publish cyclonedx/cyclonedx.csproj -r $runtime /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true --configuration Release --version-suffix $VERSION --output bin/$runtime
           done
+
+      - name: Create github release and git tag for release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_name: ${{ steps.create_binaries.outputs.version }}
+          tag_name: v${{ steps.create_binaries.outputs.version }}
+          draft: false
+          prerelease: false
+
+      - name: Upload binary to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/linux-x64/cyclonedx
+          asset_name: cyclonedx-linux-x64
+          asset_content_type: application/octet-stream
+
+      - name: Upload binary to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/linux-musl-x64/cyclonedx
+          asset_name: cyclonedx-linux-musl-x64
+          asset_content_type: application/octet-stream
+
+      - name: Upload binary to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/linux-arm/cyclonedx
+          asset_name: cyclonedx-linux-arm
+          asset_content_type: application/octet-stream
+
+      - name: Upload binary to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/linux-arm64/cyclonedx
+          asset_name: cyclonedx-linux-arm64
+          asset_content_type: application/octet-stream
+
+      - name: Upload binary to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/win-x64/cyclonedx.exe
+          asset_name: cyclonedx-win-x64.exe
+          asset_content_type: application/octet-stream
+
+      - name: Upload binary to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/win-x86/cyclonedx.exe
+          asset_name: cyclonedx-win-x86.exe
+          asset_content_type: application/octet-stream
+
+      - name: Upload binary to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/win-arm/cyclonedx.exe
+          asset_name: cyclonedx-win-arm.exe
+          asset_content_type: application/octet-stream
+
+      - name: Upload binary to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/win-arm64/cyclonedx.exe
+          asset_name: cyclonedx-win-arm64.exe
+          asset_content_type: application/octet-stream
+
+      - name: Upload binary to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/osx-x64/cyclonedx
+          asset_name: cyclonedx-osx-x64
+          asset_content_type: application/octet-stream
