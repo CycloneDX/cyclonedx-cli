@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>CycloneDX Team</Authors>
+    <Copyright>Copyright (c) Patrick Dwyer</Copyright>
+    <Description>A command line tool for interacting with CycloneDX bill-of-material documents.</Description>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/CycloneDX/cyclonedx-cli.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CycloneDX.Json" Version="0.1.0" />
+    <PackageReference Include="CycloneDX.Xml" Version="0.1.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20371.2" />
+  </ItemGroup>
+
+</Project>
