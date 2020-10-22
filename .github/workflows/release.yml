@@ -1,0 +1,50 @@
+# This workflow is used for publishing the NuGet package and Docker image.
+#
+# Before triggering a release the `semver.txt` file should be updated in the
+# relevant branch.
+#
+# When commiting the version change in `semver.txt` the commit message is
+# important as it will be used for the release in GitHub.
+#
+# For an example commit browse to
+# https://github.com/CycloneDX/cyclonedx-dotnet/commit/d110af854371374460430bb8438225a7d7a84274.
+# 
+# The resulting release is here
+# https://github.com/CycloneDX/cyclonedx-dotnet/releases/tag/v1.0.0.
+#
+# Releases are triggered manually. This can be done by browsing to
+# https://github.com/CycloneDX/cyclonedx-cli/actions?query=workflow%3ARelease
+# and selecting "Run workflow". If releasing a patch for a previous version
+# make sure the correct branch is selected. It will default to the default
+# branch.
+name: Release
+
+on:
+  workflow_dispatch
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.100-rc.2.20479.15'
+      # The tests should have already been run during the PR workflow, so this is really just a sanity check
+      - name: Tests
+        run: dotnet test
+
+      # Create binaries
+      - name: Create binaries
+        id: create_binaries
+        run: |
+          VERSION=`cat semver.txt`
+          echo "##[set-output name=version;]$VERSION"
+          dotnet build --configuration Release
+          mkdir bin
+          for runtime in linux-x64 linux-musl-x64 linux-arm linux-arm64 win-x64 win-x86 win-arm win-arm64 osx-x64
+          do
+            dotnet publish CycloneDX.CLI/CycloneDX.CLI.csproj -r $runtime /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true --configuration Release --version-suffix $VERSION --output bin/$runtime
+          done
