@@ -2,6 +2,13 @@
 
 This is a preview version of the CycloneDX CLI tool.
 
+It currently supports converting between JSON and XML SBOM formats.
+
+## Local Docker Image Build
+
+After cloning this repo locally and running `local-docker-build.sh` you can use
+`docker run cyclonedx/cyclonedx-cli`.
+
 ## Supported Platforms
 
 Supported official builds are planned for these platforms:
