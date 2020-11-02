@@ -10,14 +10,14 @@ The CycloneDX CLI tool can be run using docker `docker run cyclonedx/cyclonedx-c
 
 ## Supported Platforms
 
-Supported official builds are planned for these platforms:
+Officially supported builds are planned for these platforms:
 
 - Windows x64 (win-x64)
 - Linux x64 (linux-x64)
 - Linux musl x64 (linux-musl-x64, includes Alpine Linux)
 - MacOS x64 (osx-x64)
 
-Unsupported official builds are planned for these platforms:
+Community supported builds are planned for these platforms:
 
 - Windows x86 (win-x86)
 - Windows ARM (win-arm)
