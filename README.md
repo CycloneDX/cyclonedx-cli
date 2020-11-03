@@ -2,7 +2,7 @@
 
 This is a preview version of the CycloneDX CLI tool.
 
-It currently supports converting between JSON and XML SBOM formats.
+It currently supports converting from CycloneDX JSON and XML SBOM formats to CycloneDX JSON, XML and SPDX tag/value format.
 
 ## Docker Image
 
