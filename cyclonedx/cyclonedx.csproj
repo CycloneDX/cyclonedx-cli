@@ -15,8 +15,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CycloneDX.Json" Version="0.2.1" />
-    <PackageReference Include="CycloneDX.Xml" Version="0.2.1" />
+    <PackageReference Include="CycloneDX.Json" Version="0.2.2" />
+    <PackageReference Include="CycloneDX.Xml" Version="0.2.2" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

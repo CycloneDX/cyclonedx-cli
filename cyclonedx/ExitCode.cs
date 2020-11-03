@@ -11,6 +11,7 @@ namespace CycloneDX.CLI
     public enum ExitCode
     {
         Ok,
+        ParameterValidationError,
         UnsupportedFormat
     }
 }
