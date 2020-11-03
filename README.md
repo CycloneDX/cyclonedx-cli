@@ -4,9 +4,11 @@ This is a preview version of the CycloneDX CLI tool.
 
 It currently supports converting from CycloneDX JSON and XML SBOM formats to CycloneDX JSON, XML and SPDX tag/value format.
 
+Binaries can be downloaded from the [releases page](https://github.com/CycloneDX/cyclonedx-cli/releases).
+
 ## Docker Image
 
-The CycloneDX CLI tool can be run using docker `docker run cyclonedx/cyclonedx-cli`.
+The CycloneDX CLI tool can also be run using docker `docker run cyclonedx/cyclonedx-cli`.
 
 ## Supported Platforms
 
