@@ -2,7 +2,9 @@
 
 This is a preview version of the CycloneDX CLI tool.
 
-It currently supports converting from CycloneDX JSON and XML SBOM formats to CycloneDX JSON, XML and SPDX tag/value format.
+It currently supports converting from CycloneDX JSON v1.2 and XML v1.2 SBOM formats to CycloneDX JSON v1.2, XML v1.2 and SPDX v2.1 tag/value format.
+
+Future support is planned for all versions of CycloneDX and SPDX v2.2 and the upcoming SPDX v3.
 
 Binaries can be downloaded from the [releases page](https://github.com/CycloneDX/cyclonedx-cli/releases).
 
