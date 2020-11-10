@@ -47,7 +47,7 @@ jobs:
           mkdir bin
           for runtime in linux-x64 linux-musl-x64 linux-arm linux-arm64 win-x64 win-x86 win-arm win-arm64 osx-x64
           do
-            dotnet publish cyclonedx/cyclonedx.csproj -r $runtime --configuration Release --version-suffix $VERSION --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --output bin/$runtime
+            dotnet publish cyclonedx/cyclonedx.csproj -r $runtime --configuration Release /p:Version=$VERSION --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --output bin/$runtime
           done
           docker build -f Dockerfile --build-arg VERSION=$VERSION -t $REPO:$VERSION -t $REPO:latest .
 
