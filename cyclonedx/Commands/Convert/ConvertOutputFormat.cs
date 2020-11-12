@@ -1,4 +1,4 @@
-﻿namespace CycloneDX.CLI
+﻿namespace CycloneDX.CLI.Commands
 {
     public enum ConvertOutputFormat
     {
