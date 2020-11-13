@@ -52,26 +52,8 @@ namespace CycloneDX.CLI
                 outputBomFormat = (BomFormat)outputFormat;
             }
 
-            if (!string.IsNullOrEmpty(inputFile))
-            {
-                inputBomString = File.ReadAllText(inputFile);
-            }
-            else if (Console.IsInputRedirected)
-            {
-                var sb = new StringBuilder();
-                string nextLine;
-                do
-                {
-                    nextLine = Console.ReadLine();
-                    sb.AppendLine(nextLine);
-                } while (nextLine != null);
-                inputBomString = sb.ToString();
-            }
-            else
-            {
-                Console.Error.WriteLine("You must specify a value for --input-file or pipe in an SBOM");
-                return (int)ExitCode.ParameterValidationError;
-            }
+            inputBomString = InputFileHelper(inputFile);
+            if (inputBomString == null) return (int)ExitCode.ParameterValidationError;
             
             inputBom = Utils.BomDeserializer(inputBomString, inputBomFormat);
             outputBomString = Utils.BomSerializer(inputBom, outputBomFormat);

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.CommandLine;
+using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using CycloneDX.CLI.Models;
 
@@ -38,6 +40,31 @@ namespace CycloneDX.CLI
             }
 
             return inputBomFormat;
+        }
+
+        public static string InputFileHelper(string inputFile)
+        {
+            string inputString = null;
+            if (!string.IsNullOrEmpty(inputFile))
+            {
+                inputString = File.ReadAllText(inputFile);
+            }
+            else if (Console.IsInputRedirected)
+            {
+                var sb = new StringBuilder();
+                string nextLine;
+                do
+                {
+                    nextLine = Console.ReadLine();
+                    sb.AppendLine(nextLine);
+                } while (nextLine != null);
+                inputString = sb.ToString();
+            }
+            else
+            {
+                Console.Error.WriteLine("You must specify a value for --input-file or pipe in content");
+            }
+            return inputString;
         }
     }
 }
