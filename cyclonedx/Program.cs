@@ -9,8 +9,22 @@ namespace CycloneDX.CLI
 {
     partial class Program
     {
+        private static readonly string CycloneDX = @"
+   ______           __                 ____ _  __    ________    ____
+  / ____/_  _______/ /___  ____  ___  / __ \ |/ /   / ____/ /   /  _/
+ / /   / / / / ___/ / __ \/ __ \/ _ \/ / / /   /   / /   / /    / /  
+/ /___/ /_/ / /__/ / /_/ / / / /  __/ /_/ /   |   / /___/ /____/ /   
+\____/\__, /\___/_/\____/_/ /_/\___/_____/_/|_|   \____/_____/___/   
+     /____/                                                          
+        ";
+
         public static async Task<int> Main(string[] args)
         {
+            if (args.Length == 0)
+            {
+                Console.WriteLine(CycloneDX);
+            }
+
             RootCommand rootCommand = new RootCommand();
             
             ConfigureConvertCommand(rootCommand);
