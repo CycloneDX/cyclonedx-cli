@@ -3,7 +3,6 @@ SPDXID: SPDXRef-DOCUMENT
 DocumentName: Test-1
 DocumentNamespace: http://spdx.org/spdxdocs/Test-1-f9bcf38b-e331-48b3-a541-28f5352a4509
 Creator: Tool: CycloneDX-CLI
-Created: 2020-11-22T14:55:04Z
 
 PackageName: CycloneDX.Core
 SPDXID: SPDXRef-1

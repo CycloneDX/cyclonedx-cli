@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xunit;
 using Snapshooter;
@@ -60,6 +61,7 @@ namespace CycloneDX.CLI.Tests
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(outputFilename);
+                bom = Regex.Replace(bom, @"Created: .*\n", "");
                 Snapshot.Match(bom);
             }
         }
@@ -78,6 +80,7 @@ namespace CycloneDX.CLI.Tests
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(outputFilename);
+                bom = Regex.Replace(bom, @"Created: .*\n", "");
                 Snapshot.Match(bom);
             }
         }
