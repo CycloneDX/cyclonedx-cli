@@ -49,7 +49,15 @@ namespace CycloneDX.CLI
             }
             else if (format == BomFormat.SpdxTag)
             {
-                return SpdxTagSerializer.Serialize(bom);
+                return SpdxTagSerializer.Serialize(bom, SpdxVersion.v2_2);
+            }
+            else if (format == BomFormat.SpdxTag_v2_1)
+            {
+                return SpdxTagSerializer.Serialize(bom, SpdxVersion.v2_1);
+            }
+            else if (format == BomFormat.SpdxTag_v2_2)
+            {
+                return SpdxTagSerializer.Serialize(bom, SpdxVersion.v2_2);
             }
             throw new UnsupportedFormatException("Unsupported SBOM file format");
         }
