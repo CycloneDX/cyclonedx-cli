@@ -1,0 +1,1671 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.2",
+  "serialNumber": "urn:uuid:10538af4-a03f-4deb-99ad-8baa90062b5b",
+  "version": 1,
+  "components": [
+    {
+      "publisher": "Nate McMaster",
+      "type": "library",
+      "name": "McMaster.Extensions.CommandLineUtils",
+      "version": "3.0.0",
+      "description": "Command-line parsing API and utilities for console applications.\n\nCommonly used types:\n\nMcMaster.Extensions.CommandLineUtils.CommandLineApplication\nMcMaster.Extensions.CommandLineUtils.CommandOption\nMcMaster.Extensions.CommandLineUtils.IConsole\nMcMaster.Extensions.CommandLineUtils.Prompt\nMcMaster.Extensions.CommandLineUtils.ArgumentEscaper\n\n A community-maintained fork of Microsoft.Extensions.CommandLineUtils, plus many enhancements.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "Copyright \u00A9 Nate McMaster",
+      "purl": "pkg:nuget/McMaster.Extensions.CommandLineUtils@3.0.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/natemcmaster/CommandLineUtils",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/natemcmaster/CommandLineUtils/issues",
+          "type": "issue-tracker"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.Bcl.AsyncInterfaces",
+      "version": "1.1.0",
+      "description": "Provides the IAsyncEnumerable\u003CT\u003E and IAsyncDisposable interfaces and helper types for .NET Standard 2.0. This package is not required starting with .NET Standard 2.1 and .NET Core 3.0.\n\nCommonly Used Types:\nSystem.IAsyncDisposable\nSystem.Collections.Generic.IAsyncEnumerable\nSystem.Collections.Generic.IAsyncEnumerator\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Bcl.AsyncInterfaces@1.1.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.CodeAnalysis.FxCopAnalyzers",
+      "version": "3.3.0",
+      "description": "Microsoft recommended code quality rules and .NET API usage rules, including the most important FxCop rules, implemented as analyzers using the .NET Compiler Platform (Roslyn). These analyzers check your code for security, performance, and design issues, among others. The documentation for FxCop analyzers can be found at https://docs.microsoft.com/visualstudio/code-quality/install-fxcop-analyzers",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.CodeAnalysis.FxCopAnalyzers@3.3.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/roslyn-analyzers",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.CodeAnalysis.VersionCheckAnalyzer",
+      "version": "3.3.0",
+      "description": "Microsoft.CodeAnalysis Version Check Analyzer",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.CodeAnalysis.VersionCheckAnalyzer@3.3.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/roslyn-analyzers",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.CodeQuality.Analyzers",
+      "version": "3.3.0",
+      "description": "Microsoft recommended code quality rules implemented as analyzers using the .NET Compiler Platform (Roslyn). This package is included as a part of Microsoft.CodeAnalysis.FxCopAnalyzers NuGet package and does not need to be installed separately.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.CodeQuality.Analyzers@3.3.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/roslyn-analyzers",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.CSharp",
+      "version": "4.0.1",
+      "description": "Provides support for compilation and code generation, including dynamic, using the C# language.\n\nCommonly Used Types:\nMicrosoft.CSharp.RuntimeBinder.Binder\nMicrosoft.CSharp.RuntimeBinder.RuntimeBinderException\nMicrosoft.CSharp.RuntimeBinder.CSharpArgumentInfo\nMicrosoft.CSharp.RuntimeBinder.CSharpArgumentInfoFlags\nMicrosoft.CSharp.RuntimeBinder.CSharpBinderFlags\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.CSharp@4.0.1",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.NetCore.Analyzers",
+      "version": "3.3.0",
+      "description": "Microsoft recommended .NetCore API usage rules implemented as analyzers using the .NET Compiler Platform (Roslyn). This package is included as a part of Microsoft.CodeAnalysis.FxCopAnalyzers NuGet package and does not need to be installed separately.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NetCore.Analyzers@3.3.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/roslyn-analyzers",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.NETCore.App",
+      "version": "2.1.0",
+      "description": "A set of .NET API\u0027s that are included in the default .NET Core application model. \ncaa7b7e2bad98e56a687fb5cbaf60825500800f7 \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "https://github.com/dotnet/core-setup/blob/master/LICENSE.TXT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NETCore.App@2.1.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.NETCore.DotNetAppHost",
+      "version": "2.1.0",
+      "description": "Provides the .NET Core app bootstrapper intended for use in the application directory \ncaa7b7e2bad98e56a687fb5cbaf60825500800f7 \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "https://github.com/dotnet/core-setup/blob/master/LICENSE.TXT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NETCore.DotNetAppHost@2.1.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.NETCore.DotNetHostPolicy",
+      "version": "2.1.0",
+      "description": "Provides a CoreCLR hosting policy implementation -- configuration settings, assembly paths and assembly servicing \ncaa7b7e2bad98e56a687fb5cbaf60825500800f7 \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "https://github.com/dotnet/core-setup/blob/master/LICENSE.TXT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NETCore.DotNetHostPolicy@2.1.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.NETCore.DotNetHostResolver",
+      "version": "2.1.0",
+      "description": "Provides an implementation of framework resolution strategy used by Microsoft.NETCore.DotNetHost \ncaa7b7e2bad98e56a687fb5cbaf60825500800f7 \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "https://github.com/dotnet/core-setup/blob/master/LICENSE.TXT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NETCore.DotNetHostResolver@2.1.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.NETCore.Platforms",
+      "version": "3.1.0",
+      "description": "Provides runtime information required to resolve target framework, platform, and runtime specific implementations of .NETCore packages. \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NETCore.Platforms@3.1.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.NETCore.Targets",
+      "version": "2.1.0",
+      "description": "Provides supporting infrastructure for portable projects: support identifiers that define framework and runtime for support targets and packages that reference the minimum supported package versions when targeting these. \n30ab651fcb4354552bd4891619a0bdd81e0ebdbf \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NETCore.Targets@2.1.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.NetFramework.Analyzers",
+      "version": "3.3.0",
+      "description": "Microsoft recommended API usage rules for APIs specific to the full .NetFramework which are not present in .NetCore, implemented as analyzers using the .NET Compiler Platform (Roslyn). This package is included as a part of Microsoft.CodeAnalysis.FxCopAnalyzers NuGet package and does not need to be installed separately.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NetFramework.Analyzers@3.3.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/roslyn-analyzers",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.Win32.Primitives",
+      "version": "4.3.0",
+      "description": "Provides common types for Win32-based libraries.\n\nCommonly Used Types:\nSystem.ComponentModel.Win32Exception\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Win32.Primitives@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.Win32.Registry",
+      "version": "4.3.0",
+      "description": "Provides support for accessing and modifying the Windows Registry.\n\nCommonly Used Types:\nMicrosoft.Win32.RegistryKey\nMicrosoft.Win32.Registry\nMicrosoft.Win32.RegistryValueKind\nMicrosoft.Win32.RegistryHive\nMicrosoft.Win32.RegistryView\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Win32.Registry@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "NETStandard.Library",
+      "version": "2.0.3",
+      "description": "A set of standard .NET APIs that are prescribed to be used and supported together. \n18a36291e48808fa7ef2d00a764ceb1ec95645a5 \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "https://github.com/dotnet/standard/blob/master/LICENSE.TXT"
+          }
+        }
+      ],
+      "copyright": ".NET Foundation and Contributors",
+      "purl": "pkg:nuget/NETStandard.Library@2.0.3",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "James Newton-King",
+      "type": "library",
+      "name": "Newtonsoft.Json",
+      "version": "9.0.1",
+      "description": "Json.NET is a popular high-performance JSON framework for .NET",
+      "licenses": [
+        {
+          "license": {
+            "url": "https://raw.github.com/JamesNK/Newtonsoft.Json/master/LICENSE.md"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Newtonsoft.Json@9.0.1",
+      "externalReferences": [
+        {
+          "url": "http://www.newtonsoft.com/json",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "NuGet.Common",
+      "version": "5.6.0",
+      "description": "Common utilities and interfaces for all NuGet libraries.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/NuGet.Common@5.6.0",
+      "externalReferences": [
+        {
+          "url": "https://aka.ms/nugetprj",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "NuGet.Configuration",
+      "version": "5.6.0",
+      "description": "NuGet\u0027s configuration settings implementation.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/NuGet.Configuration@5.6.0",
+      "externalReferences": [
+        {
+          "url": "https://aka.ms/nugetprj",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "NuGet.DependencyResolver.Core",
+      "version": "5.6.0",
+      "description": "NuGet\u0027s PackageReference dependency resolver implementation.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/NuGet.DependencyResolver.Core@5.6.0",
+      "externalReferences": [
+        {
+          "url": "https://aka.ms/nugetprj",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "NuGet.Frameworks",
+      "version": "5.6.0",
+      "description": "NuGet\u0027s understanding of target frameworks.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/NuGet.Frameworks@5.6.0",
+      "externalReferences": [
+        {
+          "url": "https://aka.ms/nugetprj",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "NuGet.LibraryModel",
+      "version": "5.6.0",
+      "description": "NuGet\u0027s types and interfaces for understanding dependencies.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/NuGet.LibraryModel@5.6.0",
+      "externalReferences": [
+        {
+          "url": "https://aka.ms/nugetprj",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "NuGet.Packaging",
+      "version": "5.6.0",
+      "description": "NuGet\u0027s understanding of packages. Reading nuspec, nupkgs and package signing.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/NuGet.Packaging@5.6.0",
+      "externalReferences": [
+        {
+          "url": "https://aka.ms/nugetprj",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "NuGet.ProjectModel",
+      "version": "5.6.0",
+      "description": "NuGet\u0027s core types and interfaces for PackageReference-based restore, such as lock files, assets file and internal restore models.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/NuGet.ProjectModel@5.6.0",
+      "externalReferences": [
+        {
+          "url": "https://aka.ms/nugetprj",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "NuGet.Protocol",
+      "version": "5.6.0",
+      "description": "NuGet\u0027s implementation for interacting with feeds. Contains functionality for all feed types.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/NuGet.Protocol@5.6.0",
+      "externalReferences": [
+        {
+          "url": "https://aka.ms/nugetprj",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "NuGet.Versioning",
+      "version": "5.6.0",
+      "description": "NuGet\u0027s implementation of Semantic Versioning.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/NuGet.Versioning@5.6.0",
+      "externalReferences": [
+        {
+          "url": "https://aka.ms/nugetprj",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "runtime.native.System",
+      "version": "4.3.0",
+      "description": "Internal implementation package not meant for direct consumption.  Please do not reference directly. \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/runtime.native.System@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Collections",
+      "version": "4.3.0",
+      "description": "Provides classes that define generic collections, which allow developers to create strongly typed collections that provide better type safety and performance than non-generic strongly typed collections.\n\nCommonly Used Types:\nSystem.Collections.Generic.List\u003CT\u003E\nSystem.Collections.Generic.Dictionary\u003CTKey, TValue\u003E\nSystem.Collections.Generic.Queue\u003CT\u003E\nSystem.Collections.Generic.Stack\u003CT\u003E\nSystem.Collections.Generic.HashSet\u003CT\u003E\nSystem.Collections.Generic.LinkedList\u003CT\u003E\nSystem.Collections.Generic.EqualityComparer\u003CT\u003E\nSystem.Collections.Generic.Comparer\u003CT\u003E\nSystem.Collections.Generic.SortedDictionary\u003CTKey, TValue\u003E\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Collections@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.ComponentModel.Annotations",
+      "version": "4.7.0",
+      "description": "Provides attributes that are used to define metadata for objects used as data sources.\n\nCommonly Used Types:\nSystem.ComponentModel.DataAnnotations.ValidationResult\nSystem.ComponentModel.DataAnnotations.IValidatableObject\nSystem.ComponentModel.DataAnnotations.ValidationAttribute\nSystem.ComponentModel.DataAnnotations.RequiredAttribute\nSystem.ComponentModel.DataAnnotations.StringLengthAttribute\nSystem.ComponentModel.DataAnnotations.DisplayAttribute\nSystem.ComponentModel.DataAnnotations.RegularExpressionAttribute\nSystem.ComponentModel.DataAnnotations.DataTypeAttribute\nSystem.ComponentModel.DataAnnotations.RangeAttribute\nSystem.ComponentModel.DataAnnotations.KeyAttribute\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.ComponentModel.Annotations@4.7.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Diagnostics.Debug",
+      "version": "4.3.0",
+      "description": "Provides classes and attributes that allows basic interaction with a debugger.\n\nCommonly Used Types:\nSystem.Diagnostics.Debug\nSystem.Diagnostics.DebuggerStepThroughAttribute\nSystem.Diagnostics.Debugger\nSystem.Diagnostics.DebuggerDisplayAttribute\nSystem.Diagnostics.DebuggerBrowsableAttribute\nSystem.Diagnostics.DebuggerBrowsableState\nSystem.Diagnostics.DebuggerHiddenAttribute\nSystem.Diagnostics.DebuggerNonUserCodeAttribute\nSystem.Diagnostics.DebuggerTypeProxyAttribute\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Diagnostics.Debug@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Diagnostics.Process",
+      "version": "4.3.0",
+      "description": "Provides the System.Diagnostics.Process class, which allows interaction with local and remote processes.\n\nCommonly Used Types:\nSystem.Diagnostics.Process\nSystem.Diagnostics.ProcessModule\nSystem.Diagnostics.ProcessStartInfo\nSystem.Diagnostics.ProcessThread\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Diagnostics.Process@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Diagnostics.Tools",
+      "version": "4.0.1",
+      "description": "Provides attributes, such as GeneratedCodeAttribute and SuppresMessageAttribute, that are emitted or consumed by analysis tools.\n\nCommonly Used Types:\nSystem.CodeDom.Compiler.GeneratedCodeAttribute\nSystem.Diagnostics.CodeAnalysis.SuppressMessageAttribute\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Diagnostics.Tools@4.0.1",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Dynamic.Runtime",
+      "version": "4.3.0",
+      "description": "Provides classes and interfaces that support the Dynamic Language Runtime (DLR).\n\nCommonly Used Types:\nSystem.Runtime.CompilerServices.CallSite\nSystem.Runtime.CompilerServices.CallSite\u003CT\u003E\nSystem.Dynamic.IDynamicMetaObjectProvider\nSystem.Dynamic.DynamicMetaObject\nSystem.Dynamic.SetMemberBinder\nSystem.Dynamic.GetMemberBinder\nSystem.Dynamic.ExpandoObject\nSystem.Dynamic.DynamicObject\nSystem.Runtime.CompilerServices.CallSiteBinder\nSystem.Runtime.CompilerServices.ConditionalWeakTable\u003CTKey, TValue\u003E\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Dynamic.Runtime@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Globalization",
+      "version": "4.3.0",
+      "description": "Provides classes that define culture-related information, including language, country/region, calendars in use, format patterns for dates, currency, and numbers, and sort order for strings.\n\nCommonly Used Types:\nSystem.Globalization.DateTimeFormatInfo\nSystem.Globalization.CultureInfo\nSystem.Globalization.NumberFormatInfo\nSystem.Globalization.CalendarWeekRule\nSystem.Globalization.TextInfo\nSystem.Globalization.Calendar\nSystem.Globalization.CompareInfo\nSystem.Globalization.CompareOptions\nSystem.Globalization.UnicodeCategory\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Globalization@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.IO",
+      "version": "4.3.0",
+      "description": "Provides base input and output (I/O) types, including System.IO.Stream, System.IO.StreamReader and System.IO.StreamWriter, that allow reading and writing to data streams\n\nCommonly Used Types:\nSystem.IO.Stream\nSystem.IO.EndOfStreamException\nSystem.IO.MemoryStream\nSystem.IO.StreamReader\nSystem.IO.StreamWriter\nSystem.IO.StringWriter\nSystem.IO.TextWriter\nSystem.IO.TextReader\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.IO@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Tatham Oddie \u0026 friends",
+      "type": "library",
+      "name": "System.IO.Abstractions",
+      "version": "12.1.9",
+      "description": "A set of abstractions to help make file system interactions testable.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "Copyright \u00A9 Tatham Oddie 2010",
+      "purl": "pkg:nuget/System.IO.Abstractions@12.1.9",
+      "externalReferences": [
+        {
+          "url": "https://github.com/System-IO-Abstractions/System.IO.Abstractions",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.IO.FileSystem",
+      "version": "4.3.0",
+      "description": "Provides types that allow reading and writing to files and types that provide basic file and directory support.\n\nCommonly Used Types:\nSystem.IO.FileStream\nSystem.IO.FileInfo\nSystem.IO.DirectoryInfo\nSystem.IO.FileSystemInfo\nSystem.IO.File\nSystem.IO.Directory\nSystem.IO.SearchOption\nSystem.IO.FileOptions\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.IO.FileSystem@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.IO.FileSystem.AccessControl",
+      "version": "4.7.0",
+      "description": "Provides types for managing access and audit control lists for files and directories.\n\nCommonly Used Types:\nSystem.Security.AccessControl.DirectoryObjectSecurity\nSystem.Security.AccessControl.DirectorySecurity\nSystem.Security.AccessControl.FileSecurity\nSystem.Security.AccessControl.FileSystemAccessRule\nSystem.Security.AccessControl.FileSystemAuditRule\nSystem.Security.AccessControl.FileSystemRights\nSystem.Security.AccessControl.FileSystemSecurity\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.IO.FileSystem.AccessControl@4.7.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.IO.FileSystem.Primitives",
+      "version": "4.3.0",
+      "description": "Provides common enumerations and exceptions for path-based I/O libraries.\n\nCommonly Used Types:\nSystem.IO.DirectoryNotFoundException\nSystem.IO.FileAccess\nSystem.IO.FileLoadException\nSystem.IO.PathTooLongException\nSystem.IO.FileMode\nSystem.IO.FileShare\nSystem.IO.FileAttributes\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.IO.FileSystem.Primitives@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Linq",
+      "version": "4.3.0",
+      "description": "Provides classes and interfaces that supports queries that use Language-Integrated Query (LINQ).\n\nCommonly Used Types:\nSystem.Linq.Enumerable\nSystem.Linq.IGrouping\u003CTKey, TElement\u003E\nSystem.Linq.IOrderedEnumerable\u003CTElement\u003E\nSystem.Linq.ILookup\u003CTKey, TElement\u003E\nSystem.Linq.Lookup\u003CTKey, TElement\u003E\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Linq@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Linq.Expressions",
+      "version": "4.3.0",
+      "description": "Provides classes, interfaces and enumerations that enable language-level code expressions to be represented as objects in the form of expression trees.\n\nCommonly Used Types:\nSystem.Linq.IQueryable\u003CT\u003E\nSystem.Linq.IQueryable\nSystem.Linq.Expressions.Expression\u003CTDelegate\u003E\nSystem.Linq.Expressions.Expression\nSystem.Linq.Expressions.ExpressionVisitor\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Linq.Expressions@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.ObjectModel",
+      "version": "4.3.0",
+      "description": "Provides types and interfaces that allow the creation of observable types that provide notifications to clients when changes are made to it.\n\nCommonly Used Types:\nSystem.ComponentModel.INotifyPropertyChanged\nSystem.Collections.ObjectModel.ObservableCollection\u003CT\u003E\nSystem.ComponentModel.PropertyChangedEventHandler\nSystem.Windows.Input.ICommand\nSystem.Collections.Specialized.INotifyCollectionChanged\nSystem.Collections.Specialized.NotifyCollectionChangedEventArgs\nSystem.Collections.Specialized.NotifyCollectionChangedEventHandler\nSystem.Collections.ObjectModel.KeyedCollection\u003CTKey, TItem\u003E\nSystem.ComponentModel.PropertyChangedEventArgs\nSystem.Collections.ObjectModel.ReadOnlyDictionary\u003CTKey, TValue\u003E\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.ObjectModel@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Reflection",
+      "version": "4.3.0",
+      "description": "Provides types that retrieve information about assemblies, modules, members, parameters, and other entities in managed code by examining their metadata. These types also can be used to manipulate instances of loaded types, for example to hook up events or to invoke methods.\n\nCommonly Used Types:\nSystem.Reflection.MethodInfo\nSystem.Reflection.PropertyInfo\nSystem.Reflection.ParameterInfo\nSystem.Reflection.FieldInfo\nSystem.Reflection.ConstructorInfo\nSystem.Reflection.Assembly\nSystem.Reflection.MemberInfo\nSystem.Reflection.EventInfo\nSystem.Reflection.Module\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Reflection@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Reflection.Emit",
+      "version": "4.3.0",
+      "description": "Provides classes that allow a compiler or tool to emit metadata and optionally generate a PE file on disk. The primary clients of these classes are script engines and compilers.\n\nCommonly Used Types:\nSystem.Reflection.Emit.AssemblyBuilder\nSystem.Reflection.Emit.FieldBuilder\nSystem.Reflection.Emit.TypeBuilder\nSystem.Reflection.Emit.MethodBuilder\nSystem.Reflection.Emit.ConstructorBuilder\nSystem.Reflection.Emit.GenericTypeParameterBuilder\nSystem.Reflection.Emit.ModuleBuilder\nSystem.Reflection.Emit.PropertyBuilder\nSystem.Reflection.Emit.AssemblyBuilderAccess\nSystem.Reflection.Emit.EventBuilder\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Reflection.Emit@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Reflection.Emit.ILGeneration",
+      "version": "4.3.0",
+      "description": "Provides classes that allow a compiler or tool to emit Microsoft intermediate language (MSIL). The primary clients of these classes are script engines and compilers.\n\nCommonly Used Types:\nSystem.Reflection.Emit.ILGenerator\nSystem.Reflection.Emit.Label\nSystem.Reflection.Emit.CustomAttributeBuilder\nSystem.Reflection.Emit.LocalBuilder\nSystem.Reflection.Emit.ParameterBuilder\nSystem.Reflection.Emit.SignatureHelper\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Reflection.Emit.ILGeneration@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Reflection.Emit.Lightweight",
+      "version": "4.3.0",
+      "description": "Provides the System.Reflection.Emit.DynamicMethod class, which represents a dynamic method that can be compiled, executed, and discarded. Discarded methods are available for garbage collection.\n\nCommonly Used Types:\nSystem.Reflection.Emit.DynamicMethod\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Reflection.Emit.Lightweight@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Reflection.Extensions",
+      "version": "4.3.0",
+      "description": "Provides custom attribute extension methods for System.Reflection types.\n\nCommonly Used Types:\nSystem.Reflection.InterfaceMapping\nSystem.Reflection.CustomAttributeExtensions\nSystem.Reflection.RuntimeReflectionExtensions\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Reflection.Extensions@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Reflection.Primitives",
+      "version": "4.3.0",
+      "description": "Provides common enumerations for reflection-based libraries.\n\nCommonly Used Types:\nSystem.Reflection.FieldAttributes\nSystem.Reflection.Emit.OpCode\nSystem.Reflection.TypeAttributes\nSystem.Reflection.MethodAttributes\nSystem.Reflection.CallingConventions\nSystem.Reflection.PropertyAttributes\nSystem.Reflection.EventAttributes\nSystem.Reflection.ParameterAttributes\nSystem.Reflection.GenericParameterAttributes\nSystem.Reflection.MethodImplAttributes\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Reflection.Primitives@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Reflection.TypeExtensions",
+      "version": "4.3.0",
+      "description": "Provides extensions methods for System.Type that are designed to be source-compatible with older framework reflection-based APIs.\n\nCommonly Used Types:\nSystem.Reflection.TypeExtensions\nSystem.Reflection.BindingFlags\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Reflection.TypeExtensions@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Resources.ResourceManager",
+      "version": "4.3.0",
+      "description": "Provides classes and attributes that allow developers to create, store, and manage various culture-specific resources used in an application.\n\nCommonly Used Types:\nSystem.Resources.ResourceManager\nSystem.Resources.NeutralResourcesLanguageAttribute\nSystem.Resources.SatelliteContractVersionAttribute\nSystem.Resources.MissingManifestResourceException\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Resources.ResourceManager@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Runtime",
+      "version": "4.3.0",
+      "description": "Provides the fundamental primitives, classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and exceptions. This packages represents the core package, and provides the minimal set of types required to build a managed application.\n\nCommonly Used Types:\nSystem.Object\nSystem.Exception\nSystem.Int16\nSystem.Int32\nSystem.Int64\nSystem.Enum\nSystem.String\nSystem.Char\nSystem.Boolean\nSystem.SByte\nSystem.Byte\nSystem.DateTime\nSystem.DateTimeOffset\nSystem.Single\nSystem.Double\nSystem.UInt16\nSystem.UInt32\nSystem.UInt64\nSystem.IDisposable\nSystem.Uri\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Runtime@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Runtime.CompilerServices.Unsafe",
+      "version": "4.7.1",
+      "description": "Provides the System.Runtime.CompilerServices.Unsafe class, which provides generic, low-level functionality for manipulating pointers.\n\nCommonly Used Types:\nSystem.Runtime.CompilerServices.Unsafe\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Runtime.CompilerServices.Unsafe@4.7.1",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Runtime.Extensions",
+      "version": "4.3.0",
+      "description": "Provides commonly-used classes for performing mathematical functions, conversions, string comparisons and querying environment information.\n\nCommonly Used Types:\nSystem.Math\nSystem.Environment\nSystem.Random\nSystem.Progress\u003CT\u003E\nSystem.Convert\nSystem.Diagnostics.Stopwatch\nSystem.Runtime.Versioning.FrameworkName\nSystem.StringComparer\nSystem.IO.Path\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Runtime.Extensions@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Runtime.Handles",
+      "version": "4.3.0",
+      "description": "Provides base classes, including System.Runtime.InteropServices.CriticalHandle and System.Runtime.InteropServices.SafeHandle, for types that represent operating system handles.\n\nCommonly Used Types:\nSystem.Runtime.InteropServices.SafeHandle\nMicrosoft.Win32.SafeHandles.SafeWaitHandle\nSystem.Runtime.InteropServices.CriticalHandle\nSystem.Threading.WaitHandleExtensions\nSystem.IO.HandleInheritability\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Runtime.Handles@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Runtime.InteropServices",
+      "version": "4.3.0",
+      "description": "Provides types that support COM interop and platform invoke services.\n\nCommonly Used Types:\nSystem.Runtime.InteropServices.GCHandle\nSystem.Runtime.InteropServices.GuidAttribute\nSystem.Runtime.InteropServices.COMException\nSystem.DllNotFoundException\nSystem.Runtime.InteropServices.DllImportAttribute\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Runtime.InteropServices@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Runtime.Serialization.Primitives",
+      "version": "4.1.1",
+      "description": "Provides common types, including System.Runtime.Serialization.DataContractAttribute, for libraries that support data contract serialization.\n\nCommonly Used Types:\nSystem.Runtime.Serialization.StreamingContext\nSystem.Runtime.Serialization.OnDeserializingAttribute\nSystem.Runtime.Serialization.OnDeserializedAttribute\nSystem.Runtime.Serialization.OnSerializingAttribute\nSystem.Runtime.Serialization.OnSerializedAttribute\nSystem.Runtime.Serialization.EnumMemberAttribute\nSystem.Runtime.Serialization.DataMemberAttribute\nSystem.Runtime.Serialization.DataContractAttribute\nSystem.Runtime.Serialization.IgnoreDataMemberAttribute\nSystem.Runtime.Serialization.SerializationException\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Runtime.Serialization.Primitives@4.1.1",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Security.AccessControl",
+      "version": "4.7.0",
+      "description": "Provides base classes that enable managing access and audit control lists on securable objects.\n\nCommonly Used Types:\nSystem.Security.AccessControl.AccessRule\nSystem.Security.AccessControl.AuditRule\nSystem.Security.AccessControl.ObjectAccessRule\nSystem.Security.AccessControl.ObjectAuditRule\nSystem.Security.AccessControl.ObjectSecurity\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Security.AccessControl@4.7.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Security.Cryptography.Primitives",
+      "version": "4.3.0",
+      "description": "Provides common types for the cryptographic libraries.\n\nCommonly Used Types:\nSystem.Security.Cryptography.ICryptoTransform\nSystem.Security.Cryptography.AsymmetricAlgorithm\nSystem.Security.Cryptography.SymmetricAlgorithm\nSystem.Security.Cryptography.HashAlgorithm\nSystem.Security.Cryptography.KeyedHashAlgorithm\nSystem.Security.Cryptography.HMAC\nSystem.Security.Cryptography.KeySizes\nSystem.Security.Cryptography.CryptographicException\nSystem.Security.Cryptography.CipherMode\nSystem.Security.Cryptography.PaddingMode\nSystem.Security.Cryptography.CryptoStream\nSystem.Security.Cryptography.CryptoStreamMode\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Security.Cryptography.Primitives@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Security.Cryptography.ProtectedData",
+      "version": "4.3.0",
+      "description": "Provides access to Windows Data Protection Api.\n\nCommonly Used Types:\nSystem.Security.Cryptography.DataProtectionScope\nSystem.Security.Cryptography.ProtectedData\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Security.Cryptography.ProtectedData@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Security.Principal.Windows",
+      "version": "4.7.0",
+      "description": "Provides classes for retrieving the current Windows user and for interacting with Windows users and groups.\n\nCommonly Used Types:\nSystem.Security.Principal.WindowsIdentity\nSystem.Security.Principal.SecurityIdentifier\nSystem.Security.Principal.NTAccount\nSystem.Security.Principal.WindowsPrincipal\nSystem.Security.Principal.IdentityReference\nSystem.Security.Principal.IdentityNotMappedException\nSystem.Security.Principal.WindowsBuiltInRole\nSystem.Security.Principal.WellKnownSidType\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Security.Principal.Windows@4.7.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Text.Encoding",
+      "version": "4.3.0",
+      "description": "Provides base abstract encoding classes for converting blocks of characters to and from blocks of bytes.\n\nCommonly Used Types:\nSystem.Text.Encoding\nSystem.Text.DecoderFallbackException\nSystem.Text.Decoder\nSystem.Text.EncoderFallbackException\nSystem.Text.Encoder\nSystem.Text.EncoderFallback\nSystem.Text.EncoderFallbackBuffer\nSystem.Text.DecoderFallback\nSystem.Text.DecoderFallbackBuffer\nSystem.Text.DecoderExceptionFallback\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Text.Encoding@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Text.Encoding.Extensions",
+      "version": "4.3.0",
+      "description": "Provides support for specific encodings, including ASCII, UTF-7, UTF-8, UTF-16, and UTF-32.\n\nCommonly Used Types:\nSystem.Text.UTF8Encoding\nSystem.Text.UnicodeEncoding\nSystem.Text.ASCIIEncoding\nSystem.Text.UTF7Encoding\nSystem.Text.UTF32Encoding\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Text.Encoding.Extensions@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Text.Encodings.Web",
+      "version": "4.7.1",
+      "description": "Provides types for encoding and escaping strings for use in JavaScript, HyperText Markup Language (HTML), and uniform resource locators (URL).\n\nCommonly Used Types:\nSystem.Text.Encodings.Web.HtmlEncoder\nSystem.Text.Encodings.Web.UrlEncoder\nSystem.Text.Encodings.Web.JavaScriptEncoder\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Text.Encodings.Web@4.7.1",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Text.Json",
+      "version": "4.7.2",
+      "description": "Provides high-performance and low-allocating types that serialize objects to JavaScript Object Notation (JSON) text and deserialize JSON text to objects, with UTF-8 support built-in. Also provides types to read and write JSON text encoded as UTF-8, and to create an in-memory document object model (DOM), that is read-only, for random access of the JSON elements within a structured view of the data.\n\nCommonly Used Types:\nSystem.Text.Json.JsonSerializer\nSystem.Text.Json.JsonDocument\nSystem.Text.Json.JsonElement\nSystem.Text.Json.Utf8JsonWriter\nSystem.Text.Json.Utf8JsonReader\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Text.Json@4.7.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Text.RegularExpressions",
+      "version": "4.1.0",
+      "description": "Provides the System.Text.RegularExpressions.Regex class, an implementation of a regular expression engine.\n\nCommonly Used Types:\nSystem.Text.RegularExpressions.Regex\nSystem.Text.RegularExpressions.RegexOptions\nSystem.Text.RegularExpressions.Match\nSystem.Text.RegularExpressions.Group\nSystem.Text.RegularExpressions.Capture\nSystem.Text.RegularExpressions.MatchEvaluator\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Text.RegularExpressions@4.1.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Threading",
+      "version": "4.3.0",
+      "description": "Provides the fundamental synchronization primitives, including System.Threading.Monitor and System.Threading.Mutex, that are required when writing asynchronous code.\n\nCommonly Used Types:\nSystem.Threading.Monitor\nSystem.Threading.SynchronizationContext\nSystem.Threading.ManualResetEvent\nSystem.Threading.AutoResetEvent\nSystem.Threading.ThreadLocal\u003CT\u003E\nSystem.Threading.EventWaitHandle\nSystem.Threading.SemaphoreSlim\nSystem.Threading.Mutex\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Threading@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Threading.Tasks",
+      "version": "4.3.0",
+      "description": "Provides types that simplify the work of writing concurrent and asynchronous code.\n\nCommonly Used Types:\nSystem.Threading.Tasks.Task\u003CTResult\u003E\nSystem.Runtime.CompilerServices.TaskAwaiter\u003CTResult\u003E\nSystem.Threading.Tasks.TaskCompletionSource\u003CTResult\u003E\nSystem.Threading.Tasks.Task\nSystem.OperationCanceledException\nSystem.AggregateException\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Threading.Tasks@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Threading.Tasks.Extensions",
+      "version": "4.0.0",
+      "description": "Provides additional types that simplify the work of writing concurrent and asynchronous code.\n\nCommonly Used Types:\nSystem.Threading.Tasks.ValueTask\u003CTResult\u003E",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Threading.Tasks.Extensions@4.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Threading.Thread",
+      "version": "4.3.0",
+      "description": "Provides the System.Threading.Thread class, which allows developers to create and control a thread, set its priority, and get its state.\n\nCommonly Used Types:\nSystem.Threading.Thread\nSystem.Threading.ThreadStart\nSystem.Threading.ParameterizedThreadStart\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Threading.Thread@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Threading.ThreadPool",
+      "version": "4.3.0",
+      "description": "Provides the System.Threading.ThreadPool class, which contains a pool of threads that can be used to execute tasks, post work items, wait on behalf of other threads, and process timers.\n\nCommonly Used Types:\nSystem.Threading.ThreadPool\nSystem.Threading.WaitOrTimerCallback\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Threading.ThreadPool@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Xml.ReaderWriter",
+      "version": "4.0.11",
+      "description": "Provides provides a fast, non-cached, forward-only way to read and write Extensible Markup Language (XML) data.\n\nCommonly Used Types:\nSystem.Xml.XmlNodeType\nSystem.Xml.XmlException\nSystem.Xml.XmlReader\nSystem.Xml.XmlWriter\nSystem.Xml.IXmlLineInfo\nSystem.Xml.XmlNameTable\nSystem.Xml.IXmlNamespaceResolver\nSystem.Xml.XmlNamespaceManager\nSystem.Xml.XmlQualifiedName\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Xml.ReaderWriter@4.0.11",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "System.Xml.XDocument",
+      "version": "4.0.11",
+      "description": "Provides the classes for Language-Integrated Query (LINQ) to Extensible Markup Language (XML). LINQ to XML is an in-memory XML programming interface that enables you to modify XML documents efficiently and easily.\n\nCommonly Used Types:\nSystem.Xml.Linq.XElement\nSystem.Xml.Linq.XAttribute\nSystem.Xml.Linq.XDocument\nSystem.Xml.Linq.XText\nSystem.Xml.Linq.XNode\nSystem.Xml.Linq.XContainer\nSystem.Xml.Linq.XComment\nSystem.Xml.Linq.XObject\nSystem.Xml.Linq.XProcessingInstruction\nSystem.Xml.Linq.XDocumentType\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Xml.XDocument@4.0.11",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "CycloneDX.Core",
+      "version": "1.0.0",
+      "licenses": [],
+      "purl": "pkg:nuget/CycloneDX.Core@1.0.0",
+      "externalReferences": []
+    },
+    {
+      "type": "library",
+      "name": "CycloneDX.Json",
+      "version": "1.0.0",
+      "licenses": [],
+      "purl": "pkg:nuget/CycloneDX.Json@1.0.0",
+      "externalReferences": []
+    },
+    {
+      "type": "library",
+      "name": "CycloneDX.Models",
+      "version": "1.0.0",
+      "licenses": [],
+      "purl": "pkg:nuget/CycloneDX.Models@1.0.0",
+      "externalReferences": []
+    },
+    {
+      "type": "library",
+      "name": "CycloneDX.Xml",
+      "version": "1.0.0",
+      "licenses": [],
+      "purl": "pkg:nuget/CycloneDX.Xml@1.0.0",
+      "externalReferences": []
+    },
+    {
+      "publisher": "Microsoft",
+      "type": "library",
+      "name": "Microsoft.NETCore.Targets",
+      "version": "1.1.0",
+      "description": "Provides supporting infrastructure for portable projects: support identifiers that define framework and runtime for support targets and packages that reference the minimum supported package versions when targeting these. \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "licenses": [
+        {
+          "license": {
+            "url": "http://go.microsoft.com/fwlink/?LinkId=329770"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NETCore.Targets@1.1.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    }
+  ]
+}

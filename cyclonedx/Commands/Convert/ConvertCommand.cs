@@ -38,7 +38,7 @@ namespace CycloneDX.CLI
                     Console.Error.WriteLine("You must specify a value for --output-format when standard output is used");
                     return (int)ExitCode.ParameterValidationError;
                 }
-                outputBomFormat = Utils.DetectFileFormat(inputFile);
+                outputBomFormat = Utils.DetectFileFormat(outputFile);
                 if (outputBomFormat == BomFormat.Unsupported)
                 {
                     Console.Error.WriteLine("Unable to auto-detect output format from output filename");

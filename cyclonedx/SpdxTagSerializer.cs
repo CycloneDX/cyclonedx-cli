@@ -185,7 +185,8 @@ namespace CycloneDX.CLI
                 sb.AppendLine();
                 var license = nonSpdxLicenses[licenseIndex];
                 sb.AppendLine($"LicenseID: LicenseRef-{licenseIndex+1}");
-                sb.AppendLine($"ExtractedText: <text>\"{license.Name}\": {WebUtility.HtmlEncode(license.Text.Content)}</text>");
+                if (license.Text != null && !string.IsNullOrEmpty(license.Text.Content))
+                    sb.AppendLine($"ExtractedText: <text>\"{license.Name}\": {WebUtility.HtmlEncode(license.Text.Content)}</text>");
                 sb.AppendLine($"LicenseName: {license.Name}");
                 if (!string.IsNullOrEmpty(license.Url))
                     sb.AppendLine($"LicenseCrossReference: {license.Url}");
