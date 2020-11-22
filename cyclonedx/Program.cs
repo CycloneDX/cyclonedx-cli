@@ -7,7 +7,7 @@ using CycloneDX.CLI.Models;
 
 namespace CycloneDX.CLI
 {
-    partial class Program
+    public partial class Program
     {
         private static readonly string CycloneDX = @"
    ______           __                 ____ _  __    ________    ____

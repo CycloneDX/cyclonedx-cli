@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cyclonedx", "cyclonedx\cyclonedx.csproj", "{14FDEC6A-9E00-4CDD-ACD5-EDD7CA4C3741}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cyclonedx.tests", "cyclonedx.tests\cyclonedx.tests.csproj", "{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,18 @@ Global
 		{14FDEC6A-9E00-4CDD-ACD5-EDD7CA4C3741}.Release|x64.Build.0 = Release|Any CPU
 		{14FDEC6A-9E00-4CDD-ACD5-EDD7CA4C3741}.Release|x86.ActiveCfg = Release|Any CPU
 		{14FDEC6A-9E00-4CDD-ACD5-EDD7CA4C3741}.Release|x86.Build.0 = Release|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Debug|x64.Build.0 = Debug|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Debug|x86.Build.0 = Debug|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Release|x64.ActiveCfg = Release|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Release|x64.Build.0 = Release|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Release|x86.ActiveCfg = Release|Any CPU
+		{ECBAD4BF-D6CC-440D-BA01-98E164B54A12}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
