@@ -1,7 +1,5 @@
 using System;
 using System.IO;
-using System.Text;
-using CycloneDX.Models;
 using CycloneDX.Json;
 using CycloneDX.Xml;
 
@@ -26,7 +24,7 @@ namespace CycloneDX.CLI
             }
         }
 
-        public static Bom BomDeserializer(string bom, BomFormat format)
+        public static CycloneDX.Models.v1_2.Bom BomDeserializer(string bom, BomFormat format)
         {
             if (format == BomFormat.Json)
             {
@@ -39,7 +37,7 @@ namespace CycloneDX.CLI
             throw new UnsupportedFormatException("Unsupported SBOM file format");
         }
 
-        public static string BomSerializer(Bom bom, BomFormat format)
+        public static string BomSerializer(CycloneDX.Models.v1_2.Bom bom, BomFormat format)
         {
             if (format == BomFormat.Json)
             {

@@ -2,9 +2,7 @@
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
-using CycloneDX.Models;
 using CycloneDX.CLI.Commands;
 using CycloneDX.CLI.Models;
 
@@ -30,7 +28,7 @@ namespace CycloneDX.CLI
 
             BomFormat outputBomFormat = BomFormat.Unsupported;
             string inputBomString;
-            Bom inputBom;
+            CycloneDX.Models.v1_2.Bom inputBom;
             string outputBomString;
 
             if (outputFormat == ConvertOutputFormat.autodetect)
