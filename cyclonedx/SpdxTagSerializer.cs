@@ -5,6 +5,12 @@ using System.Text;
 
 namespace CycloneDX.CLI
 {
+    public enum SpdxVersion
+    {
+        v2_1,
+        v2_2
+    }
+
     public static class SpdxTagSerializer
     {
         public class SpdxSerializationException : Exception
@@ -12,7 +18,7 @@ namespace CycloneDX.CLI
             public SpdxSerializationException(string message) : base(message) {}
         }
 
-        public static string Serialize(CycloneDX.Models.v1_2.Bom bom)
+        public static string Serialize(CycloneDX.Models.v1_2.Bom bom, SpdxVersion version)
         {
             if (bom.Metadata?.Component?.Name == null || bom.Metadata?.Component?.Version == null)
                 throw new SpdxSerializationException("For SPDX output top level component name and version are required in the BOM metadata");
@@ -34,7 +40,11 @@ namespace CycloneDX.CLI
 
             var sb = new StringBuilder();
             var componentSb = new StringBuilder();
-            sb.AppendLine("SPDXVersion: SPDX-2.1");
+            sb.Append("SPDXVersion: SPDX-");
+            if (version == SpdxVersion.v2_1)
+                sb.Append("2.1");
+            else if (version == SpdxVersion.v2_2)
+                sb.Append("2.2");
             // CC0-1.0 is a requirement when using the SPDX specification
             sb.AppendLine("DataLicense: CC0-1.0");
             sb.AppendLine($"SPDXID: SPDXRef-DOCUMENT");
@@ -81,6 +91,7 @@ namespace CycloneDX.CLI
                 foreach(var hash in component.Hashes)
                 {
                     string algStr = null;
+
                     switch (hash.Alg)
                     {
                         case CycloneDX.Models.v1_2.Hash.HashAlgorithm.SHA_1:
@@ -89,14 +100,18 @@ namespace CycloneDX.CLI
                         case CycloneDX.Models.v1_2.Hash.HashAlgorithm.SHA_256:
                             algStr = "SHA256";
                             break;
-                        // following algorithms only supported in v2.2
-                        // case Hash.HashAlgorithm.SHA_384:
-                        //     algStr = "SHA384";
-                        //     break;
-                        // case Hash.HashAlgorithm.SHA_512:
-                        //     algStr = "SHA512";
-                        //     break;
                     }
+                    if (version == SpdxVersion.v2_2)
+                    switch (hash.Alg)
+                    {
+                        case CycloneDX.Models.v1_2.Hash.HashAlgorithm.SHA_384:
+                            algStr = "SHA384";
+                            break;
+                        case CycloneDX.Models.v1_2.Hash.HashAlgorithm.SHA_512:
+                            algStr = "SHA512";
+                            break;
+                    }
+
                     if (algStr != null)
                     {
                         sb.AppendLine($"PackageChecksum: {algStr}: {hash.Content}");
