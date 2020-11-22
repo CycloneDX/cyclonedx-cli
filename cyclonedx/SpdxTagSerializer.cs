@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
-using CycloneDX.Models;
 
 namespace CycloneDX.CLI
 {
@@ -13,12 +12,12 @@ namespace CycloneDX.CLI
             public SpdxSerializationException(string message) : base(message) {}
         }
 
-        public static string Serialize(Bom bom)
+        public static string Serialize(CycloneDX.Models.v1_2.Bom bom)
         {
             if (bom.Metadata?.Component?.Name == null || bom.Metadata?.Component?.Version == null)
                 throw new SpdxSerializationException("For SPDX output top level component name and version are required in the BOM metadata");
             
-            var nonSpdxLicenses = new List<License>();
+            var nonSpdxLicenses = new List<CycloneDX.Models.v1_2.License>();
             string bomSpdxRef;
             if (string.IsNullOrEmpty(bom.SerialNumber))
             {
@@ -84,10 +83,10 @@ namespace CycloneDX.CLI
                     string algStr = null;
                     switch (hash.Alg)
                     {
-                        case Hash.HashAlgorithm.SHA_1:
+                        case CycloneDX.Models.v1_2.Hash.HashAlgorithm.SHA_1:
                             algStr = "SHA1";
                             break;
-                        case Hash.HashAlgorithm.SHA_256:
+                        case CycloneDX.Models.v1_2.Hash.HashAlgorithm.SHA_256:
                             algStr = "SHA256";
                             break;
                         // following algorithms only supported in v2.2
@@ -157,7 +156,7 @@ namespace CycloneDX.CLI
                 sb.AppendLine();
                 var license = nonSpdxLicenses[licenseIndex];
                 sb.AppendLine($"LicenseID: LicenseRef-{licenseIndex+1}");
-                sb.AppendLine($"ExtractedText: <text>\"{license.Name}\": {WebUtility.HtmlEncode(license.Text)}</text>");
+                sb.AppendLine($"ExtractedText: <text>\"{license.Name}\": {WebUtility.HtmlEncode(license.Text.Content)}</text>");
                 sb.AppendLine($"LicenseName: {license.Name}");
                 if (!string.IsNullOrEmpty(license.Url))
                     sb.AppendLine($"LicenseCrossReference: {license.Url}");

@@ -1,6 +1,6 @@
-﻿namespace CycloneDX.CLI
+﻿namespace CycloneDX.CLI.Models
 {
-    public enum ConvertInputFormat
+    public enum InputFormat
     {
         autodetect,
         xml,
