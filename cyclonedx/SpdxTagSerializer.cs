@@ -149,6 +149,20 @@ namespace CycloneDX.CLI
 
                 if (!string.IsNullOrEmpty(component.Purl))
                     sb.AppendLine($"External-Ref: PACKAGE-MANAGER purl {component.Purl}");
+                
+                if (!string.IsNullOrEmpty(component.Cpe))
+                {
+                    if (component.Cpe.ToLowerInvariant().StartsWith("cpe:2.2:"))
+                    {
+                        sb.Append("ExternalRef: SECURITY cpe22Type ");
+                        sb.AppendLine(component.Cpe);
+                    }
+                    else if (component.Cpe.ToLowerInvariant().StartsWith("cpe:2.3:"))
+                    {
+                        sb.Append("ExternalRef: SECURITY cpe23Type ");
+                        sb.AppendLine(component.Cpe);
+                    }
+                }
             }
 
             for (var licenseIndex=0; licenseIndex<nonSpdxLicenses.Count; licenseIndex++)
