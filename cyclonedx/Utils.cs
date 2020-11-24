@@ -39,25 +39,30 @@ namespace CycloneDX.CLI
 
         public static string BomSerializer(CycloneDX.Models.v1_2.Bom bom, BomFormat format)
         {
-            if (format == BomFormat.Json)
+            if (format == BomFormat.Json || format == BomFormat.Json_v1_2)
             {
                 return JsonBomSerializer.Serialize(bom);
             }
-            else if (format == BomFormat.Xml)
+            else if (format == BomFormat.Xml || format == BomFormat.Xml_v1_2)
             {
                 return XmlBomSerializer.Serialize(bom);
             }
-            else if (format == BomFormat.SpdxTag)
+            else if (format == BomFormat.Xml_v1_1)
+            {
+                return XmlBomSerializer.Serialize(new CycloneDX.Models.v1_1.Bom(bom));
+            }
+            else if (format == BomFormat.Xml_v1_0)
+            {
+                var v1_1_bom = new CycloneDX.Models.v1_1.Bom(bom);
+                return XmlBomSerializer.Serialize(new CycloneDX.Models.v1_0.Bom(v1_1_bom));
+            }
+            else if (format == BomFormat.SpdxTag || format == BomFormat.SpdxTag_v2_2)
             {
                 return SpdxTagSerializer.Serialize(bom, SpdxVersion.v2_2);
             }
             else if (format == BomFormat.SpdxTag_v2_1)
             {
                 return SpdxTagSerializer.Serialize(bom, SpdxVersion.v2_1);
-            }
-            else if (format == BomFormat.SpdxTag_v2_2)
-            {
-                return SpdxTagSerializer.Serialize(bom, SpdxVersion.v2_2);
             }
             throw new UnsupportedFormatException("Unsupported SBOM file format");
         }
