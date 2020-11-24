@@ -12,11 +12,11 @@ namespace CycloneDX.CLI
     {
         internal static void ConfigureConvertCommand(RootCommand rootCommand)
         {
-            var subCommand = new Command("convert");
-            subCommand.Add(new Option<string>("--input-file"));
-            subCommand.Add(new Option<string>("--output-file"));
-            subCommand.Add(new Option<InputFormat>("--input-format"));
-            subCommand.Add(new Option<ConvertOutputFormat>("--output-format"));
+            var subCommand = new Command("convert", "Convert between different SBOM formats");
+            subCommand.Add(new Option<string>("--input-file", "Input SBOM filename, will read from stdin if no value provided."));
+            subCommand.Add(new Option<string>("--output-file", "Output SBOM filename, will write to stdout if no value provided."));
+            subCommand.Add(new Option<InputFormat>("--input-format", "Specify input file format."));
+            subCommand.Add(new Option<ConvertOutputFormat>("--output-format", "Specify output file format."));
             subCommand.Handler = CommandHandler.Create<string, string, InputFormat, ConvertOutputFormat>(Convert);
             rootCommand.Add(subCommand);
         }
