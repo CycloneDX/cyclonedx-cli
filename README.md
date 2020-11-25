@@ -35,7 +35,7 @@ Options:
 | `--input-file <input-file>` | Input SBOM filename, will read from stdin if no value provided. |
 | `--output-file <output-file>` | Output SBOM filename, will write to stdout if no value provided. |
 | `--input-format <autodetect\|json\|xml>` | Specify input file format. |
-| `--output-format <autodetect\|json\|json_v1_2\|spdxtag\|spdxtag_v2_1\|spdxtag_v2_2\|xml\|xml_v1_0\|xml_v1_1\|xml_v1_2>` | Specify output file format. |
+| `--output-format <autodetect\|json\|json_v1_2 \|spdxtag\|spdxtag_v2_1\|spdxtag_v2_2 \|xml\|xml_v1_0\|xml_v1_1\|xml_v1_2>` | Specify output file format. |
 
 ## Docker Image
 
