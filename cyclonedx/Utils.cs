@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using CycloneDX.Json;
 using CycloneDX.Xml;
+using CycloneDX.CLI.Models;
 
 namespace CycloneDX.CLI
 {
@@ -17,6 +18,10 @@ namespace CycloneDX.CLI
             else if (fileExtension == ".xml")
             {
                 return BomFormat.Xml;
+            }
+            else if (fileExtension == ".spdx")
+            {
+                return BomFormat.SpdxTag;
             }
             else
             {
