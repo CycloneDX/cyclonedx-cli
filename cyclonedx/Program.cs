@@ -34,26 +34,32 @@ namespace CycloneDX.CLI
 
         public static BomFormat InputFormatHelper(string inputFile, InputFormat inputFormat)
         {
-            BomFormat inputBomFormat = BomFormat.Unsupported;
-
             if (inputFormat == InputFormat.autodetect)
             {
                 if (string.IsNullOrEmpty(inputFile))
                 {
                     Console.Error.WriteLine("Unable to auto-detect input stream format, please specify a value for --input-format");
                 }
-                inputBomFormat = Utils.DetectFileFormat(inputFile);
+                var inputBomFormat = Utils.DetectFileFormat(inputFile);
                 if (inputBomFormat == BomFormat.Unsupported)
                 {
                     Console.Error.WriteLine("Unable to auto-detect input format from input filename");
                 }
+                return inputBomFormat;
             }
             else
             {
-                inputBomFormat = (BomFormat)inputFormat;
+                if (inputFormat == InputFormat.json)
+                {
+                    return BomFormat.Json;
+                }
+                else if (inputFormat == InputFormat.xml)
+                {
+                    return BomFormat.Xml;
+                }
             }
 
-            return inputBomFormat;
+            return BomFormat.Unsupported;
         }
 
         public static string InputFileHelper(string inputFile)

@@ -1,8 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" serialNumber="urn:uuid:10538af4-a03f-4deb-99ad-8baa90062b5b" version="1" xmlns="http://cyclonedx.org/schema/bom/1.2">
+<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" serialNumber="urn:uuid:f9bcf38b-e331-48b3-a541-28f5352a4509" version="1" xmlns="http://cyclonedx.org/schema/bom/1.2">
+  <metadata>
+    <component type="application">
+      <name>Test</name>
+      <version>1</version>
+      <hashes />
+      <externalReferences />
+      <components />
+    </component>
+  </metadata>
   <components>
     <component type="library">
-      <publisher>Nate McMaster</publisher>
+      <name>CycloneDX.Core</name>
+      <version>1.0.0</version>
+      <purl>pkg:nuget/CycloneDX.Core@1.0.0</purl>
+    </component>
+    <component type="library">
+      <name>CycloneDX.Json</name>
+      <version>1.0.0</version>
+      <purl>pkg:nuget/CycloneDX.Json@1.0.0</purl>
+    </component>
+    <component type="library">
+      <name>CycloneDX.Models</name>
+      <version>1.0.0</version>
+      <purl>pkg:nuget/CycloneDX.Models@1.0.0</purl>
+    </component>
+    <component type="library">
+      <name>CycloneDX.Xml</name>
+      <version>1.0.0</version>
+      <purl>pkg:nuget/CycloneDX.Xml@1.0.0</purl>
+    </component>
+    <component type="library">
       <name>McMaster.Extensions.CommandLineUtils</name>
       <version>3.0.0</version>
       <description>Command-line parsing API and utilities for console applications.
@@ -27,13 +55,9 @@ McMaster.Extensions.CommandLineUtils.ArgumentEscaper
         <reference type="website">
           <url>https://github.com/natemcmaster/CommandLineUtils</url>
         </reference>
-        <reference type="issue-tracker">
-          <url>https://github.com/natemcmaster/CommandLineUtils/issues</url>
-        </reference>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.Bcl.AsyncInterfaces</name>
       <version>1.1.0</version>
       <description>Provides the IAsyncEnumerable&lt;T&gt; and IAsyncDisposable interfaces and helper types for .NET Standard 2.0. This package is not required starting with .NET Standard 2.1 and .NET Core 3.0.
@@ -58,7 +82,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.CodeAnalysis.FxCopAnalyzers</name>
       <version>3.3.0</version>
       <description>Microsoft recommended code quality rules and .NET API usage rules, including the most important FxCop rules, implemented as analyzers using the .NET Compiler Platform (Roslyn). These analyzers check your code for security, performance, and design issues, among others. The documentation for FxCop analyzers can be found at https://docs.microsoft.com/visualstudio/code-quality/install-fxcop-analyzers</description>
@@ -76,7 +99,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.CodeAnalysis.VersionCheckAnalyzer</name>
       <version>3.3.0</version>
       <description>Microsoft.CodeAnalysis Version Check Analyzer</description>
@@ -94,7 +116,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.CodeQuality.Analyzers</name>
       <version>3.3.0</version>
       <description>Microsoft recommended code quality rules implemented as analyzers using the .NET Compiler Platform (Roslyn). This package is included as a part of Microsoft.CodeAnalysis.FxCopAnalyzers NuGet package and does not need to be installed separately.</description>
@@ -112,7 +133,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.CSharp</name>
       <version>4.0.1</version>
       <description>Provides support for compilation and code generation, including dynamic, using the C# language.
@@ -139,7 +159,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.NetCore.Analyzers</name>
       <version>3.3.0</version>
       <description>Microsoft recommended .NetCore API usage rules implemented as analyzers using the .NET Compiler Platform (Roslyn). This package is included as a part of Microsoft.CodeAnalysis.FxCopAnalyzers NuGet package and does not need to be installed separately.</description>
@@ -157,7 +176,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.NETCore.App</name>
       <version>2.1.0</version>
       <description>A set of .NET API's that are included in the default .NET Core application model. 
@@ -177,7 +195,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.NETCore.DotNetAppHost</name>
       <version>2.1.0</version>
       <description>Provides the .NET Core app bootstrapper intended for use in the application directory 
@@ -197,7 +214,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.NETCore.DotNetHostPolicy</name>
       <version>2.1.0</version>
       <description>Provides a CoreCLR hosting policy implementation -- configuration settings, assembly paths and assembly servicing 
@@ -217,7 +233,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.NETCore.DotNetHostResolver</name>
       <version>2.1.0</version>
       <description>Provides an implementation of framework resolution strategy used by Microsoft.NETCore.DotNetHost 
@@ -237,7 +252,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.NETCore.Platforms</name>
       <version>3.1.0</version>
       <description>Provides runtime information required to resolve target framework, platform, and runtime specific implementations of .NETCore packages. 
@@ -256,7 +270,24 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
+      <name>Microsoft.NETCore.Targets</name>
+      <version>1.1.0</version>
+      <description>Provides supporting infrastructure for portable projects: support identifiers that define framework and runtime for support targets and packages that reference the minimum supported package versions when targeting these. 
+When using NuGet 3.x this package requires at least version 3.4.</description>
+      <licenses>
+        <license>
+          <url>http://go.microsoft.com/fwlink/?LinkId=329770</url>
+        </license>
+      </licenses>
+      <copyright>© Microsoft Corporation.  All rights reserved.</copyright>
+      <purl>pkg:nuget/Microsoft.NETCore.Targets@1.1.0</purl>
+      <externalReferences>
+        <reference type="website">
+          <url>https://dot.net/</url>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library">
       <name>Microsoft.NETCore.Targets</name>
       <version>2.1.0</version>
       <description>Provides supporting infrastructure for portable projects: support identifiers that define framework and runtime for support targets and packages that reference the minimum supported package versions when targeting these. 
@@ -276,7 +307,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.NetFramework.Analyzers</name>
       <version>3.3.0</version>
       <description>Microsoft recommended API usage rules for APIs specific to the full .NetFramework which are not present in .NetCore, implemented as analyzers using the .NET Compiler Platform (Roslyn). This package is included as a part of Microsoft.CodeAnalysis.FxCopAnalyzers NuGet package and does not need to be installed separately.</description>
@@ -294,7 +324,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.Win32.Primitives</name>
       <version>4.3.0</version>
       <description>Provides common types for Win32-based libraries.
@@ -317,7 +346,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>Microsoft.Win32.Registry</name>
       <version>4.3.0</version>
       <description>Provides support for accessing and modifying the Windows Registry.
@@ -344,7 +372,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>NETStandard.Library</name>
       <version>2.0.3</version>
       <description>A set of standard .NET APIs that are prescribed to be used and supported together. 
@@ -364,7 +391,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>James Newton-King</publisher>
       <name>Newtonsoft.Json</name>
       <version>9.0.1</version>
       <description>Json.NET is a popular high-performance JSON framework for .NET</description>
@@ -381,7 +407,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>NuGet.Common</name>
       <version>5.6.0</version>
       <description>Common utilities and interfaces for all NuGet libraries.</description>
@@ -399,7 +424,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>NuGet.Configuration</name>
       <version>5.6.0</version>
       <description>NuGet's configuration settings implementation.</description>
@@ -417,7 +441,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>NuGet.DependencyResolver.Core</name>
       <version>5.6.0</version>
       <description>NuGet's PackageReference dependency resolver implementation.</description>
@@ -435,7 +458,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>NuGet.Frameworks</name>
       <version>5.6.0</version>
       <description>NuGet's understanding of target frameworks.</description>
@@ -453,7 +475,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>NuGet.LibraryModel</name>
       <version>5.6.0</version>
       <description>NuGet's types and interfaces for understanding dependencies.</description>
@@ -471,7 +492,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>NuGet.Packaging</name>
       <version>5.6.0</version>
       <description>NuGet's understanding of packages. Reading nuspec, nupkgs and package signing.</description>
@@ -489,7 +509,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>NuGet.ProjectModel</name>
       <version>5.6.0</version>
       <description>NuGet's core types and interfaces for PackageReference-based restore, such as lock files, assets file and internal restore models.</description>
@@ -507,7 +526,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>NuGet.Protocol</name>
       <version>5.6.0</version>
       <description>NuGet's implementation for interacting with feeds. Contains functionality for all feed types.</description>
@@ -525,7 +543,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>NuGet.Versioning</name>
       <version>5.6.0</version>
       <description>NuGet's implementation of Semantic Versioning.</description>
@@ -543,7 +560,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>runtime.native.System</name>
       <version>4.3.0</version>
       <description>Internal implementation package not meant for direct consumption.  Please do not reference directly. 
@@ -562,7 +578,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Collections</name>
       <version>4.3.0</version>
       <description>Provides classes that define generic collections, which allow developers to create strongly typed collections that provide better type safety and performance than non-generic strongly typed collections.
@@ -593,7 +608,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.ComponentModel.Annotations</name>
       <version>4.7.0</version>
       <description>Provides attributes that are used to define metadata for objects used as data sources.
@@ -625,7 +639,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Diagnostics.Debug</name>
       <version>4.3.0</version>
       <description>Provides classes and attributes that allows basic interaction with a debugger.
@@ -656,7 +669,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Diagnostics.Process</name>
       <version>4.3.0</version>
       <description>Provides the System.Diagnostics.Process class, which allows interaction with local and remote processes.
@@ -682,7 +694,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Diagnostics.Tools</name>
       <version>4.0.1</version>
       <description>Provides attributes, such as GeneratedCodeAttribute and SuppresMessageAttribute, that are emitted or consumed by analysis tools.
@@ -706,7 +717,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Dynamic.Runtime</name>
       <version>4.3.0</version>
       <description>Provides classes and interfaces that support the Dynamic Language Runtime (DLR).
@@ -738,7 +748,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Globalization</name>
       <version>4.3.0</version>
       <description>Provides classes that define culture-related information, including language, country/region, calendars in use, format patterns for dates, currency, and numbers, and sort order for strings.
@@ -769,7 +778,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.IO</name>
       <version>4.3.0</version>
       <description>Provides base input and output (I/O) types, including System.IO.Stream, System.IO.StreamReader and System.IO.StreamWriter, that allow reading and writing to data streams
@@ -799,7 +807,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Tatham Oddie &amp; friends</publisher>
       <name>System.IO.Abstractions</name>
       <version>12.1.9</version>
       <description>A set of abstractions to help make file system interactions testable.</description>
@@ -817,7 +824,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.IO.FileSystem</name>
       <version>4.3.0</version>
       <description>Provides types that allow reading and writing to files and types that provide basic file and directory support.
@@ -847,7 +853,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.IO.FileSystem.AccessControl</name>
       <version>4.7.0</version>
       <description>Provides types for managing access and audit control lists for files and directories.
@@ -876,7 +881,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.IO.FileSystem.Primitives</name>
       <version>4.3.0</version>
       <description>Provides common enumerations and exceptions for path-based I/O libraries.
@@ -905,7 +909,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Linq</name>
       <version>4.3.0</version>
       <description>Provides classes and interfaces that supports queries that use Language-Integrated Query (LINQ).
@@ -932,7 +935,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Linq.Expressions</name>
       <version>4.3.0</version>
       <description>Provides classes, interfaces and enumerations that enable language-level code expressions to be represented as objects in the form of expression trees.
@@ -959,7 +961,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.ObjectModel</name>
       <version>4.3.0</version>
       <description>Provides types and interfaces that allow the creation of observable types that provide notifications to clients when changes are made to it.
@@ -991,7 +992,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Reflection</name>
       <version>4.3.0</version>
       <description>Provides types that retrieve information about assemblies, modules, members, parameters, and other entities in managed code by examining their metadata. These types also can be used to manipulate instances of loaded types, for example to hook up events or to invoke methods.
@@ -1022,7 +1022,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Reflection.Emit</name>
       <version>4.3.0</version>
       <description>Provides classes that allow a compiler or tool to emit metadata and optionally generate a PE file on disk. The primary clients of these classes are script engines and compilers.
@@ -1054,7 +1053,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Reflection.Emit.ILGeneration</name>
       <version>4.3.0</version>
       <description>Provides classes that allow a compiler or tool to emit Microsoft intermediate language (MSIL). The primary clients of these classes are script engines and compilers.
@@ -1082,7 +1080,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Reflection.Emit.Lightweight</name>
       <version>4.3.0</version>
       <description>Provides the System.Reflection.Emit.DynamicMethod class, which represents a dynamic method that can be compiled, executed, and discarded. Discarded methods are available for garbage collection.
@@ -1105,7 +1102,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Reflection.Extensions</name>
       <version>4.3.0</version>
       <description>Provides custom attribute extension methods for System.Reflection types.
@@ -1130,7 +1126,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Reflection.Primitives</name>
       <version>4.3.0</version>
       <description>Provides common enumerations for reflection-based libraries.
@@ -1162,7 +1157,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Reflection.TypeExtensions</name>
       <version>4.3.0</version>
       <description>Provides extensions methods for System.Type that are designed to be source-compatible with older framework reflection-based APIs.
@@ -1186,7 +1180,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Resources.ResourceManager</name>
       <version>4.3.0</version>
       <description>Provides classes and attributes that allow developers to create, store, and manage various culture-specific resources used in an application.
@@ -1212,7 +1205,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Runtime</name>
       <version>4.3.0</version>
       <description>Provides the fundamental primitives, classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and exceptions. This packages represents the core package, and provides the minimal set of types required to build a managed application.
@@ -1254,7 +1246,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Runtime.CompilerServices.Unsafe</name>
       <version>4.7.1</version>
       <description>Provides the System.Runtime.CompilerServices.Unsafe class, which provides generic, low-level functionality for manipulating pointers.
@@ -1277,7 +1268,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Runtime.Extensions</name>
       <version>4.3.0</version>
       <description>Provides commonly-used classes for performing mathematical functions, conversions, string comparisons and querying environment information.
@@ -1308,7 +1298,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Runtime.Handles</name>
       <version>4.3.0</version>
       <description>Provides base classes, including System.Runtime.InteropServices.CriticalHandle and System.Runtime.InteropServices.SafeHandle, for types that represent operating system handles.
@@ -1335,7 +1324,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Runtime.InteropServices</name>
       <version>4.3.0</version>
       <description>Provides types that support COM interop and platform invoke services.
@@ -1362,7 +1350,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Runtime.Serialization.Primitives</name>
       <version>4.1.1</version>
       <description>Provides common types, including System.Runtime.Serialization.DataContractAttribute, for libraries that support data contract serialization.
@@ -1394,7 +1381,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Security.AccessControl</name>
       <version>4.7.0</version>
       <description>Provides base classes that enable managing access and audit control lists on securable objects.
@@ -1421,7 +1407,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Security.Cryptography.Primitives</name>
       <version>4.3.0</version>
       <description>Provides common types for the cryptographic libraries.
@@ -1455,7 +1440,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Security.Cryptography.ProtectedData</name>
       <version>4.3.0</version>
       <description>Provides access to Windows Data Protection Api.
@@ -1479,7 +1463,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Security.Principal.Windows</name>
       <version>4.7.0</version>
       <description>Provides classes for retrieving the current Windows user and for interacting with Windows users and groups.
@@ -1509,7 +1492,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Text.Encoding</name>
       <version>4.3.0</version>
       <description>Provides base abstract encoding classes for converting blocks of characters to and from blocks of bytes.
@@ -1541,7 +1523,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Text.Encoding.Extensions</name>
       <version>4.3.0</version>
       <description>Provides support for specific encodings, including ASCII, UTF-7, UTF-8, UTF-16, and UTF-32.
@@ -1568,7 +1549,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Text.Encodings.Web</name>
       <version>4.7.1</version>
       <description>Provides types for encoding and escaping strings for use in JavaScript, HyperText Markup Language (HTML), and uniform resource locators (URL).
@@ -1593,7 +1573,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Text.Json</name>
       <version>4.7.2</version>
       <description>Provides high-performance and low-allocating types that serialize objects to JavaScript Object Notation (JSON) text and deserialize JSON text to objects, with UTF-8 support built-in. Also provides types to read and write JSON text encoded as UTF-8, and to create an in-memory document object model (DOM), that is read-only, for random access of the JSON elements within a structured view of the data.
@@ -1620,7 +1599,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Text.RegularExpressions</name>
       <version>4.1.0</version>
       <description>Provides the System.Text.RegularExpressions.Regex class, an implementation of a regular expression engine.
@@ -1648,7 +1626,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Threading</name>
       <version>4.3.0</version>
       <description>Provides the fundamental synchronization primitives, including System.Threading.Monitor and System.Threading.Mutex, that are required when writing asynchronous code.
@@ -1678,7 +1655,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Threading.Tasks</name>
       <version>4.3.0</version>
       <description>Provides types that simplify the work of writing concurrent and asynchronous code.
@@ -1706,7 +1682,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Threading.Tasks.Extensions</name>
       <version>4.0.0</version>
       <description>Provides additional types that simplify the work of writing concurrent and asynchronous code.
@@ -1727,7 +1702,6 @@ System.Threading.Tasks.ValueTask&lt;TResult&gt;</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Threading.Thread</name>
       <version>4.3.0</version>
       <description>Provides the System.Threading.Thread class, which allows developers to create and control a thread, set its priority, and get its state.
@@ -1752,7 +1726,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Threading.ThreadPool</name>
       <version>4.3.0</version>
       <description>Provides the System.Threading.ThreadPool class, which contains a pool of threads that can be used to execute tasks, post work items, wait on behalf of other threads, and process timers.
@@ -1776,7 +1749,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Xml.ReaderWriter</name>
       <version>4.0.11</version>
       <description>Provides provides a fast, non-cached, forward-only way to read and write Extensible Markup Language (XML) data.
@@ -1807,7 +1779,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </externalReferences>
     </component>
     <component type="library">
-      <publisher>Microsoft</publisher>
       <name>System.Xml.XDocument</name>
       <version>4.0.11</version>
       <description>Provides the classes for Language-Integrated Query (LINQ) to Extensible Markup Language (XML). LINQ to XML is an in-memory XML programming interface that enables you to modify XML documents efficiently and easily.
@@ -1832,49 +1803,6 @@ When using NuGet 3.x this package requires at least version 3.4.</description>
       </licenses>
       <copyright>© Microsoft Corporation.  All rights reserved.</copyright>
       <purl>pkg:nuget/System.Xml.XDocument@4.0.11</purl>
-      <externalReferences>
-        <reference type="website">
-          <url>https://dot.net/</url>
-        </reference>
-      </externalReferences>
-    </component>
-    <component type="library">
-      <name>CycloneDX.Core</name>
-      <version>1.0.0</version>
-      <purl>pkg:nuget/CycloneDX.Core@1.0.0</purl>
-      <externalReferences />
-    </component>
-    <component type="library">
-      <name>CycloneDX.Json</name>
-      <version>1.0.0</version>
-      <purl>pkg:nuget/CycloneDX.Json@1.0.0</purl>
-      <externalReferences />
-    </component>
-    <component type="library">
-      <name>CycloneDX.Models</name>
-      <version>1.0.0</version>
-      <purl>pkg:nuget/CycloneDX.Models@1.0.0</purl>
-      <externalReferences />
-    </component>
-    <component type="library">
-      <name>CycloneDX.Xml</name>
-      <version>1.0.0</version>
-      <purl>pkg:nuget/CycloneDX.Xml@1.0.0</purl>
-      <externalReferences />
-    </component>
-    <component type="library">
-      <publisher>Microsoft</publisher>
-      <name>Microsoft.NETCore.Targets</name>
-      <version>1.1.0</version>
-      <description>Provides supporting infrastructure for portable projects: support identifiers that define framework and runtime for support targets and packages that reference the minimum supported package versions when targeting these. 
-When using NuGet 3.x this package requires at least version 3.4.</description>
-      <licenses>
-        <license>
-          <url>http://go.microsoft.com/fwlink/?LinkId=329770</url>
-        </license>
-      </licenses>
-      <copyright>© Microsoft Corporation.  All rights reserved.</copyright>
-      <purl>pkg:nuget/Microsoft.NETCore.Targets@1.1.0</purl>
       <externalReferences>
         <reference type="website">
           <url>https://dot.net/</url>

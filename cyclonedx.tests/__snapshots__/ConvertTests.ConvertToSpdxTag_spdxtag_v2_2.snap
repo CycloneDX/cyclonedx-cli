@@ -1,0 +1,981 @@
+﻿SPDXVersion: SPDX-2.2DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: Test-1
+DocumentNamespace: http://spdx.org/spdxdocs/Test-1-f9bcf38b-e331-48b3-a541-28f5352a4509
+Creator: Tool: CycloneDX-CLI
+
+PackageName: CycloneDX.Core
+SPDXID: SPDXRef-1
+PackageVersion: 1.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/CycloneDX.Core@1.0.0
+
+PackageName: CycloneDX.Json
+SPDXID: SPDXRef-2
+PackageVersion: 1.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/CycloneDX.Json@1.0.0
+
+PackageName: CycloneDX.Models
+SPDXID: SPDXRef-3
+PackageVersion: 1.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/CycloneDX.Models@1.0.0
+
+PackageName: CycloneDX.Xml
+SPDXID: SPDXRef-4
+PackageVersion: 1.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/CycloneDX.Xml@1.0.0
+
+PackageName: McMaster.Extensions.CommandLineUtils
+SPDXID: SPDXRef-5
+PackageVersion: 3.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>Copyright &#169; Nate McMaster</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/McMaster.Extensions.CommandLineUtils@3.0.0
+
+PackageName: Microsoft.Bcl.AsyncInterfaces
+SPDXID: SPDXRef-6
+PackageVersion: 1.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: MIT
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.Bcl.AsyncInterfaces@1.1.0
+
+PackageName: Microsoft.CodeAnalysis.FxCopAnalyzers
+SPDXID: SPDXRef-7
+PackageVersion: 3.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.CodeAnalysis.FxCopAnalyzers@3.3.0
+
+PackageName: Microsoft.CodeAnalysis.VersionCheckAnalyzer
+SPDXID: SPDXRef-8
+PackageVersion: 3.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.CodeAnalysis.VersionCheckAnalyzer@3.3.0
+
+PackageName: Microsoft.CodeQuality.Analyzers
+SPDXID: SPDXRef-9
+PackageVersion: 3.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.CodeQuality.Analyzers@3.3.0
+
+PackageName: Microsoft.CSharp
+SPDXID: SPDXRef-10
+PackageVersion: 4.0.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-1
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.CSharp@4.0.1
+
+PackageName: Microsoft.NetCore.Analyzers
+SPDXID: SPDXRef-11
+PackageVersion: 3.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.NetCore.Analyzers@3.3.0
+
+PackageName: Microsoft.NETCore.App
+SPDXID: SPDXRef-12
+PackageVersion: 2.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-2
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.NETCore.App@2.1.0
+
+PackageName: Microsoft.NETCore.DotNetAppHost
+SPDXID: SPDXRef-13
+PackageVersion: 2.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-3
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.NETCore.DotNetAppHost@2.1.0
+
+PackageName: Microsoft.NETCore.DotNetHostPolicy
+SPDXID: SPDXRef-14
+PackageVersion: 2.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-4
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.NETCore.DotNetHostPolicy@2.1.0
+
+PackageName: Microsoft.NETCore.DotNetHostResolver
+SPDXID: SPDXRef-15
+PackageVersion: 2.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-5
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.NETCore.DotNetHostResolver@2.1.0
+
+PackageName: Microsoft.NETCore.Platforms
+SPDXID: SPDXRef-16
+PackageVersion: 3.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: MIT
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.NETCore.Platforms@3.1.0
+
+PackageName: Microsoft.NETCore.Targets
+SPDXID: SPDXRef-17
+PackageVersion: 1.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-6
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.NETCore.Targets@1.1.0
+
+PackageName: Microsoft.NETCore.Targets
+SPDXID: SPDXRef-18
+PackageVersion: 2.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-7
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.NETCore.Targets@2.1.0
+
+PackageName: Microsoft.NetFramework.Analyzers
+SPDXID: SPDXRef-19
+PackageVersion: 3.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.NetFramework.Analyzers@3.3.0
+
+PackageName: Microsoft.Win32.Primitives
+SPDXID: SPDXRef-20
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-8
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.Win32.Primitives@4.3.0
+
+PackageName: Microsoft.Win32.Registry
+SPDXID: SPDXRef-21
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-9
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Microsoft.Win32.Registry@4.3.0
+
+PackageName: NETStandard.Library
+SPDXID: SPDXRef-22
+PackageVersion: 2.0.3
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-10
+PackageCopyrightText: <text>.NET Foundation and Contributors</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/NETStandard.Library@2.0.3
+
+PackageName: Newtonsoft.Json
+SPDXID: SPDXRef-23
+PackageVersion: 9.0.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-11
+PackageCopyrightText: NOASSERTION
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/Newtonsoft.Json@9.0.1
+
+PackageName: NuGet.Common
+SPDXID: SPDXRef-24
+PackageVersion: 5.6.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/NuGet.Common@5.6.0
+
+PackageName: NuGet.Configuration
+SPDXID: SPDXRef-25
+PackageVersion: 5.6.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/NuGet.Configuration@5.6.0
+
+PackageName: NuGet.DependencyResolver.Core
+SPDXID: SPDXRef-26
+PackageVersion: 5.6.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/NuGet.DependencyResolver.Core@5.6.0
+
+PackageName: NuGet.Frameworks
+SPDXID: SPDXRef-27
+PackageVersion: 5.6.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/NuGet.Frameworks@5.6.0
+
+PackageName: NuGet.LibraryModel
+SPDXID: SPDXRef-28
+PackageVersion: 5.6.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/NuGet.LibraryModel@5.6.0
+
+PackageName: NuGet.Packaging
+SPDXID: SPDXRef-29
+PackageVersion: 5.6.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/NuGet.Packaging@5.6.0
+
+PackageName: NuGet.ProjectModel
+SPDXID: SPDXRef-30
+PackageVersion: 5.6.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/NuGet.ProjectModel@5.6.0
+
+PackageName: NuGet.Protocol
+SPDXID: SPDXRef-31
+PackageVersion: 5.6.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/NuGet.Protocol@5.6.0
+
+PackageName: NuGet.Versioning
+SPDXID: SPDXRef-32
+PackageVersion: 5.6.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/NuGet.Versioning@5.6.0
+
+PackageName: runtime.native.System
+SPDXID: SPDXRef-33
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-12
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/runtime.native.System@4.3.0
+
+PackageName: System.Collections
+SPDXID: SPDXRef-34
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-13
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Collections@4.3.0
+
+PackageName: System.ComponentModel.Annotations
+SPDXID: SPDXRef-35
+PackageVersion: 4.7.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: MIT
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.ComponentModel.Annotations@4.7.0
+
+PackageName: System.Diagnostics.Debug
+SPDXID: SPDXRef-36
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-14
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Diagnostics.Debug@4.3.0
+
+PackageName: System.Diagnostics.Process
+SPDXID: SPDXRef-37
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-15
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Diagnostics.Process@4.3.0
+
+PackageName: System.Diagnostics.Tools
+SPDXID: SPDXRef-38
+PackageVersion: 4.0.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-16
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Diagnostics.Tools@4.0.1
+
+PackageName: System.Dynamic.Runtime
+SPDXID: SPDXRef-39
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-17
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Dynamic.Runtime@4.3.0
+
+PackageName: System.Globalization
+SPDXID: SPDXRef-40
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-18
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Globalization@4.3.0
+
+PackageName: System.IO
+SPDXID: SPDXRef-41
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-19
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.IO@4.3.0
+
+PackageName: System.IO.Abstractions
+SPDXID: SPDXRef-42
+PackageVersion: 12.1.9
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: MIT
+PackageCopyrightText: <text>Copyright &#169; Tatham Oddie 2010</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.IO.Abstractions@12.1.9
+
+PackageName: System.IO.FileSystem
+SPDXID: SPDXRef-43
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-20
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.IO.FileSystem@4.3.0
+
+PackageName: System.IO.FileSystem.AccessControl
+SPDXID: SPDXRef-44
+PackageVersion: 4.7.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: MIT
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.IO.FileSystem.AccessControl@4.7.0
+
+PackageName: System.IO.FileSystem.Primitives
+SPDXID: SPDXRef-45
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-21
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.IO.FileSystem.Primitives@4.3.0
+
+PackageName: System.Linq
+SPDXID: SPDXRef-46
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-22
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Linq@4.3.0
+
+PackageName: System.Linq.Expressions
+SPDXID: SPDXRef-47
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-23
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Linq.Expressions@4.3.0
+
+PackageName: System.ObjectModel
+SPDXID: SPDXRef-48
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-24
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.ObjectModel@4.3.0
+
+PackageName: System.Reflection
+SPDXID: SPDXRef-49
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-25
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Reflection@4.3.0
+
+PackageName: System.Reflection.Emit
+SPDXID: SPDXRef-50
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-26
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Reflection.Emit@4.3.0
+
+PackageName: System.Reflection.Emit.ILGeneration
+SPDXID: SPDXRef-51
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-27
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Reflection.Emit.ILGeneration@4.3.0
+
+PackageName: System.Reflection.Emit.Lightweight
+SPDXID: SPDXRef-52
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-28
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Reflection.Emit.Lightweight@4.3.0
+
+PackageName: System.Reflection.Extensions
+SPDXID: SPDXRef-53
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-29
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Reflection.Extensions@4.3.0
+
+PackageName: System.Reflection.Primitives
+SPDXID: SPDXRef-54
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-30
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Reflection.Primitives@4.3.0
+
+PackageName: System.Reflection.TypeExtensions
+SPDXID: SPDXRef-55
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-31
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Reflection.TypeExtensions@4.3.0
+
+PackageName: System.Resources.ResourceManager
+SPDXID: SPDXRef-56
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-32
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Resources.ResourceManager@4.3.0
+
+PackageName: System.Runtime
+SPDXID: SPDXRef-57
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-33
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Runtime@4.3.0
+
+PackageName: System.Runtime.CompilerServices.Unsafe
+SPDXID: SPDXRef-58
+PackageVersion: 4.7.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: MIT
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Runtime.CompilerServices.Unsafe@4.7.1
+
+PackageName: System.Runtime.Extensions
+SPDXID: SPDXRef-59
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-34
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Runtime.Extensions@4.3.0
+
+PackageName: System.Runtime.Handles
+SPDXID: SPDXRef-60
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-35
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Runtime.Handles@4.3.0
+
+PackageName: System.Runtime.InteropServices
+SPDXID: SPDXRef-61
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-36
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Runtime.InteropServices@4.3.0
+
+PackageName: System.Runtime.Serialization.Primitives
+SPDXID: SPDXRef-62
+PackageVersion: 4.1.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-37
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Runtime.Serialization.Primitives@4.1.1
+
+PackageName: System.Security.AccessControl
+SPDXID: SPDXRef-63
+PackageVersion: 4.7.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: MIT
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Security.AccessControl@4.7.0
+
+PackageName: System.Security.Cryptography.Primitives
+SPDXID: SPDXRef-64
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-38
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Security.Cryptography.Primitives@4.3.0
+
+PackageName: System.Security.Cryptography.ProtectedData
+SPDXID: SPDXRef-65
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-39
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Security.Cryptography.ProtectedData@4.3.0
+
+PackageName: System.Security.Principal.Windows
+SPDXID: SPDXRef-66
+PackageVersion: 4.7.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: MIT
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Security.Principal.Windows@4.7.0
+
+PackageName: System.Text.Encoding
+SPDXID: SPDXRef-67
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-40
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Text.Encoding@4.3.0
+
+PackageName: System.Text.Encoding.Extensions
+SPDXID: SPDXRef-68
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-41
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Text.Encoding.Extensions@4.3.0
+
+PackageName: System.Text.Encodings.Web
+SPDXID: SPDXRef-69
+PackageVersion: 4.7.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: MIT
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Text.Encodings.Web@4.7.1
+
+PackageName: System.Text.Json
+SPDXID: SPDXRef-70
+PackageVersion: 4.7.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: MIT
+PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Text.Json@4.7.2
+
+PackageName: System.Text.RegularExpressions
+SPDXID: SPDXRef-71
+PackageVersion: 4.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-42
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Text.RegularExpressions@4.1.0
+
+PackageName: System.Threading
+SPDXID: SPDXRef-72
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-43
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Threading@4.3.0
+
+PackageName: System.Threading.Tasks
+SPDXID: SPDXRef-73
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-44
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Threading.Tasks@4.3.0
+
+PackageName: System.Threading.Tasks.Extensions
+SPDXID: SPDXRef-74
+PackageVersion: 4.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-45
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Threading.Tasks.Extensions@4.0.0
+
+PackageName: System.Threading.Thread
+SPDXID: SPDXRef-75
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-46
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Threading.Thread@4.3.0
+
+PackageName: System.Threading.ThreadPool
+SPDXID: SPDXRef-76
+PackageVersion: 4.3.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-47
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Threading.ThreadPool@4.3.0
+
+PackageName: System.Xml.ReaderWriter
+SPDXID: SPDXRef-77
+PackageVersion: 4.0.11
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-48
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Xml.ReaderWriter@4.0.11
+
+PackageName: System.Xml.XDocument
+SPDXID: SPDXRef-78
+PackageVersion: 4.0.11
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: LicenseRef-49
+PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
+External-Ref: PACKAGE-MANAGER purl pkg:nuget/System.Xml.XDocument@4.0.11
+
+LicenseID: LicenseRef-1
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-2
+LicenseName: 
+LicenseCrossReference: https://github.com/dotnet/core-setup/blob/master/LICENSE.TXT
+
+LicenseID: LicenseRef-3
+LicenseName: 
+LicenseCrossReference: https://github.com/dotnet/core-setup/blob/master/LICENSE.TXT
+
+LicenseID: LicenseRef-4
+LicenseName: 
+LicenseCrossReference: https://github.com/dotnet/core-setup/blob/master/LICENSE.TXT
+
+LicenseID: LicenseRef-5
+LicenseName: 
+LicenseCrossReference: https://github.com/dotnet/core-setup/blob/master/LICENSE.TXT
+
+LicenseID: LicenseRef-6
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-7
+LicenseName: 
+LicenseCrossReference: https://github.com/dotnet/corefx/blob/master/LICENSE.TXT
+
+LicenseID: LicenseRef-8
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-9
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-10
+LicenseName: 
+LicenseCrossReference: https://github.com/dotnet/standard/blob/master/LICENSE.TXT
+
+LicenseID: LicenseRef-11
+LicenseName: 
+LicenseCrossReference: https://raw.github.com/JamesNK/Newtonsoft.Json/master/LICENSE.md
+
+LicenseID: LicenseRef-12
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-13
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-14
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-15
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-16
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-17
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-18
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-19
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-20
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-21
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-22
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-23
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-24
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-25
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-26
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-27
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-28
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-29
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-30
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-31
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-32
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-33
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-34
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-35
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-36
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-37
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-38
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-39
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-40
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-41
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-42
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-43
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-44
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-45
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-46
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-47
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-48
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770
+
+LicenseID: LicenseRef-49
+LicenseName: 
+LicenseCrossReference: http://go.microsoft.com/fwlink/?LinkId=329770

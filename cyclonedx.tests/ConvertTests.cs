@@ -6,82 +6,57 @@ using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX.CLI;
+using CycloneDX.CLI.Models;
 
 namespace CycloneDX.CLI.Tests
 {
     public class ConvertTests
     {
-        [Fact]
-        public async Task CanConvertFromXmlToJson()
+        [Theory]
+        [InlineData("bom-1.0.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.0.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.1.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.1.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.2.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.2.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.2.json", InputFormat.autodetect, "bom.json", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.2.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.json)]
+        public async Task Convert(string inputFilename, InputFormat inputFormat, string outputFilename, Commands.ConvertOutputFormat outputFormat)
         {
             using (var tempDirectory = new TempDirectory())
             {
-                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.json");
+                var fullOutputPath = Path.Join(tempDirectory.DirectoryPath, outputFilename);
                 var exitCode = await Program.Convert(
-                    Path.Combine("Resources", "bom-1.2.xml"),
-                    outputFilename,
-                    Models.InputFormat.autodetect,
+                    Path.Combine("Resources", inputFilename),
+                    fullOutputPath,
+                    inputFormat,
                     Commands.ConvertOutputFormat.autodetect);
                 
                 Assert.Equal(0, exitCode);
-                var bom = File.ReadAllText(outputFilename);
-                Snapshot.Match(bom);
+                var bom = File.ReadAllText(fullOutputPath);
+                Snapshot.Match(bom, SnapshotNameExtension.Create(inputFilename, inputFormat, outputFilename, outputFormat));
             }
         }
 
-        [Fact]
-        public async Task CanConvertFromJsonToXml()
+        [Theory]
+        [InlineData(Commands.ConvertOutputFormat.autodetect)]
+        [InlineData(Commands.ConvertOutputFormat.spdxtag_v2_1)]
+        [InlineData(Commands.ConvertOutputFormat.spdxtag_v2_2)]
+        public async Task ConvertToSpdxTag(Commands.ConvertOutputFormat outputFormat)
         {
             using (var tempDirectory = new TempDirectory())
             {
-                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.xml");
-                var exitCode = await Program.Convert(
-                    Path.Combine("Resources", "bom-1.2.json"),
-                    outputFilename,
-                    Models.InputFormat.autodetect,
-                    Commands.ConvertOutputFormat.autodetect);
-                
-                Assert.Equal(0, exitCode);
-                var bom = File.ReadAllText(outputFilename);
-                Snapshot.Match(bom);
-            }
-        }
-
-        [Fact]
-        public async Task CanConvertToSpdxTag_v2_1()
-        {
-            using (var tempDirectory = new TempDirectory())
-            {
-                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.txt");
+                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.spdx");
                 var exitCode = await Program.Convert(
                     Path.Combine("Resources", "bom-1.2.xml"),
                     outputFilename,
-                    Models.InputFormat.autodetect,
-                    Commands.ConvertOutputFormat.spdxtag_v2_1);
+                    Models.InputFormat.xml,
+                    outputFormat);
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(outputFilename);
                 bom = Regex.Replace(bom, @"Created: .*\n", "");
-                Snapshot.Match(bom);
-            }
-        }
-
-        [Fact]
-        public async Task CanConvertToSpdxTag_v2_2()
-        {
-            using (var tempDirectory = new TempDirectory())
-            {
-                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.txt");
-                var exitCode = await Program.Convert(
-                    Path.Combine("Resources", "bom-1.2.xml"),
-                    outputFilename,
-                    Models.InputFormat.autodetect,
-                    Commands.ConvertOutputFormat.spdxtag_v2_2);
-                
-                Assert.Equal(0, exitCode);
-                var bom = File.ReadAllText(outputFilename);
-                bom = Regex.Replace(bom, @"Created: .*\n", "");
-                Snapshot.Match(bom);
+                Snapshot.Match(bom, SnapshotNameExtension.Create(outputFormat));
             }
         }
     }
