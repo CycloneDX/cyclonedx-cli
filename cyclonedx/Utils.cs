@@ -2,11 +2,10 @@ using System;
 using System.IO;
 using CycloneDX.Json;
 using CycloneDX.Xml;
-using CycloneDX.CLI.Models;
 
 namespace CycloneDX.CLI
 {
-    static class Utils
+    public static class Utils
     {
         public static BomFormat DetectFileFormat(string filename)
         {
@@ -23,6 +22,10 @@ namespace CycloneDX.CLI
             {
                 return BomFormat.SpdxTag;
             }
+            else if (fileExtension == ".csv")
+            {
+                return BomFormat.Csv;
+            }
             else
             {
                 return BomFormat.Unsupported;
@@ -38,6 +41,10 @@ namespace CycloneDX.CLI
             else if (format == BomFormat.Xml)
             {
                 return XmlBomDeserializer.Deserialize(bom);
+            }
+            else if (format == BomFormat.Csv)
+            {
+                return CsvSerializer.Deserialize(bom);
             }
             throw new UnsupportedFormatException("Unsupported SBOM file format");
         }
@@ -69,7 +76,15 @@ namespace CycloneDX.CLI
             {
                 return SpdxTagSerializer.Serialize(bom, SpdxVersion.v2_1);
             }
+            else if (format == BomFormat.Csv)
+            {
+                return CsvSerializer.Serialize(bom);
+            }
             throw new UnsupportedFormatException("Unsupported SBOM file format");
+        }
+
+        public static string NullIfWhiteSpace(this string str) {
+            return String.IsNullOrWhiteSpace(str) ? null : str;
         }
     }
 }

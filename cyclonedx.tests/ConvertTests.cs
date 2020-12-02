@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
-using CycloneDX.CLI;
 using CycloneDX.CLI.Models;
 
 namespace CycloneDX.CLI.Tests
@@ -15,12 +14,20 @@ namespace CycloneDX.CLI.Tests
         [Theory]
         [InlineData("bom-1.0.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
         [InlineData("bom-1.0.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.0.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml_v1_1)]
         [InlineData("bom-1.1.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
         [InlineData("bom-1.1.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.1.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml_v1_1)]
         [InlineData("bom-1.2.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
         [InlineData("bom-1.2.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.2.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml)]
+        [InlineData("bom-1.2.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml_v1_2)]
         [InlineData("bom-1.2.json", InputFormat.autodetect, "bom.json", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.2.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.autodetect)]
         [InlineData("bom-1.2.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.json)]
+        [InlineData("bom.csv", InputFormat.autodetect, "bom.csv", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom.csv", InputFormat.csv, "bom.csv", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom.csv", InputFormat.csv, "bom.csv", Commands.ConvertOutputFormat.csv)]
         public async Task Convert(string inputFilename, InputFormat inputFormat, string outputFilename, Commands.ConvertOutputFormat outputFormat)
         {
             using (var tempDirectory = new TempDirectory())

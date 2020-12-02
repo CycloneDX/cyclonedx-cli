@@ -9,6 +9,7 @@
         Xml_v1_2,
         Json,
         Json_v1_2,
+        Csv,
         SpdxTag,
         SpdxTag_v2_1,
         SpdxTag_v2_2

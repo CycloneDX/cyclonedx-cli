@@ -57,6 +57,10 @@ namespace CycloneDX.CLI
                 {
                     return BomFormat.Xml;
                 }
+                else if (inputFormat == InputFormat.csv)
+                {
+                    return BomFormat.Csv;
+                }
             }
 
             return BomFormat.Unsupported;
