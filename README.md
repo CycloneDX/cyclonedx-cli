@@ -49,7 +49,7 @@ The intention is to provide a simple way for users to produce and consume SBOMs
 for simple use cases. Including simple data migration use cases.
 
 The only required fields are the component `name` and `version` fields. Others
-can be left blank or the columns ommitted.
+can be left blank or the columns omitted.
 
 [example.csv](example.csv)
 
