@@ -9,7 +9,11 @@
 
 This is a preview version of the CycloneDX CLI tool.
 
-It currently supports converting from all CycloneDX SBOM versions to all CycloneDX SBOM versions and SPDX v2.1 & v2.2 tag/value format.
+It currently supports converting between different formats.
+
+Conversion from all CycloneDX SBOM versions and CSV is supported.
+
+Conversion to all CycloneDX SBOM versions, CSV, SPDX tag/value v2.1 and v2.2 is supported.
 
 Binaries can be downloaded from the [releases page](https://github.com/CycloneDX/cyclonedx-cli/releases).
 
@@ -34,8 +38,20 @@ Options:
 | --- | --- |
 | `--input-file <input-file>` | Input SBOM filename, will read from stdin if no value provided. |
 | `--output-file <output-file>` | Output SBOM filename, will write to stdout if no value provided. |
-| `--input-format <autodetect \| json \| xml>` | Specify input file format. |
-| `--output-format <autodetect \| json\|json_v1_2 \| spdxtag\|spdxtag_v2_1\|spdxtag_v2_2 \| xml\|xml_v1_0\|xml_v1_1\|xml_v1_2>` | Specify output file format. |
+| `--input-format <autodetect \| csv \| json \| xml>` | Specify input file format. |
+| `--output-format <autodetect \| csv \| json\|json_v1_2 \| spdxtag\|spdxtag_v2_1\|spdxtag_v2_2 \| xml\|xml_v1_0\|xml_v1_1\|xml_v1_2>` | Specify output file format. |
+
+### CSV Format
+
+The CSV format is a limited representation of the list of components in an SBOM.
+
+The intention is to provide a simple way for users to produce and consume SBOMs
+for simple use cases. Including simple data migration use cases.
+
+The only required fields are the component `name` and `version` fields. Others
+can be left blank or the columns ommitted.
+
+[example.csv](example.csv)
 
 ## Docker Image
 

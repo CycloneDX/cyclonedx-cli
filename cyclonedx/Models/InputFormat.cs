@@ -4,6 +4,7 @@
     {
         autodetect,
         xml,
-        json
+        json,
+        csv
     }
 }
