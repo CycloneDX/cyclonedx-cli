@@ -27,6 +27,7 @@ namespace CycloneDX.CLI
 
             RootCommand rootCommand = new RootCommand();
             
+            ConfigureAnalyzeCommand(rootCommand);
             ConfigureConvertCommand(rootCommand);
 
             return await rootCommand.InvokeAsync(args);
