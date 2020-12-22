@@ -38,7 +38,7 @@ Options:
 | --- | --- |
 | `--input-file <input-file>` | Input SBOM filename, will read from stdin if no value provided. |
 | `--input-format <autodetect \| csv \| json \| xml>` | Specify input file format. |
-| `--output-format <text \| json>` | Specify output file format (defaults to text). |
+| `--output-format <text \| json>` | Specify output format (defaults to text). |
 | `--multiple-component-versions` | Report components that have multiple versions in use. |
 
 ### Multiple Component Versions
@@ -75,6 +75,22 @@ The only required fields are the component `name` and `version` fields. Others
 can be left blank or the columns omitted.
 
 [example.csv](example.csv)
+
+## Diff Command
+
+Generate an SBOM diff
+
+Usage:
+  `cyclonedx diff [options] <from-file> <to-file>`
+
+Options:
+
+| Option | Description |
+| --- | --- |
+| `--from-format <autodetect \| csv \| json \| xml>` | Specify from file format. |
+| `--to-format <autodetect \| csv \| json \| xml>` | Specify to file format. |
+| `--output-format <text \| json>` | Specify output format (defaults to text). |
+| `--component-versions` | Report component versions that have been added, removed or modified. |
 
 ## Docker Image
 
