@@ -76,6 +76,22 @@ can be left blank or the columns omitted.
 
 [example.csv](example.csv)
 
+## Diff Command
+
+Generate an SBOM diff
+
+Usage:
+  `cyclonedx diff [options] <from-file> <to-file>`
+
+Options:
+
+| Option | Description |
+| --- | --- |
+| `--from-format <autodetect \| csv \| json \| xml>` | Specify from file format. |
+| `--to-format <autodetect \| csv \| json \| xml>` | Specify to file format. |
+| `--output-format <text \| json>` | Specify output format (defaults to text). |
+| `--component-versions` | Report component versions that have been added, removed or modified. |
+
 ## Docker Image
 
 The CycloneDX CLI tool can also be run using docker `docker run cyclonedx/cyclonedx-cli`.

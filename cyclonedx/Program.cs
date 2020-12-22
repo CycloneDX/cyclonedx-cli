@@ -29,6 +29,7 @@ namespace CycloneDX.CLI
             
             ConfigureAnalyzeCommand(rootCommand);
             ConfigureConvertCommand(rootCommand);
+            ConfigureDiffCommand(rootCommand);
 
             return await rootCommand.InvokeAsync(args);
         }
