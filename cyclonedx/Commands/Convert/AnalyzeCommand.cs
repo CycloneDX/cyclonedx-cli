@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CycloneDX.Models.v1_2;
+using CycloneDX.Json;
 using CycloneDX.CLI.Commands;
 using CycloneDX.CLI.Models;
 
@@ -75,7 +76,24 @@ namespace CycloneDX.CLI
 
             if (outputFormat == StandardOutputFormat.json)
             {
-                outputString = JsonSerializer.Serialize(result);
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    IgnoreNullValues = true,
+                };
+
+                options.Converters.Add(new Json.v1_2.Converters.ComponentTypeConverter());
+                options.Converters.Add(new Json.v1_2.Converters.DataFlowConverter());
+                options.Converters.Add(new Json.v1_2.Converters.DateTimeConverter());
+                options.Converters.Add(new Json.v1_2.Converters.DependencyConverter());
+                options.Converters.Add(new Json.v1_2.Converters.ExternalReferenceTypeConverter());
+                options.Converters.Add(new Json.v1_2.Converters.HashAlgorithmConverter());
+                options.Converters.Add(new Json.v1_2.Converters.IssueClassificationConverter());
+                options.Converters.Add(new Json.v1_2.Converters.LicenseConverter());
+                options.Converters.Add(new Json.v1_2.Converters.PatchClassificationConverter());
+
+                outputString = JsonSerializer.Serialize(result, options);
             }
             else
             {
