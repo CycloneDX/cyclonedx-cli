@@ -9,7 +9,7 @@
 
 This is a preview version of the CycloneDX CLI tool.
 
-It currently supports converting between different formats.
+It currently supports SBOM analysis and format conversions.
 
 Conversion from all CycloneDX SBOM versions and CSV is supported.
 
@@ -24,6 +24,29 @@ Basic usage:
 
 Show help and usage information:  
 `cyclonedx --help`
+
+## Analyze Command
+
+Analyze an SBOM file
+
+Usage:
+  `cyclonedx analyze [options]`
+
+Options:
+
+| Option | Description |
+| --- | --- |
+| `--input-file <input-file>` | Input SBOM filename, will read from stdin if no value provided. |
+| `--input-format <autodetect \| csv \| json \| xml>` | Specify input file format. |
+| `--output-format <text \| json>` | Specify output file format (defaults to text). |
+| `--multiple-component-versions` | Report components that have multiple versions in use. |
+
+### Multiple Component Versions
+
+This option will include a list of all components that have multiple versions in
+use.
+
+Matching is based on component name.
 
 ## Convert Command
 
