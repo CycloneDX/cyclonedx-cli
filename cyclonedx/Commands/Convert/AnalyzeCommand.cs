@@ -21,7 +21,7 @@ namespace CycloneDX.CLI
             var subCommand = new Command("analyze", "Analyze an SBOM file");
             subCommand.Add(new Option<string>("--input-file", "Input SBOM filename, will read from stdin if no value provided."));
             subCommand.Add(new Option<InputFormat>("--input-format", "Specify input file format."));
-            subCommand.Add(new Option<StandardOutputFormat>("--output-format", "Specify output file format (defaults to text)."));
+            subCommand.Add(new Option<StandardOutputFormat>("--output-format", "Specify output format (defaults to text)."));
             subCommand.Add(new Option<bool>("--multiple-component-versions", "Report components that have multiple versions in use."));
             subCommand.Handler = CommandHandler.Create<string, InputFormat, StandardOutputFormat, bool>(Analyze);
             rootCommand.Add(subCommand);

@@ -38,7 +38,7 @@ Options:
 | --- | --- |
 | `--input-file <input-file>` | Input SBOM filename, will read from stdin if no value provided. |
 | `--input-format <autodetect \| csv \| json \| xml>` | Specify input file format. |
-| `--output-format <text \| json>` | Specify output file format (defaults to text). |
+| `--output-format <text \| json>` | Specify output format (defaults to text). |
 | `--multiple-component-versions` | Report components that have multiple versions in use. |
 
 ### Multiple Component Versions
