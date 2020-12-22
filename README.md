@@ -9,7 +9,7 @@
 
 This is a preview version of the CycloneDX CLI tool.
 
-It currently supports SBOM analysis and format conversions.
+It currently supports SBOM analysis, diffing and format conversions.
 
 Conversion from all CycloneDX SBOM versions and CSV is supported.
 
