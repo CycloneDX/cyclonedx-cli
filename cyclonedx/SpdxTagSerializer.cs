@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CycloneDX.CLI
 {
@@ -69,7 +70,7 @@ namespace CycloneDX.CLI
                 }
                 else
                 {
-                    componentSpdxRef = component.BomRef;
+                    componentSpdxRef = SpdxIdString(component.BomRef);
                 }
 
                 sb.AppendLine();
@@ -195,5 +196,11 @@ namespace CycloneDX.CLI
             return sb.ToString();
         }
 
+        private static string SpdxIdString(string value)
+        {
+            var rgx = new Regex(@"[^a-zA-Z0-9\.\-]");
+            var result = rgx.Replace(value, "-");
+            return result;
+        }
     }
 }
