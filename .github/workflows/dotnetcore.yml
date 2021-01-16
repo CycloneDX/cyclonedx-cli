@@ -61,4 +61,6 @@ jobs:
         dotnet-version: '5.0.100-rc.2.20479.15'
 
     - name: Tests
-      run: dotnet test --framework net5.0
+      run: |
+        dotnet restore
+        dotnet test --framework net5.0
