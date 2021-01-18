@@ -21,9 +21,6 @@ namespace CycloneDX.CLI
 
         public static string Serialize(CycloneDX.Models.v1_2.Bom bom, SpdxVersion version)
         {
-            if (bom.Metadata?.Component?.Name == null || bom.Metadata?.Component?.Version == null)
-                throw new SpdxSerializationException("For SPDX output top level component name and version are required in the BOM metadata");
-            
             var nonSpdxLicenses = new List<CycloneDX.Models.v1_2.License>();
             string bomSpdxRef;
             if (string.IsNullOrEmpty(bom.SerialNumber))
@@ -46,12 +43,21 @@ namespace CycloneDX.CLI
                 sb.Append("2.1");
             else if (version == SpdxVersion.v2_2)
                 sb.Append("2.2");
+            sb.AppendLine();
             // CC0-1.0 is a requirement when using the SPDX specification
             sb.AppendLine("DataLicense: CC0-1.0");
             sb.AppendLine($"SPDXID: SPDXRef-DOCUMENT");
-            sb.AppendLine($"DocumentName: {bom.Metadata.Component.Name}-{bom.Metadata.Component.Version}");
-            sb.AppendLine($"DocumentNamespace: http://spdx.org/spdxdocs/{bom.Metadata.Component.Name}-{bom.Metadata.Component.Version}-{bomSpdxRef}");
-            if (bom.Metadata.Authors != null)
+            
+            var documentRef = "Generated from CycloneDX SBOM without top level component metadata";
+            if (bom.Metadata?.Component?.Name != null)
+            {
+                documentRef = bom.Metadata.Component.Name;
+                if (bom.Metadata?.Component?.Version != null)
+                    documentRef += $"-{bom.Metadata.Component.Version}";
+            }
+            sb.AppendLine($"DocumentName: {documentRef}");
+            sb.AppendLine($"DocumentNamespace: http://spdx.org/spdxdocs/{documentRef}-{bomSpdxRef}");
+            if (bom.Metadata?.Authors != null)
             foreach (var author in bom.Metadata.Authors)
             {
                 sb.AppendLine($"Creator: Person: {author.Name} ({author.Email ?? ""})");
