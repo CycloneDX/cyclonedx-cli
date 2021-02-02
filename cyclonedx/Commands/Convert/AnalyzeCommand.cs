@@ -48,11 +48,12 @@ namespace CycloneDX.CLI
                 var componentCache = new Dictionary<string, List<Component>>();
                 foreach (var component in inputBom.Components)
                 {
-                    if (!componentCache.ContainsKey(component.Name))
+                    var componentIdentifier = $"{component.Group}:{component.Name}";
+                    if (!componentCache.ContainsKey(componentIdentifier))
                     {
-                        componentCache[component.Name] = new List<Component>();
+                        componentCache[componentIdentifier] = new List<Component>();
                     }
-                    componentCache[component.Name].Add(component);
+                    componentCache[componentIdentifier].Add(component);
                 }
 
                 foreach (var componentEntry in componentCache)
