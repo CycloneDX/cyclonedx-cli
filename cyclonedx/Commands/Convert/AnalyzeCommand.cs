@@ -114,6 +114,7 @@ namespace CycloneDX.CLI
                                 Console.Write(" ");
                                 Console.Write(component.Version);
                             }
+                            Console.WriteLine();
                         }
                     }
                     Console.WriteLine();
