@@ -72,8 +72,6 @@ namespace CycloneDX.CLI
                 }
             }
 
-            string outputString;
-
             if (outputFormat == StandardOutputFormat.json)
             {
                 var options = new JsonSerializerOptions
@@ -93,40 +91,34 @@ namespace CycloneDX.CLI
                 options.Converters.Add(new Json.v1_2.Converters.LicenseConverter());
                 options.Converters.Add(new Json.v1_2.Converters.PatchClassificationConverter());
 
-                outputString = JsonSerializer.Serialize(result, options);
+                Console.WriteLine(JsonSerializer.Serialize(result, options));
             }
             else
             {
-                var sb = new StringBuilder();
-
                 if (result.MultipleComponentVersions != null)
                 {
-                    sb.AppendLine("Components with multiple versions:");
-                    sb.AppendLine();
+                    Console.WriteLine("Components with multiple versions:");
+                    Console.WriteLine();
                     if (result.MultipleComponentVersions.Count == 0)
                     {
-                        sb.AppendLine("None");
+                        Console.WriteLine("None");
                     }
                     else
                     {
                         foreach (var componentEntry in result.MultipleComponentVersions)
                         {
-                            sb.Append(componentEntry.First().Name);
-                            sb.Append(" versions:");
+                            Console.Write(componentEntry.First().Name);
+                            Console.Write(" versions:");
                             foreach (var component in componentEntry)
                             {
-                                sb.Append(" ");
-                                sb.Append(component.Version);
+                                Console.Write(" ");
+                                Console.Write(component.Version);
                             }
                         }
                     }
-                    sb.AppendLine();
+                    Console.WriteLine();
                 }
-
-                outputString = sb.ToString();
             }
-
-            Console.Write(outputString);
 
             return (int)ExitCode.Ok;
         }
