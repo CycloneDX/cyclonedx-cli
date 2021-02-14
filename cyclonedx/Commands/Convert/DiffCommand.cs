@@ -106,7 +106,7 @@ namespace CycloneDX.CLI
 
                 foreach (var fromComponent in new List<Component>(fromComponents))
                 {
-                    var toComponent = toComponents.First(c => c.Name == fromComponent.Name);
+                    var toComponent = toComponents.FirstOrDefault(c => c.Name == fromComponent.Name);
                     if (toComponent != null)
                     {
                         result.ComponentVersions.Modified.Add(new ModifiedDiffItem<Component>
