@@ -1,0 +1,19 @@
+﻿{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.2",
+  "version": 1,
+  "components": [
+    {
+      "type": "library",
+      "name": "acme-library",
+      "version": "1.0.0",
+      "licenses": []
+    },
+    {
+      "type": "framework",
+      "name": "acme-framework",
+      "version": "1.0.0",
+      "licenses": []
+    }
+  ]
+}
