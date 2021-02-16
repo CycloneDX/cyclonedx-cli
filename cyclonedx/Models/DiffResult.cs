@@ -3,21 +3,16 @@ using CycloneDX.Models.v1_2;
 
 namespace CycloneDX.CLI.Models
 {
-    public class ModifiedDiffItem<T>
-    {
-        public T From { get; set; }
-        public T To { get; set; }
-    }
-
     public class DiffItem<T>
     {
         public List<T> Added { get; set; } = new List<T>();
-        public List<ModifiedDiffItem<T>> Modified { get; set; } = new List<ModifiedDiffItem<T>>();
         public List<T> Removed { get; set; } = new List<T>();
+        public List<T> Unchanged { get; set; } = new List<T>();
     }
 
     public class DiffResult
     {
-        public DiffItem<Component> ComponentVersions { get; set; } 
+        // default to nulls. A value, even if it is empty is to indicate that this option has been invoked.
+        public Dictionary<string,DiffItem<Component>> ComponentVersions { get; set; } = null;
     }
 }
