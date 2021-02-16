@@ -47,81 +47,61 @@ namespace CycloneDX.CLI
 
             if (componentVersions)
             {
-                result.ComponentVersions = new DiffItem<Component>();
-
-                // there is some complexity here, components could be included
-                // multiple times, with the same or different versions
+                result.ComponentVersions = new Dictionary<string, DiffItem<Component>>();
 
                 // make a copy of components that are still to be processed
                 var fromComponents = new List<Component>(fromBom.Components);
                 var toComponents = new List<Component>(toBom.Components);
                 
-                // ditch component versions that are in both
-                foreach (var component in fromBom.Components)
+                // unchanged component versions
+                // loop over the toBom and fromBom Components list as we will be modifying the fromComponents list
+                foreach (var fromComponent in fromBom.Components)
                 {
-                    if (toBom.Components.Count(c => c.Name == component.Name && c.Version == component.Version) > 0)
+                    // if component version is in both SBOMs
+                    if (toBom.Components.Count(toComponent =>
+                            toComponent.Group == fromComponent.Group
+                            && toComponent.Name == fromComponent.Name
+                            && toComponent.Version == fromComponent.Version
+                        ) > 0)
                     {
-                        fromComponents.RemoveAll(c => c.Name == component.Name && c.Version == component.Version);
-                        toComponents.RemoveAll(c => c.Name == component.Name && c.Version == component.Version);
+                        var componentIdentifier = $"{fromComponent.Group}:{fromComponent.Name}";
+
+                        if (!result.ComponentVersions.ContainsKey(componentIdentifier))
+                        {
+                            result.ComponentVersions.Add(componentIdentifier, new DiffItem<Component>());
+                        }
+
+                        result.ComponentVersions[componentIdentifier].Unchanged.Add(fromComponent);
+
+                        fromComponents.RemoveAll(c => c.Group == fromComponent.Group && c.Name == fromComponent.Name && c.Version == fromComponent.Version);
+                        toComponents.RemoveAll(c => c.Group == fromComponent.Group && c.Name == fromComponent.Name && c.Version == fromComponent.Version);
                     }
                 }
 
-                // find obviously added components
-                // take a copy of toComponents as we are modifying it
+                // added component versions
                 foreach (var component in new List<Component>(toComponents))
                 {
-                    if (fromComponents.Count(c => c.Name == component.Name) == 0)
+                    var componentIdentifier = $"{component.Group}:{component.Name}";
+                    if (!result.ComponentVersions.ContainsKey(componentIdentifier))
                     {
-                        result.ComponentVersions.Added.Add(component);
-                        toComponents.RemoveAll(c => c.Name == component.Name && c.Version == component.Version);
+                        result.ComponentVersions.Add(componentIdentifier, new DiffItem<Component>());
                     }
+
+                    result.ComponentVersions[componentIdentifier].Added.Add(component);
                 }
 
-                // find obviously removed components
-                // take a copy of fromComponents as we are modifying it
+                // removed components versions
                 foreach (var component in new List<Component>(fromComponents))
                 {
-                    if (toComponents.Count(c => c.Name == component.Name) == 0)
+                    var componentIdentifier = $"{component.Group}:{component.Name}";
+                    if (!result.ComponentVersions.ContainsKey(componentIdentifier))
                     {
-                        result.ComponentVersions.Removed.Add(component);
-                        fromComponents.RemoveAll(c => c.Name == component.Name && c.Version == component.Version);
+                        result.ComponentVersions.Add(componentIdentifier, new DiffItem<Component>());
                     }
+
+                    result.ComponentVersions[componentIdentifier].Removed.Add(component);
                 }
 
-                // now we should have modified components left over
-                //
-                // but this situation is possible (or the reverse)
-                //
-                // From:
-                // Component A v1.0.0
-                //
-                // To:
-                // Component A v1.0.1
-                // Component A v1.0.2
-                //
-                // (╯°□°）╯︵ ┻━┻
-                //
-                // we'll treat the first match as modified, and any others as
-                // added or removed
-
-                foreach (var fromComponent in new List<Component>(fromComponents))
-                {
-                    var toComponent = toComponents.FirstOrDefault(c => c.Name == fromComponent.Name);
-                    if (toComponent != null)
-                    {
-                        result.ComponentVersions.Modified.Add(new ModifiedDiffItem<Component>
-                        {
-                            From = fromComponent,
-                            To = toComponent
-                        });
-                        
-                        fromComponents.RemoveAll(c => c.Name == fromComponent.Name && c.Version == fromComponent.Version);
-                        toComponents.RemoveAll(c => c.Name == toComponent.Name && c.Version == toComponent.Version);
-                    }
-                }
-                // now everything left over we'll treat as added or removed
-                result.ComponentVersions.Removed.AddRange(fromComponents);
-                result.ComponentVersions.Added.AddRange(toComponents);
             }
 
             if (outputFormat == StandardOutputFormat.json)
@@ -151,33 +131,35 @@ namespace CycloneDX.CLI
                 {
                     Console.WriteLine("Component versions that have changed:");
                     Console.WriteLine();
-                    if (
-                        result.ComponentVersions.Removed.Count == 0
-                        && result.ComponentVersions.Modified.Count == 0
-                        && result.ComponentVersions.Removed.Count == 0
-                    )
+
+                    var changes = false;
+                    foreach (var entry in result.ComponentVersions)
+                    {
+                        var componentDiffItem = entry.Value;
+                        if (componentDiffItem.Added.Count > 0 || componentDiffItem.Removed.Count > 0)
+                        {
+                            changes = true;
+                            foreach (var component in componentDiffItem.Removed)
+                            {
+                                Console.WriteLine($"- {component.Group} {component.Name} @ {component.Version}");
+                            }
+                            foreach (var component in componentDiffItem.Unchanged)
+                            {
+                                Console.WriteLine($"= {component.Group} {component.Name} @ {component.Version}");
+                            }
+                            foreach (var component in componentDiffItem.Added)
+                            {
+                                Console.WriteLine($"+ {component.Group} {component.Name} @ {component.Version}");
+                            }
+                            Console.WriteLine();
+                        }
+                    }
+
+                    if (!changes)
                     {
                         Console.WriteLine("None");
                     }
-                    else
-                    {
-                        foreach (var component in result.ComponentVersions.Added)
-                        {
-                            Console.WriteLine($"+ {component.Name}@{component.Version}");
-                            Console.WriteLine();
-                        }
-                        foreach (var component in result.ComponentVersions.Modified)
-                        {
-                            Console.WriteLine($"- {component.From.Name}@{component.From.Version}");
-                            Console.WriteLine($"+ {component.To.Name}@{component.To.Version}");
-                            Console.WriteLine();
-                        }
-                        foreach (var component in result.ComponentVersions.Removed)
-                        {
-                            Console.WriteLine($"- {component.Name}@{component.Version}");
-                            Console.WriteLine();
-                        }
-                    }
+                    
                     Console.WriteLine();
                 }
             }
