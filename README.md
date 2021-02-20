@@ -18,6 +18,7 @@ Commands:
   convert                       Convert between different SBOM formats
   diff <from-file> <to-file>    Generate an SBOM diff
   merge                         Merge two or more SBOMs
+  validate                      Validate an SBOM
 ```
 
 The CycloneDX CLI tool currently supports SBOM analysis, diffing, merging and format conversions.
@@ -92,6 +93,21 @@ Options:
   --to-format <autodetect|csv|json|xml>      Specify to file format.
   --output-format <json|text>                Specify output format (defaults to text).
   --component-versions                       Report component versions that have been added, removed or modified.
+```
+
+## Validate Command
+
+```
+validate:
+  Validate an SBOM
+
+Usage:
+  cyclonedx validate [options]
+
+Options:
+  --input-file <input-file>                                                    Input SBOM filename, will read from stdin if no value provided.
+  --input-format <autodetect|json|json_v1_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify input file format.
+  --fail-on-errors                                                             Fail on validation errors (return a non-zero exit code)
 ```
 
 ## Docker Image
