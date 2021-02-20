@@ -70,7 +70,7 @@ namespace CycloneDX.CLI
             if (options.InputFormat.ToString().StartsWith("json"))
             {
                 Console.WriteLine("Validating JSON SBOM...");
-                validated = ValidateJson(options, inputBom);
+                validated = await ValidateJson(options, inputBom);
             }
             else if (options.InputFormat.ToString().StartsWith("xml"))
             {
@@ -136,13 +136,13 @@ namespace CycloneDX.CLI
             XmlReaderSettings settings = new XmlReaderSettings();
             var schemaVersion = options.InputFormat.ToString().Substring(5).Replace('_', '.');
             Console.WriteLine($"Using schema v{schemaVersion}");
-            var schemaDirectory = Path.Join(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Schemas");
-            settings.Schemas.Add(
-                $"http://cyclonedx.org/schema/bom/{schemaVersion}",
-                Path.Join(schemaDirectory, $"bom-{schemaVersion}.xsd"));
-            settings.Schemas.Add(
-                "http://cyclonedx.org/schema/spdx",
-                Path.Join(schemaDirectory, "spdx.xsd"));
+
+            var schemaContent = Assembly.GetExecutingAssembly().GetManifestResourceStream($"cyclonedx.Schemas.bom-{schemaVersion}.xsd");
+            var spdxSchemaContent = Assembly.GetExecutingAssembly().GetManifestResourceStream($"cyclonedx.Schemas.spdx.xsd");
+
+            settings.Schemas.Add(XmlSchema.Read(schemaContent, null));
+            settings.Schemas.Add(XmlSchema.Read(spdxSchemaContent, null));
+
             settings.ValidationType = ValidationType.Schema;
             
             var stream = new MemoryStream();
@@ -175,18 +175,15 @@ namespace CycloneDX.CLI
             }
         }
 
-        static bool ValidateJson(Options options, string sbomContents)
+        static async Task<bool> ValidateJson(Options options, string sbomContents)
         {
             var schemaVersion = options.InputFormat.ToString().Substring(6).Replace('_', '.');
             Console.WriteLine($"Using schema v{schemaVersion}");
-            var schemaDirectory = Path.Join(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Schemas");
-            var schemaFilename = Path.Join(schemaDirectory, $"bom-{schemaVersion}.schema.json");
-            var spdxFilename = Path.Join(schemaDirectory, $"spdx.schema.json");
-            var schemaContent = File.ReadAllText(schemaFilename);
-            var spdxSchemaContent = File.ReadAllText(spdxFilename);
+            var schemaContent = Assembly.GetExecutingAssembly().GetManifestResourceStream($"cyclonedx.Schemas.bom-{schemaVersion}.schema.json");
+            var spdxSchemaContent = Assembly.GetExecutingAssembly().GetManifestResourceStream($"cyclonedx.Schemas.spdx.schema.json");
 
-            var schema = JsonSchema.FromText(schemaContent);
-            var spdxSchema = JsonSchema.FromText(spdxSchemaContent);
+            var schema = await JsonSchema.FromStream(schemaContent);
+            var spdxSchema = await JsonSchema.FromStream(spdxSchemaContent);
 
             SchemaRegistry.Global.Register(new Uri("file://spdx.schema.json"), spdxSchema);
 
@@ -204,8 +201,35 @@ namespace CycloneDX.CLI
             }
             else
             {
-                Console.WriteLine(result.Message);
+                Console.WriteLine($"Validation failed: {result.Message}");
                 Console.WriteLine(result.SchemaLocation);
+
+                if (result.NestedResults != null)
+                {
+                    var nestedResults = new Queue<ValidationResults>(result.NestedResults);
+
+                    while (nestedResults.Count > 0)
+                    {
+                        var nestedResult = nestedResults.Dequeue();
+
+                        if (
+                            !string.IsNullOrEmpty(nestedResult.Message)
+                            && nestedResult.NestedResults != null
+                            && nestedResult.NestedResults.Count > 0)
+                        {
+                            Console.WriteLine($"{nestedResult.InstanceLocation}: {nestedResult.Message}");
+                        }
+                        
+                        if (nestedResult.NestedResults != null)
+                        {
+                            foreach (var newNestedResult in nestedResult.NestedResults)
+                            {
+                                nestedResults.Enqueue(newNestedResult);
+                            }
+                        }
+                    }
+                }
+
                 return false;
             }
         }
