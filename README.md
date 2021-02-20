@@ -5,11 +5,22 @@
 / /___/ /_/ / /__/ / /_/ / / / /  __/ /_/ /   |   / /___/ /____/ /
 \____/\__, /\___/_/\____/_/ /_/\___/_____/_/|_|   \____/_____/___/
      /____/
+
+Usage:
+  cyclonedx [options] [command]
+
+Options:
+  --version         Show version information
+  -?, -h, --help    Show help and usage information
+
+Commands:
+  analyze                       Analyze an SBOM file
+  convert                       Convert between different SBOM formats
+  diff <from-file> <to-file>    Generate an SBOM diff
+  merge                         Merge two or more SBOMs
 ```
 
-This is a preview version of the CycloneDX CLI tool.
-
-It currently supports SBOM analysis, diffing and format conversions.
+The CycloneDX CLI tool currently supports SBOM analysis, diffing, merging and format conversions.
 
 Conversion from all CycloneDX SBOM versions and CSV is supported.
 
@@ -17,52 +28,39 @@ Conversion to all CycloneDX SBOM versions, CSV, SPDX tag/value v2.1 and v2.2 is 
 
 Binaries can be downloaded from the [releases page](https://github.com/CycloneDX/cyclonedx-cli/releases).
 
-## Usage
-
-Basic usage:  
-`cyclonedx [command] [options]`
-
-Show help and usage information:  
-`cyclonedx --help`
+# Commands
 
 ## Analyze Command
 
-Analyze an SBOM file
+```
+analyze:
+  Analyze an SBOM file
 
 Usage:
-  `cyclonedx analyze [options]`
+  cyclonedx analyze [options]
 
 Options:
-
-| Option | Description |
-| --- | --- |
-| `--input-file <input-file>` | Input SBOM filename, will read from stdin if no value provided. |
-| `--input-format <autodetect \| csv \| json \| xml>` | Specify input file format. |
-| `--output-format <text \| json>` | Specify output format (defaults to text). |
-| `--multiple-component-versions` | Report components that have multiple versions in use. |
-
-### Multiple Component Versions
-
-This option will include a list of all components that have multiple versions in
-use.
-
-Matching is based on component name.
+  --input-file <input-file>                   Input SBOM filename, will read from stdin if no value provided.
+  --input-format <autodetect|csv|json|xml>    Specify input file format.
+  --output-format <json|text>                 Specify output format (defaults to text).
+  --multiple-component-versions               Report components that have multiple versions in use.
+```
 
 ## Convert Command
 
-Convert between different SBOM formats
+```
+convert:
+  Convert between different SBOM formats
 
 Usage:
-  `cyclonedx convert [options]`
+  cyclonedx convert [options]
 
 Options:
-
-| Option | Description |
-| --- | --- |
-| `--input-file <input-file>` | Input SBOM filename, will read from stdin if no value provided. |
-| `--output-file <output-file>` | Output SBOM filename, will write to stdout if no value provided. |
-| `--input-format <autodetect \| csv \| json \| xml>` | Specify input file format. |
-| `--output-format <autodetect \| csv \| json\|json_v1_2 \| spdxtag\|spdxtag_v2_1\|spdxtag_v2_2 \| xml\|xml_v1_0\|xml_v1_1\|xml_v1_2>` | Specify output file format. |
+  --input-file <input-file>                                                                                           Input SBOM filename, will read from stdin if no value provided.
+  --output-file <output-file>                                                                                         Output SBOM filename, will write to stdout if no value provided.
+  --input-format <autodetect|csv|json|xml>                                                                            Specify input file format.
+  --output-format <autodetect|csv|json|json_v1_2|spdxtag|spdxtag_v2_1|spdxtag_v2_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify output file format.
+```
 
 ### CSV Format
 
@@ -78,19 +76,23 @@ can be left blank or the columns omitted.
 
 ## Diff Command
 
-Generate an SBOM diff
+```
+diff:
+  Generate an SBOM diff
 
 Usage:
-  `cyclonedx diff [options] <from-file> <to-file>`
+  cyclonedx diff [options] <from-file> <to-file>
+
+Arguments:
+  <from-file>    From SBOM filename.
+  <to-file>      To SBOM filename.
 
 Options:
-
-| Option | Description |
-| --- | --- |
-| `--from-format <autodetect \| csv \| json \| xml>` | Specify from file format. |
-| `--to-format <autodetect \| csv \| json \| xml>` | Specify to file format. |
-| `--output-format <text \| json>` | Specify output format (defaults to text). |
-| `--component-versions` | Report component versions that have been added, removed or modified. |
+  --from-format <autodetect|csv|json|xml>    Specify from file format.
+  --to-format <autodetect|csv|json|xml>      Specify to file format.
+  --output-format <json|text>                Specify output format (defaults to text).
+  --component-versions                       Report component versions that have been added, removed or modified.
+```
 
 ## Docker Image
 
