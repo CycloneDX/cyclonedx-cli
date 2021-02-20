@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Schemas/*" CopyToOutputDirectory="Always" />
+    <EmbeddedResource Include="Schemas/*" />
   </ItemGroup>
 
 </Project>
