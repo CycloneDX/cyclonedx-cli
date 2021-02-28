@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="19.0.0" />
+    <PackageReference Include="CsvHelper" Version="25.0.0" />
     <PackageReference Include="CycloneDX.Xml" Version="1.0.0" />
     <PackageReference Include="CycloneDX.Json" Version="1.0.0" />
     <PackageReference Include="JsonSchema.Net" Version="1.9.1" />
