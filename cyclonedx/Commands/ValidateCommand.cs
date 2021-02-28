@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.XPath;
-using Json.Schema;
-using CycloneDX.Models.v1_2;
+using CycloneDX.Models;
 using CycloneDX.Json;
-using CycloneDX.CLI.Commands;
-using CycloneDX.CLI.Models;
+using CycloneDX.Xml;
 
 namespace CycloneDX.CLI
 {
@@ -65,20 +56,38 @@ namespace CycloneDX.CLI
                 return (int)ExitCode.IOError;
             }
 
-            var validated = false;
+            SchemaVersion schemaVersion = SchemaVersion.v1_2;
 
-            if (options.InputFormat.ToString().StartsWith("json"))
+            switch (options.InputFormat)
+            {
+                case InputFormat.xml_v1_1:
+                    schemaVersion = SchemaVersion.v1_1;
+                    break;
+                case InputFormat.xml_v1_0:
+                    schemaVersion = SchemaVersion.v1_0;
+                    break;
+            }
+
+            ValidationResult validationResult;
+
+            if (options.InputFormat.ToString().StartsWith("json", StringComparison.InvariantCulture))
             {
                 Console.WriteLine("Validating JSON SBOM...");
-                validated = await ValidateJson(options, inputBom);
+                validationResult = await JsonBomValidator.Validate(inputBom, schemaVersion);
             }
-            else if (options.InputFormat.ToString().StartsWith("xml"))
+            else
             {
                 Console.WriteLine("Validating XML SBOM...");
-                validated = ValidateXml(options, inputBom);
+                validationResult = await XmlBomValidator.Validate(inputBom, schemaVersion);
             }
 
-            if (options.FailOnErrors && !validated)
+            if (validationResult.Messages != null)
+            foreach (var message in validationResult.Messages)
+            {
+                Console.WriteLine(message);
+            }
+
+            if (options.FailOnErrors && !validationResult.Valid)
             {
                 return (int)ExitCode.OkFail;
             }
@@ -90,11 +99,11 @@ namespace CycloneDX.CLI
         {
             if (options.InputFormat == InputFormat.autodetect && !string.IsNullOrEmpty(options.InputFile))
             {
-                if (options.InputFile.EndsWith(".json"))
+                if (options.InputFile.EndsWith(".json", StringComparison.InvariantCulture))
                 {
                     options.InputFormat = InputFormat.json;
                 }
-                else if (options.InputFile.EndsWith(".xml"))
+                else if (options.InputFile.EndsWith(".xml", StringComparison.InvariantCulture))
                 {
                     options.InputFormat = InputFormat.xml;
                 }
@@ -129,109 +138,6 @@ namespace CycloneDX.CLI
                 inputString = sb.ToString();
             }
             return inputString;
-        }
-
-        static bool ValidateXml(Options options, string sbomContents)
-        {
-            XmlReaderSettings settings = new XmlReaderSettings();
-            var schemaVersion = options.InputFormat.ToString().Substring(5).Replace('_', '.');
-            Console.WriteLine($"Using schema v{schemaVersion}");
-
-            var schemaContent = Assembly.GetExecutingAssembly().GetManifestResourceStream($"cyclonedx.Schemas.bom-{schemaVersion}.xsd");
-            var spdxSchemaContent = Assembly.GetExecutingAssembly().GetManifestResourceStream($"cyclonedx.Schemas.spdx.xsd");
-
-            settings.Schemas.Add(XmlSchema.Read(schemaContent, null));
-            settings.Schemas.Add(XmlSchema.Read(spdxSchemaContent, null));
-
-            settings.ValidationType = ValidationType.Schema;
-            
-            var stream = new MemoryStream();
-            var writer = new StreamWriter(stream);
-            writer.Write(sbomContents);
-            writer.Flush();
-            stream.Position = 0;
-
-            XmlReader reader = XmlReader.Create(stream, settings);
-            XmlDocument document = new XmlDocument();
-
-            try
-            {
-                document.Load(reader);
-
-                Console.WriteLine("SBOM successfully validated");
-                return true;
-            }
-            catch (XmlSchemaValidationException exc)
-            {
-                var lineInfo = ((IXmlLineInfo)reader);
-                if (lineInfo.HasLineInfo()) {
-                    Console.Error.WriteLine($"Validation failed at line number {lineInfo.LineNumber} and position {lineInfo.LinePosition}: {exc.Message}");
-                }
-                else
-                {
-                    Console.Error.WriteLine($"Validation failed at position {stream.Position}: {exc.Message}");
-                }
-                return false;
-            }
-        }
-
-        static async Task<bool> ValidateJson(Options options, string sbomContents)
-        {
-            var schemaVersion = options.InputFormat.ToString().Substring(6).Replace('_', '.');
-            Console.WriteLine($"Using schema v{schemaVersion}");
-            var schemaContent = Assembly.GetExecutingAssembly().GetManifestResourceStream($"cyclonedx.Schemas.bom-{schemaVersion}.schema.json");
-            var spdxSchemaContent = Assembly.GetExecutingAssembly().GetManifestResourceStream($"cyclonedx.Schemas.spdx.schema.json");
-
-            var schema = await JsonSchema.FromStream(schemaContent);
-            var spdxSchema = await JsonSchema.FromStream(spdxSchemaContent);
-
-            SchemaRegistry.Global.Register(new Uri("file://spdx.schema.json"), spdxSchema);
-
-            var jsonDocument = JsonDocument.Parse(sbomContents);
-            var validationOptions = new ValidationOptions
-            {
-                OutputFormat = OutputFormat.Detailed
-            };
-
-            var result = schema.Validate(jsonDocument.RootElement, validationOptions);
-            if (result.IsValid)
-            {
-                Console.WriteLine("SBOM successfully validated");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine($"Validation failed: {result.Message}");
-                Console.WriteLine(result.SchemaLocation);
-
-                if (result.NestedResults != null)
-                {
-                    var nestedResults = new Queue<ValidationResults>(result.NestedResults);
-
-                    while (nestedResults.Count > 0)
-                    {
-                        var nestedResult = nestedResults.Dequeue();
-
-                        if (
-                            !string.IsNullOrEmpty(nestedResult.Message)
-                            && nestedResult.NestedResults != null
-                            && nestedResult.NestedResults.Count > 0)
-                        {
-                            Console.WriteLine($"{nestedResult.InstanceLocation}: {nestedResult.Message}");
-                        }
-                        
-                        if (nestedResult.NestedResults != null)
-                        {
-                            foreach (var newNestedResult in nestedResult.NestedResults)
-                            {
-                                nestedResults.Enqueue(newNestedResult);
-                            }
-                        }
-                    }
-                }
-
-                return false;
-            }
         }
     }
 }

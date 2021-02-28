@@ -5,7 +5,7 @@ using CycloneDX.Xml;
 
 namespace CycloneDX.CLI
 {
-    public static class Utils
+    public static class CLIUtils
     {
         public static BomFormat DetectFileFormat(string filename)
         {

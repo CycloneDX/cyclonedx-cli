@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using CsvHelper;
+using CsvHelper.Configuration;
 using CycloneDX.Models.v1_2;
 
 namespace CycloneDX.CLI
@@ -113,13 +114,15 @@ namespace CycloneDX.CLI
 
         public static Bom Deserialize(string csv)
         {
+            var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                MissingFieldFound = null,
+                PrepareHeaderForMatch = args => args.Header.ToLower()
+            };
             using (var stream =  new MemoryStream(System.Text.Encoding.UTF8.GetBytes(csv)))
             using (var reader = new StreamReader(stream))
-            using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csvReader = new CsvReader(reader, csvConfig))
             {
-                csvReader.Configuration.MissingFieldFound = null;
-                csvReader.Configuration.PrepareHeaderForMatch =  (string header, int index) => header.ToLower();
-        
                 var bom = new Bom();
                 bom.Components = new List<Component>();
 
@@ -180,7 +183,7 @@ namespace CycloneDX.CLI
                         hash.Content = csvReader.GetField(hashAlgorithm.ToString().Replace('_', '-'));
                         if (!string.IsNullOrEmpty(hash.Content)) hashes.Add(hash);
                     }
-                    if (hashes.Count > 0) component.Hashes = hashes;
+                    if (hashes.Any()) component.Hashes = hashes;
 
                     var componentLicenses = new List<ComponentLicense>();
                     var licenseExpressions = csvReader.GetField("LicenseExpressions")?.Split(',');
@@ -220,7 +223,7 @@ namespace CycloneDX.CLI
                             }
                         });
                     }
-                    if (componentLicenses.Count > 0) component.Licenses = componentLicenses;
+                    if (componentLicenses.Any()) component.Licenses = componentLicenses;
 
                     bom.Components.Add(component);
                 }

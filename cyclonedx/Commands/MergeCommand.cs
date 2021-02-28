@@ -4,9 +4,10 @@ using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.IO;
 using System.Threading.Tasks;
+using CycloneDX.Json;
 using CycloneDX.Models.v1_2;
 using CycloneDX.Xml;
-using CycloneDX.Json;
+using CycloneDX.Utils;
 
 namespace CycloneDX.CLI
 {
@@ -38,11 +39,11 @@ namespace CycloneDX.CLI
             var outputFormat = options.OutputFormat;
             if (outputFormat == StandardInputOutputSbomFormat.autodetect)
             {
-                if (options.OutputFile != null && options.OutputFile.EndsWith(".json"))
+                if (options.OutputFile != null && options.OutputFile.EndsWith(".json", StringComparison.InvariantCulture))
                 {
                     outputFormat = StandardInputOutputSbomFormat.json;
                 }
-                else if (options.OutputFile != null && options.OutputFile.EndsWith(".xml"))
+                else if (options.OutputFile != null && options.OutputFile.EndsWith(".xml", StringComparison.InvariantCulture))
                 {
                     outputFormat = StandardInputOutputSbomFormat.xml;
                 }
@@ -54,10 +55,7 @@ namespace CycloneDX.CLI
 
             }
 
-            var outputBom = new Bom
-            {
-                Components = new List<Component>()
-            };
+            var outputBom = new Bom();
 
             foreach (var inputFilename in options.InputFiles)
             {
@@ -65,11 +63,11 @@ namespace CycloneDX.CLI
                 var inputFormat = options.InputFormat;
                 if (inputFormat == StandardInputOutputSbomFormat.autodetect)
                 {
-                    if (inputFilename.EndsWith(".json"))
+                    if (inputFilename.EndsWith(".json", StringComparison.InvariantCulture))
                     {
                         inputFormat = StandardInputOutputSbomFormat.json;
                     }
-                    else if (inputFilename.EndsWith(".xml"))
+                    else if (inputFilename.EndsWith(".xml", StringComparison.InvariantCulture))
                     {
                         inputFormat = StandardInputOutputSbomFormat.xml;
                     }
@@ -93,10 +91,9 @@ namespace CycloneDX.CLI
                     inputBom = XmlBomDeserializer.Deserialize(bomContents);
                 }
 
-                if (inputBom.Components != null) {
-                    if (!outputToConsole) Console.WriteLine($"    Contains {inputBom.Components.Count} components");
-                    outputBom.Components.AddRange(inputBom.Components);
-                }
+                outputBom = CycloneDXUtils.Merge(outputBom, inputBom);
+                if (inputBom.Components != null && !outputToConsole)
+                    Console.WriteLine($"    Contains {inputBom.Components.Count} components");
             }
 
             string outputBomString;

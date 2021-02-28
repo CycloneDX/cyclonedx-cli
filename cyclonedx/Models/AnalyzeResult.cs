@@ -5,6 +5,6 @@ namespace CycloneDX.CLI.Models
 {
     public class AnalyzeResult
     {
-        public List<List<Component>> MultipleComponentVersions { get; set; } 
+        public Dictionary<string,List<Component>> MultipleComponentVersions { get; set; } 
     }
 }

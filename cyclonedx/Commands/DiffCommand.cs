@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using CycloneDX.Models.v1_2;
 using CycloneDX.Json;
+using CycloneDX.Utils;
 using CycloneDX.CLI.Commands;
 using CycloneDX.CLI.Models;
 
@@ -37,71 +38,17 @@ namespace CycloneDX.CLI
             var toBomFormat = InputFormatHelper(toFile, toFormat);
             if (fromBomFormat == BomFormat.Unsupported || toBomFormat == BomFormat.Unsupported) return (int)ExitCode.ParameterValidationError;
 
-            var fromBomString = File.ReadAllText(fromFile);
-            var toBomString = File.ReadAllText(toFile);
+            var fromBomString = await File.ReadAllTextAsync(fromFile);
+            var toBomString = await File.ReadAllTextAsync(toFile);
             
-            var fromBom = Utils.BomDeserializer(fromBomString, fromBomFormat);
-            var toBom = Utils.BomDeserializer(toBomString, toBomFormat);
+            var fromBom = CLIUtils.BomDeserializer(fromBomString, fromBomFormat);
+            var toBom = CLIUtils.BomDeserializer(toBomString, toBomFormat);
 
             var result = new DiffResult();
 
             if (componentVersions)
             {
-                result.ComponentVersions = new Dictionary<string, DiffItem<Component>>();
-
-                // make a copy of components that are still to be processed
-                var fromComponents = new List<Component>(fromBom.Components);
-                var toComponents = new List<Component>(toBom.Components);
-                
-                // unchanged component versions
-                // loop over the toBom and fromBom Components list as we will be modifying the fromComponents list
-                foreach (var fromComponent in fromBom.Components)
-                {
-                    // if component version is in both SBOMs
-                    if (toBom.Components.Count(toComponent =>
-                            toComponent.Group == fromComponent.Group
-                            && toComponent.Name == fromComponent.Name
-                            && toComponent.Version == fromComponent.Version
-                        ) > 0)
-                    {
-                        var componentIdentifier = $"{fromComponent.Group}:{fromComponent.Name}";
-
-                        if (!result.ComponentVersions.ContainsKey(componentIdentifier))
-                        {
-                            result.ComponentVersions.Add(componentIdentifier, new DiffItem<Component>());
-                        }
-
-                        result.ComponentVersions[componentIdentifier].Unchanged.Add(fromComponent);
-
-                        fromComponents.RemoveAll(c => c.Group == fromComponent.Group && c.Name == fromComponent.Name && c.Version == fromComponent.Version);
-                        toComponents.RemoveAll(c => c.Group == fromComponent.Group && c.Name == fromComponent.Name && c.Version == fromComponent.Version);
-                    }
-                }
-
-                // added component versions
-                foreach (var component in new List<Component>(toComponents))
-                {
-                    var componentIdentifier = $"{component.Group}:{component.Name}";
-                    if (!result.ComponentVersions.ContainsKey(componentIdentifier))
-                    {
-                        result.ComponentVersions.Add(componentIdentifier, new DiffItem<Component>());
-                    }
-
-                    result.ComponentVersions[componentIdentifier].Added.Add(component);
-                }
-
-                // removed components versions
-                foreach (var component in new List<Component>(fromComponents))
-                {
-                    var componentIdentifier = $"{component.Group}:{component.Name}";
-                    if (!result.ComponentVersions.ContainsKey(componentIdentifier))
-                    {
-                        result.ComponentVersions.Add(componentIdentifier, new DiffItem<Component>());
-                    }
-
-                    result.ComponentVersions[componentIdentifier].Removed.Add(component);
-                }
-
+                result.ComponentVersions = CycloneDXUtils.ComponentVersionDiff(fromBom, toBom);
             }
 
             if (outputFormat == StandardOutputFormat.json)

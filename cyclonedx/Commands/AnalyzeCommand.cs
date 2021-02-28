@@ -11,6 +11,7 @@ using CycloneDX.Models.v1_2;
 using CycloneDX.Json;
 using CycloneDX.CLI.Commands;
 using CycloneDX.CLI.Models;
+using CycloneDX.Utils;
 
 namespace CycloneDX.CLI
 {
@@ -34,43 +35,16 @@ namespace CycloneDX.CLI
             var inputBomFormat = InputFormatHelper(inputFile, inputFormat);
             if (inputBomFormat == BomFormat.Unsupported) return (int)ExitCode.ParameterValidationError;
 
-            var inputBomString = InputFileHelper(inputFile);
+            var inputBomString = await InputFileHelper(inputFile);
             if (inputBomString == null) return (int)ExitCode.ParameterValidationError;
             
-            var inputBom = Utils.BomDeserializer(inputBomString, inputBomFormat);
+            var inputBom = CLIUtils.BomDeserializer(inputBomString, inputBomFormat);
 
             var result = new AnalyzeResult();
 
             if (multipleComponentVersions)
             {
-                result.MultipleComponentVersions = new List<List<Component>>();
-
-                var componentCache = new Dictionary<string, List<Component>>();
-                foreach (var component in inputBom.Components)
-                {
-                    var componentIdentifier = $"{component.Group}:{component.Name}";
-                    if (!componentCache.ContainsKey(componentIdentifier))
-                    {
-                        componentCache[componentIdentifier] = new List<Component>();
-                    }
-                    componentCache[componentIdentifier].Add(component);
-                }
-
-                foreach (var componentEntry in componentCache)
-                {
-                    if (componentEntry.Value.Count > 1)
-                    {
-                        var firstVersion = componentEntry.Value.First().Version;
-                        foreach (var component in componentEntry.Value)
-                        {
-                            if (component.Version != firstVersion)
-                            {
-                                result.MultipleComponentVersions.Add(componentEntry.Value);
-                                break;
-                            }
-                        }
-                    }
-                }
+                result.MultipleComponentVersions = CycloneDXUtils.MultipleComponentVersions(inputBom);
             }
 
             if (outputFormat == StandardOutputFormat.json)
@@ -108,9 +82,9 @@ namespace CycloneDX.CLI
                     {
                         foreach (var componentEntry in result.MultipleComponentVersions)
                         {
-                            Console.Write(componentEntry.First().Name);
+                            Console.Write(componentEntry.Key);
                             Console.Write(" versions:");
-                            foreach (var component in componentEntry)
+                            foreach (var component in componentEntry.Value)
                             {
                                 Console.Write(" ");
                                 Console.Write(component.Version);
