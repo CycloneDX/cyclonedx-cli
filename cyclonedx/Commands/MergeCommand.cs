@@ -39,11 +39,11 @@ namespace CycloneDX.CLI
             var outputFormat = options.OutputFormat;
             if (outputFormat == StandardInputOutputSbomFormat.autodetect)
             {
-                if (options.OutputFile != null && options.OutputFile.EndsWith(".json"))
+                if (options.OutputFile != null && options.OutputFile.EndsWith(".json", StringComparison.InvariantCulture))
                 {
                     outputFormat = StandardInputOutputSbomFormat.json;
                 }
-                else if (options.OutputFile != null && options.OutputFile.EndsWith(".xml"))
+                else if (options.OutputFile != null && options.OutputFile.EndsWith(".xml", StringComparison.InvariantCulture))
                 {
                     outputFormat = StandardInputOutputSbomFormat.xml;
                 }
@@ -63,11 +63,11 @@ namespace CycloneDX.CLI
                 var inputFormat = options.InputFormat;
                 if (inputFormat == StandardInputOutputSbomFormat.autodetect)
                 {
-                    if (inputFilename.EndsWith(".json"))
+                    if (inputFilename.EndsWith(".json", StringComparison.InvariantCulture))
                     {
                         inputFormat = StandardInputOutputSbomFormat.json;
                     }
-                    else if (inputFilename.EndsWith(".xml"))
+                    else if (inputFilename.EndsWith(".xml", StringComparison.InvariantCulture))
                     {
                         inputFormat = StandardInputOutputSbomFormat.xml;
                     }

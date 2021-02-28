@@ -38,7 +38,7 @@ namespace CycloneDX.CLI
                     Console.Error.WriteLine("You must specify a value for --output-format when standard output is used");
                     return (int)ExitCode.ParameterValidationError;
                 }
-                outputBomFormat = Utils.DetectFileFormat(outputFile);
+                outputBomFormat = CLIUtils.DetectFileFormat(outputFile);
                 if (outputBomFormat == BomFormat.Unsupported)
                 {
                     Console.Error.WriteLine("Unable to auto-detect output format from output filename");
@@ -53,8 +53,8 @@ namespace CycloneDX.CLI
             inputBomString = await InputFileHelper(inputFile);
             if (inputBomString == null) return (int)ExitCode.ParameterValidationError;
             
-            inputBom = Utils.BomDeserializer(inputBomString, inputBomFormat);
-            outputBomString = Utils.BomSerializer(inputBom, outputBomFormat);
+            inputBom = CLIUtils.BomDeserializer(inputBomString, inputBomFormat);
+            outputBomString = CLIUtils.BomSerializer(inputBom, outputBomFormat);
 
             if (string.IsNullOrEmpty(outputFile))
             {

@@ -40,8 +40,8 @@ namespace CycloneDX.CLI
             var fromBomString = await File.ReadAllTextAsync(fromFile);
             var toBomString = await File.ReadAllTextAsync(toFile);
             
-            var fromBom = Utils.BomDeserializer(fromBomString, fromBomFormat);
-            var toBom = Utils.BomDeserializer(toBomString, toBomFormat);
+            var fromBom = CLIUtils.BomDeserializer(fromBomString, fromBomFormat);
+            var toBom = CLIUtils.BomDeserializer(toBomString, toBomFormat);
 
             var result = new DiffResult();
 

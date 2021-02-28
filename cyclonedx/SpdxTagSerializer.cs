@@ -12,13 +12,13 @@ namespace CycloneDX.CLI
         v2_2
     }
 
+    public class SpdxSerializationException : Exception
+    {
+        public SpdxSerializationException(string message) : base(message) {}
+    }
+
     public static class SpdxTagSerializer
     {
-        public class SpdxSerializationException : Exception
-        {
-            public SpdxSerializationException(string message) : base(message) {}
-        }
-
         public static string Serialize(CycloneDX.Models.v1_2.Bom bom, SpdxVersion version)
         {
             var nonSpdxLicenses = new List<CycloneDX.Models.v1_2.License>();
@@ -27,7 +27,7 @@ namespace CycloneDX.CLI
             {
                 bomSpdxRef = System.Guid.NewGuid().ToString();
             }
-            else if (bom.SerialNumber.StartsWith("urn:uuid:"))
+            else if (bom.SerialNumber.StartsWith("urn:uuid:", StringComparison.InvariantCulture))
             {
                 bomSpdxRef = bom.SerialNumber.Remove(0, 9);
             }
@@ -130,7 +130,7 @@ namespace CycloneDX.CLI
                 if (component.Licenses?.Count > 0)
                 {
                     sb.Append("PackageLicenseDeclared: ");
-                    if (component.Licenses.Count > 1) sb.Append("(");
+                    if (component.Licenses.Count > 1) sb.Append('(');
                     for (var licenseIndex=0; licenseIndex<component.Licenses.Count; licenseIndex++)
                     {
                         var componentLicense = component.Licenses[licenseIndex];
@@ -152,7 +152,7 @@ namespace CycloneDX.CLI
                             sb.Append($"({componentLicense.Expression})");
                         }
                     }
-                    if (component.Licenses.Count > 1) sb.Append(")");
+                    if (component.Licenses.Count > 1) sb.Append(')');
                     sb.AppendLine();
                 }
                 else
@@ -174,12 +174,12 @@ namespace CycloneDX.CLI
                 
                 if (!string.IsNullOrEmpty(component.Cpe))
                 {
-                    if (component.Cpe.ToLowerInvariant().StartsWith("cpe:2.2:"))
+                    if (component.Cpe.ToLowerInvariant().StartsWith("cpe:2.2:", StringComparison.InvariantCulture))
                     {
                         sb.Append("ExternalRef: SECURITY cpe22Type ");
                         sb.AppendLine(component.Cpe);
                     }
-                    else if (component.Cpe.ToLowerInvariant().StartsWith("cpe:2.3:"))
+                    else if (component.Cpe.ToLowerInvariant().StartsWith("cpe:2.3:", StringComparison.InvariantCulture))
                     {
                         sb.Append("ExternalRef: SECURITY cpe23Type ");
                         sb.AppendLine(component.Cpe);

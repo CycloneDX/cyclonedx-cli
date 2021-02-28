@@ -9,7 +9,7 @@ namespace CycloneDX.CLI
 {
     public partial class Program
     {
-        private static readonly string CycloneDX = @"
+        private const string CycloneDX = @"
    ______           __                 ____ _  __    ________    ____
   / ____/_  _______/ /___  ____  ___  / __ \ |/ /   / ____/ /   /  _/
  / /   / / / / ___/ / __ \/ __ \/ _ \/ / / /   /   / /   / /    / /  
@@ -44,7 +44,7 @@ namespace CycloneDX.CLI
                 {
                     Console.Error.WriteLine("Unable to auto-detect input stream format, please specify a value for --input-format");
                 }
-                var inputBomFormat = Utils.DetectFileFormat(inputFile);
+                var inputBomFormat = CLIUtils.DetectFileFormat(inputFile);
                 if (inputBomFormat == BomFormat.Unsupported)
                 {
                     Console.Error.WriteLine("Unable to auto-detect input format from input filename");

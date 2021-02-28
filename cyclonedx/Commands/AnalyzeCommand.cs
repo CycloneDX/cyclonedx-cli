@@ -37,7 +37,7 @@ namespace CycloneDX.CLI
             var inputBomString = await InputFileHelper(inputFile);
             if (inputBomString == null) return (int)ExitCode.ParameterValidationError;
             
-            var inputBom = Utils.BomDeserializer(inputBomString, inputBomFormat);
+            var inputBom = CLIUtils.BomDeserializer(inputBomString, inputBomFormat);
 
             var result = new AnalyzeResult();
 

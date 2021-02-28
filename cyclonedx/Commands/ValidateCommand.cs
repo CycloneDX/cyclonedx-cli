@@ -70,7 +70,7 @@ namespace CycloneDX.CLI
 
             ValidationResult validationResult;
 
-            if (options.InputFormat.ToString().StartsWith("json"))
+            if (options.InputFormat.ToString().StartsWith("json", StringComparison.InvariantCulture))
             {
                 Console.WriteLine("Validating JSON SBOM...");
                 validationResult = await JsonBomValidator.Validate(inputBom, schemaVersion);
@@ -99,11 +99,11 @@ namespace CycloneDX.CLI
         {
             if (options.InputFormat == InputFormat.autodetect && !string.IsNullOrEmpty(options.InputFile))
             {
-                if (options.InputFile.EndsWith(".json"))
+                if (options.InputFile.EndsWith(".json", StringComparison.InvariantCulture))
                 {
                     options.InputFormat = InputFormat.json;
                 }
-                else if (options.InputFile.EndsWith(".xml"))
+                else if (options.InputFile.EndsWith(".xml", StringComparison.InvariantCulture))
                 {
                     options.InputFormat = InputFormat.xml;
                 }

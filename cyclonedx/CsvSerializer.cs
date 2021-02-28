@@ -183,7 +183,7 @@ namespace CycloneDX.CLI
                         hash.Content = csvReader.GetField(hashAlgorithm.ToString().Replace('_', '-'));
                         if (!string.IsNullOrEmpty(hash.Content)) hashes.Add(hash);
                     }
-                    if (hashes.Count > 0) component.Hashes = hashes;
+                    if (hashes.Any()) component.Hashes = hashes;
 
                     var componentLicenses = new List<ComponentLicense>();
                     var licenseExpressions = csvReader.GetField("LicenseExpressions")?.Split(',');
@@ -223,7 +223,7 @@ namespace CycloneDX.CLI
                             }
                         });
                     }
-                    if (componentLicenses.Count > 0) component.Licenses = componentLicenses;
+                    if (componentLicenses.Any()) component.Licenses = componentLicenses;
 
                     bom.Components.Add(component);
                 }
