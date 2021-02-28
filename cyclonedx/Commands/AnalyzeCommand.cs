@@ -34,7 +34,7 @@ namespace CycloneDX.CLI
             var inputBomFormat = InputFormatHelper(inputFile, inputFormat);
             if (inputBomFormat == BomFormat.Unsupported) return (int)ExitCode.ParameterValidationError;
 
-            var inputBomString = InputFileHelper(inputFile);
+            var inputBomString = await InputFileHelper(inputFile);
             if (inputBomString == null) return (int)ExitCode.ParameterValidationError;
             
             var inputBom = Utils.BomDeserializer(inputBomString, inputBomFormat);

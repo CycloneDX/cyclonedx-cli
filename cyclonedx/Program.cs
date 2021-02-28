@@ -70,12 +70,12 @@ namespace CycloneDX.CLI
             return BomFormat.Unsupported;
         }
 
-        public static string InputFileHelper(string inputFile)
+        public static async Task<string> InputFileHelper(string inputFile)
         {
             string inputString = null;
             if (!string.IsNullOrEmpty(inputFile))
             {
-                inputString = File.ReadAllText(inputFile);
+                inputString = await File.ReadAllTextAsync(inputFile);
             }
             else if (Console.IsInputRedirected)
             {

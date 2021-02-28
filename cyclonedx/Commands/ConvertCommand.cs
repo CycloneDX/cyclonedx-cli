@@ -50,7 +50,7 @@ namespace CycloneDX.CLI
                 outputBomFormat = (BomFormat)outputFormat;
             }
 
-            inputBomString = InputFileHelper(inputFile);
+            inputBomString = await InputFileHelper(inputFile);
             if (inputBomString == null) return (int)ExitCode.ParameterValidationError;
             
             inputBom = Utils.BomDeserializer(inputBomString, inputBomFormat);
