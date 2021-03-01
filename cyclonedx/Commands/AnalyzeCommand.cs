@@ -70,6 +70,17 @@ namespace CycloneDX.CLI
             }
             else
             {
+                if (inputBom.Metadata?.Component != null)
+                {
+                    var component = inputBom.Metadata.Component;
+                    Console.WriteLine($"Analysis results for {component.Name}@{component.Version}:");
+                }
+                else
+                {
+                    Console.WriteLine("Analysis results:");
+                }
+                Console.WriteLine();
+
                 if (result.MultipleComponentVersions != null)
                 {
                     Console.WriteLine("Components with multiple versions:");
