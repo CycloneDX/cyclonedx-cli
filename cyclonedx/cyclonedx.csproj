@@ -27,8 +27,4 @@
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20371.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Schemas/*" />
-  </ItemGroup>
-
 </Project>
