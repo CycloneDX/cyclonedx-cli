@@ -110,11 +110,11 @@ Options:
   --fail-on-errors                                                             Fail on validation errors (return a non-zero exit code)
 ```
 
-## Docker Image
+# Docker Image
 
 The CycloneDX CLI tool can also be run using docker `docker run cyclonedx/cyclonedx-cli`.
 
-## Supported Platforms
+# Supported Platforms
 
 Officially supported builds are available for these platforms:
 
@@ -136,3 +136,35 @@ Community supported builds are available for these platforms:
 For Windows these should be preinstalled.
 
 For Ubuntu these are libc6 libgcc1 libgssapi-krb5-2 libicu66 libssl1.1 libstdc++6 zlib1g.
+
+# Using gron for adhoc searching and analysis
+
+gron transforms JSON into discrete assignments to make it easier to grep for what you want and see the absolute 'path' to it.
+
+For convenience, gron is included in the CycloneDX CLI Docker image.
+
+Example usage that lists all component names and versions
+
+```
+$ gron bom-1.2.json | grep -E "(components\[[[:digit:]]*\].name)|(components\[[[:digit:]]*\].version)"
+
+json.components[0].name = "tomcat-catalina";
+json.components[0].version = "9.0.14";
+json.components[1].name = "mylibrary";
+json.components[1].version = "1.0.0";
+```
+
+Or the same using an XML format SBOM
+
+```
+$ cyclonedx convert --input-file bom.xml --output-format json | gron | grep -E "(components\[[[:digit:]]*\].name)|(components\[[[:digit:]]*\].version)"
+
+json.components[0].name = "tomcat-catalina";
+json.components[0].version = "9.0.14";
+json.components[1].name = "mylibrary";
+json.components[1].version = "1.0.0";
+```
+
+For more details on gron usage refer to the [gron project page](https://github.com/TomNomNom/gron).
+
+For more details on grep usage refer to the [grep man page](https://www.man7.org/linux/man-pages/man1/grep.1.html).
