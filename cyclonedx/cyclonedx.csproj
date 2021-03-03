@@ -19,7 +19,6 @@
     <PackageReference Include="CycloneDX.Xml" Version="1.1.0" />
     <PackageReference Include="CycloneDX.Json" Version="1.1.0" />
     <PackageReference Include="CycloneDX.Utils" Version="1.1.0" />
-    <PackageReference Include="JsonSchema.Net" Version="1.9.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
