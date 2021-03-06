@@ -55,6 +55,11 @@ Options:
   --multiple-component-versions               Report components that have multiple versions in use.
 ```
 
+### Examples
+
+Reporting on components that are included multiple times with different versions:  
+`cyclonedx-cli analyze --input-file sbom.xml --multiple-component-versions`
+
 ## Convert Command
 
 ```
@@ -70,6 +75,14 @@ Options:
   --input-format <autodetect|csv|json|xml>                                                                            Specify input file format.
   --output-format <autodetect|csv|json|json_v1_2|spdxtag|spdxtag_v2_1|spdxtag_v2_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify output file format.
 ```
+
+Examples
+
+Converting from XML to JSON format:  
+`cyclonedx-cli convert --input-file sbom.xml --output-file sbom.json`
+
+Converting from XML to JSON format and piping output to additional tools:  
+`cyclonedx-cli convert --input-file sbom.xml --output-format json | grep "somthing"`
 
 ### CSV Format
 
@@ -103,6 +116,11 @@ Options:
   --component-versions                       Report component versions that have been added, removed or modified.
 ```
 
+### Examples
+
+Reporting on components with version changes:  
+`cyclonedx-cli diff sbom-from.xml sbom-to.xml --component-versions`
+
 ## Validate Command
 
 ```
@@ -117,6 +135,11 @@ Options:
   --input-format <autodetect|json|json_v1_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify input file format.
   --fail-on-errors                                                             Fail on validation errors (return a non-zero exit code)
 ```
+
+### Examples
+
+Validate SBOM and return non-zero exit code (handy for automatically "breaking" a build, etc)  
+`cyclonedx-cli validate --input-file sbom.xml --fail-on-errors`
 
 # Docker Image
 
