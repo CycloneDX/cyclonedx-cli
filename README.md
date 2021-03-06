@@ -199,3 +199,24 @@ json.components[1].version = "1.0.0";
 For more details on gron usage refer to the [gron project page](https://github.com/TomNomNom/gron).
 
 For more details on grep usage refer to the [grep man page](https://www.man7.org/linux/man-pages/man1/grep.1.html).
+
+## License
+
+Permission to modify and redistribute is granted under the terms of the Apache 2.0 license. See the [LICENSE] file for the full license.
+
+[License]: https://github.com/CycloneDX/cyclonedx-cli/blob/main/LICENSE
+
+## Contributing
+
+Pull requests are welcome. But please read the
+[CycloneDX contributing guidelines](https://github.com/CycloneDX/.github/blob/master/CONTRIBUTING.md) first.
+
+To build and test the solution locally you should have .NET 5
+installed. Standard commands like `dotnet build` and `dotnet test` work.
+
+It is generally expected that pull requests will include relevant tests.
+Tests are automatically run on Windows, MacOS and Linux for every pull request.
+And build warnings will break the build.
+
+If you are having trouble debugging a test that is failing for a platform you
+don't have access to please us know.
