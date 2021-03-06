@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace CycloneDX.CLI
     {
         public static string Serialize(CycloneDX.Models.v1_2.Bom bom)
         {
+            Contract.Requires(bom != null);
+
             using (var stream = new MemoryStream())
             {
                 using (var writer = new StreamWriter(stream))

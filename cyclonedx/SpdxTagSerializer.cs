@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -21,6 +22,8 @@ namespace CycloneDX.CLI
     {
         public static string Serialize(CycloneDX.Models.v1_2.Bom bom, SpdxVersion version)
         {
+            Contract.Requires(bom != null);
+            
             var nonSpdxLicenses = new List<CycloneDX.Models.v1_2.License>();
             string bomSpdxRef;
             if (string.IsNullOrEmpty(bom.SerialNumber))

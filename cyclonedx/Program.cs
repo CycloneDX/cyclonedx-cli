@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CommandLine;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace CycloneDX.CLI
 
         public static async Task<int> Main(string[] args)
         {
+            Contract.Requires(args != null);
+            
             if (args.Length == 0)
             {
                 Console.WriteLine(CycloneDX);

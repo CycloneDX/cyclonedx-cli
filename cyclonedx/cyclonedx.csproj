@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <PublishTrimmed>true</PublishTrimmed>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -19,10 +20,6 @@
     <PackageReference Include="CycloneDX.Xml" Version="1.1.0" />
     <PackageReference Include="CycloneDX.Json" Version="1.1.0" />
     <PackageReference Include="CycloneDX.Utils" Version="1.1.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20371.2" />
   </ItemGroup>
 
