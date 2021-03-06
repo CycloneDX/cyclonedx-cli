@@ -1,0 +1,4 @@
+image: gitpod/workspace-dotnet
+
+tasks:
+  - init: dotnet restore
