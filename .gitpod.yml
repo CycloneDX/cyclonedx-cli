@@ -2,3 +2,6 @@ image: gitpod/workspace-dotnet
 
 tasks:
   - init: dotnet restore
+vscode:
+  extensions:
+    - muhammad-sammy.csharp@1.23.9:BMArOoGwWqKRrH6s4E2/AQ==
