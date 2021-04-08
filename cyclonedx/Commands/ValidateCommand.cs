@@ -10,7 +10,7 @@ using CycloneDX.Xml;
 
 namespace CycloneDX.CLI
 {
-    internal class ValidateCommand
+    internal static class ValidateCommand
     {
         public enum InputFormat
         {
@@ -23,6 +23,7 @@ namespace CycloneDX.CLI
             xml_v1_0,
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812: Avoid uninstantiated internal classes")]
         public class Options
         {
             public string InputFile { get; set; }

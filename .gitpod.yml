@@ -2,3 +2,6 @@ image: gitpod/workspace-dotnet
 
 tasks:
   - init: dotnet restore
+vscode:
+  extensions:
+    - ms-dotnettools.csharp

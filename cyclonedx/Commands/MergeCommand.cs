@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Threading.Tasks;
 using CycloneDX.Json;
@@ -34,6 +35,8 @@ namespace CycloneDX.CLI
 
         public static async Task<int> Merge(MergeCommandOptions options)
         {
+            Contract.Requires(options != null);
+
             var outputToConsole = string.IsNullOrEmpty(options.OutputFile);
 
             var outputFormat = options.OutputFormat;
