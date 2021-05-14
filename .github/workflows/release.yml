@@ -62,7 +62,7 @@ jobs:
 
       - name: Create github release and git tag for release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
