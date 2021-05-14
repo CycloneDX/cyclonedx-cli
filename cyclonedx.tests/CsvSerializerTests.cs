@@ -24,7 +24,7 @@ namespace CycloneDX.CLI.Tests
             {
                 var resourceFilename = Path.Join("Resources", filename + "-1.2.xml");
                 var inputBomString = File.ReadAllText(resourceFilename);
-                var bom = XmlBomDeserializer.Deserialize_v1_2(inputBomString);
+                var bom = Xml.Deserializer.Deserialize(inputBomString);
 
                 var bomCsv = CsvSerializer.Serialize(bom);
 
@@ -52,7 +52,7 @@ namespace CycloneDX.CLI.Tests
 
                 var bom = CsvSerializer.Deserialize(inputBomString);
 
-                var bomXml = XmlBomSerializer.Serialize(bom);
+                var bomXml = Xml.Serializer.Serialize(bom);
 
                 Snapshot.Match(bomXml, SnapshotNameExtension.Create(filename));
             }

@@ -74,12 +74,12 @@ namespace CycloneDX.CLI
             if (options.InputFormat.ToString().StartsWith("json", StringComparison.InvariantCulture))
             {
                 Console.WriteLine("Validating JSON SBOM...");
-                validationResult = await JsonBomValidator.Validate(inputBom, schemaVersion);
+                validationResult = await Json.Validator.Validate(inputBom, schemaVersion);
             }
             else
             {
                 Console.WriteLine("Validating XML SBOM...");
-                validationResult = await XmlBomValidator.Validate(inputBom, schemaVersion);
+                validationResult = await Json.Validator.Validate(inputBom, schemaVersion);
             }
 
             if (validationResult.Messages != null)

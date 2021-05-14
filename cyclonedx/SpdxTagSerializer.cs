@@ -4,6 +4,7 @@ using System.Diagnostics.Contracts;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using CycloneDX.Models.v1_3;
 
 namespace CycloneDX.CLI
 {
@@ -20,11 +21,11 @@ namespace CycloneDX.CLI
 
     public static class SpdxTagSerializer
     {
-        public static string Serialize(CycloneDX.Models.v1_2.Bom bom, SpdxVersion version)
+        public static string Serialize(Bom bom, SpdxVersion version)
         {
             Contract.Requires(bom != null);
             
-            var nonSpdxLicenses = new List<CycloneDX.Models.v1_2.License>();
+            var nonSpdxLicenses = new List<License>();
             string bomSpdxRef;
             if (string.IsNullOrEmpty(bom.SerialNumber))
             {
@@ -104,20 +105,20 @@ namespace CycloneDX.CLI
 
                     switch (hash.Alg)
                     {
-                        case CycloneDX.Models.v1_2.Hash.HashAlgorithm.SHA_1:
+                        case Hash.HashAlgorithm.SHA_1:
                             algStr = "SHA1";
                             break;
-                        case CycloneDX.Models.v1_2.Hash.HashAlgorithm.SHA_256:
+                        case Hash.HashAlgorithm.SHA_256:
                             algStr = "SHA256";
                             break;
                     }
                     if (version == SpdxVersion.v2_2)
                     switch (hash.Alg)
                     {
-                        case CycloneDX.Models.v1_2.Hash.HashAlgorithm.SHA_384:
+                        case Hash.HashAlgorithm.SHA_384:
                             algStr = "SHA384";
                             break;
-                        case CycloneDX.Models.v1_2.Hash.HashAlgorithm.SHA_512:
+                        case Hash.HashAlgorithm.SHA_512:
                             algStr = "SHA512";
                             break;
                     }

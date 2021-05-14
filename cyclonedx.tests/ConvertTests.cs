@@ -24,7 +24,15 @@ namespace CycloneDX.CLI.Tests
         [InlineData("bom-1.2.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml_v1_2)]
         [InlineData("bom-1.2.json", InputFormat.autodetect, "bom.json", Commands.ConvertOutputFormat.autodetect)]
         [InlineData("bom-1.2.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.2.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.json)]
+        [InlineData("bom-1.2.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.json_v1_2)]
+        [InlineData("bom-1.3.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.3.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.3.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml)]
+        [InlineData("bom-1.3.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml_v1_3)]
+        [InlineData("bom-1.3.json", InputFormat.autodetect, "bom.json", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.3.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.3.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.json)]
+        [InlineData("bom-1.3.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.json_v1_3)]
         [InlineData("bom.csv", InputFormat.autodetect, "bom.csv", Commands.ConvertOutputFormat.autodetect)]
         [InlineData("bom.csv", InputFormat.csv, "bom.csv", Commands.ConvertOutputFormat.autodetect)]
         [InlineData("bom.csv", InputFormat.csv, "bom.csv", Commands.ConvertOutputFormat.csv)]
@@ -37,7 +45,7 @@ namespace CycloneDX.CLI.Tests
                     Path.Combine("Resources", inputFilename),
                     fullOutputPath,
                     inputFormat,
-                    Commands.ConvertOutputFormat.autodetect);
+                    outputFormat);
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(fullOutputPath);

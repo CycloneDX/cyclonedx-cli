@@ -6,7 +6,7 @@ using System.Diagnostics.Contracts;
 using System.IO;
 using System.Threading.Tasks;
 using CycloneDX.Json;
-using CycloneDX.Models.v1_2;
+using CycloneDX.Models.v1_3;
 using CycloneDX.Xml;
 using CycloneDX.Utils;
 
@@ -87,11 +87,11 @@ namespace CycloneDX.CLI
                 Bom inputBom;
                 if (inputFormat == StandardInputOutputSbomFormat.json)
                 {
-                    inputBom = JsonBomDeserializer.Deserialize(bomContents);
+                    inputBom = Json.Deserializer.Deserialize(bomContents);
                 }
                 else
                 {
-                    inputBom = XmlBomDeserializer.Deserialize(bomContents);
+                    inputBom = Xml.Deserializer.Deserialize(bomContents);
                 }
 
                 outputBom = CycloneDXUtils.Merge(outputBom, inputBom);
@@ -102,11 +102,11 @@ namespace CycloneDX.CLI
             string outputBomString;
             if (outputFormat == StandardInputOutputSbomFormat.json)
             {
-                outputBomString = JsonBomSerializer.Serialize(outputBom);
+                outputBomString = Json.Serializer.Serialize(outputBom);
             }
             else
             {
-                outputBomString = XmlBomSerializer.Serialize(outputBom);
+                outputBomString = Xml.Serializer.Serialize(outputBom);
             }
 
             if (outputToConsole)
