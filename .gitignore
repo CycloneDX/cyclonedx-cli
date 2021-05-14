@@ -1,8 +1,10 @@
 /.vs/
 /.vscode/
+/.idea/
 bin/
 obj/
 packages/
 coverage-report/
 coverage.cobertura.xml
 */__snapshots__/__mismatch__/
+*.user

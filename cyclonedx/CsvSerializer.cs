@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using CsvHelper;
 using CsvHelper.Configuration;
-using CycloneDX.Models.v1_2;
+using CycloneDX.Models.v1_3;
 
 namespace CycloneDX.CLI
 {
     public static class CsvSerializer
     {
-        public static string Serialize(CycloneDX.Models.v1_2.Bom bom)
+        public static string Serialize(Bom bom)
         {
             Contract.Requires(bom != null);
 
@@ -49,7 +49,8 @@ namespace CycloneDX.CLI
                     var hashAlgorithms = Enum.GetValues(typeof(Hash.HashAlgorithm)).Cast<Hash.HashAlgorithm>();
                     foreach (var hashAlgorithm in hashAlgorithms)
                     {
-                        csv.WriteField(hashAlgorithm.ToString().Replace('_', '-'));
+                        if (hashAlgorithm != Hash.HashAlgorithm.Null)
+                            csv.WriteField(hashAlgorithm.ToString().Replace('_', '-'));
                     }
                     csv.WriteField("Description");
 
@@ -65,7 +66,7 @@ namespace CycloneDX.CLI
                         csv.WriteField(c.Group);
                         csv.WriteField(c.Name);
                         csv.WriteField(c.Version);
-                        csv.WriteField(c.Scope);
+                        csv.WriteField(c.Scope.ToString().ToLowerInvariant());
                         var licenseExpressions = new List<string>();
                         var LicenseNames = new List<string>();
                         if (c.Licenses != null)
@@ -104,7 +105,8 @@ namespace CycloneDX.CLI
                         csv.WriteField(c.Swid?.Url);
                         foreach (var hashAlgorithm in hashAlgorithms)
                         {
-                            csv.WriteField(c.Hashes?.Where(h => h.Alg == hashAlgorithm).FirstOrDefault<Hash>()?.Content);
+                            if (hashAlgorithm != Hash.HashAlgorithm.Null)
+                                csv.WriteField(c.Hashes?.Where(h => h.Alg == hashAlgorithm).FirstOrDefault<Hash>()?.Content);
                         }
                         csv.WriteField(c.Description?.Replace("\r", "").Replace("\n", ""));
 
@@ -135,7 +137,7 @@ namespace CycloneDX.CLI
                 {
                     var component = new Component
                     {
-                        Type = csvReader.GetField<Component.ComponentType?>("Type") ?? Component.ComponentType.Library,
+                        Type = csvReader.GetField<Component.Classification?>("Type") ?? Component.Classification.Library,
                         MimeType = csvReader.GetField("MimeType").NullIfWhiteSpace(),
                         // BomRef not supported
                         Supplier = new OrganizationalEntity
@@ -149,7 +151,6 @@ namespace CycloneDX.CLI
                         Name = csvReader.GetField("Name").NullIfWhiteSpace(),
                         Version = csvReader.GetField("Version").NullIfWhiteSpace(),
                         Description = csvReader.GetField("Description").NullIfWhiteSpace(),
-                        Scope = csvReader.GetField("Scope").NullIfWhiteSpace(),
                         Copyright = csvReader.GetField("Copyright").NullIfWhiteSpace(),
                         Cpe = csvReader.GetField("Cpe").NullIfWhiteSpace(),
                         Purl = csvReader.GetField("Purl").NullIfWhiteSpace(),
@@ -177,25 +178,39 @@ namespace CycloneDX.CLI
                     if (component.Swid.Text.Content == null) component.Swid.Text = null;
                     if (component.Swid.TagId == null) component.Swid = null;
 
+                    var scopeString = csvReader.GetField("Scope").NullIfWhiteSpace();
+                    if (scopeString != null)
+                    {
+                        Component.ComponentScope scope;
+                        var success = Enum.TryParse<Component.ComponentScope>(scopeString, ignoreCase: true, out scope);
+                        if (success)
+                        {
+                            component.Scope = scope;
+                        }
+                    }
+
                     var hashAlgorithms = Enum.GetValues(typeof(Hash.HashAlgorithm)).Cast<Hash.HashAlgorithm>();
                     var hashes = new List<Hash>();
                     foreach (var hashAlgorithm in hashAlgorithms)
                     {
-                        var hash = new Hash();
-                        hash.Alg = hashAlgorithm;
-                        hash.Content = csvReader.GetField(hashAlgorithm.ToString().Replace('_', '-'));
-                        if (!string.IsNullOrEmpty(hash.Content)) hashes.Add(hash);
+                        if (hashAlgorithm != Hash.HashAlgorithm.Null)
+                        {
+                            var hash = new Hash();
+                            hash.Alg = hashAlgorithm;
+                            hash.Content = csvReader.GetField(hashAlgorithm.ToString().Replace('_', '-'));
+                            if (!string.IsNullOrEmpty(hash.Content)) hashes.Add(hash);
+                        }
                     }
                     if (hashes.Any()) component.Hashes = hashes;
 
-                    var componentLicenses = new List<ComponentLicense>();
+                    var componentLicenses = new List<LicenseChoice>();
                     var licenseExpressions = csvReader.GetField("LicenseExpressions")?.Split(',');
                     if (licenseExpressions != null)
                     foreach (var licenseExpressionString in licenseExpressions)
                     {
                         if (licenseExpressionString.Contains(" ")) // license expression
                         {
-                            var componentLicense = new ComponentLicense
+                            var componentLicense = new LicenseChoice
                             {
                                 Expression = licenseExpressionString
                             };
@@ -203,7 +218,7 @@ namespace CycloneDX.CLI
                         }
                         else if (!string.IsNullOrEmpty(licenseExpressionString)) // license ID
                         {
-                            var componentLicense = new ComponentLicense
+                            var componentLicense = new LicenseChoice
                             {
                                 License = new License
                                 {
@@ -218,7 +233,7 @@ namespace CycloneDX.CLI
                     foreach (var licenseName in licenseNames)
                     {
                         if (!string.IsNullOrEmpty(licenseName))
-                        componentLicenses.Add(new ComponentLicense
+                        componentLicenses.Add(new LicenseChoice
                         {
                             License = new License
                             {

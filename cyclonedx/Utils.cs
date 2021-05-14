@@ -1,7 +1,6 @@
 using System;
 using System.IO;
-using CycloneDX.Json;
-using CycloneDX.Xml;
+using CycloneDX.Models.v1_3;
 
 namespace CycloneDX.CLI
 {
@@ -32,15 +31,15 @@ namespace CycloneDX.CLI
             }
         }
 
-        public static CycloneDX.Models.v1_2.Bom BomDeserializer(string bom, BomFormat format)
+        public static CycloneDX.Models.v1_3.Bom BomDeserializer(string bom, BomFormat format)
         {
             if (format == BomFormat.Json)
             {
-                return JsonBomDeserializer.Deserialize(bom);
+                return Json.Deserializer.Deserialize(bom);
             }
             else if (format == BomFormat.Xml)
             {
-                return XmlBomDeserializer.Deserialize(bom);
+                return Xml.Deserializer.Deserialize(bom);
             }
             else if (format == BomFormat.Csv)
             {
@@ -49,24 +48,34 @@ namespace CycloneDX.CLI
             throw new UnsupportedFormatException("Unsupported SBOM file format");
         }
 
-        public static string BomSerializer(CycloneDX.Models.v1_2.Bom bom, BomFormat format)
+        public static string BomSerializer(Bom bom, BomFormat format)
         {
-            if (format == BomFormat.Json || format == BomFormat.Json_v1_2)
+            if (format == BomFormat.Json || format == BomFormat.Json_v1_3)
             {
-                return JsonBomSerializer.Serialize(bom);
+                return Json.Serializer.Serialize(bom);
             }
-            else if (format == BomFormat.Xml || format == BomFormat.Xml_v1_2)
+            else if (format == BomFormat.Json_v1_2)
             {
-                return XmlBomSerializer.Serialize(bom);
+                return Json.Serializer.Serialize(new CycloneDX.Models.v1_2.Bom(bom));
+            }
+            else if (format == BomFormat.Xml || format == BomFormat.Xml_v1_3)
+            {
+                return Xml.Serializer.Serialize(bom);
+            }
+            else if (format == BomFormat.Xml_v1_2)
+            {
+                return Xml.Serializer.Serialize(new CycloneDX.Models.v1_2.Bom(bom));
             }
             else if (format == BomFormat.Xml_v1_1)
             {
-                return XmlBomSerializer.Serialize(new CycloneDX.Models.v1_1.Bom(bom));
+                var v1_2_bom = new CycloneDX.Models.v1_2.Bom(bom);
+                return Xml.Serializer.Serialize(new CycloneDX.Models.v1_1.Bom(v1_2_bom));
             }
             else if (format == BomFormat.Xml_v1_0)
             {
-                var v1_1_bom = new CycloneDX.Models.v1_1.Bom(bom);
-                return XmlBomSerializer.Serialize(new CycloneDX.Models.v1_0.Bom(v1_1_bom));
+                var v1_2_bom = new CycloneDX.Models.v1_2.Bom(bom);
+                var v1_1_bom = new CycloneDX.Models.v1_1.Bom(v1_2_bom);
+                return Xml.Serializer.Serialize(new CycloneDX.Models.v1_0.Bom(v1_1_bom));
             }
             else if (format == BomFormat.SpdxTag || format == BomFormat.SpdxTag_v2_2)
             {

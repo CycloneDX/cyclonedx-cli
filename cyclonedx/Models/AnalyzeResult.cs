@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using CycloneDX.Models.v1_2;
+using CycloneDX.Models.v1_3;
 
 namespace CycloneDX.CLI.Models
 {

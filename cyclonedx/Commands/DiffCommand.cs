@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using CycloneDX.Models.v1_2;
+using CycloneDX.Models.v1_3;
 using CycloneDX.Json;
 using CycloneDX.Utils;
 using CycloneDX.CLI.Commands;
@@ -60,15 +60,15 @@ namespace CycloneDX.CLI
                     IgnoreNullValues = true,
                 };
 
-                options.Converters.Add(new Json.v1_2.Converters.ComponentTypeConverter());
-                options.Converters.Add(new Json.v1_2.Converters.DataFlowConverter());
-                options.Converters.Add(new Json.v1_2.Converters.DateTimeConverter());
-                options.Converters.Add(new Json.v1_2.Converters.DependencyConverter());
-                options.Converters.Add(new Json.v1_2.Converters.ExternalReferenceTypeConverter());
-                options.Converters.Add(new Json.v1_2.Converters.HashAlgorithmConverter());
-                options.Converters.Add(new Json.v1_2.Converters.IssueClassificationConverter());
-                options.Converters.Add(new Json.v1_2.Converters.LicenseConverter());
-                options.Converters.Add(new Json.v1_2.Converters.PatchClassificationConverter());
+                options.Converters.Add(new Json.Converters.v1_2.ComponentTypeConverter());
+                options.Converters.Add(new Json.Converters.v1_2.DataFlowConverter());
+                options.Converters.Add(new Json.Converters.v1_2.DateTimeConverter());
+                options.Converters.Add(new Json.Converters.v1_2.DependencyConverter());
+                options.Converters.Add(new Json.Converters.v1_2.ExternalReferenceTypeConverter());
+                options.Converters.Add(new Json.Converters.v1_2.HashAlgorithmConverter());
+                options.Converters.Add(new Json.Converters.v1_2.IssueClassificationConverter());
+                options.Converters.Add(new Json.Converters.v1_2.LicenseConverter());
+                options.Converters.Add(new Json.Converters.v1_2.PatchClassificationConverter());
 
                 Console.WriteLine(JsonSerializer.Serialize(result, options));
             }
