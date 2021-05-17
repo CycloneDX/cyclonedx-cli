@@ -79,7 +79,7 @@ namespace CycloneDX.CLI
             else
             {
                 Console.WriteLine("Validating XML SBOM...");
-                validationResult = await Json.Validator.Validate(inputBom, schemaVersion);
+                validationResult = await Xml.Validator.Validate(inputBom, schemaVersion);
             }
 
             if (validationResult.Messages != null)
