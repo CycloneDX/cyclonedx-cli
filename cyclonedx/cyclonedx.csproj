@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="27.0.2" />
+    <PackageReference Include="CsvHelper" Version="27.0.3" />
     <PackageReference Include="CycloneDX.Core" Version="2.1.0" />
     <PackageReference Include="CycloneDX.Utils" Version="2.1.0" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20371.2" />
