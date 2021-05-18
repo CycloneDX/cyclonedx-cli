@@ -16,8 +16,10 @@ namespace CycloneDX.CLI
         {
             autodetect,
             json,
+            json_v1_3,
             json_v1_2,
             xml,
+            xml_v1_3,
             xml_v1_2,
             xml_v1_1,
             xml_v1_0,
@@ -33,8 +35,8 @@ namespace CycloneDX.CLI
 
         internal static void Configure(RootCommand rootCommand)
         {
-            var subCommand = new Command("validate", "Validate an SBOM");
-            subCommand.Add(new Option<string>("--input-file", "Input SBOM filename, will read from stdin if no value provided."));
+            var subCommand = new Command("validate", "Validate a BOM");
+            subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
             subCommand.Add(new Option<InputFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<bool>("--fail-on-errors", "Fail on validation errors (return a non-zero exit code)"));
             subCommand.Handler = CommandHandler.Create<Options>(Validate);
@@ -57,10 +59,14 @@ namespace CycloneDX.CLI
                 return (int)ExitCode.IOError;
             }
 
-            SchemaVersion schemaVersion = SchemaVersion.v1_2;
+            var schemaVersion = SchemaVersion.v1_3;
 
             switch (options.InputFormat)
             {
+                case InputFormat.xml_v1_2:
+                case InputFormat.json_v1_2:
+                    schemaVersion = SchemaVersion.v1_2;
+                    break;
                 case InputFormat.xml_v1_1:
                     schemaVersion = SchemaVersion.v1_1;
                     break;
@@ -73,12 +79,12 @@ namespace CycloneDX.CLI
 
             if (options.InputFormat.ToString().StartsWith("json", StringComparison.InvariantCulture))
             {
-                Console.WriteLine("Validating JSON SBOM...");
+                Console.WriteLine("Validating JSON BOM...");
                 validationResult = await Json.Validator.Validate(inputBom, schemaVersion);
             }
             else
             {
-                Console.WriteLine("Validating XML SBOM...");
+                Console.WriteLine("Validating XML BOM...");
                 validationResult = await Xml.Validator.Validate(inputBom, schemaVersion);
             }
 
@@ -92,6 +98,8 @@ namespace CycloneDX.CLI
             {
                 return (int)ExitCode.OkFail;
             }
+            
+            Console.WriteLine("BOM validated successfully.");
 
             return (int)ExitCode.Ok;
         }
@@ -112,11 +120,11 @@ namespace CycloneDX.CLI
             
             if (options.InputFormat == InputFormat.json)
             {
-                options.InputFormat = InputFormat.json_v1_2;
+                options.InputFormat = InputFormat.json_v1_3;
             }
             else if (options.InputFormat == InputFormat.xml)
             {
-                options.InputFormat = InputFormat.xml_v1_2;
+                options.InputFormat = InputFormat.xml_v1_3;
             }
         }
 

@@ -45,7 +45,7 @@ namespace CycloneDX.CLI
             {
                 return CsvSerializer.Deserialize(bom);
             }
-            throw new UnsupportedFormatException("Unsupported SBOM file format");
+            throw new UnsupportedFormatException("Unsupported BOM file format");
         }
 
         public static string BomSerializer(Bom bom, BomFormat format)
@@ -89,7 +89,7 @@ namespace CycloneDX.CLI
             {
                 return CsvSerializer.Serialize(bom);
             }
-            throw new UnsupportedFormatException("Unsupported SBOM file format");
+            throw new UnsupportedFormatException("Unsupported BOM file format");
         }
 
         public static string NullIfWhiteSpace(this string str) {

@@ -19,9 +19,9 @@ namespace CycloneDX.CLI
     {
         internal static void ConfigureDiffCommand(RootCommand rootCommand)
         {
-            var subCommand = new Command("diff", "Generate an SBOM diff");
-            subCommand.Add(new Argument<string>("from-file", "From SBOM filename."));
-            subCommand.Add(new Argument<string>("to-file", "To SBOM filename."));
+            var subCommand = new Command("diff", "Generate a BOM diff");
+            subCommand.Add(new Argument<string>("from-file", "From BOM filename."));
+            subCommand.Add(new Argument<string>("to-file", "To BOM filename."));
             subCommand.Add(new Option<InputFormat>("--from-format", "Specify from file format."));
             subCommand.Add(new Option<InputFormat>("--to-format", "Specify to file format."));
             subCommand.Add(new Option<StandardOutputFormat>("--output-format", "Specify output format (defaults to text)."));

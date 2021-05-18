@@ -19,8 +19,8 @@ namespace CycloneDX.CLI
     {
         internal static void ConfigureAnalyzeCommand(RootCommand rootCommand)
         {
-            var subCommand = new Command("analyze", "Analyze an SBOM file");
-            subCommand.Add(new Option<string>("--input-file", "Input SBOM filename, will read from stdin if no value provided."));
+            var subCommand = new Command("analyze", "Analyze a BOM file");
+            subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
             subCommand.Add(new Option<InputFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<StandardOutputFormat>("--output-format", "Specify output format (defaults to text)."));
             subCommand.Add(new Option<bool>("--multiple-component-versions", "Report components that have multiple versions in use."));

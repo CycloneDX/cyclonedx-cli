@@ -22,18 +22,18 @@ Options:
   -?, -h, --help    Show help and usage information
 
 Commands:
-  analyze                       Analyze an SBOM file
-  convert                       Convert between different SBOM formats
-  diff <from-file> <to-file>    Generate an SBOM diff
-  merge                         Merge two or more SBOMs
-  validate                      Validate an SBOM
+  analyze                       Analyze a BOM file
+  convert                       Convert between different BOM formats
+  diff <from-file> <to-file>    Generate a BOM diff
+  merge                         Merge two or more BOMs
+  validate                      Validate a BOM
 ```
 
-The CycloneDX CLI tool currently supports SBOM analysis, diffing, merging and format conversions.
+The CycloneDX CLI tool currently supports BOM analysis, diffing, merging and format conversions.
 
-Conversion from all CycloneDX SBOM versions and CSV is supported.
+Conversion from all CycloneDX BOM versions and CSV is supported.
 
-Conversion to all CycloneDX SBOM versions, CSV, SPDX tag/value v2.1 and v2.2 is supported.
+Conversion to all CycloneDX BOM versions, CSV, SPDX tag/value v2.1 and v2.2 is supported.
 
 Binaries can be downloaded from the [releases page](https://github.com/CycloneDX/cyclonedx-cli/releases).
 
@@ -43,13 +43,13 @@ Binaries can be downloaded from the [releases page](https://github.com/CycloneDX
 
 ```
 analyze:
-  Analyze an SBOM file
+  Analyze a BOM file
 
 Usage:
   cyclonedx analyze [options]
 
 Options:
-  --input-file <input-file>                   Input SBOM filename, will read from stdin if no value provided.
+  --input-file <input-file>                   Input BOM filename, will read from stdin if no value provided.
   --input-format <autodetect|csv|json|xml>    Specify input file format.
   --output-format <json|text>                 Specify output format (defaults to text).
   --multiple-component-versions               Report components that have multiple versions in use.
@@ -64,14 +64,14 @@ Reporting on components that are included multiple times with different versions
 
 ```
 convert:
-  Convert between different SBOM formats
+  Convert between different BOM formats
 
 Usage:
   cyclonedx convert [options]
 
 Options:
-  --input-file <input-file>                                                                                           Input SBOM filename, will read from stdin if no value provided.
-  --output-file <output-file>                                                                                         Output SBOM filename, will write to stdout if no value provided.
+  --input-file <input-file>                                                                                           Input BOM filename, will read from stdin if no value provided.
+  --output-file <output-file>                                                                                         Output BOM filename, will write to stdout if no value provided.
   --input-format <autodetect|csv|json|xml>                                                                            Specify input file format.
   --output-format <autodetect|csv|json|json_v1_2|spdxtag|spdxtag_v2_1|spdxtag_v2_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify output file format.
 ```
@@ -86,9 +86,9 @@ Converting from XML to JSON format and piping output to additional tools:
 
 ### CSV Format
 
-The CSV format is a limited representation of the list of components in an SBOM.
+The CSV format is a limited representation of the list of components in a BOM.
 
-The intention is to provide a simple way for users to produce and consume SBOMs
+The intention is to provide a simple way for users to produce and consume BOMs
 for simple use cases. Including simple data migration use cases.
 
 The only required fields are the component `name` and `version` fields. Others
@@ -100,14 +100,14 @@ can be left blank or the columns omitted.
 
 ```
 diff:
-  Generate an SBOM diff
+  Generate a BOM diff
 
 Usage:
   cyclonedx diff [options] <from-file> <to-file>
 
 Arguments:
-  <from-file>    From SBOM filename.
-  <to-file>      To SBOM filename.
+  <from-file>    From BOM filename.
+  <to-file>      To BOM filename.
 
 Options:
   --from-format <autodetect|csv|json|xml>    Specify from file format.
@@ -126,24 +126,24 @@ Reporting on components with version changes:
 
 ```
 Merge:
-  Merge two or more SBOMs
+  Merge two or more BOMs
 
 Usage:
   cyclonedx merge [options]
 
 Options:
-  --input-files <input-files>                                                                                           Input SBOM filenames (separate filenames with a space)
-  --output-file <output-file>                                                                                         Output SBOM filename, will write to stdout if no value provided.
+  --input-files <input-files>                                                                                           Input BOM filenames (separate filenames with a space)
+  --output-file <output-file>                                                                                         Output BOM filename, will write to stdout if no value provided.
   --input-format <autodetect|csv|json|xml>                                                                            Specify input file format.
   --output-format <autodetect|csv|json|json_v1_2|spdxtag|spdxtag_v2_1|spdxtag_v2_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify output file format.
 ```
 
 ### Examples
 
-Merge two XML formatted SBOMs:  
+Merge two XML formatted BOMs:  
 `cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-file sbom_all.xml`
 
-Merging two SBOMs and piping output to additional tools:  
+Merging two BOMs and piping output to additional tools:  
 `cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-format json | grep "somthing"`
 
 
@@ -151,20 +151,20 @@ Merging two SBOMs and piping output to additional tools:
 
 ```
 validate:
-  Validate an SBOM
+  Validate a BOM
 
 Usage:
   cyclonedx validate [options]
 
 Options:
-  --input-file <input-file>                                                    Input SBOM filename, will read from stdin if no value provided.
+  --input-file <input-file>                                                    Input BOM filename, will read from stdin if no value provided.
   --input-format <autodetect|json|json_v1_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify input file format.
   --fail-on-errors                                                             Fail on validation errors (return a non-zero exit code)
 ```
 
 ### Examples
 
-Validate SBOM and return non-zero exit code (handy for automatically "breaking" a build, etc)  
+Validate BOM and return non-zero exit code (handy for automatically "breaking" a build, etc)  
 `cyclonedx-cli validate --input-file sbom.xml --fail-on-errors`
 
 # Docker Image
@@ -211,7 +211,7 @@ json.components[1].name = "mylibrary";
 json.components[1].version = "1.0.0";
 ```
 
-Or the same using an XML format SBOM
+Or the same using an XML format BOM
 
 ```
 $ cyclonedx convert --input-file bom.xml --output-format json | gron | grep -E "(components\[[[:digit:]]*\].name)|(components\[[[:digit:]]*\].version)"
