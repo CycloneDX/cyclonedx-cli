@@ -76,7 +76,7 @@ Options:
   --output-format <autodetect|csv|json|json_v1_2|spdxtag|spdxtag_v2_1|spdxtag_v2_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify output file format.
 ```
 
-Examples
+### Examples
 
 Converting from XML to JSON format:  
 `cyclonedx-cli convert --input-file sbom.xml --output-file sbom.json`
@@ -120,6 +120,32 @@ Options:
 
 Reporting on components with version changes:  
 `cyclonedx-cli diff sbom-from.xml sbom-to.xml --component-versions`
+
+
+## Merge Command
+
+```
+Merge:
+  Merge two or more SBOMs
+
+Usage:
+  cyclonedx merge [options]
+
+Options:
+  --input-files <input-files>                                                                                           Input SBOM filenames (separate filenames with a space)
+  --output-file <output-file>                                                                                         Output SBOM filename, will write to stdout if no value provided.
+  --input-format <autodetect|csv|json|xml>                                                                            Specify input file format.
+  --output-format <autodetect|csv|json|json_v1_2|spdxtag|spdxtag_v2_1|spdxtag_v2_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify output file format.
+```
+
+### Examples
+
+Merge two XML formatted SBOMs:  
+`cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-file sbom_all.xml`
+
+Merging two SBOMs and piping output to additional tools:  
+`cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-format json | grep "somthing"`
+
 
 ## Validate Command
 
