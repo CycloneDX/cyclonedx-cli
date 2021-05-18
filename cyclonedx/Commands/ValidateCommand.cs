@@ -16,8 +16,10 @@ namespace CycloneDX.CLI
         {
             autodetect,
             json,
+            json_v1_3,
             json_v1_2,
             xml,
+            xml_v1_3,
             xml_v1_2,
             xml_v1_1,
             xml_v1_0,
@@ -57,10 +59,14 @@ namespace CycloneDX.CLI
                 return (int)ExitCode.IOError;
             }
 
-            SchemaVersion schemaVersion = SchemaVersion.v1_2;
+            var schemaVersion = SchemaVersion.v1_3;
 
             switch (options.InputFormat)
             {
+                case InputFormat.xml_v1_2:
+                case InputFormat.json_v1_2:
+                    schemaVersion = SchemaVersion.v1_2;
+                    break;
                 case InputFormat.xml_v1_1:
                     schemaVersion = SchemaVersion.v1_1;
                     break;
@@ -112,11 +118,11 @@ namespace CycloneDX.CLI
             
             if (options.InputFormat == InputFormat.json)
             {
-                options.InputFormat = InputFormat.json_v1_2;
+                options.InputFormat = InputFormat.json_v1_3;
             }
             else if (options.InputFormat == InputFormat.xml)
             {
-                options.InputFormat = InputFormat.xml_v1_2;
+                options.InputFormat = InputFormat.xml_v1_3;
             }
         }
 
