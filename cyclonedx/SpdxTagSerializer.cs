@@ -52,7 +52,7 @@ namespace CycloneDX.CLI
             sb.AppendLine("DataLicense: CC0-1.0");
             sb.AppendLine($"SPDXID: SPDXRef-DOCUMENT");
             
-            var documentRef = "Generated from CycloneDX SBOM without top level component metadata";
+            var documentRef = "Generated from CycloneDX BOM without top level component metadata";
             if (bom.Metadata?.Component?.Name != null)
             {
                 documentRef = bom.Metadata.Component.Name;

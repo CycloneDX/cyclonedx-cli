@@ -24,9 +24,9 @@ namespace CycloneDX.CLI
 
         internal static void ConfigureMergeCommand(RootCommand rootCommand)
         {
-            var subCommand = new Command("merge", "Merge two or more SBOMs");
-            subCommand.Add(new Option<List<string>>("--input-files", "Input SBOM filenames (separate filenames with a space)."));
-            subCommand.Add(new Option<string>("--output-file", "Output SBOM filename, will write to stdout if no value provided."));
+            var subCommand = new Command("merge", "Merge two or more BOMs");
+            subCommand.Add(new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space)."));
+            subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
             subCommand.Add(new Option<StandardInputOutputSbomFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<StandardInputOutputSbomFormat>("--output-format", "Specify output file format."));
             subCommand.Handler = CommandHandler.Create<MergeCommandOptions>(Merge);
