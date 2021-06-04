@@ -145,6 +145,7 @@ namespace CycloneDX.CLI
             using (var csvReader = new CsvReader(reader, csvConfig))
             {
                 var bom = new Bom();
+                bom.Version = 1;
                 bom.Components = new List<Component>();
 
                 csvReader.Read();
