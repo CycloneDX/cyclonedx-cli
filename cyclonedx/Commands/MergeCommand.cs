@@ -111,6 +111,7 @@ namespace CycloneDX.CLI
                 }
 
                 outputBom = CycloneDXUtils.Merge(outputBom, inputBom);
+                outputBom.Version = 1;
                 if (inputBom.Components != null && !outputToConsole)
                     Console.WriteLine($"    Contains {inputBom.Components.Count} components");
             }
