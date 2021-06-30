@@ -95,6 +95,12 @@ namespace CycloneDX.CLI
                 {
                     Console.WriteLine("Analysis results:");
                 }
+                if (!string.IsNullOrEmpty(inputBom.SerialNumber))
+                    Console.WriteLine($"BOM Serial Number: {inputBom.SerialNumber}");
+                if (inputBom.Version.HasValue)
+                    Console.WriteLine($"BOM Version: {inputBom.Version}");
+                if (inputBom.Metadata?.Timestamp.HasValue == true)
+                    Console.WriteLine($"Timestamp: {inputBom.Metadata.Timestamp}");
                 Console.WriteLine();
 
                 if (result.MultipleComponentVersions != null)
