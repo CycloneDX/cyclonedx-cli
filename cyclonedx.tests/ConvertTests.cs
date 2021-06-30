@@ -52,6 +52,9 @@ namespace CycloneDX.CLI.Tests
         [InlineData("bom.csv", InputFormat.autodetect, "bom.csv", Commands.ConvertOutputFormat.autodetect)]
         [InlineData("bom.csv", InputFormat.csv, "bom.csv", Commands.ConvertOutputFormat.autodetect)]
         [InlineData("bom.csv", InputFormat.csv, "bom.csv", Commands.ConvertOutputFormat.csv)]
+        [InlineData("bom-1.3.cdx", InputFormat.protobuf, "bom.cdx", Commands.ConvertOutputFormat.autodetect)]
+        [InlineData("bom-1.3.cdx", InputFormat.protobuf, "bom.json", Commands.ConvertOutputFormat.json_v1_3)]
+        [InlineData("bom-1.3.json", InputFormat.json, "bom.cdx", Commands.ConvertOutputFormat.protobuf_v1_3)]
         public async Task Convert(string inputFilename, InputFormat inputFormat, string outputFilename, Commands.ConvertOutputFormat outputFormat)
         {
             using (var tempDirectory = new TempDirectory())

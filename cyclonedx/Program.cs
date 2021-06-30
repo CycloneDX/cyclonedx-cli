@@ -80,6 +80,10 @@ namespace CycloneDX.CLI
                 {
                     return BomFormat.Xml;
                 }
+                else if (inputFormat == InputFormat.protobuf)
+                {
+                    return BomFormat.Protobuf;
+                }
                 else if (inputFormat == InputFormat.csv)
                 {
                     return BomFormat.Csv;
@@ -89,29 +93,22 @@ namespace CycloneDX.CLI
             return BomFormat.Unsupported;
         }
 
-        public static async Task<string> InputFileHelper(string inputFile)
+        public static Stream InputFileHelper(string inputFile)
         {
-            string inputString = null;
+            Stream inputStream = null;
             if (!string.IsNullOrEmpty(inputFile))
             {
-                inputString = await File.ReadAllTextAsync(inputFile);
+                inputStream = File.OpenRead(inputFile);
             }
             else if (Console.IsInputRedirected)
             {
-                var sb = new StringBuilder();
-                string nextLine;
-                do
-                {
-                    nextLine = Console.ReadLine();
-                    sb.AppendLine(nextLine);
-                } while (nextLine != null);
-                inputString = sb.ToString();
+                return Console.OpenStandardInput();
             }
             else
             {
                 Console.Error.WriteLine("You must specify a value for --input-file or pipe in content");
             }
-            return inputString;
+            return inputStream;
         }
     }
 }

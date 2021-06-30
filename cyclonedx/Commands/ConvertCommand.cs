@@ -44,9 +44,6 @@ namespace CycloneDX.CLI
             if (inputBomFormat == BomFormat.Unsupported) return (int)ExitCode.ParameterValidationError;
 
             BomFormat outputBomFormat = BomFormat.Unsupported;
-            string inputBomString;
-            Bom inputBom;
-            string outputBomString;
 
             if (outputFormat == ConvertOutputFormat.autodetect)
             {
@@ -67,20 +64,22 @@ namespace CycloneDX.CLI
                 outputBomFormat = (BomFormat)outputFormat;
             }
 
-            inputBomString = await InputFileHelper(inputFile);
-            if (inputBomString == null) return (int)ExitCode.ParameterValidationError;
+            using var inputBomStream = InputFileHelper(inputFile);
+            if (inputBomStream == null) return (int)ExitCode.ParameterValidationError;
             
-            inputBom = CLIUtils.BomDeserializer(inputBomString, inputBomFormat);
-            outputBomString = CLIUtils.BomSerializer(inputBom, outputBomFormat);
+            var inputBom = CLIUtils.BomDeserializer(inputBomStream, inputBomFormat);
+            var outputBomBytes = CLIUtils.BomSerializer(inputBom, outputBomFormat);
 
             if (string.IsNullOrEmpty(outputFile))
             {
-                Console.Write(outputBomString);
+                Console.Write(outputBomBytes);
             }
             else
             {
                 Console.WriteLine("Writing output file...");
-                await File.WriteAllTextAsync(outputFile, outputBomString);
+                using var outputStream = File.OpenWrite(outputFile);
+                outputStream.Write(outputBomBytes);
+                outputStream.SetLength(outputStream.Position);
             }
 
             return (int)ExitCode.Ok;

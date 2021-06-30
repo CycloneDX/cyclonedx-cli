@@ -20,6 +20,8 @@ using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.Diagnostics.Contracts;
 using System.IO;
+using System.Net.Mime;
+using System.Text;
 using System.Threading.Tasks;
 using CycloneDX.Json;
 using CycloneDX.Models.v1_3;
@@ -66,6 +68,14 @@ namespace CycloneDX.CLI
                 {
                     outputFormat = StandardInputOutputSbomFormat.xml;
                 }
+                else if (options.OutputFile != null 
+                    && (
+                        options.OutputFile.EndsWith(".cdx", StringComparison.InvariantCulture)
+                        || options.OutputFile.EndsWith(".bin", StringComparison.InvariantCulture)
+                    ))
+                {
+                    outputFormat = StandardInputOutputSbomFormat.protobuf;
+                }
                 else
                 {
                     Console.WriteLine($"Unable to auto-detect output format");
@@ -79,36 +89,44 @@ namespace CycloneDX.CLI
             foreach (var inputFilename in options.InputFiles)
             {
                 if (!outputToConsole) Console.WriteLine($"Processing input file {inputFilename}");
-                var inputFormat = options.InputFormat;
-                if (inputFormat == StandardInputOutputSbomFormat.autodetect)
+                var inputFormat = BomFormat.Unsupported;
+                if (options.InputFormat == StandardInputOutputSbomFormat.autodetect)
                 {
                     if (inputFilename.EndsWith(".json", StringComparison.InvariantCulture))
                     {
-                        inputFormat = StandardInputOutputSbomFormat.json;
+                        inputFormat = BomFormat.Json;
                     }
                     else if (inputFilename.EndsWith(".xml", StringComparison.InvariantCulture))
                     {
-                        inputFormat = StandardInputOutputSbomFormat.xml;
+                        inputFormat = BomFormat.Xml;
+                    }
+                    else if (inputFilename.EndsWith(".cdx", StringComparison.InvariantCulture)
+                        || inputFilename.EndsWith(".bin", StringComparison.InvariantCulture))
+                    {
+                        inputFormat = BomFormat.Protobuf;
                     }
                     else
                     {
                         Console.WriteLine($"Unable to auto-detect format of {inputFilename}");
                         return (int)ExitCode.ParameterValidationError;
                     }
-
                 }
-
-                var bomContents = await File.ReadAllTextAsync(inputFilename);
-
-                Bom inputBom;
-                if (inputFormat == StandardInputOutputSbomFormat.json)
+                else if (options.InputFormat == StandardInputOutputSbomFormat.json)
                 {
-                    inputBom = Json.Deserializer.Deserialize(bomContents);
+                    inputFormat = BomFormat.Json;
                 }
-                else
+                else if (options.InputFormat == StandardInputOutputSbomFormat.xml)
                 {
-                    inputBom = Xml.Deserializer.Deserialize(bomContents);
+                    inputFormat = BomFormat.Xml;
                 }
+                else if (options.InputFormat == StandardInputOutputSbomFormat.protobuf)
+                {
+                    inputFormat = BomFormat.Protobuf;
+                }
+
+                var bomStream = File.OpenRead(inputFilename);
+
+                var inputBom = CLIUtils.BomDeserializer(bomStream, inputFormat);
 
                 outputBom = CycloneDXUtils.Merge(outputBom, inputBom);
                 outputBom.Version = 1;
@@ -116,25 +134,32 @@ namespace CycloneDX.CLI
                     Console.WriteLine($"    Contains {inputBom.Components.Count} components");
             }
 
-            string outputBomString;
+            byte[] outputBomBytes = new byte[]{};
             if (outputFormat == StandardInputOutputSbomFormat.json)
             {
-                outputBomString = Json.Serializer.Serialize(outputBom);
+                outputBomBytes = Encoding.UTF8.GetBytes(Json.Serializer.Serialize(outputBom));
             }
-            else
+            else if (outputFormat == StandardInputOutputSbomFormat.xml)
             {
-                outputBomString = Xml.Serializer.Serialize(outputBom);
+                outputBomBytes = Encoding.UTF8.GetBytes(Xml.Serializer.Serialize(outputBom));
+            }
+            else if (outputFormat == StandardInputOutputSbomFormat.protobuf)
+            {
+                outputBomBytes = Protobuf.Serializer.Serialize(outputBom);
             }
 
             if (outputToConsole)
             {
-                Console.WriteLine(outputBomString);
+                using var output = Console.OpenStandardOutput();
+                output.Write(outputBomBytes);
             }
             else
             {
                 Console.WriteLine("Writing output file...");
                 Console.WriteLine($"    Total {outputBom.Components.Count} components");
-                await File.WriteAllTextAsync(options.OutputFile, outputBomString);
+                using var output = File.OpenWrite(options.OutputFile);
+                output.Write(outputBomBytes);
+                output.SetLength(output.Position);
             }
 
             return (int)ExitCode.Ok;

@@ -27,6 +27,8 @@ namespace CycloneDX.CLI
         Json,
         Json_v1_2,
         Json_v1_3,
+        Protobuf,
+        Protobuf_v1_3,
         Csv,
         SpdxTag,
         SpdxTag_v2_1,

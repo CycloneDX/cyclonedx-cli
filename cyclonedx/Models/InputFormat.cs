@@ -21,6 +21,7 @@ namespace CycloneDX.CLI.Models
         autodetect,
         xml,
         json,
+        protobuf,
         csv
     }
 }

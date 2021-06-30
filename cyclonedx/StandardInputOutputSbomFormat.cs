@@ -20,6 +20,7 @@ namespace CycloneDX.CLI
     {
         autodetect,
         xml,
-        json
+        json,
+        protobuf
     }
 }

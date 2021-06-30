@@ -27,6 +27,8 @@ namespace CycloneDX.CLI.Commands
         json,
         json_v1_2,
         json_v1_3,
+        protobuf,
+        protobuf_v1_3,
         csv,
         spdxtag,
         spdxtag_v2_1,
