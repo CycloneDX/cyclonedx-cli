@@ -49,10 +49,10 @@ Usage:
   cyclonedx analyze [options]
 
 Options:
-  --input-file <input-file>                   Input BOM filename, will read from stdin if no value provided.
-  --input-format <autodetect|csv|json|xml>    Specify input file format.
-  --output-format <json|text>                 Specify output format (defaults to text).
-  --multiple-component-versions               Report components that have multiple versions in use.
+  --input-file <input-file>                            Input BOM filename, will read from stdin if no value provided.
+  --input-format <autodetect|csv|json|protobuf|xml>    Specify input file format.
+  --output-format <json|text>                          Specify output format (defaults to text).
+  --multiple-component-versions                        Report components that have multiple versions in use.
 ```
 
 ### Examples
@@ -70,10 +70,11 @@ Usage:
   cyclonedx convert [options]
 
 Options:
-  --input-file <input-file>                                                                                           Input BOM filename, will read from stdin if no value provided.
-  --output-file <output-file>                                                                                         Output BOM filename, will write to stdout if no value provided.
-  --input-format <autodetect|csv|json|xml>                                                                            Specify input file format.
-  --output-format <autodetect|csv|json|json_v1_2|spdxtag|spdxtag_v2_1|spdxtag_v2_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify output file format.
+  --input-file <input-file>                                                                                                               Input BOM filename, will read from stdin if no value provided.
+  --output-file <output-file>                                                                                                             Output BOM filename, will write to stdout if no value provided.
+  --input-format <autodetect|csv|json|protobuf|xml>                                                                                       Specify input file format.
+  --output-format <autodetect|csv|json|json_v1_2|json_v1_3|protobuf|protobuf_v1_3|spdxtag|spdxtag_v2_1|spdxtag_v2_2|xml|xml_v1_0|xml_v    Specify output file format.
+  1_1|xml_v1_2|xml_v1_3>
 ```
 
 ### Examples
@@ -110,10 +111,10 @@ Arguments:
   <to-file>      To BOM filename.
 
 Options:
-  --from-format <autodetect|csv|json|xml>    Specify from file format.
-  --to-format <autodetect|csv|json|xml>      Specify to file format.
-  --output-format <json|text>                Specify output format (defaults to text).
-  --component-versions                       Report component versions that have been added, removed or modified.
+  --from-format <autodetect|csv|json|protobuf|xml>    Specify from file format.
+  --to-format <autodetect|csv|json|protobuf|xml>      Specify to file format.
+  --output-format <json|text>                         Specify output format (defaults to text).
+  --component-versions                                Report component versions that have been added, removed or modified.
 ```
 
 ### Examples
@@ -125,17 +126,17 @@ Reporting on components with version changes:
 ## Merge Command
 
 ```
-Merge:
+merge:
   Merge two or more BOMs
 
 Usage:
   cyclonedx merge [options]
 
 Options:
-  --input-files <input-files>                                                                                           Input BOM filenames (separate filenames with a space)
-  --output-file <output-file>                                                                                         Output BOM filename, will write to stdout if no value provided.
-  --input-format <autodetect|csv|json|xml>                                                                            Specify input file format.
-  --output-format <autodetect|csv|json|json_v1_2|spdxtag|spdxtag_v2_1|spdxtag_v2_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify output file format.
+  --input-files <input-files>                       Input BOM filenames (separate filenames with a space).
+  --output-file <output-file>                       Output BOM filename, will write to stdout if no value provided.
+  --input-format <autodetect|json|protobuf|xml>     Specify input file format.
+  --output-format <autodetect|json|protobuf|xml>    Specify output file format.
 ```
 
 ### Examples
@@ -157,9 +158,9 @@ Usage:
   cyclonedx validate [options]
 
 Options:
-  --input-file <input-file>                                                    Input BOM filename, will read from stdin if no value provided.
-  --input-format <autodetect|json|json_v1_2|xml|xml_v1_0|xml_v1_1|xml_v1_2>    Specify input file format.
-  --fail-on-errors                                                             Fail on validation errors (return a non-zero exit code)
+  --input-file <input-file>                                                                       Input BOM filename, will read from stdin if no value provided.
+  --input-format <autodetect|json|json_v1_2|json_v1_3|xml|xml_v1_0|xml_v1_1|xml_v1_2|xml_v1_3>    Specify input file format.
+  --fail-on-errors                                                                                Fail on validation errors (return a non-zero exit code)
 ```
 
 ### Examples

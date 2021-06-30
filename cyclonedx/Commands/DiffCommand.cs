@@ -54,11 +54,11 @@ namespace CycloneDX.CLI
             var toBomFormat = InputFormatHelper(toFile, toFormat);
             if (fromBomFormat == BomFormat.Unsupported || toBomFormat == BomFormat.Unsupported) return (int)ExitCode.ParameterValidationError;
 
-            var fromBomString = await File.ReadAllTextAsync(fromFile);
-            var toBomString = await File.ReadAllTextAsync(toFile);
+            await using var fromBomStream = File.OpenRead(fromFile);
+            await using var toBomStream = File.OpenRead(toFile);
             
-            var fromBom = CLIUtils.BomDeserializer(fromBomString, fromBomFormat);
-            var toBom = CLIUtils.BomDeserializer(toBomString, toBomFormat);
+            var fromBom = CLIUtils.BomDeserializer(fromBomStream, fromBomFormat);
+            var toBom = CLIUtils.BomDeserializer(toBomStream, toBomFormat);
 
             var result = new DiffResult();
 
