@@ -16,7 +16,6 @@
 // Copyright (c) Patrick Dwyer. All Rights Reserved.
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -25,14 +24,12 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using CycloneDX.Models.v1_3;
 
-namespace CycloneDX.CLI
+namespace CycloneDX.Cli
 {
     public static class CsvSerializer
     {
         public static string Serialize(Bom bom)
         {
-            Contract.Requires(bom != null);
-
             using (var stream = new MemoryStream())
             {
                 using (var writer = new StreamWriter(stream))

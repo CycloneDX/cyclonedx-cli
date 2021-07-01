@@ -14,24 +14,11 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) Patrick Dwyer. All Rights Reserved.
-namespace CycloneDX.CLI
+namespace CycloneDX.Cli
 {
-    public enum BomFormat
+    public enum StandardCommandOutputFormat
     {
-        Unsupported,
-        Xml,
-        Xml_v1_0,
-        Xml_v1_1,
-        Xml_v1_2,
-        Xml_v1_3,
-        Json,
-        Json_v1_2,
-        Json_v1_3,
-        Protobuf,
-        Protobuf_v1_3,
-        Csv,
-        SpdxTag,
-        SpdxTag_v2_1,
-        SpdxTag_v2_2
+        text,
+        json
     }
 }

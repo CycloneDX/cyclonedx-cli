@@ -17,7 +17,7 @@
 using System.Collections.Generic;
 using CycloneDX.Models.v1_3;
 
-namespace CycloneDX.CLI.Models
+namespace CycloneDX.Cli.Models
 {
     public class AnalyzeResult
     {

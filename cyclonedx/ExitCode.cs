@@ -14,15 +14,8 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) Patrick Dwyer. All Rights Reserved.
-using System;
-using System.CommandLine;
-using System.CommandLine.Invocation;
-using System.Threading.Tasks;
-using CycloneDX.Json;
-using CycloneDX.Models;
-using CycloneDX.Xml;
 
-namespace CycloneDX.CLI
+namespace CycloneDX.Cli
 {
     public enum ExitCode
     {

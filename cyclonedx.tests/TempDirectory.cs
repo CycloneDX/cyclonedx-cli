@@ -17,7 +17,7 @@
 using System;
 using System.IO;
 
-namespace CycloneDX.CLI.Tests
+namespace CycloneDX.Cli.Tests
 {
     class TempDirectory : IDisposable
     {

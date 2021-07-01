@@ -20,13 +20,13 @@ using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using CycloneDX.CLI.Models;
+using CycloneDX.Cli.Models;
 
-namespace CycloneDX.CLI
+namespace CycloneDX.Cli
 {
     public partial class Program
     {
-        private const string CycloneDX = @"
+        private const string CycloneDx = @"
    ______           __                 ____ _  __    ________    ____
   / ____/_  _______/ /___  ____  ___  / __ \ |/ /   / ____/ /   /  _/
  / /   / / / / ___/ / __ \/ __ \/ _ \/ / / /   /   / /   / /    / /  
@@ -37,78 +37,20 @@ namespace CycloneDX.CLI
 
         public static async Task<int> Main(string[] args)
         {
-            Contract.Requires(args != null);
-            
             if (args.Length == 0)
             {
-                Console.WriteLine(CycloneDX);
+                Console.WriteLine(CycloneDx);
             }
 
             RootCommand rootCommand = new RootCommand();
             
-            ConfigureAnalyzeCommand(rootCommand);
-            ConfigureConvertCommand(rootCommand);
-            ConfigureDiffCommand(rootCommand);
-            ConfigureMergeCommand(rootCommand);
+            AnalyzeCommand.Configure(rootCommand);
+            ConvertCommand.Configure(rootCommand);
+            DiffCommand.Configure(rootCommand);
+            MergeCommand.Configure(rootCommand);
             ValidateCommand.Configure(rootCommand);
 
             return await rootCommand.InvokeAsync(args);
-        }
-
-        public static BomFormat InputFormatHelper(string inputFile, InputFormat inputFormat)
-        {
-            if (inputFormat == InputFormat.autodetect)
-            {
-                if (string.IsNullOrEmpty(inputFile))
-                {
-                    Console.Error.WriteLine("Unable to auto-detect input stream format, please specify a value for --input-format");
-                }
-                var inputBomFormat = CLIUtils.DetectFileFormat(inputFile);
-                if (inputBomFormat == BomFormat.Unsupported)
-                {
-                    Console.Error.WriteLine("Unable to auto-detect input format from input filename");
-                }
-                return inputBomFormat;
-            }
-            else
-            {
-                if (inputFormat == InputFormat.json)
-                {
-                    return BomFormat.Json;
-                }
-                else if (inputFormat == InputFormat.xml)
-                {
-                    return BomFormat.Xml;
-                }
-                else if (inputFormat == InputFormat.protobuf)
-                {
-                    return BomFormat.Protobuf;
-                }
-                else if (inputFormat == InputFormat.csv)
-                {
-                    return BomFormat.Csv;
-                }
-            }
-
-            return BomFormat.Unsupported;
-        }
-
-        public static Stream InputFileHelper(string inputFile)
-        {
-            Stream inputStream = null;
-            if (!string.IsNullOrEmpty(inputFile))
-            {
-                inputStream = File.OpenRead(inputFile);
-            }
-            else if (Console.IsInputRedirected)
-            {
-                return Console.OpenStandardInput();
-            }
-            else
-            {
-                Console.Error.WriteLine("You must specify a value for --input-file or pipe in content");
-            }
-            return inputStream;
         }
     }
 }

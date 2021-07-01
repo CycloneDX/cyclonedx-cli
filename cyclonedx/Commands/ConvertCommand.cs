@@ -17,72 +17,84 @@
 using System;
 using System.CommandLine;
 using System.CommandLine.Invocation;
-using System.IO;
 using System.Threading.Tasks;
-using CycloneDX.CLI.Commands;
-using CycloneDX.CLI.Models;
-using CycloneDX.Models.v1_3;
 
-namespace CycloneDX.CLI
+namespace CycloneDX.Cli
 {
-    partial class Program
+    public static class ConvertCommand
     {
-        internal static void ConfigureConvertCommand(RootCommand rootCommand)
+        // WARNING: keep this in sync with StandardInputOutputBomFormat, csv should be last
+        public enum InputFormat
+        {
+            autodetect,
+            xml,
+            json,
+            protobuf,
+            csv
+        }
+
+        // WARNING: keep this in sync with StandardInputOutputBomFormat, csv, spdx and specific versions should be last
+        public enum OutputFormat
+        {
+            autodetect,
+            xml,
+            json,
+            protobuf,
+            csv,
+            spdxtag,
+            xml_v1_0,
+            xml_v1_1,
+            xml_v1_2,
+            xml_v1_3,
+            json_v1_2,
+            json_v1_3,
+            protobuf_v1_3,
+            spdxtag_v2_1,
+            spdxtag_v2_2
+        }
+
+        public class Options
+        {
+            public string InputFile { get; set; }
+            public string OutputFile { get; set; }
+            public InputFormat InputFormat { get; set; }
+            public OutputFormat OutputFormat { get; set; }
+        }
+        
+        internal static void Configure(RootCommand rootCommand)
         {
             var subCommand = new Command("convert", "Convert between different BOM formats");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
             subCommand.Add(new Option<InputFormat>("--input-format", "Specify input file format."));
-            subCommand.Add(new Option<ConvertOutputFormat>("--output-format", "Specify output file format."));
-            subCommand.Handler = CommandHandler.Create<string, string, InputFormat, ConvertOutputFormat>(Convert);
+            subCommand.Add(new Option<OutputFormat>("--output-format", "Specify output file format."));
+            subCommand.Handler = CommandHandler.Create<Options>(Convert);
             rootCommand.Add(subCommand);
         }
 
-        public static async Task<int> Convert(string inputFile, string outputFile, InputFormat inputFormat, ConvertOutputFormat outputFormat)
+        public static async Task<int> Convert(Options options)
         {
-            var inputBomFormat = InputFormatHelper(inputFile, inputFormat);
-            if (inputBomFormat == BomFormat.Unsupported) return (int)ExitCode.ParameterValidationError;
+            var inputBom = CliUtils.InputBomHelper(options.InputFile, options.InputFormat);
+            if (inputBom == null) return (int)ExitCode.ParameterValidationError;
 
-            BomFormat outputBomFormat = BomFormat.Unsupported;
-
-            if (outputFormat == ConvertOutputFormat.autodetect)
+            if (options.OutputFormat == OutputFormat.autodetect)
             {
-                if (string.IsNullOrEmpty(outputFile))
+                if (string.IsNullOrEmpty(options.OutputFile))
                 {
                     Console.Error.WriteLine("You must specify a value for --output-format when standard output is used");
                     return (int)ExitCode.ParameterValidationError;
                 }
-                outputBomFormat = CLIUtils.DetectFileFormat(outputFile);
-                if (outputBomFormat == BomFormat.Unsupported)
+
+                options.OutputFormat = CliUtils.AutoDetectConvertCommandOutputBomFormat(options.OutputFile);
+                
+                if (options.OutputFormat == OutputFormat.autodetect)
                 {
                     Console.Error.WriteLine("Unable to auto-detect output format from output filename");
                     return (int)ExitCode.ParameterValidationError;
                 }
             }
-            else
-            {
-                outputBomFormat = (BomFormat)outputFormat;
-            }
 
-            using var inputBomStream = InputFileHelper(inputFile);
-            if (inputBomStream == null) return (int)ExitCode.ParameterValidationError;
-            
-            var inputBom = CLIUtils.BomDeserializer(inputBomStream, inputBomFormat);
-            var outputBomBytes = CLIUtils.BomSerializer(inputBom, outputBomFormat);
-
-            if (string.IsNullOrEmpty(outputFile))
-            {
-                Console.Write(outputBomBytes);
-            }
-            else
-            {
-                Console.WriteLine("Writing output file...");
-                using var outputStream = File.OpenWrite(outputFile);
-                outputStream.Write(outputBomBytes);
-                outputStream.SetLength(outputStream.Position);
-            }
-
-            return (int)ExitCode.Ok;
+            return CliUtils.OutputBomHelper(inputBom, options.OutputFormat, options.OutputFile);
         }
     }
 }

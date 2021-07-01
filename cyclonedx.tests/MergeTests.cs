@@ -17,36 +17,34 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
-using CycloneDX.CLI;
-using CycloneDX.CLI.Models;
 
-namespace CycloneDX.CLI.Tests
+namespace CycloneDX.Cli.Tests
 {
     public class MergeTests
     {
         [Theory]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputSbomFormat.autodetect, "sbom.json", StandardInputOutputSbomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputSbomFormat.autodetect, "sbom.xml", StandardInputOutputSbomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputSbomFormat.json, "sbom.json", StandardInputOutputSbomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputSbomFormat.autodetect, "sbom.xml", StandardInputOutputSbomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputSbomFormat.autodetect, "sbom.json", StandardInputOutputSbomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputSbomFormat.xml, "sbom.xml", StandardInputOutputSbomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.xml"}, StandardInputOutputSbomFormat.autodetect, "sbom.xml", StandardInputOutputSbomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputSbomFormat.autodetect, "sbom.json", StandardInputOutputSbomFormat.json)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputSbomFormat.autodetect, "sbom.xml", StandardInputOutputSbomFormat.xml)]
-        public async Task Merge(string[] inputFilenames, StandardInputOutputSbomFormat inputFormat, string outputFilename, StandardInputOutputSbomFormat outputFormat)
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.json", StandardInputOutputBomFormat.autodetect)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.autodetect)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.json, "sbom.json", StandardInputOutputBomFormat.autodetect)]
+        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.autodetect)]
+        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputBomFormat.autodetect, "sbom.json", StandardInputOutputBomFormat.autodetect)]
+        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputBomFormat.xml, "sbom.xml", StandardInputOutputBomFormat.autodetect)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.xml"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.autodetect)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.json", StandardInputOutputBomFormat.json)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.xml)]
+        public async Task Merge(string[] inputFilenames, StandardInputOutputBomFormat inputFormat, string outputFilename, StandardInputOutputBomFormat outputFormat)
         {
             using (var tempDirectory = new TempDirectory())
             {
                 var snapshotInputFilenames = string.Join('_', inputFilenames);
                 var fullOutputPath = Path.Join(tempDirectory.DirectoryPath, outputFilename);
-                var options = new Program.MergeCommandOptions
+                var options = new MergeCommand.Options
                 {
+                    InputFiles = new List<string>(),
                     InputFormat = inputFormat,
                     OutputFile = fullOutputPath,
                     OutputFormat = outputFormat
@@ -56,7 +54,7 @@ namespace CycloneDX.CLI.Tests
                     options.InputFiles.Add(Path.Combine("Resources", "Merge", inputFilename));
                 }
                 
-                var exitCode = await Program.Merge(options);
+                var exitCode = await MergeCommand.Merge(options);
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(fullOutputPath);

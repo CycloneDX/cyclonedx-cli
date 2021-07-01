@@ -15,46 +15,36 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) Patrick Dwyer. All Rights Reserved.
 using System;
-using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using CycloneDX.Models.v1_3;
-using CycloneDX.Json;
-using CycloneDX.CLI.Commands;
-using CycloneDX.CLI.Models;
+using CycloneDX.Cli.Models;
 using CycloneDX.Utils;
 
-namespace CycloneDX.CLI
+namespace CycloneDX.Cli
 {
-    partial class Program
+    internal static class AnalyzeCommand
     {
-        internal static void ConfigureAnalyzeCommand(RootCommand rootCommand)
+        internal static void Configure(RootCommand rootCommand)
         {
             var subCommand = new Command("analyze", "Analyze a BOM file");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
-            subCommand.Add(new Option<InputFormat>("--input-format", "Specify input file format."));
-            subCommand.Add(new Option<StandardOutputFormat>("--output-format", "Specify output format (defaults to text)."));
+            subCommand.Add(new Option<StandardInputOutputBomFormat>("--input-format", "Specify input file format."));
+            subCommand.Add(new Option<StandardCommandOutputFormat>("--output-format", "Specify output format (defaults to text)."));
             subCommand.Add(new Option<bool>("--multiple-component-versions", "Report components that have multiple versions in use."));
-            subCommand.Handler = CommandHandler.Create<string, InputFormat, StandardOutputFormat, bool>(Analyze);
+            subCommand.Handler = CommandHandler.Create<string, StandardInputOutputBomFormat, StandardCommandOutputFormat, bool>(Analyze);
             rootCommand.Add(subCommand);
         }
 
         public static async Task<int> Analyze(
-            string inputFile, InputFormat inputFormat, StandardOutputFormat outputFormat,
+            string inputFile, 
+            StandardInputOutputBomFormat inputFormat, 
+            StandardCommandOutputFormat commandOutputFormat,
             bool multipleComponentVersions)
         {
-            var inputBomFormat = InputFormatHelper(inputFile, inputFormat);
-            if (inputBomFormat == BomFormat.Unsupported) return (int)ExitCode.ParameterValidationError;
-
-            var inputBomStream = InputFileHelper(inputFile);
-            if (inputBomStream == null) return (int)ExitCode.ParameterValidationError;
-            
-            var inputBom = CLIUtils.BomDeserializer(inputBomStream, inputBomFormat);
+            var inputBom = CliUtils.InputBomHelper(inputFile, inputFormat);
+            if (inputBom == null) return (int)ExitCode.ParameterValidationError;
 
             var result = new AnalyzeResult();
 
@@ -63,7 +53,7 @@ namespace CycloneDX.CLI
                 result.MultipleComponentVersions = CycloneDXUtils.MultipleComponentVersions(inputBom);
             }
 
-            if (outputFormat == StandardOutputFormat.json)
+            if (commandOutputFormat == StandardCommandOutputFormat.json)
             {
                 var options = new JsonSerializerOptions
                 {

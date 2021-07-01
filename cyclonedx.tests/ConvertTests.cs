@@ -21,50 +21,51 @@ using System.Threading.Tasks;
 using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
-using CycloneDX.CLI.Models;
 
-namespace CycloneDX.CLI.Tests
+namespace CycloneDX.Cli.Tests
 {
     public class ConvertTests
     {
         [Theory]
-        [InlineData("bom-1.0.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.0.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.0.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml_v1_1)]
-        [InlineData("bom-1.1.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.1.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.1.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml_v1_1)]
-        [InlineData("bom-1.2.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.2.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.2.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml)]
-        [InlineData("bom-1.2.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml_v1_2)]
-        [InlineData("bom-1.2.json", InputFormat.autodetect, "bom.json", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.2.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.2.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.json_v1_2)]
-        [InlineData("bom-1.3.xml", InputFormat.autodetect, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.3.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.3.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml)]
-        [InlineData("bom-1.3.xml", InputFormat.xml, "bom.xml", Commands.ConvertOutputFormat.xml_v1_3)]
-        [InlineData("bom-1.3.json", InputFormat.autodetect, "bom.json", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.3.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.3.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.json)]
-        [InlineData("bom-1.3.json", InputFormat.json, "bom.json", Commands.ConvertOutputFormat.json_v1_3)]
-        [InlineData("bom.csv", InputFormat.autodetect, "bom.csv", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom.csv", InputFormat.csv, "bom.csv", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom.csv", InputFormat.csv, "bom.csv", Commands.ConvertOutputFormat.csv)]
-        [InlineData("bom-1.3.cdx", InputFormat.protobuf, "bom.cdx", Commands.ConvertOutputFormat.autodetect)]
-        [InlineData("bom-1.3.cdx", InputFormat.protobuf, "bom.json", Commands.ConvertOutputFormat.json_v1_3)]
-        [InlineData("bom-1.3.json", InputFormat.json, "bom.cdx", Commands.ConvertOutputFormat.protobuf_v1_3)]
-        public async Task Convert(string inputFilename, InputFormat inputFormat, string outputFilename, Commands.ConvertOutputFormat outputFormat)
+        [InlineData("bom-1.0.xml", ConvertCommand.InputFormat.autodetect, "bom.xml", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.0.xml", ConvertCommand.InputFormat.xml, "bom.xml", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.0.xml", ConvertCommand.InputFormat.xml, "bom.xml", ConvertCommand.OutputFormat.xml_v1_1)]
+        [InlineData("bom-1.1.xml", ConvertCommand.InputFormat.autodetect, "bom.xml", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.1.xml", ConvertCommand.InputFormat.xml, "bom.xml", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.1.xml", ConvertCommand.InputFormat.xml, "bom.xml", ConvertCommand.OutputFormat.xml_v1_1)]
+        [InlineData("bom-1.2.xml", ConvertCommand.InputFormat.autodetect, "bom.xml", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.2.xml", ConvertCommand.InputFormat.xml, "bom.xml", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.2.xml", ConvertCommand.InputFormat.xml, "bom.xml", ConvertCommand.OutputFormat.xml)]
+        [InlineData("bom-1.2.xml", ConvertCommand.InputFormat.xml, "bom.xml", ConvertCommand.OutputFormat.xml_v1_2)]
+        [InlineData("bom-1.2.json", ConvertCommand.InputFormat.autodetect, "bom.json", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.2.json", ConvertCommand.InputFormat.json, "bom.json", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.2.json", ConvertCommand.InputFormat.json, "bom.json", ConvertCommand.OutputFormat.json_v1_2)]
+        [InlineData("bom-1.3.xml", ConvertCommand.InputFormat.autodetect, "bom.xml", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.3.xml", ConvertCommand.InputFormat.xml, "bom.xml", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.3.xml", ConvertCommand.InputFormat.xml, "bom.xml", ConvertCommand.OutputFormat.xml)]
+        [InlineData("bom-1.3.xml", ConvertCommand.InputFormat.xml, "bom.xml", ConvertCommand.OutputFormat.xml_v1_3)]
+        [InlineData("bom-1.3.json", ConvertCommand.InputFormat.autodetect, "bom.json", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.3.json", ConvertCommand.InputFormat.json, "bom.json", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.3.json", ConvertCommand.InputFormat.json, "bom.json", ConvertCommand.OutputFormat.json)]
+        [InlineData("bom-1.3.json", ConvertCommand.InputFormat.json, "bom.json", ConvertCommand.OutputFormat.json_v1_3)]
+        [InlineData("bom.csv", ConvertCommand.InputFormat.autodetect, "bom.csv", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom.csv", ConvertCommand.InputFormat.csv, "bom.csv", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom.csv", ConvertCommand.InputFormat.csv, "bom.csv", ConvertCommand.OutputFormat.csv)]
+        [InlineData("bom-1.3.cdx", ConvertCommand.InputFormat.protobuf, "bom.cdx", ConvertCommand.OutputFormat.autodetect)]
+        [InlineData("bom-1.3.cdx", ConvertCommand.InputFormat.protobuf, "bom.json", ConvertCommand.OutputFormat.json_v1_3)]
+        [InlineData("bom-1.3.json", ConvertCommand.InputFormat.json, "bom.cdx", ConvertCommand.OutputFormat.protobuf_v1_3)]
+        public async Task Convert(string inputFilename, ConvertCommand.InputFormat inputFormat, string outputFilename, ConvertCommand.OutputFormat outputFormat)
         {
             using (var tempDirectory = new TempDirectory())
             {
                 var fullOutputPath = Path.Join(tempDirectory.DirectoryPath, outputFilename);
-                var exitCode = await Program.Convert(
-                    Path.Combine("Resources", inputFilename),
-                    fullOutputPath,
-                    inputFormat,
-                    outputFormat);
+                var exitCode = await ConvertCommand.Convert(new ConvertCommand.Options
+                {
+                    InputFile = Path.Combine("Resources", inputFilename),
+                    OutputFile = fullOutputPath,
+                    InputFormat = inputFormat,
+                    OutputFormat = outputFormat
+                });
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(fullOutputPath);
@@ -73,19 +74,22 @@ namespace CycloneDX.CLI.Tests
         }
 
         [Theory]
-        [InlineData(Commands.ConvertOutputFormat.autodetect)]
-        [InlineData(Commands.ConvertOutputFormat.spdxtag_v2_1)]
-        [InlineData(Commands.ConvertOutputFormat.spdxtag_v2_2)]
-        public async Task ConvertToSpdxTag(Commands.ConvertOutputFormat outputFormat)
+        [InlineData(ConvertCommand.OutputFormat.autodetect)]
+        [InlineData(ConvertCommand.OutputFormat.spdxtag_v2_1)]
+        [InlineData(ConvertCommand.OutputFormat.spdxtag_v2_2)]
+        public async Task ConvertToSpdxTag(ConvertCommand.OutputFormat outputFormat)
         {
             using (var tempDirectory = new TempDirectory())
             {
                 var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.spdx");
-                var exitCode = await Program.Convert(
-                    Path.Combine("Resources", "bom-1.2.xml"),
-                    outputFilename,
-                    Models.InputFormat.xml,
-                    outputFormat);
+                var exitCode = await ConvertCommand.Convert(new ConvertCommand.Options
+                {
+                    InputFile = Path.Combine("Resources", "bom-1.2.xml"),
+                    OutputFile = outputFilename,
+                    InputFormat = ConvertCommand.InputFormat.autodetect,
+                    OutputFormat = outputFormat
+                    
+                });
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(outputFilename);

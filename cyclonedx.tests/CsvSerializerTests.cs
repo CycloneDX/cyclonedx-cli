@@ -21,7 +21,7 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX.Xml;
 
-namespace CycloneDX.CLI.Tests
+namespace CycloneDX.Cli.Tests
 {
     public class CsvSerializerTests
     {
