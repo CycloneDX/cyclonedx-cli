@@ -22,7 +22,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using CycloneDX.Models.v1_3;
 
-namespace CycloneDX.CLI
+namespace CycloneDX.Cli
 {
     public enum SpdxVersion
     {

@@ -21,10 +21,8 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using CycloneDX.Models;
-using CycloneDX.Json;
-using CycloneDX.Xml;
 
-namespace CycloneDX.CLI
+namespace CycloneDX.Cli
 {
     internal static class ValidateCommand
     {
@@ -49,7 +47,7 @@ namespace CycloneDX.CLI
             public bool FailOnErrors { get; set; }
         }
 
-        internal static void Configure(RootCommand rootCommand)
+        public static void Configure(RootCommand rootCommand)
         {
             var subCommand = new Command("validate", "Validate a BOM");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
@@ -61,17 +59,17 @@ namespace CycloneDX.CLI
 
         public static async Task<int> Validate(Options options)
         {
-            ValidateInputFormat(options);
+            ValidateInputFormatValue(options);
             if (options.InputFormat == InputFormat.autodetect)
             {
-                Console.Error.WriteLine("Unable to auto-detect input format");
+                await Console.Error.WriteLineAsync("Unable to auto-detect input format");
                 return (int)ExitCode.ParameterValidationError;
             }
 
             var inputBom = ReadInput(options);
             if (inputBom == null)
             {
-                Console.Error.WriteLine("Error reading input, you must specify a value for --input-file or pipe in content");
+                await Console.Error.WriteLineAsync("Error reading input, you must specify a value for --input-file or pipe in content");
                 return (int)ExitCode.IOError;
             }
 
@@ -120,7 +118,7 @@ namespace CycloneDX.CLI
             return (int)ExitCode.Ok;
         }
 
-        static void ValidateInputFormat(Options options)
+        private static void ValidateInputFormatValue(Options options)
         {
             if (options.InputFormat == InputFormat.autodetect && !string.IsNullOrEmpty(options.InputFile))
             {
@@ -144,7 +142,7 @@ namespace CycloneDX.CLI
             }
         }
 
-        static string ReadInput(Options options)
+        private static string ReadInput(Options options)
         {
             string inputString = null;
             if (!string.IsNullOrEmpty(options.InputFile))

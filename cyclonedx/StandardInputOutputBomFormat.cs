@@ -14,14 +14,14 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) Patrick Dwyer. All Rights Reserved.
-namespace CycloneDX.CLI.Models
+namespace CycloneDX.Cli
 {
-    public enum InputFormat
+    // WARNING: keep this in sync with ConvertCommand.InputFormat and OutputFormat, except csv, spdx and specific versions
+    public enum StandardInputOutputBomFormat
     {
         autodetect,
         xml,
         json,
-        protobuf,
-        csv
+        protobuf
     }
 }

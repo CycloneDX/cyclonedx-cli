@@ -15,78 +15,74 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) Patrick Dwyer. All Rights Reserved.
 using System;
-using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using CycloneDX.Models.v1_3;
-using CycloneDX.Json;
+using CycloneDX.Cli.Models;
 using CycloneDX.Utils;
-using CycloneDX.CLI.Commands;
-using CycloneDX.CLI.Models;
 
-namespace CycloneDX.CLI
+namespace CycloneDX.Cli
 {
-    partial class Program
+    internal static class DiffCommand
     {
-        internal static void ConfigureDiffCommand(RootCommand rootCommand)
+        public class Options
+        {
+            public string FromFile { get; set; }    
+            public string ToFile { get; set; }
+            public StandardInputOutputBomFormat FromFormat { get; set; }
+            public StandardInputOutputBomFormat ToFormat { get; set; }
+            public StandardCommandOutputFormat OutputFormat { get; set; }
+            public bool ComponentVersions { get; set; }
+        }
+        
+        internal static void Configure(RootCommand rootCommand)
         {
             var subCommand = new Command("diff", "Generate a BOM diff");
             subCommand.Add(new Argument<string>("from-file", "From BOM filename."));
             subCommand.Add(new Argument<string>("to-file", "To BOM filename."));
-            subCommand.Add(new Option<InputFormat>("--from-format", "Specify from file format."));
-            subCommand.Add(new Option<InputFormat>("--to-format", "Specify to file format."));
-            subCommand.Add(new Option<StandardOutputFormat>("--output-format", "Specify output format (defaults to text)."));
+            subCommand.Add(new Option<StandardInputOutputBomFormat>("--from-format", "Specify from file format."));
+            subCommand.Add(new Option<StandardInputOutputBomFormat>("--to-format", "Specify to file format."));
+            subCommand.Add(new Option<StandardCommandOutputFormat>("--output-format", "Specify output format (defaults to text)."));
             subCommand.Add(new Option<bool>("--component-versions", "Report component versions that have been added, removed or modified."));
-            subCommand.Handler = CommandHandler.Create<string, string, InputFormat, InputFormat, StandardOutputFormat, bool>(Diff);
+            subCommand.Handler = CommandHandler.Create<Options>(Diff);
             rootCommand.Add(subCommand);
         }
 
-        public static async Task<int> Diff(
-            string fromFile, string toFile, InputFormat fromFormat, InputFormat toFormat, StandardOutputFormat outputFormat,
-            bool componentVersions)
+        public static async Task<int> Diff(Options options)
         {
-            var fromBomFormat = InputFormatHelper(fromFile, fromFormat);
-            var toBomFormat = InputFormatHelper(toFile, toFormat);
-            if (fromBomFormat == BomFormat.Unsupported || toBomFormat == BomFormat.Unsupported) return (int)ExitCode.ParameterValidationError;
-
-            await using var fromBomStream = File.OpenRead(fromFile);
-            await using var toBomStream = File.OpenRead(toFile);
-            
-            var fromBom = CLIUtils.BomDeserializer(fromBomStream, fromBomFormat);
-            var toBom = CLIUtils.BomDeserializer(toBomStream, toBomFormat);
+            var fromBom = CliUtils.InputBomHelper(options.FromFile, options.FromFormat);
+            if (fromBom == null) return (int)ExitCode.ParameterValidationError;
+            var toBom = CliUtils.InputBomHelper(options.ToFile, options.ToFormat);
+            if (toBom == null) return (int)ExitCode.ParameterValidationError;
 
             var result = new DiffResult();
 
-            if (componentVersions)
+            if (options.ComponentVersions)
             {
                 result.ComponentVersions = CycloneDXUtils.ComponentVersionDiff(fromBom, toBom);
             }
 
-            if (outputFormat == StandardOutputFormat.json)
+            if (options.OutputFormat == StandardCommandOutputFormat.json)
             {
-                var options = new JsonSerializerOptions
+                var jsonOptions = new JsonSerializerOptions
                 {
                     WriteIndented = true,
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                     IgnoreNullValues = true,
                 };
 
-                options.Converters.Add(new Json.Converters.v1_2.ComponentTypeConverter());
-                options.Converters.Add(new Json.Converters.v1_2.DataFlowConverter());
-                options.Converters.Add(new Json.Converters.v1_2.DateTimeConverter());
-                options.Converters.Add(new Json.Converters.v1_2.DependencyConverter());
-                options.Converters.Add(new Json.Converters.v1_2.ExternalReferenceTypeConverter());
-                options.Converters.Add(new Json.Converters.v1_2.HashAlgorithmConverter());
-                options.Converters.Add(new Json.Converters.v1_2.IssueClassificationConverter());
-                options.Converters.Add(new Json.Converters.v1_2.LicenseConverter());
-                options.Converters.Add(new Json.Converters.v1_2.PatchClassificationConverter());
+                jsonOptions.Converters.Add(new Json.Converters.v1_2.ComponentTypeConverter());
+                jsonOptions.Converters.Add(new Json.Converters.v1_2.DataFlowConverter());
+                jsonOptions.Converters.Add(new Json.Converters.v1_2.DateTimeConverter());
+                jsonOptions.Converters.Add(new Json.Converters.v1_2.DependencyConverter());
+                jsonOptions.Converters.Add(new Json.Converters.v1_2.ExternalReferenceTypeConverter());
+                jsonOptions.Converters.Add(new Json.Converters.v1_2.HashAlgorithmConverter());
+                jsonOptions.Converters.Add(new Json.Converters.v1_2.IssueClassificationConverter());
+                jsonOptions.Converters.Add(new Json.Converters.v1_2.LicenseConverter());
+                jsonOptions.Converters.Add(new Json.Converters.v1_2.PatchClassificationConverter());
 
-                Console.WriteLine(JsonSerializer.Serialize(result, options));
+                Console.WriteLine(JsonSerializer.Serialize(result, jsonOptions));
             }
             else
             {
