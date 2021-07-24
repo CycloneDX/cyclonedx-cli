@@ -32,6 +32,7 @@ namespace CycloneDX.Cli
             public string OutputFile { get; set; }
             public StandardInputOutputBomFormat InputFormat { get; set; }
             public StandardInputOutputBomFormat OutputFormat { get; set; }
+            public bool Hierarchical { get; set; }
         }
         
         public static void Configure(RootCommand rootCommand)
@@ -41,6 +42,7 @@ namespace CycloneDX.Cli
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
             subCommand.Add(new Option<StandardInputOutputBomFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<StandardInputOutputBomFormat>("--output-format", "Specify output file format."));
+            subCommand.Add(new Option<bool>("--hierarchical", "Perform a hierarchical merge."));
             subCommand.Handler = CommandHandler.Create<Options>(Merge);
             rootCommand.Add(subCommand);
         }
@@ -56,18 +58,10 @@ namespace CycloneDX.Cli
                 return (int)ExitCode.ParameterValidationError;
             }
 
-            var outputBom = new Bom();
+            var inputBoms = InputBoms(options.InputFiles, options.InputFormat, outputToConsole);
+            var outputBom = options.Hierarchical ? CycloneDXUtils.HierarchicalMerge(inputBoms) : CycloneDXUtils.FlatMerge(inputBoms);
+            outputBom.Version = 1;
 
-            foreach (var inputFilename in options.InputFiles)
-            {
-                if (!outputToConsole) Console.WriteLine($"Processing input file {inputFilename}");
-                var inputBom = CliUtils.InputBomHelper(inputFilename, options.InputFormat);
-                outputBom = CycloneDXUtils.Merge(outputBom, inputBom);
-                outputBom.Version = 1;
-                if (inputBom.Components != null && !outputToConsole)
-                    Console.WriteLine($"    Contains {inputBom.Components.Count} components");
-            }
-            
             if (!outputToConsole)
             {
                 Console.WriteLine("Writing output file...");
@@ -75,6 +69,18 @@ namespace CycloneDX.Cli
             }
 
             return CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile);
+        }
+
+        private static IEnumerable<Bom> InputBoms(IEnumerable<string> inputFilenames, StandardInputOutputBomFormat inputFormat, bool outputToConsole)
+        {
+            foreach (var inputFilename in inputFilenames)
+            {
+                if (!outputToConsole) Console.WriteLine($"Processing input file {inputFilename}");
+                var inputBom = CliUtils.InputBomHelper(inputFilename, inputFormat);
+                if (inputBom.Components != null && !outputToConsole)
+                    Console.WriteLine($"    Contains {inputBom.Components.Count} components");
+                yield return inputBom;
+            }
         }
     }
 }

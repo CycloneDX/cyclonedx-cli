@@ -27,16 +27,17 @@ namespace CycloneDX.Cli.Tests
     public class MergeTests
     {
         [Theory]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.json", StandardInputOutputBomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.json, "sbom.json", StandardInputOutputBomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputBomFormat.autodetect, "sbom.json", StandardInputOutputBomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputBomFormat.xml, "sbom.xml", StandardInputOutputBomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.xml"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.autodetect)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.json", StandardInputOutputBomFormat.json)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.xml)]
-        public async Task Merge(string[] inputFilenames, StandardInputOutputBomFormat inputFormat, string outputFilename, StandardInputOutputBomFormat outputFormat)
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.json", StandardInputOutputBomFormat.autodetect, true)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.json", StandardInputOutputBomFormat.autodetect, false)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.autodetect, false)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.json, "sbom.json", StandardInputOutputBomFormat.autodetect, false)]
+        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.autodetect, false)]
+        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputBomFormat.autodetect, "sbom.json", StandardInputOutputBomFormat.autodetect, false)]
+        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, StandardInputOutputBomFormat.xml, "sbom.xml", StandardInputOutputBomFormat.autodetect, false)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.xml"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.autodetect, false)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.json", StandardInputOutputBomFormat.json, false)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, StandardInputOutputBomFormat.autodetect, "sbom.xml", StandardInputOutputBomFormat.xml, false)]
+        public async Task Merge(string[] inputFilenames, StandardInputOutputBomFormat inputFormat, string outputFilename, StandardInputOutputBomFormat outputFormat, bool hierarchical)
         {
             using (var tempDirectory = new TempDirectory())
             {
@@ -47,7 +48,8 @@ namespace CycloneDX.Cli.Tests
                     InputFiles = new List<string>(),
                     InputFormat = inputFormat,
                     OutputFile = fullOutputPath,
-                    OutputFormat = outputFormat
+                    OutputFormat = outputFormat,
+                    Hierarchical = hierarchical
                 };
                 foreach (var inputFilename in inputFilenames)
                 {
@@ -58,7 +60,7 @@ namespace CycloneDX.Cli.Tests
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(fullOutputPath);
-                Snapshot.Match(bom, SnapshotNameExtension.Create(snapshotInputFilenames, inputFormat, outputFilename, outputFormat));
+                Snapshot.Match(bom, SnapshotNameExtension.Create(hierarchical ? "Hierarchical" : "Flat", snapshotInputFilenames, inputFormat, outputFilename, outputFormat));
             }
         }
     }
