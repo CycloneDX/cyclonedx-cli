@@ -1,4 +1,3 @@
-[![Build Status](https://github.com/CycloneDX/cyclonedx-cli/workflows/.NET%20Core%20CI/badge.svg)](https://github.com/CycloneDX/cyclonedx-cli/actions?workflow=.NET+Core+CI)
 [![Docker Image](https://img.shields.io/badge/docker-image-brightgreen?style=flat&logo=docker)](https://hub.docker.com/r/cyclonedx/cyclonedx-cli)
 [![License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](LICENSE)
 [![Website](https://img.shields.io/badge/https://-cyclonedx.org-blue.svg)](https://cyclonedx.org/)
@@ -137,7 +136,11 @@ Options:
   --output-file <output-file>                       Output BOM filename, will write to stdout if no value provided.
   --input-format <autodetect|json|protobuf|xml>     Specify input file format.
   --output-format <autodetect|json|protobuf|xml>    Specify output file format.
+  --hierarchical                                    Perform a hierarchical merge.
 ```
+
+Note: To perform a hierarchical merge all BOMs need the subject of the BOM
+described in the metadata component element.
 
 ### Examples
 
@@ -145,7 +148,7 @@ Merge two XML formatted BOMs:
 `cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-file sbom_all.xml`
 
 Merging two BOMs and piping output to additional tools:  
-`cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-format json | grep "somthing"`
+`cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-format json | grep "something"`
 
 
 ## Validate Command
