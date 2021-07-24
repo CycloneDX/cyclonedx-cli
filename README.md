@@ -197,7 +197,7 @@ For Ubuntu these are libc6 libgcc1 libgssapi-krb5-2 libicu66 libssl1.1 libstdc++
 
 # Using gron for adhoc searching and analysis
 
-gron transforms JSON into discrete assignments to make it easier to grep for what you want and see the absolute 'path' to it.
+_gron transforms JSON into discrete assignments to make it easier to grep for what you want and see the absolute 'path' to it._
 
 For convenience, gron is included in the CycloneDX CLI Docker image.
 
