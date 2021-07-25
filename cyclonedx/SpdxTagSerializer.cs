@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 // SPDX-License-Identifier: Apache-2.0
-// Copyright (c) Patrick Dwyer. All Rights Reserved.
+// Copyright (c) OWASP Foundation. All Rights Reserved.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;

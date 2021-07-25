@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <Authors>CycloneDX Team</Authors>
-    <Copyright>Copyright (c) Patrick Dwyer</Copyright>
+    <Copyright>Copyright (c) OWASP Foundation</Copyright>
     <Description>A command line tool for interacting with CycloneDX bill-of-material documents.</Description>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/CycloneDX/cyclonedx-cli.git</RepositoryUrl>
