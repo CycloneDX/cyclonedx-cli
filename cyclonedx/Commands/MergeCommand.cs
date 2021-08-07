@@ -33,6 +33,9 @@ namespace CycloneDX.Cli
             public StandardInputOutputBomFormat InputFormat { get; set; }
             public StandardInputOutputBomFormat OutputFormat { get; set; }
             public bool Hierarchical { get; set; }
+            public string Group { get; set; }
+            public string Name { get; set; }
+            public string Version { get; set; }
         }
         
         public static void Configure(RootCommand rootCommand)
@@ -43,6 +46,9 @@ namespace CycloneDX.Cli
             subCommand.Add(new Option<StandardInputOutputBomFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<StandardInputOutputBomFormat>("--output-format", "Specify output file format."));
             subCommand.Add(new Option<bool>("--hierarchical", "Perform a hierarchical merge."));
+            subCommand.Add(new Option<string>("--group", "Provide the group of software the merged BOM describes."));
+            subCommand.Add(new Option<string>("--name", "Provide the name of software the merged BOM describes (required for hierarchical merging)."));
+            subCommand.Add(new Option<string>("--version", "Provide the version of software the merged BOM describes (required for hierarchical merging)."));
             subCommand.Handler = CommandHandler.Create<Options>(Merge);
             rootCommand.Add(subCommand);
         }
@@ -50,7 +56,13 @@ namespace CycloneDX.Cli
         public static async Task<int> Merge(Options options)
         {
             var outputToConsole = string.IsNullOrEmpty(options.OutputFile);
-            
+
+            if (options.Hierarchical && (options.Name is null || options.Version is null))
+            {
+                Console.WriteLine($"Name and version must be specified when performing a hierarchical merge.");
+                return (int)ExitCode.ParameterValidationError;
+            }
+
             if (options.OutputFormat == StandardInputOutputBomFormat.autodetect) options.OutputFormat = CliUtils.AutoDetectBomFormat(options.OutputFile);
             if (options.OutputFormat == StandardInputOutputBomFormat.autodetect)
             {
@@ -59,7 +71,32 @@ namespace CycloneDX.Cli
             }
 
             var inputBoms = InputBoms(options.InputFiles, options.InputFormat, outputToConsole);
-            var outputBom = options.Hierarchical ? CycloneDXUtils.HierarchicalMerge(inputBoms) : CycloneDXUtils.FlatMerge(inputBoms);
+
+            Component bomSubject = null;
+            if (options.Group != null || options.Name != null || options.Version != null)
+                bomSubject = new Component
+                {
+                    Type = Component.Classification.Application,
+                    Group = options.Group,
+                    Name = options.Name,
+                    Version = options.Version,
+                };
+
+            Bom outputBom;
+            if (options.Hierarchical)
+            {
+                outputBom = CycloneDXUtils.HierarchicalMerge(inputBoms, bomSubject);
+            }
+            else
+            {
+                outputBom = CycloneDXUtils.FlatMerge(inputBoms);
+                if (bomSubject != null)
+                {
+                    if (outputBom.Metadata is null) outputBom.Metadata = new Metadata();
+                    outputBom.Metadata.Component = bomSubject;
+                }
+            }
+
             outputBom.Version = 1;
 
             if (!outputToConsole)

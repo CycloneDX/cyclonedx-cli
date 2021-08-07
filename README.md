@@ -137,6 +137,9 @@ Options:
   --input-format <autodetect|json|protobuf|xml>     Specify input file format.
   --output-format <autodetect|json|protobuf|xml>    Specify output file format.
   --hierarchical                                    Perform a hierarchical merge.
+  --group <group>                                   Provide the group of software the merged BOM describes.
+  --name <name>                                     Provide the name of software the merged BOM describes (required for hierarchical merging).
+  --version <version>                               Provide the version of software the merged BOM describes (required for hierarchical merging).
 ```
 
 Note: To perform a hierarchical merge all BOMs need the subject of the BOM
