@@ -94,7 +94,7 @@ namespace CycloneDX.Cli
             if (options.InputFormat.ToString().StartsWith("json", StringComparison.InvariantCulture))
             {
                 Console.WriteLine("Validating JSON BOM...");
-                validationResult = await Json.Validator.Validate(inputBom, schemaVersion);
+                validationResult = Json.Validator.Validate(inputBom, schemaVersion);
             }
             else
             {
