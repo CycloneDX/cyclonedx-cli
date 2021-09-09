@@ -16,30 +16,21 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.Threading.Tasks;
 using CycloneDX.Models.v1_3;
 using CycloneDX.Utils;
+using CycloneDX.Cli.Commands.Options;
 
-namespace CycloneDX.Cli
+namespace CycloneDX.Cli.Commands
 {
     public static class MergeCommand
     {
-        public class Options
-        {
-            public List<string> InputFiles { get; set; }
-            public string OutputFile { get; set; }
-            public StandardInputOutputBomFormat InputFormat { get; set; }
-            public StandardInputOutputBomFormat OutputFormat { get; set; }
-            public bool Hierarchical { get; set; }
-            public string Group { get; set; }
-            public string Name { get; set; }
-            public string Version { get; set; }
-        }
-        
         public static void Configure(RootCommand rootCommand)
         {
+            Contract.Requires(rootCommand != null);
             var subCommand = new Command("merge", "Merge two or more BOMs");
             subCommand.Add(new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space)."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
@@ -49,12 +40,13 @@ namespace CycloneDX.Cli
             subCommand.Add(new Option<string>("--group", "Provide the group of software the merged BOM describes."));
             subCommand.Add(new Option<string>("--name", "Provide the name of software the merged BOM describes (required for hierarchical merging)."));
             subCommand.Add(new Option<string>("--version", "Provide the version of software the merged BOM describes (required for hierarchical merging)."));
-            subCommand.Handler = CommandHandler.Create<Options>(Merge);
+            subCommand.Handler = CommandHandler.Create<MergeCommandOptions>(Merge);
             rootCommand.Add(subCommand);
         }
 
-        public static async Task<int> Merge(Options options)
+        public static async Task<int> Merge(MergeCommandOptions options)
         {
+            Contract.Requires(options != null);
             var outputToConsole = string.IsNullOrEmpty(options.OutputFile);
 
             if (options.Hierarchical && (options.Name is null || options.Version is null))
@@ -70,7 +62,7 @@ namespace CycloneDX.Cli
                 return (int)ExitCode.ParameterValidationError;
             }
 
-            var inputBoms = InputBoms(options.InputFiles, options.InputFormat, outputToConsole);
+            var inputBoms = await InputBoms(options.InputFiles, options.InputFormat, outputToConsole);
 
             Component bomSubject = null;
             if (options.Group != null || options.Name != null || options.Version != null)
@@ -105,19 +97,23 @@ namespace CycloneDX.Cli
                 Console.WriteLine($"    Total {outputBom.Components.Count} components");
             }
 
-            return CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile);
+            return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile);
         }
 
-        private static IEnumerable<Bom> InputBoms(IEnumerable<string> inputFilenames, StandardInputOutputBomFormat inputFormat, bool outputToConsole)
+        private static async Task<IEnumerable<Bom>> InputBoms(IEnumerable<string> inputFilenames, StandardInputOutputBomFormat inputFormat, bool outputToConsole)
         {
+            var boms = new List<Bom>();
             foreach (var inputFilename in inputFilenames)
             {
                 if (!outputToConsole) Console.WriteLine($"Processing input file {inputFilename}");
-                var inputBom = CliUtils.InputBomHelper(inputFilename, inputFormat);
+                var inputBom = await CliUtils.InputBomHelper(inputFilename, inputFormat);
                 if (inputBom.Components != null && !outputToConsole)
                     Console.WriteLine($"    Contains {inputBom.Components.Count} components");
-                yield return inputBom;
+                //TODO: figure out how to implement async iterators, if possible at all
+                // yield return inputBom;
+                boms.Add(inputBom);
             }
+            return boms;
         }
     }
 }

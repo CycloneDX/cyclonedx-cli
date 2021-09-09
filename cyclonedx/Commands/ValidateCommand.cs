@@ -22,7 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CycloneDX.Models;
 
-namespace CycloneDX.Cli
+namespace CycloneDX.Cli.Commands
 {
     internal static class ValidateCommand
     {

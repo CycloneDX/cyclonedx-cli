@@ -21,6 +21,8 @@ using System.Threading.Tasks;
 using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
+using CycloneDX.Cli.Commands.Options;
+using CycloneDX.Cli.Commands;
 
 namespace CycloneDX.Cli.Tests
 {
@@ -49,7 +51,7 @@ namespace CycloneDX.Cli.Tests
             {
                 var snapshotInputFilenames = string.Join('_', inputFilenames);
                 var fullOutputPath = Path.Join(tempDirectory.DirectoryPath, outputFilename);
-                var options = new MergeCommand.Options
+                var options = new MergeCommandOptions
                 {
                     InputFiles = new List<string>(),
                     InputFormat = inputFormat,

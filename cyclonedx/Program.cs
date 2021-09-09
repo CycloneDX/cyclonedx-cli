@@ -20,11 +20,11 @@ using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using CycloneDX.Cli.Models;
+using CycloneDX.Cli.Commands;
 
 namespace CycloneDX.Cli
 {
-    public partial class Program
+    public static partial class Program
     {
         private const string CycloneDx = @"
    ______           __                 ____ _  __    ________    ____
@@ -37,7 +37,7 @@ namespace CycloneDX.Cli
 
         public static async Task<int> Main(string[] args)
         {
-            if (args.Length == 0)
+            if (args == null || args.Length == 0)
             {
                 Console.WriteLine(CycloneDx);
             }

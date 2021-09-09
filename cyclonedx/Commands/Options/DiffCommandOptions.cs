@@ -13,15 +13,17 @@
 // limitations under the License.
 //
 // SPDX-License-Identifier: Apache-2.0
-// Copyright (c) OWASP Foundation. All Rights Reserved.
-using System.Collections.Generic;
-using CycloneDX.Models.v1_3;
-using CycloneDX.Utils;
+// Copyright (c) OWASP Foundation. All Rights Reserved.using System.Collections.Generic;
 
-namespace CycloneDX.Cli.Models
+namespace CycloneDX.Cli.Commands.Options
 {
-    public class DiffResult
+    public class DiffCommandOptions
     {
-        public Dictionary<string,DiffItem<Component>> ComponentVersions { get; set; }
+        public string FromFile { get; set; }    
+        public string ToFile { get; set; }
+        public StandardInputOutputBomFormat FromFormat { get; set; }
+        public StandardInputOutputBomFormat ToFormat { get; set; }
+        public StandardCommandOutputFormat OutputFormat { get; set; }
+        public bool ComponentVersions { get; set; }
     }
 }
