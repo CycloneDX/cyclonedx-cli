@@ -16,15 +16,12 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 using System;
 using System.CommandLine;
-using System.Diagnostics.Contracts;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using CycloneDX.Cli.Commands;
 
 namespace CycloneDX.Cli
 {
-    public static partial class Program
+    public static class Program
     {
         private const string CycloneDx = @"
    ______           __                 ____ _  __    ________    ____
@@ -44,13 +41,14 @@ namespace CycloneDX.Cli
 
             RootCommand rootCommand = new RootCommand();
             
+            AddCommand.Configure(rootCommand);
             AnalyzeCommand.Configure(rootCommand);
             ConvertCommand.Configure(rootCommand);
             DiffCommand.Configure(rootCommand);
             MergeCommand.Configure(rootCommand);
             ValidateCommand.Configure(rootCommand);
 
-            return await rootCommand.InvokeAsync(args);
+            return await rootCommand.InvokeAsync(args).ConfigureAwait(false);
         }
     }
 }

@@ -62,7 +62,7 @@ namespace CycloneDX.Cli.Commands
                 return (int)ExitCode.ParameterValidationError;
             }
 
-            var inputBoms = await InputBoms(options.InputFiles, options.InputFormat, outputToConsole);
+            var inputBoms = await InputBoms(options.InputFiles, options.InputFormat, outputToConsole).ConfigureAwait(false);
 
             Component bomSubject = null;
             if (options.Group != null || options.Name != null || options.Version != null)
@@ -97,7 +97,7 @@ namespace CycloneDX.Cli.Commands
                 Console.WriteLine($"    Total {outputBom.Components.Count} components");
             }
 
-            return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile);
+            return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
         }
 
         private static async Task<IEnumerable<Bom>> InputBoms(IEnumerable<string> inputFilenames, StandardInputOutputBomFormat inputFormat, bool outputToConsole)
@@ -106,11 +106,10 @@ namespace CycloneDX.Cli.Commands
             foreach (var inputFilename in inputFilenames)
             {
                 if (!outputToConsole) Console.WriteLine($"Processing input file {inputFilename}");
-                var inputBom = await CliUtils.InputBomHelper(inputFilename, inputFormat);
+                var inputBom = await CliUtils.InputBomHelper(inputFilename, inputFormat).ConfigureAwait(false);
                 if (inputBom.Components != null && !outputToConsole)
                     Console.WriteLine($"    Contains {inputBom.Components.Count} components");
                 //TODO: figure out how to implement async iterators, if possible at all
-                // yield return inputBom;
                 boms.Add(inputBom);
             }
             return boms;

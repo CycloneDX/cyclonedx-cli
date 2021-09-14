@@ -43,7 +43,7 @@ namespace CycloneDX.Cli
             StandardCommandOutputFormat commandOutputFormat,
             bool multipleComponentVersions)
         {
-            var inputBom = await CliUtils.InputBomHelper(inputFile, inputFormat);
+            var inputBom = await CliUtils.InputBomHelper(inputFile, inputFormat).ConfigureAwait(false);
             if (inputBom == null) return (int)ExitCode.ParameterValidationError;
 
             var result = new AnalyzeResult();

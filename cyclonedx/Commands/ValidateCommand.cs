@@ -62,14 +62,14 @@ namespace CycloneDX.Cli.Commands
             ValidateInputFormatValue(options);
             if (options.InputFormat == InputFormat.autodetect)
             {
-                await Console.Error.WriteLineAsync("Unable to auto-detect input format");
+                await Console.Error.WriteLineAsync("Unable to auto-detect input format").ConfigureAwait(false);
                 return (int)ExitCode.ParameterValidationError;
             }
 
             var inputBom = ReadInput(options);
             if (inputBom == null)
             {
-                await Console.Error.WriteLineAsync("Error reading input, you must specify a value for --input-file or pipe in content");
+                await Console.Error.WriteLineAsync("Error reading input, you must specify a value for --input-file or pipe in content").ConfigureAwait(false);
                 return (int)ExitCode.IOError;
             }
 
@@ -99,7 +99,7 @@ namespace CycloneDX.Cli.Commands
             else
             {
                 Console.WriteLine("Validating XML BOM...");
-                validationResult = await Xml.Validator.Validate(inputBom, schemaVersion);
+                validationResult = await Xml.Validator.Validate(inputBom, schemaVersion).ConfigureAwait(false);
             }
 
             if (validationResult.Messages != null)

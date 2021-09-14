@@ -32,7 +32,7 @@ namespace CycloneDX.Cli
 
     public class SpdxSerializationException : Exception
     {
-        public SpdxSerializationException() : base() {}
+        public SpdxSerializationException() {}
         public SpdxSerializationException(string message) : base(message) {}
         public SpdxSerializationException(string message, Exception innerException) : base(message, innerException) {}
     }

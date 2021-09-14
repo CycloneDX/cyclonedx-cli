@@ -42,9 +42,9 @@ namespace CycloneDX.Cli.Commands
 
         public static async Task<int> Diff(DiffCommandOptions options)
         {
-            var fromBom = await CliUtils.InputBomHelper(options.FromFile, options.FromFormat);
+            var fromBom = await CliUtils.InputBomHelper(options.FromFile, options.FromFormat).ConfigureAwait(false);
             if (fromBom == null) return (int)ExitCode.ParameterValidationError;
-            var toBom = await CliUtils.InputBomHelper(options.ToFile, options.ToFormat);
+            var toBom = await CliUtils.InputBomHelper(options.ToFile, options.ToFormat).ConfigureAwait(false);
             if (toBom == null) return (int)ExitCode.ParameterValidationError;
 
             var result = new DiffResult();

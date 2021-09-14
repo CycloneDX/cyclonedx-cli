@@ -71,7 +71,7 @@ namespace CycloneDX.Cli.Commands
         public static async Task<int> Convert(ConvertCommandOptions options)
         {
             Contract.Requires(options != null);
-            var inputBom = await CliUtils.InputBomHelper(options.InputFile, options.InputFormat);
+            var inputBom = await CliUtils.InputBomHelper(options.InputFile, options.InputFormat).ConfigureAwait(false);
             if (inputBom == null) return (int)ExitCode.ParameterValidationError;
 
             if (options.OutputFormat == OutputFormat.autodetect)
@@ -91,7 +91,7 @@ namespace CycloneDX.Cli.Commands
                 }
             }
 
-            return await CliUtils.OutputBomHelper(inputBom, options.OutputFormat, options.OutputFile);
+            return await CliUtils.OutputBomHelper(inputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
         }
     }
 }

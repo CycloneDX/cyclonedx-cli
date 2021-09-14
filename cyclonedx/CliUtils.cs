@@ -97,7 +97,7 @@ namespace CycloneDX.Cli
             
             if (format == StandardInputOutputBomFormat.json)
             {
-                return await Json.Deserializer.DeserializeAsync(inputStream);
+                return await Json.Deserializer.DeserializeAsync(inputStream).ConfigureAwait(false);
             }
             else if (format == StandardInputOutputBomFormat.xml)
             {
@@ -139,7 +139,7 @@ namespace CycloneDX.Cli
             }
             else
             {
-                return await InputBomHelper(filename, (StandardInputOutputBomFormat) format);
+                return await InputBomHelper(filename, (StandardInputOutputBomFormat) format).ConfigureAwait(false);
             }
         }
         
@@ -168,14 +168,12 @@ namespace CycloneDX.Cli
             }
             else if (format == StandardInputOutputBomFormat.json)
             {
-                await Json.Serializer.SerializeAsync(bom, stream);
+                await Json.Serializer.SerializeAsync(bom, stream).ConfigureAwait(false);
             }
             else if (format == StandardInputOutputBomFormat.xml)
             {
                 Xml.Serializer.Serialize(bom, stream);
             }
-            
-            if (filename == null) stream.SetLength(stream.Position);
             
             return 0;
         }
@@ -188,7 +186,7 @@ namespace CycloneDX.Cli
                 || format == ConvertCommand.OutputFormat.xml
             )
             {
-                return await OutputBomHelper(bom, (StandardInputOutputBomFormat) format, filename);
+                return await OutputBomHelper(bom, (StandardInputOutputBomFormat) format, filename).ConfigureAwait(false);
             }
             else
             {
@@ -200,11 +198,11 @@ namespace CycloneDX.Cli
                 }
                 else if (format == ConvertCommand.OutputFormat.json_v1_3)
                 {
-                    await Json.Serializer.SerializeAsync(bom, stream);
+                    await Json.Serializer.SerializeAsync(bom, stream).ConfigureAwait(false);
                 }
                 else if (format == ConvertCommand.OutputFormat.json_v1_2)
                 {
-                    await Json.Serializer.SerializeAsync(new CycloneDX.Models.v1_2.Bom(bom), stream);
+                    await Json.Serializer.SerializeAsync(new CycloneDX.Models.v1_2.Bom(bom), stream).ConfigureAwait(false);
                 }
                 else if (format == ConvertCommand.OutputFormat.xml_v1_3)
                 {

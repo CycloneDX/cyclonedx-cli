@@ -67,7 +67,7 @@ namespace CycloneDX.Cli.Tests
                     OutputFile = fullOutputPath,
                     InputFormat = inputFormat,
                     OutputFormat = outputFormat
-                });
+                }).ConfigureAwait(false);
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(fullOutputPath);
@@ -91,7 +91,7 @@ namespace CycloneDX.Cli.Tests
                     InputFormat = ConvertCommand.InputFormat.autodetect,
                     OutputFormat = outputFormat
                     
-                });
+                }).ConfigureAwait(false);
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(outputFilename);
