@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace CycloneDX.Cli
     {
         public static string Serialize(Bom bom)
         {
+            Contract.Requires(bom != null);
             using (var stream = new MemoryStream())
             {
                 using (var writer = new StreamWriter(stream))
@@ -121,7 +123,7 @@ namespace CycloneDX.Cli
                             if (hashAlgorithm != Hash.HashAlgorithm.Null)
                                 csv.WriteField(c.Hashes?.Where(h => h.Alg == hashAlgorithm).FirstOrDefault<Hash>()?.Content);
                         }
-                        csv.WriteField(c.Description?.Replace("\r", "").Replace("\n", ""));
+                        csv.WriteField(c.Description?.Replace("\r", "", StringComparison.InvariantCulture).Replace("\n", "", StringComparison.InvariantCulture));
 
                         csv.NextRecord();
                     }
@@ -135,7 +137,7 @@ namespace CycloneDX.Cli
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 MissingFieldFound = null,
-                PrepareHeaderForMatch = args => args.Header.ToLower()
+                PrepareHeaderForMatch = args => args.Header.ToLower(CultureInfo.InvariantCulture)
             };
             using (var stream =  new MemoryStream(System.Text.Encoding.UTF8.GetBytes(csv)))
             using (var reader = new StreamReader(stream))
@@ -222,7 +224,7 @@ namespace CycloneDX.Cli
                     if (licenseExpressions != null)
                     foreach (var licenseExpressionString in licenseExpressions)
                     {
-                        if (licenseExpressionString.Contains(" ")) // license expression
+                        if (licenseExpressionString.Contains(" ", StringComparison.InvariantCulture)) // license expression
                         {
                             var componentLicense = new LicenseChoice
                             {

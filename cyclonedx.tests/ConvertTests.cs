@@ -21,6 +21,8 @@ using System.Threading.Tasks;
 using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
+using CycloneDX.Cli.Commands;
+using CycloneDX.Cli.Commands.Options;
 
 namespace CycloneDX.Cli.Tests
 {
@@ -59,13 +61,13 @@ namespace CycloneDX.Cli.Tests
             using (var tempDirectory = new TempDirectory())
             {
                 var fullOutputPath = Path.Join(tempDirectory.DirectoryPath, outputFilename);
-                var exitCode = await ConvertCommand.Convert(new ConvertCommand.Options
+                var exitCode = await ConvertCommand.Convert(new ConvertCommandOptions
                 {
                     InputFile = Path.Combine("Resources", inputFilename),
                     OutputFile = fullOutputPath,
                     InputFormat = inputFormat,
                     OutputFormat = outputFormat
-                });
+                }).ConfigureAwait(false);
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(fullOutputPath);
@@ -82,14 +84,14 @@ namespace CycloneDX.Cli.Tests
             using (var tempDirectory = new TempDirectory())
             {
                 var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.spdx");
-                var exitCode = await ConvertCommand.Convert(new ConvertCommand.Options
+                var exitCode = await ConvertCommand.Convert(new ConvertCommandOptions
                 {
                     InputFile = Path.Combine("Resources", "bom-1.2.xml"),
                     OutputFile = outputFilename,
                     InputFormat = ConvertCommand.InputFormat.autodetect,
                     OutputFormat = outputFormat
                     
-                });
+                }).ConfigureAwait(false);
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(outputFilename);

@@ -17,7 +17,9 @@
 using System;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using CycloneDX.Models.v1_3;
+using CycloneDX.Cli.Commands;
 
 namespace CycloneDX.Cli
 {
@@ -74,7 +76,7 @@ namespace CycloneDX.Cli
             }
         }
 
-        public static Bom InputBomHelper(string filename, StandardInputOutputBomFormat format)
+        public static async Task<Bom> InputBomHelper(string filename, StandardInputOutputBomFormat format)
         {
             if (filename == null && format == StandardInputOutputBomFormat.autodetect)
             {
@@ -95,7 +97,7 @@ namespace CycloneDX.Cli
             
             if (format == StandardInputOutputBomFormat.json)
             {
-                return Json.Deserializer.Deserialize(inputStream);
+                return await Json.Deserializer.DeserializeAsync(inputStream).ConfigureAwait(false);
             }
             else if (format == StandardInputOutputBomFormat.xml)
             {
@@ -109,7 +111,7 @@ namespace CycloneDX.Cli
             return null;
         }
         
-        public static Bom InputBomHelper(string filename, ConvertCommand.InputFormat format)
+        public static async Task<Bom> InputBomHelper(string filename, ConvertCommand.InputFormat format)
         {
             if (filename == null && format == ConvertCommand.InputFormat.autodetect)
             {
@@ -137,11 +139,11 @@ namespace CycloneDX.Cli
             }
             else
             {
-                return InputBomHelper(filename, (StandardInputOutputBomFormat) format);
+                return await InputBomHelper(filename, (StandardInputOutputBomFormat) format).ConfigureAwait(false);
             }
         }
         
-        public static int OutputBomHelper(Bom bom, StandardInputOutputBomFormat format, string filename)
+        public static async Task<int> OutputBomHelper(Bom bom, StandardInputOutputBomFormat format, string filename)
         {
             if (filename == null && format == StandardInputOutputBomFormat.autodetect)
             {
@@ -166,19 +168,17 @@ namespace CycloneDX.Cli
             }
             else if (format == StandardInputOutputBomFormat.json)
             {
-                Json.Serializer.Serialize(bom, stream);
+                await Json.Serializer.SerializeAsync(bom, stream).ConfigureAwait(false);
             }
             else if (format == StandardInputOutputBomFormat.xml)
             {
                 Xml.Serializer.Serialize(bom, stream);
             }
             
-            if (filename == null) stream.SetLength(stream.Position);
-            
             return 0;
         }
 
-        public static int OutputBomHelper(Bom bom, ConvertCommand.OutputFormat format, string filename)
+        public static async Task<int> OutputBomHelper(Bom bom, ConvertCommand.OutputFormat format, string filename)
         {
             if (format == ConvertCommand.OutputFormat.autodetect
                 || format == ConvertCommand.OutputFormat.json
@@ -186,7 +186,7 @@ namespace CycloneDX.Cli
                 || format == ConvertCommand.OutputFormat.xml
             )
             {
-                return OutputBomHelper(bom, (StandardInputOutputBomFormat) format, filename);
+                return await OutputBomHelper(bom, (StandardInputOutputBomFormat) format, filename).ConfigureAwait(false);
             }
             else
             {
@@ -198,11 +198,11 @@ namespace CycloneDX.Cli
                 }
                 else if (format == ConvertCommand.OutputFormat.json_v1_3)
                 {
-                    Json.Serializer.Serialize(bom, stream);
+                    await Json.Serializer.SerializeAsync(bom, stream).ConfigureAwait(false);
                 }
                 else if (format == ConvertCommand.OutputFormat.json_v1_2)
                 {
-                    Json.Serializer.Serialize(new CycloneDX.Models.v1_2.Bom(bom), stream);
+                    await Json.Serializer.SerializeAsync(new CycloneDX.Models.v1_2.Bom(bom), stream).ConfigureAwait(false);
                 }
                 else if (format == ConvertCommand.OutputFormat.xml_v1_3)
                 {

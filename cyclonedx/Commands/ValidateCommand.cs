@@ -22,7 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CycloneDX.Models;
 
-namespace CycloneDX.Cli
+namespace CycloneDX.Cli.Commands
 {
     internal static class ValidateCommand
     {
@@ -62,14 +62,14 @@ namespace CycloneDX.Cli
             ValidateInputFormatValue(options);
             if (options.InputFormat == InputFormat.autodetect)
             {
-                await Console.Error.WriteLineAsync("Unable to auto-detect input format");
+                await Console.Error.WriteLineAsync("Unable to auto-detect input format").ConfigureAwait(false);
                 return (int)ExitCode.ParameterValidationError;
             }
 
             var inputBom = ReadInput(options);
             if (inputBom == null)
             {
-                await Console.Error.WriteLineAsync("Error reading input, you must specify a value for --input-file or pipe in content");
+                await Console.Error.WriteLineAsync("Error reading input, you must specify a value for --input-file or pipe in content").ConfigureAwait(false);
                 return (int)ExitCode.IOError;
             }
 
@@ -94,12 +94,12 @@ namespace CycloneDX.Cli
             if (options.InputFormat.ToString().StartsWith("json", StringComparison.InvariantCulture))
             {
                 Console.WriteLine("Validating JSON BOM...");
-                validationResult = await Json.Validator.Validate(inputBom, schemaVersion);
+                validationResult = Json.Validator.Validate(inputBom, schemaVersion);
             }
             else
             {
                 Console.WriteLine("Validating XML BOM...");
-                validationResult = await Xml.Validator.Validate(inputBom, schemaVersion);
+                validationResult = await Xml.Validator.Validate(inputBom, schemaVersion).ConfigureAwait(false);
             }
 
             if (validationResult.Messages != null)

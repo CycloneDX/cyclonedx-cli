@@ -20,22 +20,13 @@ using System.CommandLine.Invocation;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CycloneDX.Cli.Models;
+using CycloneDX.Cli.Commands.Options;
 using CycloneDX.Utils;
 
-namespace CycloneDX.Cli
+namespace CycloneDX.Cli.Commands
 {
     internal static class DiffCommand
     {
-        public class Options
-        {
-            public string FromFile { get; set; }    
-            public string ToFile { get; set; }
-            public StandardInputOutputBomFormat FromFormat { get; set; }
-            public StandardInputOutputBomFormat ToFormat { get; set; }
-            public StandardCommandOutputFormat OutputFormat { get; set; }
-            public bool ComponentVersions { get; set; }
-        }
-        
         internal static void Configure(RootCommand rootCommand)
         {
             var subCommand = new Command("diff", "Generate a BOM diff");
@@ -45,15 +36,15 @@ namespace CycloneDX.Cli
             subCommand.Add(new Option<StandardInputOutputBomFormat>("--to-format", "Specify to file format."));
             subCommand.Add(new Option<StandardCommandOutputFormat>("--output-format", "Specify output format (defaults to text)."));
             subCommand.Add(new Option<bool>("--component-versions", "Report component versions that have been added, removed or modified."));
-            subCommand.Handler = CommandHandler.Create<Options>(Diff);
+            subCommand.Handler = CommandHandler.Create<DiffCommandOptions>(Diff);
             rootCommand.Add(subCommand);
         }
 
-        public static async Task<int> Diff(Options options)
+        public static async Task<int> Diff(DiffCommandOptions options)
         {
-            var fromBom = CliUtils.InputBomHelper(options.FromFile, options.FromFormat);
+            var fromBom = await CliUtils.InputBomHelper(options.FromFile, options.FromFormat).ConfigureAwait(false);
             if (fromBom == null) return (int)ExitCode.ParameterValidationError;
-            var toBom = CliUtils.InputBomHelper(options.ToFile, options.ToFormat);
+            var toBom = await CliUtils.InputBomHelper(options.ToFile, options.ToFormat).ConfigureAwait(false);
             if (toBom == null) return (int)ExitCode.ParameterValidationError;
 
             var result = new DiffResult();

@@ -1,7 +1,10 @@
-image: gitpod/workspace-dotnet
+image:
+  file: .gitpod.Dockerfile
 
 tasks:
-  - init: dotnet restore
+  - init: dotnet tool install --global dotnet-reportgenerator-globaltool
+  - init: dotnet build
+
 vscode:
   extensions:
-    - ms-dotnettools.csharp
+    - muhammad-sammy.csharp

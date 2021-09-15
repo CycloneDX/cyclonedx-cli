@@ -17,9 +17,12 @@
 using System;
 using System.CommandLine;
 using System.CommandLine.Invocation;
+using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
+using CycloneDX.Cli;
+using CycloneDX.Cli.Commands.Options;
 
-namespace CycloneDX.Cli
+namespace CycloneDX.Cli.Commands
 {
     public static class ConvertCommand
     {
@@ -53,28 +56,22 @@ namespace CycloneDX.Cli
             spdxtag_v2_2
         }
 
-        public class Options
-        {
-            public string InputFile { get; set; }
-            public string OutputFile { get; set; }
-            public InputFormat InputFormat { get; set; }
-            public OutputFormat OutputFormat { get; set; }
-        }
-        
         internal static void Configure(RootCommand rootCommand)
         {
+            Contract.Requires(rootCommand != null);
             var subCommand = new Command("convert", "Convert between different BOM formats");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
             subCommand.Add(new Option<InputFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<OutputFormat>("--output-format", "Specify output file format."));
-            subCommand.Handler = CommandHandler.Create<Options>(Convert);
+            subCommand.Handler = CommandHandler.Create<ConvertCommandOptions>(Convert);
             rootCommand.Add(subCommand);
         }
 
-        public static async Task<int> Convert(Options options)
+        public static async Task<int> Convert(ConvertCommandOptions options)
         {
-            var inputBom = CliUtils.InputBomHelper(options.InputFile, options.InputFormat);
+            Contract.Requires(options != null);
+            var inputBom = await CliUtils.InputBomHelper(options.InputFile, options.InputFormat).ConfigureAwait(false);
             if (inputBom == null) return (int)ExitCode.ParameterValidationError;
 
             if (options.OutputFormat == OutputFormat.autodetect)
@@ -94,7 +91,7 @@ namespace CycloneDX.Cli
                 }
             }
 
-            return CliUtils.OutputBomHelper(inputBom, options.OutputFormat, options.OutputFile);
+            return await CliUtils.OutputBomHelper(inputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
         }
     }
 }

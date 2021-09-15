@@ -21,6 +21,7 @@ Options:
   -?, -h, --help    Show help and usage information
 
 Commands:
+  add                           Add information to a BOM (currently supports files)
   analyze                       Analyze a BOM file
   convert                       Convert between different BOM formats
   diff <from-file> <to-file>    Generate a BOM diff
@@ -36,7 +37,42 @@ Conversion to all CycloneDX BOM versions, CSV, SPDX tag/value v2.1 and v2.2 is s
 
 Binaries can be downloaded from the [releases page](https://github.com/CycloneDX/cyclonedx-cli/releases).
 
+Note: The CycloneDX CLI tool is built for automation use cases. Any commands that have the `--input-file` option also support feeding input from stdin. Likewise, any commands that have the `--output-file` option support output to stdout. However, you will need to supply the input/output formats.
+
+For example:  
+`cat bom.json | cyclonedx-cli convert --input-format json --output-format xml > bom.xml`
+
 # Commands
+
+## Add Command
+
+### Add File Subcommand
+
+```
+files
+  Add files to a BOM
+
+Usage:
+  cyclonedx add files [options]
+
+Options:
+  --input-file <input-file>                       Input BOM filename.
+  --no-input                                      Use this option to indicate that there is no input BOM.
+  --output-file <output-file>                     Output BOM filename, will write to stdout if no value provided.
+  --input-format <autodetect|json|protobuf|xml>   Specify input file format.
+  --output-format <autodetect|json|protobuf|xml>  Specify output file format.
+  --base-path <base-path>                         Base path for directory to process (defaults to current working directory if omitted).
+  --include <include>                             Apache Ant style path and file patterns to specify what to include (defaults to all files, separate patterns with a space).
+  --exclude <exclude>                             Apache Ant style path and file patterns to specify what to exclude (defaults to none, separate patterns with a space).
+```
+
+#### Examples
+
+Generating a source code BOM, excluding Git repository directory:  
+`cyclonedx-cli add files --no-input --output-format json --exclude /.git/**`
+
+Adding build output files, from `bin` directory, to existing BOM:  
+`cyclonedx-cli add files --input-file bom.json --output-format json --base-path bin`
 
 ## Analyze Command
 
