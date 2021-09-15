@@ -19,7 +19,7 @@ using System.IO;
 using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
-using CycloneDX.Xml;
+using CycloneDX.Cli.Serializers;
 
 namespace CycloneDX.Cli.Tests
 {
@@ -38,7 +38,7 @@ namespace CycloneDX.Cli.Tests
         {
             using (var tempDirectory = new TempDirectory())
             {
-                var resourceFilename = Path.Join("Resources", filename + "-1.2.xml");
+                var resourceFilename = Path.Join("Resources", "CsvSerializer", filename + "-1.2.xml");
                 var inputBomString = File.ReadAllText(resourceFilename);
                 var bom = Xml.Deserializer.Deserialize(inputBomString);
 
@@ -63,7 +63,7 @@ namespace CycloneDX.Cli.Tests
         {
             using (var tempDirectory = new TempDirectory())
             {
-                var resourceFilename = Path.Join("Resources", filename + ".csv");
+                var resourceFilename = Path.Join("Resources", "CsvSerializer", filename + ".csv");
                 var inputBomString = File.ReadAllText(resourceFilename);
 
                 var bom = CsvSerializer.Deserialize(inputBomString);

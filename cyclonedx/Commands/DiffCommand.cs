@@ -20,7 +20,6 @@ using System.CommandLine.Invocation;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CycloneDX.Cli.Models;
-using CycloneDX.Cli.Commands.Options;
 using CycloneDX.Utils;
 
 namespace CycloneDX.Cli.Commands
@@ -32,9 +31,9 @@ namespace CycloneDX.Cli.Commands
             var subCommand = new Command("diff", "Generate a BOM diff");
             subCommand.Add(new Argument<string>("from-file", "From BOM filename."));
             subCommand.Add(new Argument<string>("to-file", "To BOM filename."));
-            subCommand.Add(new Option<StandardInputOutputBomFormat>("--from-format", "Specify from file format."));
-            subCommand.Add(new Option<StandardInputOutputBomFormat>("--to-format", "Specify to file format."));
-            subCommand.Add(new Option<StandardCommandOutputFormat>("--output-format", "Specify output format (defaults to text)."));
+            subCommand.Add(new Option<BomFormat>("--from-format", "Specify from file format."));
+            subCommand.Add(new Option<BomFormat>("--to-format", "Specify to file format."));
+            subCommand.Add(new Option<CommandOutputFormat>("--output-format", "Specify output format (defaults to text)."));
             subCommand.Add(new Option<bool>("--component-versions", "Report component versions that have been added, removed or modified."));
             subCommand.Handler = CommandHandler.Create<DiffCommandOptions>(Diff);
             rootCommand.Add(subCommand);
@@ -54,7 +53,7 @@ namespace CycloneDX.Cli.Commands
                 result.ComponentVersions = CycloneDXUtils.ComponentVersionDiff(fromBom, toBom);
             }
 
-            if (options.OutputFormat == StandardCommandOutputFormat.json)
+            if (options.OutputFormat == CommandOutputFormat.json)
             {
                 var jsonOptions = new JsonSerializerOptions
                 {

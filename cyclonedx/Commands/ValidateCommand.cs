@@ -17,6 +17,7 @@
 using System;
 using System.CommandLine;
 using System.CommandLine.Invocation;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,43 +25,25 @@ using CycloneDX.Models;
 
 namespace CycloneDX.Cli.Commands
 {
-    internal static class ValidateCommand
+    public static class ValidateCommand
     {
-        public enum InputFormat
-        {
-            autodetect,
-            json,
-            json_v1_3,
-            json_v1_2,
-            xml,
-            xml_v1_3,
-            xml_v1_2,
-            xml_v1_1,
-            xml_v1_0,
-        }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812: Avoid uninstantiated internal classes")]
-        public class Options
-        {
-            public string InputFile { get; set; }
-            public InputFormat InputFormat { get; set; }
-            public bool FailOnErrors { get; set; }
-        }
 
         public static void Configure(RootCommand rootCommand)
         {
+            Contract.Requires(rootCommand != null);
             var subCommand = new Command("validate", "Validate a BOM");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
-            subCommand.Add(new Option<InputFormat>("--input-format", "Specify input file format."));
+            subCommand.Add(new Option<CycloneDXFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<bool>("--fail-on-errors", "Fail on validation errors (return a non-zero exit code)"));
-            subCommand.Handler = CommandHandler.Create<Options>(Validate);
+            subCommand.Handler = CommandHandler.Create<ValidateCommandOptions>(Validate);
             rootCommand.Add(subCommand);
         }
 
-        public static async Task<int> Validate(Options options)
+        public static async Task<int> Validate(ValidateCommandOptions options)
         {
+            Contract.Requires(options != null);
             ValidateInputFormatValue(options);
-            if (options.InputFormat == InputFormat.autodetect)
+            if (options.InputFormat == CycloneDXFormat.autodetect)
             {
                 await Console.Error.WriteLineAsync("Unable to auto-detect input format").ConfigureAwait(false);
                 return (int)ExitCode.ParameterValidationError;
@@ -77,14 +60,14 @@ namespace CycloneDX.Cli.Commands
 
             switch (options.InputFormat)
             {
-                case InputFormat.xml_v1_2:
-                case InputFormat.json_v1_2:
+                case CycloneDXFormat.xml_v1_2:
+                case CycloneDXFormat.json_v1_2:
                     schemaVersion = SchemaVersion.v1_2;
                     break;
-                case InputFormat.xml_v1_1:
+                case CycloneDXFormat.xml_v1_1:
                     schemaVersion = SchemaVersion.v1_1;
                     break;
-                case InputFormat.xml_v1_0:
+                case CycloneDXFormat.xml_v1_0:
                     schemaVersion = SchemaVersion.v1_0;
                     break;
             }
@@ -118,31 +101,31 @@ namespace CycloneDX.Cli.Commands
             return (int)ExitCode.Ok;
         }
 
-        private static void ValidateInputFormatValue(Options options)
+        private static void ValidateInputFormatValue(ValidateCommandOptions options)
         {
-            if (options.InputFormat == InputFormat.autodetect && !string.IsNullOrEmpty(options.InputFile))
+            if (options.InputFormat == CycloneDXFormat.autodetect && !string.IsNullOrEmpty(options.InputFile))
             {
                 if (options.InputFile.EndsWith(".json", StringComparison.InvariantCulture))
                 {
-                    options.InputFormat = InputFormat.json;
+                    options.InputFormat = CycloneDXFormat.json;
                 }
                 else if (options.InputFile.EndsWith(".xml", StringComparison.InvariantCulture))
                 {
-                    options.InputFormat = InputFormat.xml;
+                    options.InputFormat = CycloneDXFormat.xml;
                 }
             }
             
-            if (options.InputFormat == InputFormat.json)
+            if (options.InputFormat == CycloneDXFormat.json)
             {
-                options.InputFormat = InputFormat.json_v1_3;
+                options.InputFormat = CycloneDXFormat.json_v1_3;
             }
-            else if (options.InputFormat == InputFormat.xml)
+            else if (options.InputFormat == CycloneDXFormat.xml)
             {
-                options.InputFormat = InputFormat.xml_v1_3;
+                options.InputFormat = CycloneDXFormat.xml_v1_3;
             }
         }
 
-        private static string ReadInput(Options options)
+        private static string ReadInput(ValidateCommandOptions options)
         {
             string inputString = null;
             if (!string.IsNullOrEmpty(options.InputFile))
