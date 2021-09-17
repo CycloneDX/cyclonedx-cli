@@ -22,7 +22,6 @@ using System.CommandLine.Invocation;
 using System.Threading.Tasks;
 using CycloneDX.Models.v1_3;
 using CycloneDX.Utils;
-using CycloneDX.Cli.Commands.Options;
 
 namespace CycloneDX.Cli.Commands
 {
@@ -34,8 +33,8 @@ namespace CycloneDX.Cli.Commands
             var subCommand = new Command("merge", "Merge two or more BOMs");
             subCommand.Add(new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space)."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
-            subCommand.Add(new Option<StandardInputOutputBomFormat>("--input-format", "Specify input file format."));
-            subCommand.Add(new Option<StandardInputOutputBomFormat>("--output-format", "Specify output file format."));
+            subCommand.Add(new Option<BomFormat>("--input-format", "Specify input file format."));
+            subCommand.Add(new Option<BomFormat>("--output-format", "Specify output file format."));
             subCommand.Add(new Option<bool>("--hierarchical", "Perform a hierarchical merge."));
             subCommand.Add(new Option<string>("--group", "Provide the group of software the merged BOM describes."));
             subCommand.Add(new Option<string>("--name", "Provide the name of software the merged BOM describes (required for hierarchical merging)."));
@@ -55,8 +54,8 @@ namespace CycloneDX.Cli.Commands
                 return (int)ExitCode.ParameterValidationError;
             }
 
-            if (options.OutputFormat == StandardInputOutputBomFormat.autodetect) options.OutputFormat = CliUtils.AutoDetectBomFormat(options.OutputFile);
-            if (options.OutputFormat == StandardInputOutputBomFormat.autodetect)
+            if (options.OutputFormat == BomFormat.autodetect) options.OutputFormat = CliUtils.AutoDetectBomFormat(options.OutputFile);
+            if (options.OutputFormat == BomFormat.autodetect)
             {
                 Console.WriteLine($"Unable to auto-detect output format");
                 return (int)ExitCode.ParameterValidationError;
@@ -100,7 +99,7 @@ namespace CycloneDX.Cli.Commands
             return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
         }
 
-        private static async Task<IEnumerable<Bom>> InputBoms(IEnumerable<string> inputFilenames, StandardInputOutputBomFormat inputFormat, bool outputToConsole)
+        private static async Task<IEnumerable<Bom>> InputBoms(IEnumerable<string> inputFilenames, BomFormat inputFormat, bool outputToConsole)
         {
             var boms = new List<Bom>();
             foreach (var inputFilename in inputFilenames)

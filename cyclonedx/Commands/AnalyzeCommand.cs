@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 using CycloneDX.Cli.Models;
 using CycloneDX.Utils;
 
-namespace CycloneDX.Cli
+namespace CycloneDX.Cli.Commands
 {
     internal static class AnalyzeCommand
     {
@@ -30,49 +30,28 @@ namespace CycloneDX.Cli
         {
             var subCommand = new Command("analyze", "Analyze a BOM file");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
-            subCommand.Add(new Option<StandardInputOutputBomFormat>("--input-format", "Specify input file format."));
-            subCommand.Add(new Option<StandardCommandOutputFormat>("--output-format", "Specify output format (defaults to text)."));
+            subCommand.Add(new Option<BomFormat>("--input-format", "Specify input file format."));
+            subCommand.Add(new Option<CommandOutputFormat>("--output-format", "Specify output format (defaults to text)."));
             subCommand.Add(new Option<bool>("--multiple-component-versions", "Report components that have multiple versions in use."));
-            subCommand.Handler = CommandHandler.Create<string, StandardInputOutputBomFormat, StandardCommandOutputFormat, bool>(Analyze);
+            subCommand.Handler = CommandHandler.Create<AnalyzeCommandOptions>(Analyze);
             rootCommand.Add(subCommand);
         }
 
-        public static async Task<int> Analyze(
-            string inputFile, 
-            StandardInputOutputBomFormat inputFormat, 
-            StandardCommandOutputFormat commandOutputFormat,
-            bool multipleComponentVersions)
+        public static async Task<int> Analyze(AnalyzeCommandOptions options)
         {
-            var inputBom = await CliUtils.InputBomHelper(inputFile, inputFormat).ConfigureAwait(false);
+            var inputBom = await CliUtils.InputBomHelper(options.InputFile, options.InputFormat).ConfigureAwait(false);
             if (inputBom == null) return (int)ExitCode.ParameterValidationError;
 
             var result = new AnalyzeResult();
 
-            if (multipleComponentVersions)
+            if (options.MultipleComponentVersions)
             {
                 result.MultipleComponentVersions = CycloneDXUtils.MultipleComponentVersions(inputBom);
             }
 
-            if (commandOutputFormat == StandardCommandOutputFormat.json)
+            if (options.OutputFormat == CommandOutputFormat.json)
             {
-                var options = new JsonSerializerOptions
-                {
-                    WriteIndented = true,
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                    IgnoreNullValues = true,
-                };
-
-                options.Converters.Add(new Json.Converters.v1_2.ComponentTypeConverter());
-                options.Converters.Add(new Json.Converters.v1_2.DataFlowConverter());
-                options.Converters.Add(new Json.Converters.v1_2.DateTimeConverter());
-                options.Converters.Add(new Json.Converters.v1_2.DependencyConverter());
-                options.Converters.Add(new Json.Converters.v1_2.ExternalReferenceTypeConverter());
-                options.Converters.Add(new Json.Converters.v1_2.HashAlgorithmConverter());
-                options.Converters.Add(new Json.Converters.v1_2.IssueClassificationConverter());
-                options.Converters.Add(new Json.Converters.v1_2.LicenseConverter());
-                options.Converters.Add(new Json.Converters.v1_2.PatchClassificationConverter());
-
-                Console.WriteLine(JsonSerializer.Serialize(result, options));
+                Console.WriteLine(JsonSerializer.Serialize(result, Json.Utils.GetJsonSerializerOptions_v1_3()));
             }
             else
             {

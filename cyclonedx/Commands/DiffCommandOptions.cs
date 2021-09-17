@@ -14,19 +14,16 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
-using System.Collections.Generic;
 
-namespace CycloneDX.Cli.Commands.Options
+namespace CycloneDX.Cli.Commands
 {
-    public class MergeCommandOptions
+    public class DiffCommandOptions
     {
-        public IList<string> InputFiles { get; set; }
-        public string OutputFile { get; set; }
-        public StandardInputOutputBomFormat InputFormat { get; set; }
-        public StandardInputOutputBomFormat OutputFormat { get; set; }
-        public bool Hierarchical { get; set; }
-        public string Group { get; set; }
-        public string Name { get; set; }
-        public string Version { get; set; }
+        public string FromFile { get; set; }
+        public string ToFile { get; set; }
+        public BomFormat FromFormat { get; set; }
+        public BomFormat ToFormat { get; set; }
+        public CommandOutputFormat OutputFormat { get; set; }
+        public bool ComponentVersions { get; set; }
     }
 }
