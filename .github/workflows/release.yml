@@ -45,7 +45,7 @@ jobs:
           REPO=cyclonedx/cyclonedx-cli
           dotnet build --configuration Release
           mkdir bin
-          for runtime in linux-x64 linux-musl-x64 linux-arm linux-arm64 win-x64 win-x86 win-arm win-arm64 osx-x64
+          for runtime in linux-x64 linux-musl-x64 linux-arm linux-arm64 win-x64 win-x86 win-arm win-arm64 osx-x64 osx-arm64
           do
             dotnet publish cyclonedx/cyclonedx.csproj -r $runtime --configuration Release /p:Version=$VERSION --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --output bin/$runtime
           done
