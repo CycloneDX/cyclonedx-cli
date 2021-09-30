@@ -14,17 +14,22 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
+using System;
+using System.Diagnostics.Contracts;
+using System.CommandLine;
+using CycloneDX.Cli.Commands.Verify;
 
-namespace CycloneDX.Cli
+namespace CycloneDX.Cli.Commands
 {
-    public enum ExitCode
+    public static class VerifyCommand
     {
-        Ok,
-        OkFail,
-        IOError,
-        ParameterValidationError,
-        UnsupportedFormat,
-        SignatureNotFound,
-        SignatureFailedVerification
+        public static void Configure(RootCommand rootCommand)
+        {
+            Contract.Requires(rootCommand != null);
+            var subCommand = new Command("verify", "Verify signatures for BOMs and files");
+            VerifyAllCommand.Configure(subCommand);
+            VerifyFileCommand.Configure(subCommand);
+            rootCommand.Add(subCommand);
+        }
     }
 }
