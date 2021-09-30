@@ -21,15 +21,18 @@ Options:
   -?, -h, --help    Show help and usage information
 
 Commands:
-  add                           Add information to a BOM (currently supports files)
-  analyze                       Analyze a BOM file
-  convert                       Convert between different BOM formats
-  diff <from-file> <to-file>    Generate a BOM diff
-  merge                         Merge two or more BOMs
-  validate                      Validate a BOM
+  add                         Add information to a BOM (currently supports files)
+  analyze                     Analyze a BOM file
+  convert                     Convert between different BOM formats
+  diff <from-file> <to-file>  Generate a BOM diff
+  keygen                      Generates an RSA public/private key pair for BOM signing
+  merge                       Merge two or more BOMs
+  sign                        Sign a BOM or file
+  validate                    Validate a BOM
+  verify                      Verify signatures in a BOM
 ```
 
-The CycloneDX CLI tool currently supports BOM analysis, diffing, merging and format conversions.
+The CycloneDX CLI tool currently supports BOM analysis, modification, diffing, merging, format conversion, signing and verification.
 
 Conversion from all CycloneDX BOM versions and CSV is supported.
 
@@ -157,6 +160,19 @@ Options:
 Reporting on components with version changes:  
 `cyclonedx-cli diff sbom-from.xml sbom-to.xml --component-versions`
 
+## Keygen Command
+
+```
+keygen
+  Generates an RSA public/private key pair for BOM signing
+
+Usage:
+  cyclonedx [options] keygen
+
+Options:
+  --private-key-file <private-key-file>  Filename for generated private key file (defaults to "private.key")
+  --public-key-file <public-key-file>    Filename for generated public key file (defaults to "public.key")
+```
 
 ## Merge Command
 
@@ -189,6 +205,42 @@ Merge two XML formatted BOMs:
 Merging two BOMs and piping output to additional tools:  
 `cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-format json | grep "something"`
 
+## Sign Command
+
+Sign a BOM or file
+
+### Sign Bom Subcommand
+
+```
+bom
+  Sign the entire BOM document
+
+Usage:
+  cyclonedx [options] sign bom <bom-file>
+
+Arguments:
+  <bom-file>  BOM filename
+
+Options:
+  --key-file <key-file>  Signing key filename (RSA private key in PEM format, defaults to "private.key")
+```
+
+### Sign File Subcommand
+
+```
+file
+  Sign arbitrary files and generate a PKCS1 RSA SHA256 signature file
+
+Usage:
+  cyclonedx [options] sign file <file>
+
+Arguments:
+  <file>  Filename of the file the signature will be created for
+
+Options:
+  --key-file <key-file>              Signing key filename (RSA private key in PEM format, defaults to "private.key")
+  --signature-file <signature-file>  Filename of the generated signature file (defaults to the filename with ".sig" appended)
+```
 
 ## Validate Command
 
@@ -209,6 +261,43 @@ Options:
 
 Validate BOM and return non-zero exit code (handy for automatically "breaking" a build, etc)  
 `cyclonedx-cli validate --input-file sbom.xml --fail-on-errors`
+
+## Verify Command
+
+Verify signatures for BOMs and files
+
+### Verify All Subcommand
+
+```
+all
+  Verify all signatures in a BOM
+
+Usage:
+  cyclonedx [options] verify all <bom-file>
+
+Arguments:
+  <bom-file>  BOM filename
+
+Options:
+  --key-file <key-file>  Public key filename (RSA public key in PEM format, defaults to "public.key")
+```
+
+### Verify File Subcommand
+
+```
+file
+  Verifies a PKCS1 RSA SHA256 signature file for an abritrary file
+
+Usage:
+  cyclonedx [options] verify file <file>
+
+Arguments:
+  <file>  File the signature file is for
+
+Options:
+  --key-file <key-file>              Public key filename (RSA public key in PEM format, defaults to "public.key")
+  --signature-file <signature-file>  Signature file to be verified (defaults to the filename with ".sig" appended)
+```
 
 # Docker Image
 

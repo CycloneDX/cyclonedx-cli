@@ -45,8 +45,11 @@ namespace CycloneDX.Cli
             AnalyzeCommand.Configure(rootCommand);
             ConvertCommand.Configure(rootCommand);
             DiffCommand.Configure(rootCommand);
+            KeyGenCommand.Configure(rootCommand);
             MergeCommand.Configure(rootCommand);
+            SignCommand.Configure(rootCommand);
             ValidateCommand.Configure(rootCommand);
+            VerifyCommand.Configure(rootCommand);
 
             return await rootCommand.InvokeAsync(args).ConfigureAwait(false);
         }
