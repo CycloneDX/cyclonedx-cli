@@ -379,4 +379,11 @@ Build warnings will break the build.
 Please let us know if you are having trouble debugging a test that is failing
 for a platform that you don't have access to.
 
-OWASP Cyclone DX has a vibrant [workspace on Slack](https://cyclonedx.org/slack/invite) and CLI has its' own channel
+Thanks to [Gitpod](https://gitpod.io/) there are two really easy ways of
+creating a ready to go development environment with VS Code.
+
+You can open a Gitpod hosted development environment in your browser. Or you
+can start a local instance of the OpenVSCode Server by running the
+`localdev.sh` script (requires Docker).
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/CycloneDX/cyclonedx-conan)
