@@ -2,8 +2,14 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: dotnet tool install --global dotnet-reportgenerator-globaltool
-  - init: dotnet build
+  - name: Restore dependencies and workaround for Gitpod issue 6460
+    init: |
+      mkdir -p "$DOTNET_ROOT"
+      wget --output-document="$DOTNET_ROOT/dotnet-install.sh" https://dot.net/v1/dotnet-install.sh
+      chmod +x "$DOTNET_ROOT/dotnet-install.sh"
+      "$DOTNET_ROOT/dotnet-install.sh" --channel 5.0 --install-dir "$DOTNET_ROOT"
+      dotnet tool install --global dotnet-reportgenerator-globaltool
+      dotnet restore
 
 vscode:
   extensions:

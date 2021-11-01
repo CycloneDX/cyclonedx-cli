@@ -386,4 +386,4 @@ You can open a Gitpod hosted development environment in your browser. Or you
 can start a local instance of the OpenVSCode Server by running the
 `localdev.sh` script (requires Docker).
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/CycloneDX/cyclonedx-conan)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/CycloneDX/cyclonedx-cli)

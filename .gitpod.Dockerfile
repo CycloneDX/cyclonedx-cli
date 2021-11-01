@@ -20,10 +20,20 @@ USER $USERNAME
 
 # Install .NET SDK
 # Source: https://docs.microsoft.com/dotnet/core/install/linux-scripted-manual#scripted-install
-RUN mkdir -p "$HOME/dotnet" \
-    && wget --output-document="$HOME/dotnet/dotnet-install.sh" https://dot.net/v1/dotnet-install.sh \
-    && chmod +x "$HOME/dotnet/dotnet-install.sh"
-RUN "$HOME/dotnet/dotnet-install.sh" --channel 5.0 --install-dir "$HOME/dotnet"
+# RUN mkdir -p "$HOME/dotnet" \
+#     && wget --output-document="$HOME/dotnet/dotnet-install.sh" https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x "$HOME/dotnet/dotnet-install.sh"
+# RUN "$HOME/dotnet/dotnet-install.sh" --channel 5.0 --install-dir "$HOME/dotnet"
 
-ENV DOTNET_ROOT="$HOME/dotnet"
-ENV PATH=$PATH:"$HOME/dotnet"
+# ENV DOTNET_ROOT="$HOME/dotnet"
+# ENV PATH=$PATH:"$HOME/dotnet"
+
+# messy handling for https://github.com/gitpod-io/gitpod/issues/5090
+ENV DOTNET_ROOT="/workspace/.dotnet"
+ENV PATH=$PATH:$DOTNET_ROOT
+ENV DOTNET_CLI_TELEMETRY_OPTOUT=true
+
+RUN mkdir -p "$DOTNET_ROOT" \
+    && wget --output-document="$DOTNET_ROOT/dotnet-install.sh" https://dot.net/v1/dotnet-install.sh \
+    && chmod +x "$DOTNET_ROOT/dotnet-install.sh"
+RUN "$DOTNET_ROOT/dotnet-install.sh" --channel 5.0 --install-dir "$DOTNET_ROOT"
