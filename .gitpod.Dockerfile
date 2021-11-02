@@ -4,7 +4,7 @@ ARG USERNAME=gitpod
 FROM $BASE_IMAGE
 
 USER root
-# Install .NET runtime dependencies
+# Install .NET runtime dependencies and the git gui
 RUN apt-get update \
     && apt-get install -y \
         libc6 \
@@ -14,6 +14,7 @@ RUN apt-get update \
         libssl1.1 \
         libstdc++6 \
         zlib1g \
+        git-gui \
     && rm -rf /var/lib/apt/lists/*
 
 USER $USERNAME
