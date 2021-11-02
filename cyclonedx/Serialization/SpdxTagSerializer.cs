@@ -23,7 +23,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using CycloneDX.Models.v1_3;
 
-namespace CycloneDX.Cli.Serializers
+namespace CycloneDX.Cli.Serialization
 {
     public enum SpdxVersion
     {

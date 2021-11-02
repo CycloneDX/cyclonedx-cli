@@ -25,7 +25,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using CycloneDX.Models.v1_3;
 
-namespace CycloneDX.Cli.Serializers
+namespace CycloneDX.Cli.Serialization
 {
     public static class CsvSerializer
     {

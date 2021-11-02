@@ -19,7 +19,7 @@ using System.IO;
 using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
-using CycloneDX.Cli.Serializers;
+using CycloneDX.Cli.Serialization;
 
 namespace CycloneDX.Cli.Tests
 {

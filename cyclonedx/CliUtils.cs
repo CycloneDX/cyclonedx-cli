@@ -20,7 +20,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CycloneDX.Models.v1_3;
 using CycloneDX.Cli.Commands;
-using CycloneDX.Cli.Serializers;
+using CycloneDX.Cli.Serialization;
 
 namespace CycloneDX.Cli
 {
