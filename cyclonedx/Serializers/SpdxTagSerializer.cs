@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -70,27 +71,45 @@ namespace CycloneDX.Cli.Serializers
             sb.AppendLine("DataLicense: CC0-1.0");
             sb.AppendLine($"SPDXID: SPDXRef-DOCUMENT");
             
-            var documentRef = "Generated from CycloneDX BOM without top level component metadata";
+            // SPDX: doesn't support majority of BOM metadata component information
+            var documentRef = "Generated from CycloneDX BOM without metadata component specified";
             if (bom.Metadata?.Component?.Name != null)
             {
                 documentRef = bom.Metadata.Component.Name;
-                if (bom.Metadata?.Component?.Version != null)
+                if (bom.Metadata.Component.Version != null)
                     documentRef += $"-{bom.Metadata.Component.Version}";
+                if (bom.Metadata.Component.Group != null)
+                    documentRef = $"{bom.Metadata.Component.Group}.{documentRef}";
             }
             sb.AppendLine($"DocumentName: {documentRef}");
             sb.AppendLine($"DocumentNamespace: http://spdx.org/spdxdocs/{documentRef}-{bomSpdxRef}");
+
+            sb.AppendLine("LicenseListVersion: 3.14");
+
+            // SPDX: doesn't support author phone
             if (bom.Metadata?.Authors != null)
             foreach (var author in bom.Metadata.Authors)
             {
                 sb.AppendLine($"Creator: Person: {author.Name} ({author.Email ?? ""})");
             }
+
+            // SPDX: does not support tool vendor and hashes
+            if (bom.Metadata?.Tools != null)
+            foreach (var tool in bom.Metadata.Tools)
+            {
+                sb.AppendLine($"Tool: {tool.Name}-{tool.Version}");
+            }
             sb.AppendLine("Creator: Tool: CycloneDX-CLI");
+
             sb.AppendLine($"Created: {DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ")}");
+            sb.AppendLine("CreatorComment: <text>This SPDX document was created by conversion from a CycloneDX BOM.</text>");
+            sb.AppendLine("DocumentComment: <text>SPDX does not support all features of CycloneDX. Some information is missing from the original CycloneDX BOM.</text>");
 
             if (bom.Components != null)
             for (var componentIndex=0; componentIndex<bom.Components.Count; componentIndex++)
             {
                 var component = bom.Components[componentIndex];
+
                 string componentSpdxRef;
                 if (string.IsNullOrEmpty(component.BomRef))
                 {
@@ -102,12 +121,14 @@ namespace CycloneDX.Cli.Serializers
                 }
 
                 sb.AppendLine();
-                sb.AppendLine($"PackageName: {component.Name}");
+                sb.Append("PackageName:");
+                if (component.Group != null) sb.Append($" {component.Group}");
+                sb.AppendLine($" {component.Name}");
                 sb.AppendLine($"SPDXID: SPDXRef-{componentSpdxRef}");
                 sb.AppendLine($"PackageVersion: {component.Version}");
 
-                if (component.Supplier != null)
-                    sb.AppendLine($"PackageSupplier: Organization: {component.Supplier.Name} ()");
+                if (component.Supplier != null) sb.AppendLine($"PackageSupplier: Organization: {component.Supplier.Name} ()");
+
                 if (component.Author != null)
                     sb.AppendLine($"PackageOriginator: Person: {component.Author} ()");
                 else if (component.Publisher != null)
@@ -116,6 +137,7 @@ namespace CycloneDX.Cli.Serializers
                 sb.AppendLine("PackageDownloadLocation: NOASSERTION");
                 sb.AppendLine("FilesAnalyzed: false");
 
+                // SPDX: Does not support all hash algorithms
                 if (component.Hashes != null)
                 foreach(var hash in component.Hashes)
                 {
@@ -123,6 +145,9 @@ namespace CycloneDX.Cli.Serializers
 
                     switch (hash.Alg)
                     {
+                        case Hash.HashAlgorithm.MD5:
+                            algStr = "MD5";
+                            break;
                         case Hash.HashAlgorithm.SHA_1:
                             algStr = "SHA1";
                             break;
@@ -146,6 +171,9 @@ namespace CycloneDX.Cli.Serializers
                         sb.AppendLine($"PackageChecksum: {algStr}: {hash.Content}");
                     }
                 }
+
+                var homepage = component.ExternalReferences?.FirstOrDefault(er => er.Type == ExternalReference.ExternalReferenceType.Website);
+                if (homepage != null) sb.AppendLine($"PackageHomePage: {homepage.Url}");
 
                 sb.AppendLine("PackageLicenseConcluded: NOASSERTION");
 
@@ -207,6 +235,8 @@ namespace CycloneDX.Cli.Serializers
                         sb.AppendLine(component.Cpe);
                     }
                 }
+
+                // SPDX: does not support most external reference types
             }
 
             for (var licenseIndex=0; licenseIndex<nonSpdxLicenses.Count; licenseIndex++)

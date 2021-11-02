@@ -3,7 +3,10 @@ DataLicense: CC0-1.0
 SPDXID: SPDXRef-DOCUMENT
 DocumentName: Test-1
 DocumentNamespace: http://spdx.org/spdxdocs/Test-1-f9bcf38b-e331-48b3-a541-28f5352a4509
+LicenseListVersion: 3.14
 Creator: Tool: CycloneDX-CLI
+CreatorComment: <text>This SPDX document was created by conversion from a CycloneDX BOM.</text>
+DocumentComment: <text>SPDX does not support all features of CycloneDX. Some information is missing from the original CycloneDX BOM.</text>
 
 PackageName: CycloneDX.Core
 SPDXID: SPDXRef-1
@@ -50,6 +53,7 @@ SPDXID: SPDXRef-5
 PackageVersion: 3.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/natemcmaster/CommandLineUtils
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>Copyright &#169; Nate McMaster</text>
@@ -60,6 +64,7 @@ SPDXID: SPDXRef-6
 PackageVersion: 1.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/corefx
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -70,6 +75,7 @@ SPDXID: SPDXRef-7
 PackageVersion: 3.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/roslyn-analyzers
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -80,6 +86,7 @@ SPDXID: SPDXRef-8
 PackageVersion: 3.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/roslyn-analyzers
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -90,6 +97,7 @@ SPDXID: SPDXRef-9
 PackageVersion: 3.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/roslyn-analyzers
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -100,6 +108,7 @@ SPDXID: SPDXRef-10
 PackageVersion: 4.0.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-1
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -110,6 +119,7 @@ SPDXID: SPDXRef-11
 PackageVersion: 3.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/roslyn-analyzers
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -120,6 +130,7 @@ SPDXID: SPDXRef-12
 PackageVersion: 2.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-2
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -130,6 +141,7 @@ SPDXID: SPDXRef-13
 PackageVersion: 2.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-3
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -140,6 +152,7 @@ SPDXID: SPDXRef-14
 PackageVersion: 2.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-4
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -150,6 +163,7 @@ SPDXID: SPDXRef-15
 PackageVersion: 2.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-5
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -160,6 +174,7 @@ SPDXID: SPDXRef-16
 PackageVersion: 3.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/corefx
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -170,6 +185,7 @@ SPDXID: SPDXRef-17
 PackageVersion: 1.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-6
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -180,6 +196,7 @@ SPDXID: SPDXRef-18
 PackageVersion: 2.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-7
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -190,6 +207,7 @@ SPDXID: SPDXRef-19
 PackageVersion: 3.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/roslyn-analyzers
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -200,6 +218,7 @@ SPDXID: SPDXRef-20
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-8
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -210,6 +229,7 @@ SPDXID: SPDXRef-21
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-9
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -220,6 +240,7 @@ SPDXID: SPDXRef-22
 PackageVersion: 2.0.3
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-10
 PackageCopyrightText: <text>.NET Foundation and Contributors</text>
@@ -230,6 +251,7 @@ SPDXID: SPDXRef-23
 PackageVersion: 9.0.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: http://www.newtonsoft.com/json
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-11
 PackageCopyrightText: NOASSERTION
@@ -240,6 +262,7 @@ SPDXID: SPDXRef-24
 PackageVersion: 5.6.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://aka.ms/nugetprj
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -250,6 +273,7 @@ SPDXID: SPDXRef-25
 PackageVersion: 5.6.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://aka.ms/nugetprj
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -260,6 +284,7 @@ SPDXID: SPDXRef-26
 PackageVersion: 5.6.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://aka.ms/nugetprj
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -270,6 +295,7 @@ SPDXID: SPDXRef-27
 PackageVersion: 5.6.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://aka.ms/nugetprj
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -280,6 +306,7 @@ SPDXID: SPDXRef-28
 PackageVersion: 5.6.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://aka.ms/nugetprj
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -290,6 +317,7 @@ SPDXID: SPDXRef-29
 PackageVersion: 5.6.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://aka.ms/nugetprj
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -300,6 +328,7 @@ SPDXID: SPDXRef-30
 PackageVersion: 5.6.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://aka.ms/nugetprj
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -310,6 +339,7 @@ SPDXID: SPDXRef-31
 PackageVersion: 5.6.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://aka.ms/nugetprj
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -320,6 +350,7 @@ SPDXID: SPDXRef-32
 PackageVersion: 5.6.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://aka.ms/nugetprj
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Apache-2.0
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -330,6 +361,7 @@ SPDXID: SPDXRef-33
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-12
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -340,6 +372,7 @@ SPDXID: SPDXRef-34
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-13
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -350,6 +383,7 @@ SPDXID: SPDXRef-35
 PackageVersion: 4.7.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/corefx
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -360,6 +394,7 @@ SPDXID: SPDXRef-36
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-14
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -370,6 +405,7 @@ SPDXID: SPDXRef-37
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-15
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -380,6 +416,7 @@ SPDXID: SPDXRef-38
 PackageVersion: 4.0.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-16
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -390,6 +427,7 @@ SPDXID: SPDXRef-39
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-17
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -400,6 +438,7 @@ SPDXID: SPDXRef-40
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-18
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -410,6 +449,7 @@ SPDXID: SPDXRef-41
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-19
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -420,6 +460,7 @@ SPDXID: SPDXRef-42
 PackageVersion: 12.1.9
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/System-IO-Abstractions/System.IO.Abstractions
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: <text>Copyright &#169; Tatham Oddie 2010</text>
@@ -430,6 +471,7 @@ SPDXID: SPDXRef-43
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-20
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -440,6 +482,7 @@ SPDXID: SPDXRef-44
 PackageVersion: 4.7.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/corefx
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -450,6 +493,7 @@ SPDXID: SPDXRef-45
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-21
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -460,6 +504,7 @@ SPDXID: SPDXRef-46
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-22
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -470,6 +515,7 @@ SPDXID: SPDXRef-47
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-23
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -480,6 +526,7 @@ SPDXID: SPDXRef-48
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-24
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -490,6 +537,7 @@ SPDXID: SPDXRef-49
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-25
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -500,6 +548,7 @@ SPDXID: SPDXRef-50
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-26
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -510,6 +559,7 @@ SPDXID: SPDXRef-51
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-27
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -520,6 +570,7 @@ SPDXID: SPDXRef-52
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-28
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -530,6 +581,7 @@ SPDXID: SPDXRef-53
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-29
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -540,6 +592,7 @@ SPDXID: SPDXRef-54
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-30
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -550,6 +603,7 @@ SPDXID: SPDXRef-55
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-31
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -560,6 +614,7 @@ SPDXID: SPDXRef-56
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-32
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -570,6 +625,7 @@ SPDXID: SPDXRef-57
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-33
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -580,6 +636,7 @@ SPDXID: SPDXRef-58
 PackageVersion: 4.7.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/corefx
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -590,6 +647,7 @@ SPDXID: SPDXRef-59
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-34
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -600,6 +658,7 @@ SPDXID: SPDXRef-60
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-35
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -610,6 +669,7 @@ SPDXID: SPDXRef-61
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-36
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -620,6 +680,7 @@ SPDXID: SPDXRef-62
 PackageVersion: 4.1.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-37
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -630,6 +691,7 @@ SPDXID: SPDXRef-63
 PackageVersion: 4.7.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/corefx
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -640,6 +702,7 @@ SPDXID: SPDXRef-64
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-38
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -650,6 +713,7 @@ SPDXID: SPDXRef-65
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-39
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -660,6 +724,7 @@ SPDXID: SPDXRef-66
 PackageVersion: 4.7.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/corefx
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -670,6 +735,7 @@ SPDXID: SPDXRef-67
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-40
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -680,6 +746,7 @@ SPDXID: SPDXRef-68
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-41
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -690,6 +757,7 @@ SPDXID: SPDXRef-69
 PackageVersion: 4.7.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/corefx
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -700,6 +768,7 @@ SPDXID: SPDXRef-70
 PackageVersion: 4.7.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://github.com/dotnet/corefx
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: <text>&#169; Microsoft Corporation. All rights reserved.</text>
@@ -710,6 +779,7 @@ SPDXID: SPDXRef-71
 PackageVersion: 4.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-42
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -720,6 +790,7 @@ SPDXID: SPDXRef-72
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-43
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -730,6 +801,7 @@ SPDXID: SPDXRef-73
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-44
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -740,6 +812,7 @@ SPDXID: SPDXRef-74
 PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-45
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -750,6 +823,7 @@ SPDXID: SPDXRef-75
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-46
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -760,6 +834,7 @@ SPDXID: SPDXRef-76
 PackageVersion: 4.3.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-47
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -770,6 +845,7 @@ SPDXID: SPDXRef-77
 PackageVersion: 4.0.11
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-48
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
@@ -780,6 +856,7 @@ SPDXID: SPDXRef-78
 PackageVersion: 4.0.11
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://dot.net/
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-49
 PackageCopyrightText: <text>&#169; Microsoft Corporation.  All rights reserved.</text>
