@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=gitpod/workspace-full:latest
+ARG BASE_IMAGE=gitpod/workspace-full-vnc:latest
 ARG USERNAME=gitpod
 
 FROM $BASE_IMAGE
