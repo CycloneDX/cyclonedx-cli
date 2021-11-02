@@ -220,7 +220,7 @@ namespace CycloneDX.Cli.Serializers
                 }
 
                 if (!string.IsNullOrEmpty(component.Purl))
-                    sb.AppendLine($"External-Ref: PACKAGE-MANAGER purl {component.Purl}");
+                    sb.AppendLine($"ExternalRef: PACKAGE-MANAGER purl {component.Purl}");
                 
                 if (!string.IsNullOrEmpty(component.Cpe))
                 {
