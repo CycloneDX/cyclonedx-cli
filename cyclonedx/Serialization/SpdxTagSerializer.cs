@@ -106,7 +106,7 @@ namespace CycloneDX.Cli.Serialization
             if (OriginalBom.Metadata?.Tools != null)
             foreach (var tool in OriginalBom.Metadata.Tools)
             {
-                Sb.AppendLine($"Tool: {tool.Name}-{tool.Version}");
+                Sb.AppendLine($"Creator: Tool: {tool.Name}-{tool.Version}");
             }
             Sb.AppendLine("Creator: Tool: CycloneDX-CLI");
 
@@ -145,7 +145,7 @@ namespace CycloneDX.Cli.Serialization
 
         private void WritePackageInformation(Component component, int componentIndex)
         {
-            // if (component.Type == Classification.File) throw new Exception("Unsupported component type for this method.");
+            if (component.Type == Component.Classification.File) throw new Exception("Unsupported component type for this method.");
 
             string componentSpdxRef;
             if (string.IsNullOrEmpty(component.BomRef))
@@ -278,8 +278,93 @@ namespace CycloneDX.Cli.Serialization
 
         private void WriteFileInformation(Component component, int componentIndex)
         {
-            // if (component.Type != Classification.File) throw new Exception("Unsupported component type for this method.");
-            WritePackageInformation(component, componentIndex);
+            if (component.Type != Component.Classification.File) throw new Exception("Unsupported component type for this method.");
+
+            string componentSpdxRef;
+            if (string.IsNullOrEmpty(component.BomRef))
+            {
+                componentSpdxRef = (componentIndex + 1).ToString();
+            }
+            else
+            {
+                componentSpdxRef = SpdxIdString(component.BomRef);
+            }
+
+            Sb.AppendLine();
+            Sb.AppendLine($"FileName: {component.Name}");
+            Sb.AppendLine($"SPDXID: SPDXRef-{componentSpdxRef}");
+
+            // SPDX: Does not support all hash algorithms
+            if (component.Hashes != null)
+            foreach(var hash in component.Hashes)
+            {
+                string algStr = null;
+
+                switch (hash.Alg)
+                {
+                    case Hash.HashAlgorithm.MD5:
+                        algStr = "MD5";
+                        break;
+                    case Hash.HashAlgorithm.SHA_1:
+                        algStr = "SHA1";
+                        break;
+                    case Hash.HashAlgorithm.SHA_256:
+                        algStr = "SHA256";
+                        break;
+                }
+                if (Version == SpdxVersion.v2_2)
+                switch (hash.Alg)
+                {
+                    case Hash.HashAlgorithm.SHA_384:
+                        algStr = "SHA384";
+                        break;
+                    case Hash.HashAlgorithm.SHA_512:
+                        algStr = "SHA512";
+                        break;
+                }
+
+                if (algStr != null)
+                {
+                    Sb.AppendLine($"FileChecksum: {algStr}: {hash.Content}");
+                }
+            }
+
+            Sb.AppendLine("FileLicenseConcluded: NOASSERTION");
+
+            if (component.Licenses?.Count > 0)
+            {
+                Sb.Append("LicenseInfoInFile: ");
+                if (component.Licenses.Count > 1) Sb.Append('(');
+                for (var licenseIndex=0; licenseIndex<component.Licenses.Count; licenseIndex++)
+                {
+                    var componentLicense = component.Licenses[licenseIndex];
+                    if (licenseIndex != 0) Sb.Append(" AND ");
+                    if (componentLicense.License != null)
+                    {
+                        if (!string.IsNullOrEmpty(componentLicense.License.Id))
+                        {
+                            Sb.Append(componentLicense.License.Id);
+                        }
+                        else
+                        {
+                            NonSpdxLicenses.Add(componentLicense.License);
+                            Sb.Append($"LicenseRef-{NonSpdxLicenses.Count}");
+                        }
+                    }
+                    else
+                    {
+                        Sb.Append($"({componentLicense.Expression})");
+                    }
+                }
+                if (component.Licenses.Count > 1) Sb.Append(')');
+                Sb.AppendLine();
+            }
+            else
+            {
+                Sb.AppendLine("LicenseInfoInFile: NOASSERTION");
+            }
+
+            if (component.Author != null) Sb.AppendLine($"FileContributor: {component.Author}");
         }
 
         private static string SpdxIdString(string value)
