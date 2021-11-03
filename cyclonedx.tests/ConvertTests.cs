@@ -98,5 +98,27 @@ namespace CycloneDX.Cli.Tests
                 Snapshot.Match(bom, SnapshotNameExtension.Create(outputFormat));
             }
         }
+
+        [Fact]
+        public async Task ConvertToSpdxTagWithFiles()
+        {
+            using (var tempDirectory = new TempDirectory())
+            {
+                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.spdx");
+                var exitCode = await ConvertCommand.Convert(new ConvertCommandOptions
+                {
+                    InputFile = Path.Combine("Resources", "bom-with-files.json"),
+                    OutputFile = outputFilename,
+                    InputFormat = ConvertInputFormat.autodetect,
+                    OutputFormat = ConvertOutputFormat.autodetect
+                    
+                }).ConfigureAwait(false);
+                
+                Assert.Equal(0, exitCode);
+                var bom = File.ReadAllText(outputFilename);
+                bom = Regex.Replace(bom, @"Created: .*\n", "");
+                Snapshot.Match(bom);
+            }
+        }
     }
 }

@@ -20,7 +20,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CycloneDX.Models.v1_3;
 using CycloneDX.Cli.Commands;
-using CycloneDX.Cli.Serializers;
+using CycloneDX.Cli.Serialization;
 
 namespace CycloneDX.Cli
 {
@@ -148,7 +148,7 @@ namespace CycloneDX.Cli
         {
             if (filename == null && format == BomFormat.autodetect)
             {
-                Console.Error.WriteLine("Unable to auto-detect input stream format, please specify a value for --input-format");
+                Console.Error.WriteLine("Unable to auto-detect output stream format, please specify a value for --output-format");
                 return (int) ExitCode.ParameterValidationError;
             }
             else if (format == BomFormat.autodetect)
@@ -226,13 +226,15 @@ namespace CycloneDX.Cli
                 }
                 else if (format == ConvertOutputFormat.spdxtag || format == ConvertOutputFormat.spdxtag_v2_2)
                 {
-                    var bomString = SpdxTagSerializer.Serialize(bom, SpdxVersion.v2_2);
+                    var serializer = new SpdxTagSerializer(bom, SpdxVersion.v2_2);
+                    var bomString = serializer.Serialize();
                     var bomBytes = Encoding.UTF8.GetBytes(bomString);
                     stream.Write(bomBytes);
                 }
                 else if (format == ConvertOutputFormat.spdxtag_v2_1)
                 {
-                    var bomString = SpdxTagSerializer.Serialize(bom, SpdxVersion.v2_1);
+                    var serializer = new SpdxTagSerializer(bom, SpdxVersion.v2_1);
+                    var bomString = serializer.Serialize();
                     var bomBytes = Encoding.UTF8.GetBytes(bomString);
                     stream.Write(bomBytes);
                 }
