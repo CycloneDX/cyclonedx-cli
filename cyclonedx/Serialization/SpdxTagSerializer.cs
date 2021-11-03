@@ -145,8 +145,6 @@ namespace CycloneDX.Cli.Serialization
 
         private void WritePackageInformation(Component component, int componentIndex)
         {
-            if (component.Type == Component.Classification.File) throw new Exception("Unsupported component type for this method.");
-
             string componentSpdxRef;
             if (string.IsNullOrEmpty(component.BomRef))
             {
@@ -191,6 +189,8 @@ namespace CycloneDX.Cli.Serialization
                     case Hash.HashAlgorithm.SHA_256:
                         algStr = "SHA256";
                         break;
+                    default:
+                        break;
                 }
                 if (Version == SpdxVersion.v2_2)
                 switch (hash.Alg)
@@ -200,6 +200,8 @@ namespace CycloneDX.Cli.Serialization
                         break;
                     case Hash.HashAlgorithm.SHA_512:
                         algStr = "SHA512";
+                        break;
+                    default:
                         break;
                 }
 
@@ -278,8 +280,6 @@ namespace CycloneDX.Cli.Serialization
 
         private void WriteFileInformation(Component component, int componentIndex)
         {
-            if (component.Type != Component.Classification.File) throw new Exception("Unsupported component type for this method.");
-
             string componentSpdxRef;
             if (string.IsNullOrEmpty(component.BomRef))
             {
