@@ -12,7 +12,6 @@ RUN apt-get update \
         libstdc++6 \
         zlib1g \
         git-gui \
-        meld \
     && rm -rf /var/lib/apt/lists/*
 
 USER gitpod
