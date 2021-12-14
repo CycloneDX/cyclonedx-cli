@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/runtime-deps:5.0
+FROM mcr.microsoft.com/dotnet/runtime-deps:6.0.1
 
 COPY bin/linux-x64/cyclonedx /cyclonedx
 
