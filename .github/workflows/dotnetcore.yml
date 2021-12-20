@@ -15,6 +15,9 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v2.3.5
+      - uses: actions/setup-dotnet@v1.8.2
+        with:
+          dotnet-version: '6.0'
 
       - name: Build
         run: dotnet build /WarnAsError
@@ -29,13 +32,16 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v2.3.5
+      - uses: actions/setup-dotnet@v1.8.2
+        with:
+          dotnet-version: '6.0'
 
       - name: Build
-        run: dotnet build cyclonedx/cyclonedx.csproj -r ${{ matrix.runtime }}
+        run: dotnet build src/cyclonedx/cyclonedx.csproj -r ${{ matrix.runtime }}
 
   # Fail if there are any failed tests
   #
-  # We support .NET 5.0 on Windows, Mac and Linux.
+  # We support .NET 6.0 on Windows, Mac and Linux.
   #
   # To check for failing tests locally run `dotnet test`.
   test:
@@ -48,8 +54,11 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2.3.5
+    - uses: actions/setup-dotnet@v1.8.2
+      with:
+        dotnet-version: '6.0'
 
     - name: Tests
       run: |
         dotnet restore
-        dotnet test --framework net5.0
+        dotnet test --framework net6.0

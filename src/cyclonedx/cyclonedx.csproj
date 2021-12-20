@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <PublishTrimmed>true</PublishTrimmed>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
@@ -18,7 +18,7 @@
   <ItemGroup>
     <PackageReference Include="CoderPatros.AntPathMatching" Version="0.1.1" />
     <PackageReference Include="CsvHelper" Version="27.1.1" />
-    <PackageReference Include="CycloneDX.Utils" Version="3.0.3" />
+    <PackageReference Include="CycloneDX.Utils" Version="4.0.0" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21308.1" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="5.0.0" />
   </ItemGroup>

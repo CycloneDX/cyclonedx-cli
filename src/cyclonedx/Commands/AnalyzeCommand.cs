@@ -37,6 +37,7 @@ namespace CycloneDX.Cli.Commands
             rootCommand.Add(subCommand);
         }
 
+
         public static async Task<int> Analyze(AnalyzeCommandOptions options)
         {
             var inputBom = await CliUtils.InputBomHelper(options.InputFile, options.InputFormat).ConfigureAwait(false);
@@ -51,7 +52,9 @@ namespace CycloneDX.Cli.Commands
 
             if (options.OutputFormat == CommandOutputFormat.json)
             {
-                Console.WriteLine(JsonSerializer.Serialize(result, Json.Utils.GetJsonSerializerOptions_v1_3()));
+                #pragma warning disable IL2026
+                Console.WriteLine(JsonSerializer.Serialize<AnalyzeResult>(result, Json.Utils.GetJsonSerializerOptions_v1_3()));
+                #pragma warning restore IL2026
             }
             else
             {

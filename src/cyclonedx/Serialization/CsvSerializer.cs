@@ -224,7 +224,7 @@ namespace CycloneDX.Cli.Serialization
                     if (licenseExpressions != null)
                     foreach (var licenseExpressionString in licenseExpressions)
                     {
-                        if (licenseExpressionString.Contains(" ", StringComparison.InvariantCulture)) // license expression
+                        if (licenseExpressionString.Contains(' ', StringComparison.InvariantCulture)) // license expression
                         {
                             var componentLicense = new LicenseChoice
                             {

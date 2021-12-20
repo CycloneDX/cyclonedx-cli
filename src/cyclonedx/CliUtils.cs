@@ -81,7 +81,7 @@ namespace CycloneDX.Cli
         {
             if (filename == null && format == BomFormat.autodetect)
             {
-                Console.Error.WriteLine("Unable to auto-detect input stream format, please specify a value for --input-format");
+                await Console.Error.WriteLineAsync("Unable to auto-detect input stream format, please specify a value for --input-format").ConfigureAwait(false);
                 return null;
             }
             else if (format == BomFormat.autodetect)
@@ -89,7 +89,7 @@ namespace CycloneDX.Cli
                 format = AutoDetectBomFormat(filename);
                 if (format == BomFormat.autodetect)
                 {
-                    Console.Error.WriteLine("Unable to auto-detect file format, please specify a value for --input-format");
+                    await Console.Error.WriteLineAsync("Unable to auto-detect file format, please specify a value for --input-format").ConfigureAwait(false);
                     return null;
                 }
             }
@@ -116,7 +116,7 @@ namespace CycloneDX.Cli
         {
             if (filename == null && format == ConvertInputFormat.autodetect)
             {
-                Console.Error.WriteLine("Unable to auto-detect input stream format, please specify a value for --input-format");
+                await Console.Error.WriteLineAsync("Unable to auto-detect input stream format, please specify a value for --input-format").ConfigureAwait(false);
                 return null;
             }
             else if (format == ConvertInputFormat.autodetect)
@@ -124,7 +124,7 @@ namespace CycloneDX.Cli
                 format = AutoDetectConvertCommandInputBomFormat(filename);
                 if (format == ConvertInputFormat.autodetect)
                 {
-                    Console.Error.WriteLine("Unable to auto-detect file format, please specify a value for --input-format");
+                    await Console.Error.WriteLineAsync("Unable to auto-detect file format, please specify a value for --input-format").ConfigureAwait(false);
                     return null;
                 }
             }
@@ -134,7 +134,7 @@ namespace CycloneDX.Cli
             {
                 using var inputStream = filename == null ? Console.OpenStandardInput() : File.OpenRead(filename);
                 using var ms = new MemoryStream();
-                inputStream.CopyTo(ms);
+                await inputStream.CopyToAsync(ms).ConfigureAwait(false);
                 var bomCsv = Encoding.UTF8.GetString(ms.ToArray());
                 return CsvSerializer.Deserialize(bomCsv);
             }
@@ -148,7 +148,7 @@ namespace CycloneDX.Cli
         {
             if (filename == null && format == BomFormat.autodetect)
             {
-                Console.Error.WriteLine("Unable to auto-detect output stream format, please specify a value for --output-format");
+                await Console.Error.WriteLineAsync("Unable to auto-detect output stream format, please specify a value for --output-format").ConfigureAwait(false);
                 return (int) ExitCode.ParameterValidationError;
             }
             else if (format == BomFormat.autodetect)
@@ -156,7 +156,7 @@ namespace CycloneDX.Cli
                 var detectedFormat = AutoDetectBomFormat(filename);
                 if (detectedFormat == BomFormat.autodetect)
                 {
-                    Console.Error.WriteLine("Unable to auto-detect file format, please specify a value for --input-format");
+                    await Console.Error.WriteLineAsync("Unable to auto-detect file format, please specify a value for --input-format").ConfigureAwait(false);
                     return (int) ExitCode.ParameterValidationError;
                 }
             }
