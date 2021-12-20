@@ -56,19 +56,19 @@ namespace CycloneDX.Cli.Commands
                 return (int)ExitCode.IOError;
             }
 
-            var schemaVersion = SchemaVersion.v1_3;
+            var specificationVersion = SpecificationVersion.v1_3;
 
             switch (options.InputFormat)
             {
                 case CycloneDXFormat.xml_v1_2:
                 case CycloneDXFormat.json_v1_2:
-                    schemaVersion = SchemaVersion.v1_2;
+                    specificationVersion = SpecificationVersion.v1_2;
                     break;
                 case CycloneDXFormat.xml_v1_1:
-                    schemaVersion = SchemaVersion.v1_1;
+                    specificationVersion = SpecificationVersion.v1_1;
                     break;
                 case CycloneDXFormat.xml_v1_0:
-                    schemaVersion = SchemaVersion.v1_0;
+                    specificationVersion = SpecificationVersion.v1_0;
                     break;
             }
 
@@ -77,12 +77,12 @@ namespace CycloneDX.Cli.Commands
             if (options.InputFormat.ToString().StartsWith("json", StringComparison.InvariantCulture))
             {
                 Console.WriteLine("Validating JSON BOM...");
-                validationResult = Json.Validator.Validate(inputBom, schemaVersion);
+                validationResult = Json.Validator.Validate(inputBom, specificationVersion);
             }
             else
             {
                 Console.WriteLine("Validating XML BOM...");
-                validationResult = await Xml.Validator.Validate(inputBom, schemaVersion).ConfigureAwait(false);
+                validationResult = Xml.Validator.Validate(inputBom, specificationVersion);
             }
 
             if (validationResult.Messages != null)
