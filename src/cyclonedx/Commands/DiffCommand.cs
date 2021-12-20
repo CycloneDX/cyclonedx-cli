@@ -18,6 +18,7 @@ using System;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using CycloneDX.Cli.Models;
 using CycloneDX.Utils;
@@ -59,7 +60,7 @@ namespace CycloneDX.Cli.Commands
                 {
                     WriteIndented = true,
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                    IgnoreNullValues = true,
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 };
 
                 jsonOptions.Converters.Add(new Json.Converters.v1_2.ComponentTypeConverter());
@@ -72,7 +73,9 @@ namespace CycloneDX.Cli.Commands
                 jsonOptions.Converters.Add(new Json.Converters.v1_2.LicenseConverter());
                 jsonOptions.Converters.Add(new Json.Converters.v1_2.PatchClassificationConverter());
 
-                Console.WriteLine(JsonSerializer.Serialize(result, jsonOptions));
+                #pragma warning disable IL2026
+                Console.WriteLine(JsonSerializer.Serialize<DiffResult>(result, jsonOptions));
+                #pragma warning restore IL2026
             }
             else
             {

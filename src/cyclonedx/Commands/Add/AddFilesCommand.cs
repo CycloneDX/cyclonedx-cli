@@ -163,7 +163,7 @@ namespace CycloneDX.Cli.Commands.Add
             using (var fs = new FileStream(filename, FileMode.Open))
             using (var bs = new BufferedStream(fs))
             {
-                using (var sha1 = new SHA1Managed())
+                using (var sha1 = SHA1.Create())
                 {
                     byte[] hash = sha1.ComputeHash(bs);
                     StringBuilder formatted = new StringBuilder(2 * hash.Length);
@@ -185,7 +185,7 @@ namespace CycloneDX.Cli.Commands.Add
             using (var fs = new FileStream(filename, FileMode.Open))
             using (var bs = new BufferedStream(fs))
             {
-                using (var sha1 = new SHA256Managed())
+                using (var sha1 = SHA256.Create())
                 {
                     byte[] hash = sha1.ComputeHash(bs);
                     StringBuilder formatted = new StringBuilder(2 * hash.Length);
@@ -207,7 +207,7 @@ namespace CycloneDX.Cli.Commands.Add
             using (var fs = new FileStream(filename, FileMode.Open))
             using (var bs = new BufferedStream(fs))
             {
-                using (var sha1 = new SHA384Managed())
+                using (var sha1 = SHA384.Create())
                 {
                     byte[] hash = sha1.ComputeHash(bs);
                     StringBuilder formatted = new StringBuilder(2 * hash.Length);
@@ -229,7 +229,7 @@ namespace CycloneDX.Cli.Commands.Add
             using (var fs = new FileStream(filename, FileMode.Open))
             using (var bs = new BufferedStream(fs))
             {
-                using (var sha512 = new SHA512Managed())
+                using (var sha512 = SHA512.Create())
                 {
                     byte[] hash = sha512.ComputeHash(bs);
                     StringBuilder formatted = new StringBuilder(2 * hash.Length);
