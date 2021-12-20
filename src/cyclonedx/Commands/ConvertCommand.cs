@@ -47,7 +47,7 @@ namespace CycloneDX.Cli.Commands
             {
                 if (string.IsNullOrEmpty(options.OutputFile))
                 {
-                    await Console.Error.WriteLineAsync("You must specify a value for --output-format when standard output is used");
+                    await Console.Error.WriteLineAsync("You must specify a value for --output-format when standard output is used").ConfigureAwait(false);
                     return (int)ExitCode.ParameterValidationError;
                 }
 
@@ -55,7 +55,7 @@ namespace CycloneDX.Cli.Commands
                 
                 if (options.OutputFormat == ConvertOutputFormat.autodetect)
                 {
-                    await Console.Error.WriteLineAsync("Unable to auto-detect output format from output filename");
+                    await Console.Error.WriteLineAsync("Unable to auto-detect output format from output filename").ConfigureAwait(false);
                     return (int)ExitCode.ParameterValidationError;
                 }
             }
