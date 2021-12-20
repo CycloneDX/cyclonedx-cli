@@ -41,7 +41,7 @@ jobs:
 
   # Fail if there are any failed tests
   #
-  # We support .NET 5.0 on Windows, Mac and Linux.
+  # We support .NET 6.0 on Windows, Mac and Linux.
   #
   # To check for failing tests locally run `dotnet test`.
   test:
@@ -61,4 +61,4 @@ jobs:
     - name: Tests
       run: |
         dotnet restore
-        dotnet test --framework net5.0
+        dotnet test --framework net6.0
