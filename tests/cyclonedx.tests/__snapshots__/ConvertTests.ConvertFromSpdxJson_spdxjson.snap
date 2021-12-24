@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://cyclonedx.org/schema/bom/1.3">
+  <metadata>
+    <timestamp>2010-01-29T18:30:22Z</timestamp>
+    <tools>
+      <tool>
+        <name>LicenseFind</name>
+        <version>1.0</version>
+      </tool>
+    </tools>
+    <authors>
+      <author>
+        <name>ExampleCodeInspect</name>
+        <email />
+      </author>
+      <author>
+        <name>Jane Doe</name>
+        <email />
+      </author>
+    </authors>
+    <properties>
+      <property name="spdx:spdxid">SPDXRef-DOCUMENT</property>
+      <property name="spdx:document:spdx-version">SPDX-2.2</property>
+      <property name="spdx:comment">This document was created using CycloneDX.Spdx 2.0 using licenses from the web site.</property>
+      <property name="spdx:document:name">SPDX-Tools-v2.0</property>
+      <property name="spdx:document:document-namespace">http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301</property>
+      <property name="spdx:creation-info:comment">This package has been shipped in source and binary form.
+The binaries were created with gcc 4.5.1 and expect to link to
+compatible system run time libraries.</property>
+      <property name="spdx:creation-info:creators-organization">ExampleCodeInspect</property>
+      <property name="spdx:creation-info:license-list-version">3.9</property>
+      <property name="spdx:document:external-document-ref">{"ExternalDocumentId":"DocumentRef-spdx-tool-1.2","Checksum":{"Algorithm":1,"ChecksumValue":"d6a770ba38583ed4bb4525bd96e50461655d2759"},"SpdxDocument":"http://spdx.org/spdxdocs/spdx-tools-v1.2-3F2504E0-4F89-41D3-9A0C-0305E82C3301"}</property>
+      <property name="spdx:annotation">{"AnnotationDate":"2010-01-29T18:30:22Z","AnnotationType":0,"Annotator":"Person: Jane Doe ()","Comment":"Document level annotation"}</property>
+      <property name="spdx:annotation">{"AnnotationDate":"2010-02-10T00:00:00Z","AnnotationType":1,"Annotator":"Person: Joe Reviewer","Comment":"This is just an example.  Some of the non-standard licenses look like they are actually BSD 3 clause licenses"}</property>
+      <property name="spdx:annotation">{"AnnotationDate":"2011-03-13T00:00:00Z","AnnotationType":1,"Annotator":"Person: Suzanne Reviewer","Comment":"Another example reviewer."}</property>
+      <property name="spdx:document:describes">SPDXRef-File</property>
+      <property name="spdx:document:describes">SPDXRef-Package</property>
+    </properties>
+  </metadata>
+  <components>
+    <component type="library">
+      <supplier>
+        <name>Jane Doe</name>
+        <contact>
+          <email>jane.doe@example.com</email>
+        </contact>
+      </supplier>
+      <author>ExampleCodeInspect</author>
+      <name>glibc</name>
+      <version>2.11.1</version>
+      <description>The GNU C Library defines functions that are specified by the ISO C standard, as well as additional features specific to POSIX and other derivatives of the Unix operating system, and extensions specific to GNU systems.</description>
+      <hashes>
+        <hash alg="MD5">624c1abb3664f4b35547e7c73864ad24</hash>
+        <hash alg="SHA-1">85ed0817af83a24ad8da68c2b5094de69833983c</hash>
+        <hash alg="SHA-256">11b6d3ee554eedf79299905a98f9b9a04e498210b59f15094c916c91d150efcd</hash>
+      </hashes>
+      <licenses>
+        <expression>(LGPL-2.0-only AND LicenseRef-3)</expression>
+      </licenses>
+      <copyright>Copyright 2008-2010 John Smith</copyright>
+      <externalReferences>
+        <reference type="distribution">
+          <url>http://ftp.gnu.org/gnu/glibc/glibc-ports-2.15.tar.gz</url>
+        </reference>
+        <reference type="website">
+          <url>http://ftp.gnu.org/gnu/glibc</url>
+        </reference>
+      </externalReferences>
+      <properties>
+        <property name="spdx:spdxid">SPDXRef-Package</property>
+        <property name="spdx:annotation">{"AnnotationDate":"2011-01-29T18:30:22Z","AnnotationType":0,"Annotator":"Person: Package Commenter","Comment":"Package level annotation"}</property>
+        <property name="spdx:files-analyzed">true</property>
+        <property name="spdx:license-comments">The license for this project changed with the release of version x.y.  The version of the project included here post-dates the license change.</property>
+        <property name="spdx:license-concluded">(LGPL-2.0-only OR LicenseRef-3)</property>
+        <property name="spdx:package:file-name">glibc-2.11.1.tar.gz</property>
+        <property name="spdx:package:verification-code:value">d6a770ba38583ed4bb4525bd96e50461655d2758</property>
+        <property name="spdx:package:verification-code:excluded-file">./package.spdx</property>
+        <property name="spdx:package:source-info">uses glibc-2_11-branch from git://sourceware.org/git/glibc.git.</property>
+        <property name="spdx:package:summary">GNU C library.</property>
+        <property name="spdx:package:originator:organization">ExampleCodeInspect</property>
+        <property name="spdx:package:originator:email">contact@example.com</property>
+        <property name="spdx:external-reference:security:cpe23">cpe:2.3:a:pivotal_software:spring_framework:4.1.0:*:*:*:*:*:*:*</property>
+        <property name="spdx:external-reference:other:http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301#LocationRef-acmeforge">acmecorp/acmenator/4.1.3-alpha This is the external ref for Acme</property>
+        <property name="spdx:download-location">http://ftp.gnu.org/gnu/glibc/glibc-ports-2.15.tar.gz</property>
+        <property name="spdx:homepage">http://ftp.gnu.org/gnu/glibc</property>
+      </properties>
+      <evidence>
+        <licenses>
+          <license>
+            <id>GPL-2.0-only</id>
+          </license>
+        </licenses>
+        <licenses>
+          <license>
+            <text content-type="text/plain" encoding="base64">VGhpcyBwYWNrYWdlIGluY2x1ZGVzIHRoZSBHUkRETCBwYXJzZXIgZGV2ZWxvcGVkIGJ5IEhld2xldHQgUGFja2FyZCB1bmRlciB0aGUgZm9sbG93aW5nIGxpY2Vuc2U6Cu+/vSBDb3B5cmlnaHQgMjAwNyBIZXdsZXR0LVBhY2thcmQgRGV2ZWxvcG1lbnQgQ29tcGFueSwgTFAKClJlZGlzdHJpYnV0aW9uIGFuZCB1c2UgaW4gc291cmNlIGFuZCBiaW5hcnkgZm9ybXMsIHdpdGggb3Igd2l0aG91dCBtb2RpZmljYXRpb24sIGFyZSBwZXJtaXR0ZWQgcHJvdmlkZWQgdGhhdCB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnMgYXJlIG1ldDogCgpSZWRpc3RyaWJ1dGlvbnMgb2Ygc291cmNlIGNvZGUgbXVzdCByZXRhaW4gdGhlIGFib3ZlIGNvcHlyaWdodCBub3RpY2UsIHRoaXMgbGlzdCBvZiBjb25kaXRpb25zIGFuZCB0aGUgZm9sbG93aW5nIGRpc2NsYWltZXIuIApSZWRpc3RyaWJ1dGlvbnMgaW4gYmluYXJ5IGZvcm0gbXVzdCByZXByb2R1Y2UgdGhlIGFib3ZlIGNvcHlyaWdodCBub3RpY2UsIHRoaXMgbGlzdCBvZiBjb25kaXRpb25zIGFuZCB0aGUgZm9sbG93aW5nIGRpc2NsYWltZXIgaW4gdGhlIGRvY3VtZW50YXRpb24gYW5kL29yIG90aGVyIG1hdGVyaWFscyBwcm92aWRlZCB3aXRoIHRoZSBkaXN0cmlidXRpb24uIApUaGUgbmFtZSBvZiB0aGUgYXV0aG9yIG1heSBub3QgYmUgdXNlZCB0byBlbmRvcnNlIG9yIHByb21vdGUgcHJvZHVjdHMgZGVyaXZlZCBmcm9tIHRoaXMgc29mdHdhcmUgd2l0aG91dCBzcGVjaWZpYyBwcmlvciB3cml0dGVuIHBlcm1pc3Npb24uIApUSElTIFNPRlRXQVJFIElTIFBST1ZJREVEIEJZIFRIRSBBVVRIT1IgYGBBUyBJUycnIEFORCBBTlkgRVhQUkVTUyBPUiBJTVBMSUVEIFdBUlJBTlRJRVMsIElOQ0xVRElORywgQlVUIE5PVCBMSU1JVEVEIFRPLCBUSEUgSU1QTElFRCBXQVJSQU5USUVTIE9GIE1FUkNIQU5UQUJJTElUWSBBTkQgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0UgQVJFIERJU0NMQUlNRUQuIElOIE5PIEVWRU5UIFNIQUxMIFRIRSBBVVRIT1IgQkUgTElBQkxFIEZPUiBBTlkgRElSRUNULCBJTkRJUkVDVCwgSU5DSURFTlRBTCwgU1BFQ0lBTCwgRVhFTVBMQVJZLCBPUiBDT05TRVFVRU5USUFMIERBTUFHRVMgKElOQ0xVRElORywgQlVUIE5PVCBMSU1JVEVEIFRPLCBQUk9DVVJFTUVOVCBPRiBTVUJTVElUVVRFIEdPT0RTIE9SIFNFUlZJQ0VTOyBMT1NTIE9GIFVTRSwgREFUQSwgT1IgUFJPRklUUzsgT1IgQlVTSU5FU1MgSU5URVJSVVBUSU9OKSBIT1dFVkVSIENBVVNFRCBBTkQgT04gQU5ZIFRIRU9SWSBPRiBMSUFCSUxJVFksIFdIRVRIRVIgSU4gQ09OVFJBQ1QsIFNUUklDVCBMSUFCSUxJVFksIE9SIFRPUlQgKElOQ0xVRElORyBORUdMSUdFTkNFIE9SIE9USEVSV0lTRSkgQVJJU0lORyBJTiBBTlkgV0FZIE9VVCBPRiBUSEUgVVNFIE9GIFRISVMgU09GVFdBUkUsIEVWRU4gSUYgQURWSVNFRCBPRiBUSEUgUE9TU0lCSUxJVFkgT0YgU1VDSCBEQU1BR0Uu</text>
+          </license>
+        </licenses>
+        <licenses>
+          <license>
+            <text content-type="text/plain" encoding="base64">LyoKICogKGMpIENvcHlyaWdodCAyMDAwLCAyMDAxLCAyMDAyLCAyMDAzLCAyMDA0LCAyMDA1LCAyMDA2LCAyMDA3LCAyMDA4LCAyMDA5IEhld2xldHQtUGFja2FyZCBEZXZlbG9wbWVudCBDb21wYW55LCBMUAogKiBBbGwgcmlnaHRzIHJlc2VydmVkLgogKgogKiBSZWRpc3RyaWJ1dGlvbiBhbmQgdXNlIGluIHNvdXJjZSBhbmQgYmluYXJ5IGZvcm1zLCB3aXRoIG9yIHdpdGhvdXQKICogbW9kaWZpY2F0aW9uLCBhcmUgcGVybWl0dGVkIHByb3ZpZGVkIHRoYXQgdGhlIGZvbGxvd2luZyBjb25kaXRpb25zCiAqIGFyZSBtZXQ6CiAqIDEuIFJlZGlzdHJpYnV0aW9ucyBvZiBzb3VyY2UgY29kZSBtdXN0IHJldGFpbiB0aGUgYWJvdmUgY29weXJpZ2h0CiAqICAgIG5vdGljZSwgdGhpcyBsaXN0IG9mIGNvbmRpdGlvbnMgYW5kIHRoZSBmb2xsb3dpbmcgZGlzY2xhaW1lci4KICogMi4gUmVkaXN0cmlidXRpb25zIGluIGJpbmFyeSBmb3JtIG11c3QgcmVwcm9kdWNlIHRoZSBhYm92ZSBjb3B5cmlnaHQKICogICAgbm90aWNlLCB0aGlzIGxpc3Qgb2YgY29uZGl0aW9ucyBhbmQgdGhlIGZvbGxvd2luZyBkaXNjbGFpbWVyIGluIHRoZQogKiAgICBkb2N1bWVudGF0aW9uIGFuZC9vciBvdGhlciBtYXRlcmlhbHMgcHJvdmlkZWQgd2l0aCB0aGUgZGlzdHJpYnV0aW9uLgogKiAzLiBUaGUgbmFtZSBvZiB0aGUgYXV0aG9yIG1heSBub3QgYmUgdXNlZCB0byBlbmRvcnNlIG9yIHByb21vdGUgcHJvZHVjdHMKICogICAgZGVyaXZlZCBmcm9tIHRoaXMgc29mdHdhcmUgd2l0aG91dCBzcGVjaWZpYyBwcmlvciB3cml0dGVuIHBlcm1pc3Npb24uCiAqCiAqIFRISVMgU09GVFdBUkUgSVMgUFJPVklERUQgQlkgVEhFIEFVVEhPUiBgYEFTIElTJycgQU5EIEFOWSBFWFBSRVNTIE9SCiAqIElNUExJRUQgV0FSUkFOVElFUywgSU5DTFVESU5HLCBCVVQgTk9UIExJTUlURUQgVE8sIFRIRSBJTVBMSUVEIFdBUlJBTlRJRVMKICogT0YgTUVSQ0hBTlRBQklMSVRZIEFORCBGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBUkUgRElTQ0xBSU1FRC4KICogSU4gTk8gRVZFTlQgU0hBTEwgVEhFIEFVVEhPUiBCRSBMSUFCTEUgRk9SIEFOWSBESVJFQ1QsIElORElSRUNULAogKiBJTkNJREVOVEFMLCBTUEVDSUFMLCBFWEVNUExBUlksIE9SIENPTlNFUVVFTlRJQUwgREFNQUdFUyAoSU5DTFVESU5HLCBCVVQKICogTk9UIExJTUlURUQgVE8sIFBST0NVUkVNRU5UIE9GIFNVQlNUSVRVVEUgR09PRFMgT1IgU0VSVklDRVM7IExPU1MgT0YgVVNFLAogKiBEQVRBLCBPUiBQUk9GSVRTOyBPUiBCVVNJTkVTUyBJTlRFUlJVUFRJT04pIEhPV0VWRVIgQ0FVU0VEIEFORCBPTiBBTlkKICogVEhFT1JZIE9GIExJQUJJTElUWSwgV0hFVEhFUiBJTiBDT05UUkFDVCwgU1RSSUNUIExJQUJJTElUWSwgT1IgVE9SVAogKiAoSU5DTFVESU5HIE5FR0xJR0VOQ0UgT1IgT1RIRVJXSVNFKSBBUklTSU5HIElOIEFOWSBXQVkgT1VUIE9GIFRIRSBVU0UgT0YKICogVEhJUyBTT0ZUV0FSRSwgRVZFTiBJRiBBRFZJU0VEIE9GIFRIRSBQT1NTSUJJTElUWSBPRiBTVUNIIERBTUFHRS4KKi8=</text>
+          </license>
+        </licenses>
+        <copyright>
+          <text>The GNU C Library is free software.  See the file COPYING.LIB for copying conditions, and LICENSES for notices about a few contributions that require these additional notices to be distributed.  License copyright years may be listed using range notation, e.g., 1996-2015, indicating that every year in the range, inclusive, is a copyrightable year that would otherwise be listed individually.</text>
+        </copyright>
+      </evidence>
+    </component>
+    <component type="library">
+      <name>Apache Commons Lang</name>
+      <copyright>NOASSERTION</copyright>
+      <externalReferences>
+        <reference type="distribution">
+          <url>NOASSERTION</url>
+        </reference>
+        <reference type="website">
+          <url>http://commons.apache.org/proper/commons-lang/</url>
+        </reference>
+      </externalReferences>
+      <properties>
+        <property name="spdx:spdxid">SPDXRef-fromDoap-1</property>
+        <property name="spdx:files-analyzed">false</property>
+        <property name="spdx:license-concluded">NOASSERTION</property>
+        <property name="spdx:license-declared">NOASSERTION</property>
+        <property name="spdx:download-location">NOASSERTION</property>
+        <property name="spdx:homepage">http://commons.apache.org/proper/commons-lang/</property>
+      </properties>
+    </component>
+    <component type="library">
+      <name>Jena</name>
+      <version>3.12.0</version>
+      <copyright>NOASSERTION</copyright>
+      <externalReferences>
+        <reference type="distribution">
+          <url>https://search.maven.org/remotecontent?filepath=org/apache/jena/apache-jena/3.12.0/apache-jena-3.12.0.tar.gz</url>
+        </reference>
+        <reference type="website">
+          <url>http://www.openjena.org/</url>
+        </reference>
+      </externalReferences>
+      <properties>
+        <property name="spdx:spdxid">SPDXRef-fromDoap-0</property>
+        <property name="spdx:files-analyzed">false</property>
+        <property name="spdx:license-concluded">NOASSERTION</property>
+        <property name="spdx:license-declared">NOASSERTION</property>
+        <property name="spdx:external-reference:package-manager:purl">pkg:maven/org.apache.jena/apache-jena@3.12.0</property>
+        <property name="spdx:download-location">https://search.maven.org/remotecontent?filepath=org/apache/jena/apache-jena/3.12.0/apache-jena-3.12.0.tar.gz</property>
+        <property name="spdx:homepage">http://www.openjena.org/</property>
+      </properties>
+    </component>
+    <component type="library">
+      <name>Saxon</name>
+      <version>8.8</version>
+      <description>The Saxon package is a collection of tools for processing XML documents.</description>
+      <hashes>
+        <hash alg="SHA-1">85ed0817af83a24ad8da68c2b5094de69833983c</hash>
+      </hashes>
+      <licenses>
+        <expression>MPL-1.0</expression>
+      </licenses>
+      <copyright>Copyright Saxonica Ltd</copyright>
+      <externalReferences>
+        <reference type="distribution">
+          <url>https://sourceforge.net/projects/saxon/files/Saxon-B/8.8.0.7/saxonb8-8-0-7j.zip/download</url>
+        </reference>
+        <reference type="website">
+          <url>http://saxon.sourceforge.net/</url>
+        </reference>
+      </externalReferences>
+      <properties>
+        <property name="spdx:spdxid">SPDXRef-Saxon</property>
+        <property name="spdx:files-analyzed">false</property>
+        <property name="spdx:license-comments">Other versions available for a commercial license</property>
+        <property name="spdx:license-concluded">MPL-1.0</property>
+        <property name="spdx:package:file-name">saxonB-8.8.zip</property>
+        <property name="spdx:download-location">https://sourceforge.net/projects/saxon/files/Saxon-B/8.8.0.7/saxonb8-8-0-7j.zip/download</property>
+        <property name="spdx:homepage">http://saxon.sourceforge.net/</property>
+      </properties>
+    </component>
+    <component type="file">
+      <name>./src/org/spdx/parser/DOAPProject.java</name>
+      <hashes>
+        <hash alg="SHA-1">2fd4e1c67a2d28fced849ee1bb76e7391b93eb12</hash>
+      </hashes>
+      <copyright>Copyright 2010, 2011 Source Auditor Inc.</copyright>
+      <properties>
+        <property name="spdx:spdxid">SPDXRef-DoapSource</property>
+        <property name="spdx:file:type">7</property>
+        <property name="spdx:license-concluded">Apache-2.0</property>
+        <property name="spdx:file:contributor">Protecode Inc.</property>
+        <property name="spdx:file:contributor">SPDX Technical Team Members</property>
+        <property name="spdx:file:contributor">Open Logic Inc.</property>
+        <property name="spdx:file:contributor">Source Auditor Inc.</property>
+        <property name="spdx:file:contributor">Black Duck Software In.c</property>
+      </properties>
+    </component>
+    <component type="file">
+      <name>./lib-source/commons-lang3-3.1-sources.jar</name>
+      <hashes>
+        <hash alg="SHA-1">c2b4e1c67a2d28fced849ee1bb76e7391b93f125</hash>
+      </hashes>
+      <copyright>Copyright 2001-2011 The Apache Software Foundation</copyright>
+      <properties>
+        <property name="spdx:spdxid">SPDXRef-CommonsLangSrc</property>
+        <property name="spdx:comment">This file is used by Jena</property>
+        <property name="spdx:file:type">4</property>
+        <property name="spdx:license-concluded">Apache-2.0</property>
+        <property name="spdx:file:contributor">Apache Software Foundation</property>
+        <property name="spdx:file:notice-text">Apache Commons Lang
+Copyright 2001-2011 The Apache Software Foundation
+
+This product includes software developed by
+The Apache Software Foundation (http://www.apache.org/).
+
+This product includes software from the Spring Framework,
+under the Apache License 2.0 (see: StringUtils.containsWhitespace())</property>
+      </properties>
+    </component>
+    <component type="file">
+      <name>./lib-source/jena-2.6.3-sources.jar</name>
+      <hashes>
+        <hash alg="SHA-1">3ab4e1c67a2d28fced849ee1bb76e7391b93f125</hash>
+      </hashes>
+      <copyright>(c) Copyright 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Hewlett-Packard Development Company, LP</copyright>
+      <properties>
+        <property name="spdx:spdxid">SPDXRef-JenaLib</property>
+        <property name="spdx:comment">This file belongs to Jena</property>
+        <property name="spdx:file:type">4</property>
+        <property name="spdx:license-comments">This license is used by Jena</property>
+        <property name="spdx:license-concluded">LicenseRef-1</property>
+        <property name="spdx:file:contributor">Apache Software Foundation</property>
+        <property name="spdx:file:contributor">Hewlett Packard Inc.</property>
+      </properties>
+    </component>
+    <component type="file">
+      <name>./package/foo.c</name>
+      <hashes>
+        <hash alg="SHA-1">d6a770ba38583ed4bb4525bd96e50461655d2758</hash>
+        <hash alg="MD5">624c1abb3664f4b35547e7c73864ad24</hash>
+      </hashes>
+      <copyright>Copyright 2008-2010 John Smith</copyright>
+      <properties>
+        <property name="spdx:spdxid">SPDXRef-File</property>
+        <property name="spdx:comment">The concluded license was taken from the package level that the file was included in.
+This information was found in the COPYING.txt file in the xyz directory.</property>
+        <property name="spdx:file:type">7</property>
+        <property name="spdx:annotation">{"AnnotationDate":"2011-01-29T18:30:22Z","AnnotationType":0,"Annotator":"Person: File Commenter","Comment":"File level annotation"}</property>
+        <property name="spdx:license-comments">The concluded license was taken from the package level that the file was included in.</property>
+        <property name="spdx:license-concluded">(LGPL-2.0-only OR LicenseRef-2)</property>
+        <property name="spdx:file:contributor">The Regents of the University of California</property>
+        <property name="spdx:file:contributor">Modified by Paul Mundt lethal@linux-sh.org</property>
+        <property name="spdx:file:contributor">IBM Corporation</property>
+        <property name="spdx:file:notice-text">Copyright (c) 2001 Aaron Lehmann aaroni@vitelus.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the �Software�), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: 
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED �AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</property>
+      </properties>
+    </component>
+  </components>
+</bom>

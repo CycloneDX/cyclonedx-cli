@@ -76,16 +76,15 @@ namespace CycloneDX.Cli.Tests
 
         [Theory]
         [InlineData(ConvertOutputFormat.autodetect)]
-        [InlineData(ConvertOutputFormat.spdxtag_v2_1)]
-        [InlineData(ConvertOutputFormat.spdxtag_v2_2)]
-        public async Task ConvertToSpdxTag(ConvertOutputFormat outputFormat)
+        [InlineData(ConvertOutputFormat.spdxjson)]
+        public async Task ConvertToSpdxJson(ConvertOutputFormat outputFormat)
         {
             using (var tempDirectory = new TempDirectory())
             {
-                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.spdx");
+                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.spdx.json");
                 var exitCode = await ConvertCommand.Convert(new ConvertCommandOptions
                 {
-                    InputFile = Path.Combine("Resources", "bom-1.2.xml"),
+                    InputFile = Path.Combine("Resources", "document.spdx.json"),
                     OutputFile = outputFilename,
                     InputFormat = ConvertInputFormat.autodetect,
                     OutputFormat = outputFormat
@@ -94,30 +93,32 @@ namespace CycloneDX.Cli.Tests
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(outputFilename);
-                bom = Regex.Replace(bom, @"Created: .*\n", "");
+                bom = Regex.Replace(bom, @"Created"": .*\n", "");
                 Snapshot.Match(bom, SnapshotNameExtension.Create(outputFormat));
             }
         }
 
-        [Fact]
-        public async Task ConvertToSpdxTagWithFiles()
+        [Theory]
+        [InlineData(ConvertInputFormat.autodetect)]
+        [InlineData(ConvertInputFormat.spdxjson)]
+        public async Task ConvertFromSpdxJson(ConvertInputFormat inputFormat)
         {
             using (var tempDirectory = new TempDirectory())
             {
-                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.spdx");
+                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.spdx.json");
                 var exitCode = await ConvertCommand.Convert(new ConvertCommandOptions
                 {
-                    InputFile = Path.Combine("Resources", "bom-with-files.json"),
+                    InputFile = Path.Combine("Resources", "document.spdx.json"),
                     OutputFile = outputFilename,
-                    InputFormat = ConvertInputFormat.autodetect,
-                    OutputFormat = ConvertOutputFormat.autodetect
+                    InputFormat = inputFormat,
+                    OutputFormat = ConvertOutputFormat.xml_v1_3,
                     
                 }).ConfigureAwait(false);
                 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(outputFilename);
-                bom = Regex.Replace(bom, @"Created: .*\n", "");
-                Snapshot.Match(bom);
+                bom = Regex.Replace(bom, @"Created"": .*\n", "");
+                Snapshot.Match(bom, SnapshotNameExtension.Create(inputFormat));
             }
         }
     }
