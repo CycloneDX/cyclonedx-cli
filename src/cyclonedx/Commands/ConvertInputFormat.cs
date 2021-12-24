@@ -23,6 +23,7 @@ namespace CycloneDX.Cli.Commands
         xml,
         json,
         protobuf,
-        csv
+        csv,
+        spdxjson,
     }
 }

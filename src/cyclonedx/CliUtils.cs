@@ -19,6 +19,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using CycloneDX.Models.v1_3;
+using CycloneDX.Spdx.Interop;
 using CycloneDX.Cli.Commands;
 using CycloneDX.Cli.Serialization;
 
@@ -56,6 +57,10 @@ namespace CycloneDX.Cli
             {
                 return ConvertInputFormat.csv;
             }
+            else if (filename.ToLowerInvariant().EndsWith(".spdx.json", StringComparison.InvariantCulture))
+            {
+                return ConvertInputFormat.spdxjson;
+            }
             else
             {
                 return (ConvertInputFormat) AutoDetectBomFormat(filename);
@@ -66,10 +71,9 @@ namespace CycloneDX.Cli
         {
             if (string.IsNullOrEmpty(filename)) return ConvertOutputFormat.autodetect;
             
-            var fileExtension = Path.GetExtension(filename);
-            if (fileExtension == ".spdx")
+            if (filename.ToLowerInvariant().EndsWith(".spdx.json", StringComparison.InvariantCulture))
             {
-                return ConvertOutputFormat.spdxtag;
+                return ConvertOutputFormat.spdxjson;
             }
             else
             {
@@ -137,6 +141,12 @@ namespace CycloneDX.Cli
                 await inputStream.CopyToAsync(ms).ConfigureAwait(false);
                 var bomCsv = Encoding.UTF8.GetString(ms.ToArray());
                 return CsvSerializer.Deserialize(bomCsv);
+            }
+            else if (format == ConvertInputFormat.spdxjson)
+            {
+                using var inputStream = filename == null ? Console.OpenStandardInput() : File.OpenRead(filename);
+                var spdxDoc = await CycloneDX.Spdx.Serialization.JsonSerializer.DeserializeAsync(inputStream);
+                return spdxDoc.ToCycloneDX();
             }
             else
             {
@@ -224,19 +234,10 @@ namespace CycloneDX.Cli
                     var v1_1_bom = new CycloneDX.Models.v1_1.Bom(v1_2_bom);
                     Xml.Serializer.Serialize(new CycloneDX.Models.v1_0.Bom(v1_1_bom), stream);
                 }
-                else if (format == ConvertOutputFormat.spdxtag || format == ConvertOutputFormat.spdxtag_v2_2)
+                else if (format == ConvertOutputFormat.spdxjson)
                 {
-                    var serializer = new SpdxTagSerializer(bom, SpdxVersion.v2_2);
-                    var bomString = serializer.Serialize();
-                    var bomBytes = Encoding.UTF8.GetBytes(bomString);
-                    stream.Write(bomBytes);
-                }
-                else if (format == ConvertOutputFormat.spdxtag_v2_1)
-                {
-                    var serializer = new SpdxTagSerializer(bom, SpdxVersion.v2_1);
-                    var bomString = serializer.Serialize();
-                    var bomBytes = Encoding.UTF8.GetBytes(bomString);
-                    stream.Write(bomBytes);
+                    var spdxDoc = bom.ToSpdx();
+                    await CycloneDX.Spdx.Serialization.JsonSerializer.SerializeAsync(spdxDoc, stream);
                 }
                 else if (format == ConvertOutputFormat.csv)
                 {

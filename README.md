@@ -108,11 +108,11 @@ Usage:
   cyclonedx convert [options]
 
 Options:
-  --input-file <input-file>                                                                                                               Input BOM filename, will read from stdin if no value provided.
-  --output-file <output-file>                                                                                                             Output BOM filename, will write to stdout if no value provided.
-  --input-format <autodetect|csv|json|protobuf|xml>                                                                                       Specify input file format.
-  --output-format <autodetect|csv|json|json_v1_2|json_v1_3|protobuf|protobuf_v1_3|spdxtag|spdxtag_v2_1|spdxtag_v2_2|xml|xml_v1_0|xml_v    Specify output file format.
-  1_1|xml_v1_2|xml_v1_3>
+  --input-file <input-file>                                                                                                         Input BOM filename, will read from stdin if no value provided.
+  --output-file <output-file>                                                                                                       Output BOM filename, will write to stdout if no value provided.
+  --input-format <autodetect|csv|json|protobuf|spdxjson|xml>                                                                        Specify input file format.
+  --output-format <autodetect|csv|json|json_v1_2|json_v1_3|protobuf|protobuf_v1_3|spdxjson|xml|xml_v1_0|xml_v1_1|xml_v1_2|xml_v1_3> Specify output file format.
+  
 ```
 
 ### Examples
@@ -134,6 +134,16 @@ The only required fields are the component `name` and `version` fields. Others
 can be left blank or the columns omitted.
 
 [example.csv](example.csv)
+
+### SPDX Format
+
+Converting between SPDX and CycloneDX formats can result in the loss of some
+information. The conversion functionality is provided by the
+`CycloneDX.Spdx.Interop` library, which is part of the CycloneDX .NET library
+project.
+
+For more details on what information is lost refer to the
+[CycloneDX .NET Library project page](https://github.com/CycloneDX/cyclonedx-dotnet-library).
 
 ## Diff Command
 
