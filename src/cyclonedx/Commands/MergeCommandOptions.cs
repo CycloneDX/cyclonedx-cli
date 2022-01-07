@@ -22,8 +22,8 @@ namespace CycloneDX.Cli.Commands
     {
         public IList<string> InputFiles { get; set; }
         public string OutputFile { get; set; }
-        public BomFormat InputFormat { get; set; }
-        public BomFormat OutputFormat { get; set; }
+        public CycloneDXBomFormat InputFormat { get; set; }
+        public CycloneDXBomFormat OutputFormat { get; set; }
         public bool Hierarchical { get; set; }
         public string Group { get; set; }
         public string Name { get; set; }

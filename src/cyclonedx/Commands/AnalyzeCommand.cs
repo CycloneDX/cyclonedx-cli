@@ -30,7 +30,7 @@ namespace CycloneDX.Cli.Commands
         {
             var subCommand = new Command("analyze", "Analyze a BOM file");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
-            subCommand.Add(new Option<BomFormat>("--input-format", "Specify input file format."));
+            subCommand.Add(new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<CommandOutputFormat>("--output-format", "Specify output format (defaults to text)."));
             subCommand.Add(new Option<bool>("--multiple-component-versions", "Report components that have multiple versions in use."));
             subCommand.Handler = CommandHandler.Create<AnalyzeCommandOptions>(Analyze);

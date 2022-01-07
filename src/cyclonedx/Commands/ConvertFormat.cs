@@ -17,7 +17,7 @@
 namespace CycloneDX.Cli.Commands
 {
     // WARNING: keep this in sync with BomFormat
-    public enum ConvertInputFormat
+    public enum ConvertFormat
     {
         autodetect,
         xml,

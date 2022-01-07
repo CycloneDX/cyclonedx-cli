@@ -34,9 +34,7 @@ Commands:
 
 The CycloneDX CLI tool currently supports BOM analysis, modification, diffing, merging, format conversion, signing and verification.
 
-Conversion from all CycloneDX BOM versions and CSV is supported.
-
-Conversion to all CycloneDX BOM versions, CSV, SPDX tag/value v2.1 and v2.2 is supported.
+Conversion is supported between CycloneDX XML, JSON, Protobuf, CSV, and SDPX JSON v2.2.
 
 Binaries can be downloaded from the [releases page](https://github.com/CycloneDX/cyclonedx-cli/releases).
 
@@ -56,7 +54,7 @@ files
   Add files to a BOM
 
 Usage:
-  cyclonedx add files [options]
+  cyclonedx [options] add files
 
 Options:
   --input-file <input-file>                       Input BOM filename.
@@ -80,17 +78,17 @@ Adding build output files, from `bin` directory, to existing BOM:
 ## Analyze Command
 
 ```
-analyze:
+analyze
   Analyze a BOM file
 
 Usage:
-  cyclonedx analyze [options]
+  cyclonedx [options] analyze
 
 Options:
-  --input-file <input-file>                            Input BOM filename, will read from stdin if no value provided.
-  --input-format <autodetect|csv|json|protobuf|xml>    Specify input file format.
-  --output-format <json|text>                          Specify output format (defaults to text).
-  --multiple-component-versions                        Report components that have multiple versions in use.
+  --input-file <input-file>                      Input BOM filename, will read from stdin if no value provided.
+  --input-format <autodetect|json|protobuf|xml>  Specify input file format.
+  --output-format <json|text>                    Specify output format (defaults to text).
+  --multiple-component-versions                  Report components that have multiple versions in use.
 ```
 
 ### Examples
@@ -101,18 +99,18 @@ Reporting on components that are included multiple times with different versions
 ## Convert Command
 
 ```
-convert:
+convert
   Convert between different BOM formats
 
 Usage:
-  cyclonedx convert [options]
+  cyclonedx [options] convert
 
 Options:
-  --input-file <input-file>                                                                                                         Input BOM filename, will read from stdin if no value provided.
-  --output-file <output-file>                                                                                                       Output BOM filename, will write to stdout if no value provided.
-  --input-format <autodetect|csv|json|protobuf|spdxjson|xml>                                                                        Specify input file format.
-  --output-format <autodetect|csv|json|json_v1_2|json_v1_3|protobuf|protobuf_v1_3|spdxjson|xml|xml_v1_0|xml_v1_1|xml_v1_2|xml_v1_3> Specify output file format.
-  
+  --input-file <input-file>                                    Input BOM filename, will read from stdin if no value provided.
+  --output-file <output-file>                                  Output BOM filename, will write to stdout if no value provided.
+  --input-format <autodetect|csv|json|protobuf|spdxjson|xml>   Specify input file format.
+  --output-format <autodetect|csv|json|protobuf|spdxjson|xml>  Specify output file format.
+  --output-version <v1_0|v1_1|v1_2|v1_3|v1_4>                  Specify output BOM specification version. (ignored for CSV and SPDX formats)  
 ```
 
 ### Examples
@@ -148,21 +146,21 @@ For more details on what information is lost refer to the
 ## Diff Command
 
 ```
-diff:
+diff
   Generate a BOM diff
 
 Usage:
-  cyclonedx diff [options] <from-file> <to-file>
+  cyclonedx [options] diff <from-file> <to-file>
 
 Arguments:
-  <from-file>    From BOM filename.
-  <to-file>      To BOM filename.
+  <from-file>  From BOM filename.
+  <to-file>    To BOM filename.
 
 Options:
-  --from-format <autodetect|csv|json|protobuf|xml>    Specify from file format.
-  --to-format <autodetect|csv|json|protobuf|xml>      Specify to file format.
-  --output-format <json|text>                         Specify output format (defaults to text).
-  --component-versions                                Report component versions that have been added, removed or modified.
+  --from-format <autodetect|json|protobuf|xml>  Specify from file format.
+  --to-format <autodetect|json|protobuf|xml>    Specify to file format.
+  --output-format <json|text>                   Specify output format (defaults to text).
+  --component-versions                          Report component versions that have been added, removed or modified.
 ```
 
 ### Examples
@@ -187,21 +185,21 @@ Options:
 ## Merge Command
 
 ```
-merge:
+merge
   Merge two or more BOMs
 
 Usage:
-  cyclonedx merge [options]
+  cyclonedx [options] merge
 
 Options:
-  --input-files <input-files>                       Input BOM filenames (separate filenames with a space).
-  --output-file <output-file>                       Output BOM filename, will write to stdout if no value provided.
-  --input-format <autodetect|json|protobuf|xml>     Specify input file format.
-  --output-format <autodetect|json|protobuf|xml>    Specify output file format.
-  --hierarchical                                    Perform a hierarchical merge.
-  --group <group>                                   Provide the group of software the merged BOM describes.
-  --name <name>                                     Provide the name of software the merged BOM describes (required for hierarchical merging).
-  --version <version>                               Provide the version of software the merged BOM describes (required for hierarchical merging).
+  --input-files <input-files>                     Input BOM filenames (separate filenames with a space).
+  --output-file <output-file>                     Output BOM filename, will write to stdout if no value provided.
+  --input-format <autodetect|json|protobuf|xml>   Specify input file format.
+  --output-format <autodetect|json|protobuf|xml>  Specify output file format.
+  --hierarchical                                  Perform a hierarchical merge.
+  --group <group>                                 Provide the group of software the merged BOM describes.
+  --name <name>                                   Provide the name of software the merged BOM describes (required for hierarchical merging).
+  --version <version>                             Provide the version of software the merged BOM describes (required for hierarchical merging).
 ```
 
 Note: To perform a hierarchical merge all BOMs need the subject of the BOM
@@ -255,16 +253,17 @@ Options:
 ## Validate Command
 
 ```
-validate:
+validate
   Validate a BOM
 
 Usage:
-  cyclonedx validate [options]
+  cyclonedx [options] validate
 
 Options:
-  --input-file <input-file>                                                                       Input BOM filename, will read from stdin if no value provided.
-  --input-format <autodetect|json|json_v1_2|json_v1_3|xml|xml_v1_0|xml_v1_1|xml_v1_2|xml_v1_3>    Specify input file format.
-  --fail-on-errors                                                                                Fail on validation errors (return a non-zero exit code)
+  --input-file <input-file>                   Input BOM filename, will read from stdin if no value provided.
+  --input-format <autodetect|json|xml>        Specify input file format.
+  --input-version <v1_0|v1_1|v1_2|v1_3|v1_4>  Specify input file specification version (defaults to v1.4)
+  --fail-on-errors                            Fail on validation errors (return a non-zero exit code)
 ```
 
 ### Examples

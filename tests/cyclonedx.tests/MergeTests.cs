@@ -28,20 +28,20 @@ namespace CycloneDX.Cli.Tests
     public class MergeTests
     {
         [Theory]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, BomFormat.autodetect, "sbom.json", BomFormat.autodetect, true, null, "Thing", "1")]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, BomFormat.autodetect, "sbom.json", BomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, BomFormat.autodetect, "sbom.xml", BomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, BomFormat.json, "sbom.json", BomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, BomFormat.autodetect, "sbom.xml", BomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, BomFormat.autodetect, "sbom.json", BomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, BomFormat.xml, "sbom.xml", BomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.xml"}, BomFormat.autodetect, "sbom.xml", BomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, BomFormat.autodetect, "sbom.json", BomFormat.json, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, BomFormat.autodetect, "sbom.xml", BomFormat.xml, false, null, null, null)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.autodetect, true, null, "Thing", "1")]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.autodetect, false, null, null, null)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.autodetect, false, null, null, null)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.json, "sbom.json", CycloneDXBomFormat.autodetect, false, null, null, null)]
+        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.autodetect, false, null, null, null)]
+        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.autodetect, false, null, null, null)]
+        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, CycloneDXBomFormat.xml, "sbom.xml", CycloneDXBomFormat.autodetect, false, null, null, null)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.xml"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.autodetect, false, null, null, null)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.json, false, null, null, null)]
+        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.xml, false, null, null, null)]
         public async Task Merge(
             string[] inputFilenames,
-            BomFormat inputFormat,
-            string outputFilename, BomFormat outputFormat,
+            CycloneDXBomFormat inputFormat,
+            string outputFilename, CycloneDXBomFormat outputFormat,
             bool hierarchical,
             string group, string name, string version
         )

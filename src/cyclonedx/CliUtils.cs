@@ -27,71 +27,57 @@ namespace CycloneDX.Cli
 {
     internal static class CliUtils
     {
-        public static BomFormat AutoDetectBomFormat(string filename)
+        public static CycloneDXBomFormat AutoDetectBomFormat(string filename)
         {
-            if (string.IsNullOrEmpty(filename)) return BomFormat.autodetect;
+            if (string.IsNullOrEmpty(filename)) return CycloneDXBomFormat.autodetect;
             
             var fileExtension = Path.GetExtension(filename);
             if (fileExtension == ".json")
             {
-                return BomFormat.json;
+                return CycloneDXBomFormat.json;
             }
             else if (fileExtension == ".xml")
             {
-                return BomFormat.xml;
+                return CycloneDXBomFormat.xml;
             }
             else if (fileExtension == ".cdx" || fileExtension == ".bin")
             {
-                return BomFormat.protobuf;
+                return CycloneDXBomFormat.protobuf;
             }
 
-            return BomFormat.autodetect;
+            return CycloneDXBomFormat.autodetect;
         }
 
-        public static ConvertInputFormat AutoDetectConvertCommandInputBomFormat(string filename)
+        public static ConvertFormat AutoDetectConvertBomFormat(string filename)
         {
-            if (string.IsNullOrEmpty(filename)) return ConvertInputFormat.autodetect;
+            if (string.IsNullOrEmpty(filename)) return ConvertFormat.autodetect;
             
             var fileExtension = Path.GetExtension(filename);
             if (fileExtension == ".csv")
             {
-                return ConvertInputFormat.csv;
+                return ConvertFormat.csv;
             }
             else if (filename.ToLowerInvariant().EndsWith(".spdx.json", StringComparison.InvariantCulture))
             {
-                return ConvertInputFormat.spdxjson;
+                return ConvertFormat.spdxjson;
             }
             else
             {
-                return (ConvertInputFormat) AutoDetectBomFormat(filename);
+                return (ConvertFormat) AutoDetectBomFormat(filename);
             }
         }
 
-        public static ConvertOutputFormat AutoDetectConvertCommandOutputBomFormat(string filename)
+        public static async Task<Bom> InputBomHelper(string filename, CycloneDXBomFormat format)
         {
-            if (string.IsNullOrEmpty(filename)) return ConvertOutputFormat.autodetect;
-            
-            if (filename.ToLowerInvariant().EndsWith(".spdx.json", StringComparison.InvariantCulture))
-            {
-                return ConvertOutputFormat.spdxjson;
-            }
-            else
-            {
-                return (ConvertOutputFormat) AutoDetectConvertCommandInputBomFormat(filename);
-            }
-        }
-
-        public static async Task<Bom> InputBomHelper(string filename, BomFormat format)
-        {
-            if (filename == null && format == BomFormat.autodetect)
+            if (filename == null && format == CycloneDXBomFormat.autodetect)
             {
                 await Console.Error.WriteLineAsync("Unable to auto-detect input stream format, please specify a value for --input-format").ConfigureAwait(false);
                 return null;
             }
-            else if (format == BomFormat.autodetect)
+            else if (format == CycloneDXBomFormat.autodetect)
             {
                 format = AutoDetectBomFormat(filename);
-                if (format == BomFormat.autodetect)
+                if (format == CycloneDXBomFormat.autodetect)
                 {
                     await Console.Error.WriteLineAsync("Unable to auto-detect file format, please specify a value for --input-format").ConfigureAwait(false);
                     return null;
@@ -100,33 +86,30 @@ namespace CycloneDX.Cli
 
             using var inputStream = filename == null ? Console.OpenStandardInput() : File.OpenRead(filename);
             
-            if (format == BomFormat.json)
+            switch (format)
             {
-                return await Json.Serializer.DeserializeAsync(inputStream).ConfigureAwait(false);
+                case CycloneDXBomFormat.xml:
+                    return Xml.Serializer.Deserialize(inputStream);
+                case CycloneDXBomFormat.json:
+                    return await Json.Serializer.DeserializeAsync(inputStream).ConfigureAwait(false);
+                case CycloneDXBomFormat.protobuf:
+                    return Protobuf.Serializer.Deserialize(inputStream);
+                default:
+                    return null;
             }
-            else if (format == BomFormat.xml)
-            {
-                return Xml.Serializer.Deserialize(inputStream);
-            }
-            else if (format == BomFormat.protobuf)
-            {
-                return Protobuf.Serializer.Deserialize(inputStream);
-            }
-
-            return null;
         }
         
-        public static async Task<Bom> InputBomHelper(string filename, ConvertInputFormat format)
+        public static async Task<Bom> InputBomHelper(string filename, ConvertFormat format)
         {
-            if (filename == null && format == ConvertInputFormat.autodetect)
+            if (filename == null && format == ConvertFormat.autodetect)
             {
                 await Console.Error.WriteLineAsync("Unable to auto-detect input stream format, please specify a value for --input-format").ConfigureAwait(false);
                 return null;
             }
-            else if (format == ConvertInputFormat.autodetect)
+            else if (format == ConvertFormat.autodetect)
             {
-                format = AutoDetectConvertCommandInputBomFormat(filename);
-                if (format == ConvertInputFormat.autodetect)
+                format = AutoDetectConvertBomFormat(filename);
+                if (format == ConvertFormat.autodetect)
                 {
                     await Console.Error.WriteLineAsync("Unable to auto-detect file format, please specify a value for --input-format").ConfigureAwait(false);
                     return null;
@@ -134,7 +117,7 @@ namespace CycloneDX.Cli
             }
 
             
-            if (format == ConvertInputFormat.csv)
+            if (format == ConvertFormat.csv)
             {
                 using var inputStream = filename == null ? Console.OpenStandardInput() : File.OpenRead(filename);
                 using var ms = new MemoryStream();
@@ -142,7 +125,7 @@ namespace CycloneDX.Cli
                 var bomCsv = Encoding.UTF8.GetString(ms.ToArray());
                 return CsvSerializer.Deserialize(bomCsv);
             }
-            else if (format == ConvertInputFormat.spdxjson)
+            else if (format == ConvertFormat.spdxjson)
             {
                 using var inputStream = filename == null ? Console.OpenStandardInput() : File.OpenRead(filename);
                 var spdxDoc = await CycloneDX.Spdx.Serialization.JsonSerializer.DeserializeAsync(inputStream);
@@ -150,21 +133,21 @@ namespace CycloneDX.Cli
             }
             else
             {
-                return await InputBomHelper(filename, (BomFormat) format).ConfigureAwait(false);
+                return await InputBomHelper(filename, (CycloneDXBomFormat)format).ConfigureAwait(false);
             }
         }
         
-        public static async Task<int> OutputBomHelper(Bom bom, BomFormat format, string filename)
+        public static async Task<int> OutputBomHelper(Bom bom, CycloneDXBomFormat format, string filename)
         {
-            if (filename == null && format == BomFormat.autodetect)
+            if (filename == null && format == CycloneDXBomFormat.autodetect)
             {
                 await Console.Error.WriteLineAsync("Unable to auto-detect output stream format, please specify a value for --output-format").ConfigureAwait(false);
                 return (int) ExitCode.ParameterValidationError;
             }
-            else if (format == BomFormat.autodetect)
+            else if (format == CycloneDXBomFormat.autodetect)
             {
                 var detectedFormat = AutoDetectBomFormat(filename);
-                if (detectedFormat == BomFormat.autodetect)
+                if (detectedFormat == CycloneDXBomFormat.autodetect)
                 {
                     await Console.Error.WriteLineAsync("Unable to auto-detect file format, please specify a value for --input-format").ConfigureAwait(false);
                     return (int) ExitCode.ParameterValidationError;
@@ -173,91 +156,70 @@ namespace CycloneDX.Cli
 
             using var stream = filename == null ? Console.OpenStandardOutput() : File.OpenWrite(filename);
 
-            if (format == BomFormat.protobuf)
+            switch (format)
             {
-                Protobuf.Serializer.Serialize(bom, stream);
+                case CycloneDXBomFormat.xml:
+                    Xml.Serializer.Serialize(bom, stream);
+                    break;
+                case CycloneDXBomFormat.json:
+                    await Json.Serializer.SerializeAsync(bom, stream).ConfigureAwait(false);
+                    break;
+                case CycloneDXBomFormat.protobuf:
+                    Protobuf.Serializer.Serialize(bom, stream);
+                    break;
+                default:
+                    return (int)ExitCode.ParameterValidationError;
             }
-            else if (format == BomFormat.json)
-            {
-                await Json.Serializer.SerializeAsync(bom, stream).ConfigureAwait(false);
-            }
-            else if (format == BomFormat.xml)
-            {
-                Xml.Serializer.Serialize(bom, stream);
-            }
-            
+
             return 0;
         }
 
-        public static async Task<int> OutputBomHelper(Bom bom, ConvertOutputFormat format, string filename)
+        public static async Task<int> OutputBomHelper(Bom bom, ConvertFormat format, SpecificationVersion? outputVersion, string filename)
         {
-            if (format == ConvertOutputFormat.autodetect
-                || format == ConvertOutputFormat.json
-                || format == ConvertOutputFormat.protobuf
-                || format == ConvertOutputFormat.xml
-            )
+            if (filename == null && format == ConvertFormat.autodetect)
             {
-                
-                return await OutputBomHelper(bom, (BomFormat) format, filename).ConfigureAwait(false);
+                await Console.Error.WriteLineAsync("Unable to auto-detect output stream format, please specify a value for --output-format").ConfigureAwait(false);
+                return (int) ExitCode.ParameterValidationError;
             }
-            else
+            else if (format == ConvertFormat.autodetect)
             {
-                using var stream = filename == null ? Console.OpenStandardOutput() : File.OpenWrite(filename);
+                format = AutoDetectConvertBomFormat(filename);
+                if (format == ConvertFormat.autodetect)
+                {
+                    await Console.Error.WriteLineAsync("Unable to auto-detect file format, please specify a value for --input-format").ConfigureAwait(false);
+                    return (int) ExitCode.ParameterValidationError;
+                }
+            }
 
-                if (format == ConvertOutputFormat.protobuf_v1_3)
-                {
-                    bom.SpecVersion = SpecificationVersion.v1_3;
+            bom.SpecVersion = outputVersion.HasValue ? outputVersion.Value : SpecificationVersionHelpers.CurrentVersion;
+
+            using var stream = filename == null ? Console.OpenStandardOutput() : File.OpenWrite(filename);
+
+            switch (format)
+            {
+                case ConvertFormat.xml:
+                    Xml.Serializer.Serialize(bom, stream);
+                    break;
+                case ConvertFormat.json:
+                    await Json.Serializer.SerializeAsync(bom, stream).ConfigureAwait(false);
+                    break;
+                case ConvertFormat.protobuf:
                     Protobuf.Serializer.Serialize(bom, stream);
-                }
-                else if (format == ConvertOutputFormat.json_v1_3)
-                {
-                    bom.SpecVersion = SpecificationVersion.v1_3;
-                    await Json.Serializer.SerializeAsync(bom, stream).ConfigureAwait(false);
-                }
-                else if (format == ConvertOutputFormat.json_v1_2)
-                {
-                    bom.SpecVersion = SpecificationVersion.v1_2;
-                    await Json.Serializer.SerializeAsync(bom, stream).ConfigureAwait(false);
-                }
-                else if (format == ConvertOutputFormat.xml_v1_3)
-                {
-                    bom.SpecVersion = SpecificationVersion.v1_3;
-                    Xml.Serializer.Serialize(bom, stream);
-                }
-                else if (format == ConvertOutputFormat.xml_v1_2)
-                {
-                    bom.SpecVersion = SpecificationVersion.v1_2;
-                    Xml.Serializer.Serialize(bom, stream);
-                }
-                else if (format == ConvertOutputFormat.xml_v1_1)
-                {
-                    bom.SpecVersion = SpecificationVersion.v1_1;
-                    Xml.Serializer.Serialize(bom, stream);
-                }
-                else if (format == ConvertOutputFormat.xml_v1_0)
-                {
-                    bom.SpecVersion = SpecificationVersion.v1_0;
-                    Xml.Serializer.Serialize(bom, stream);
-                }
-                else if (format == ConvertOutputFormat.spdxjson)
-                {
-                    var spdxDoc = bom.ToSpdx();
-                    await CycloneDX.Spdx.Serialization.JsonSerializer.SerializeAsync(spdxDoc, stream);
-                }
-                else if (format == ConvertOutputFormat.csv)
-                {
+                    break;
+                case ConvertFormat.csv:
                     var bomString = CsvSerializer.Serialize(bom);
                     var bomBytes = Encoding.UTF8.GetBytes(bomString);
                     stream.Write(bomBytes);
-                }
-                else
-                {
+                    break;
+                case ConvertFormat.spdxjson:
+                    var spdxDoc = bom.ToSpdx();
+                    await CycloneDX.Spdx.Serialization.JsonSerializer.SerializeAsync(spdxDoc, stream);
+                    break;
+                default:
                     Console.WriteLine($"Unimplemented output format {format}");
                     return (int) ExitCode.UnsupportedFormat;
-                }
-
-                return 0;
             }
+            return 0;
         }
 
         public static string NullIfWhiteSpace(this string str) {

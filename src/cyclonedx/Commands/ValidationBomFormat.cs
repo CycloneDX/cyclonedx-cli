@@ -16,16 +16,10 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 namespace CycloneDX.Cli.Commands
 {
-    public enum CycloneDXFormat
+    public enum ValidationBomFormat
     {
         autodetect,
-        json,
-        json_v1_3,
-        json_v1_2,
         xml,
-        xml_v1_3,
-        xml_v1_2,
-        xml_v1_1,
-        xml_v1_0,
+        json,
     }
 }

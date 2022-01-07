@@ -21,8 +21,8 @@ namespace CycloneDX.Cli.Commands
     {
         public string FromFile { get; set; }
         public string ToFile { get; set; }
-        public BomFormat FromFormat { get; set; }
-        public BomFormat ToFormat { get; set; }
+        public CycloneDXBomFormat FromFormat { get; set; }
+        public CycloneDXBomFormat ToFormat { get; set; }
         public CommandOutputFormat OutputFormat { get; set; }
         public bool ComponentVersions { get; set; }
     }

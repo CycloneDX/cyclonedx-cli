@@ -14,14 +14,13 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
-
 namespace CycloneDX.Cli.Commands
 {
-    public class AnalyzeCommandOptions
+    public enum CycloneDXBomFormat
     {
-        public string InputFile { get; set; }
-        public CycloneDXBomFormat InputFormat { get; set; }
-        public CommandOutputFormat OutputFormat { get; set; }
-        public bool MultipleComponentVersions { get; set; }
+        autodetect,
+        xml,
+        json,
+        protobuf,
     }
 }

@@ -32,8 +32,8 @@ namespace CycloneDX.Cli.Commands
             var subCommand = new Command("diff", "Generate a BOM diff");
             subCommand.Add(new Argument<string>("from-file", "From BOM filename."));
             subCommand.Add(new Argument<string>("to-file", "To BOM filename."));
-            subCommand.Add(new Option<BomFormat>("--from-format", "Specify from file format."));
-            subCommand.Add(new Option<BomFormat>("--to-format", "Specify to file format."));
+            subCommand.Add(new Option<CycloneDXBomFormat>("--from-format", "Specify from file format."));
+            subCommand.Add(new Option<CycloneDXBomFormat>("--to-format", "Specify to file format."));
             subCommand.Add(new Option<CommandOutputFormat>("--output-format", "Specify output format (defaults to text)."));
             subCommand.Add(new Option<bool>("--component-versions", "Report component versions that have been added, removed or modified."));
             subCommand.Handler = CommandHandler.Create<DiffCommandOptions>(Diff);

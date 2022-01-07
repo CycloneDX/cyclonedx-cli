@@ -23,8 +23,8 @@ namespace CycloneDX.Cli.Commands.Add
         public string InputFile { get; set; }
         public bool NoInput { get; set; }
         public string OutputFile { get; set; }
-        public BomFormat InputFormat { get; set; }
-        public BomFormat OutputFormat { get; set; }
+        public CycloneDXBomFormat InputFormat { get; set; }
+        public CycloneDXBomFormat OutputFormat { get; set; }
         public string BasePath { get; set; }
         public IList<string> Include { get; set; }
         public IList<string> Exclude { get; set; }
