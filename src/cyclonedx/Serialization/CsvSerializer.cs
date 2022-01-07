@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text;
 using CsvHelper;
 using CsvHelper.Configuration;
-using CycloneDX.Models.v1_3;
+using CycloneDX.Models;
 
 namespace CycloneDX.Cli.Serialization
 {

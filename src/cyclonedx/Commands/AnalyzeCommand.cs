@@ -53,7 +53,7 @@ namespace CycloneDX.Cli.Commands
             if (options.OutputFormat == CommandOutputFormat.json)
             {
                 #pragma warning disable IL2026
-                Console.WriteLine(JsonSerializer.Serialize<AnalyzeResult>(result, Json.Utils.GetJsonSerializerOptions_v1_3()));
+                Console.WriteLine(JsonSerializer.Serialize<AnalyzeResult>(result, Json.Utils.GetJsonSerializerOptions()));
                 #pragma warning restore IL2026
             }
             else

@@ -20,7 +20,7 @@ using System.Diagnostics.Contracts;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.Threading.Tasks;
-using CycloneDX.Models.v1_3;
+using CycloneDX.Models;
 using CycloneDX.Utils;
 
 namespace CycloneDX.Cli.Commands

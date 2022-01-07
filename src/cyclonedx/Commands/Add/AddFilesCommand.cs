@@ -27,7 +27,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using AntPathMatching;
-using CycloneDX.Models.v1_3;
+using CycloneDX.Models;
 using CycloneDX.Cli.Commands;
 
 namespace CycloneDX.Cli.Commands.Add

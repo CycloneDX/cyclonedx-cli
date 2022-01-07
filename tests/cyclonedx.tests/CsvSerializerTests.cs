@@ -40,7 +40,7 @@ namespace CycloneDX.Cli.Tests
             {
                 var resourceFilename = Path.Join("Resources", "CsvSerializer", filename + "-1.2.xml");
                 var inputBomString = File.ReadAllText(resourceFilename);
-                var bom = Xml.Deserializer.Deserialize(inputBomString);
+                var bom = Xml.Serializer.Deserialize(inputBomString);
 
                 var bomCsv = CsvSerializer.Serialize(bom);
 

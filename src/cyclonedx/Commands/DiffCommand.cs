@@ -63,18 +63,8 @@ namespace CycloneDX.Cli.Commands
                     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 };
 
-                jsonOptions.Converters.Add(new Json.Converters.v1_2.ComponentTypeConverter());
-                jsonOptions.Converters.Add(new Json.Converters.v1_2.DataFlowConverter());
-                jsonOptions.Converters.Add(new Json.Converters.v1_2.DateTimeConverter());
-                jsonOptions.Converters.Add(new Json.Converters.v1_2.DependencyConverter());
-                jsonOptions.Converters.Add(new Json.Converters.v1_2.ExternalReferenceTypeConverter());
-                jsonOptions.Converters.Add(new Json.Converters.v1_2.HashAlgorithmConverter());
-                jsonOptions.Converters.Add(new Json.Converters.v1_2.IssueClassificationConverter());
-                jsonOptions.Converters.Add(new Json.Converters.v1_2.LicenseConverter());
-                jsonOptions.Converters.Add(new Json.Converters.v1_2.PatchClassificationConverter());
-
                 #pragma warning disable IL2026
-                Console.WriteLine(JsonSerializer.Serialize<DiffResult>(result, jsonOptions));
+                Console.WriteLine(JsonSerializer.Serialize<DiffResult>(result, Json.Utils.GetJsonSerializerOptions()));
                 #pragma warning restore IL2026
             }
             else

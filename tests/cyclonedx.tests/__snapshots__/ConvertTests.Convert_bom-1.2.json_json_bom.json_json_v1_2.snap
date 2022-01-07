@@ -1617,33 +1617,25 @@
       "type": "library",
       "name": "CycloneDX.Core",
       "version": "1.0.0",
-      "licenses": [],
-      "purl": "pkg:nuget/CycloneDX.Core@1.0.0",
-      "externalReferences": []
+      "purl": "pkg:nuget/CycloneDX.Core@1.0.0"
     },
     {
       "type": "library",
       "name": "CycloneDX.Json",
       "version": "1.0.0",
-      "licenses": [],
-      "purl": "pkg:nuget/CycloneDX.Json@1.0.0",
-      "externalReferences": []
+      "purl": "pkg:nuget/CycloneDX.Json@1.0.0"
     },
     {
       "type": "library",
       "name": "CycloneDX.Models",
       "version": "1.0.0",
-      "licenses": [],
-      "purl": "pkg:nuget/CycloneDX.Models@1.0.0",
-      "externalReferences": []
+      "purl": "pkg:nuget/CycloneDX.Models@1.0.0"
     },
     {
       "type": "library",
       "name": "CycloneDX.Xml",
       "version": "1.0.0",
-      "licenses": [],
-      "purl": "pkg:nuget/CycloneDX.Xml@1.0.0",
-      "externalReferences": []
+      "purl": "pkg:nuget/CycloneDX.Xml@1.0.0"
     },
     {
       "type": "library",
