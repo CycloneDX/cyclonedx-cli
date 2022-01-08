@@ -31,27 +31,44 @@ namespace CycloneDX.Cli.Tests
         [InlineData("bom-1.0.xml", ConvertFormat.autodetect, "bom.xml", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.0.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.0.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, SpecificationVersion.v1_1)]
+
         [InlineData("bom-1.1.xml", ConvertFormat.autodetect, "bom.xml", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.1.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.1.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, SpecificationVersion.v1_1)]
+
         [InlineData("bom-1.2.xml", ConvertFormat.autodetect, "bom.xml", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.2.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.2.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, null)]
         [InlineData("bom-1.2.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, SpecificationVersion.v1_2)]
+
         [InlineData("bom-1.2.json", ConvertFormat.autodetect, "bom.json", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.2.json", ConvertFormat.json, "bom.json", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.2.json", ConvertFormat.json, "bom.json", ConvertFormat.json, SpecificationVersion.v1_2)]
+
         [InlineData("bom-1.3.xml", ConvertFormat.autodetect, "bom.xml", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.3.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.3.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, null)]
         [InlineData("bom-1.3.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, SpecificationVersion.v1_3)]
+
         [InlineData("bom-1.3.json", ConvertFormat.autodetect, "bom.json", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.3.json", ConvertFormat.json, "bom.json", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.3.json", ConvertFormat.json, "bom.json", ConvertFormat.json, null)]
         [InlineData("bom-1.3.json", ConvertFormat.json, "bom.json", ConvertFormat.json, SpecificationVersion.v1_3)]
+
+        [InlineData("bom-1.4.xml", ConvertFormat.autodetect, "bom.xml", ConvertFormat.autodetect, null)]
+        [InlineData("bom-1.4.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.autodetect, null)]
+        [InlineData("bom-1.4.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, null)]
+        [InlineData("bom-1.4.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, SpecificationVersion.v1_4)]
+
+        [InlineData("bom-1.4.json", ConvertFormat.autodetect, "bom.json", ConvertFormat.autodetect, null)]
+        [InlineData("bom-1.4.json", ConvertFormat.json, "bom.json", ConvertFormat.autodetect, null)]
+        [InlineData("bom-1.4.json", ConvertFormat.json, "bom.json", ConvertFormat.json, null)]
+        [InlineData("bom-1.4.json", ConvertFormat.json, "bom.json", ConvertFormat.json, SpecificationVersion.v1_4)]
+
         [InlineData("bom.csv", ConvertFormat.autodetect, "bom.csv", ConvertFormat.autodetect, null)]
         [InlineData("bom.csv", ConvertFormat.csv, "bom.csv", ConvertFormat.autodetect, null)]
         [InlineData("bom.csv", ConvertFormat.csv, "bom.csv", ConvertFormat.csv, null)]
+
         [InlineData("bom-1.3.cdx", ConvertFormat.protobuf, "bom.cdx", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.3.cdx", ConvertFormat.protobuf, "bom.json", ConvertFormat.json, SpecificationVersion.v1_3)]
         [InlineData("bom-1.3.json", ConvertFormat.json, "bom.cdx", ConvertFormat.protobuf, SpecificationVersion.v1_3)]
