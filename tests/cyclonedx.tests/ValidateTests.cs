@@ -26,23 +26,35 @@ namespace CycloneDX.Cli.Tests
     public class ValidateTests
     {
         [Theory]
-        [InlineData("bom-1.0.xml", ValidationBomFormat.autodetect, null,true)]
+        [InlineData("bom-1.0.xml", ValidationBomFormat.autodetect, null, true)]
+        [InlineData("bom-1.0.xml", ValidationBomFormat.autodetect, SpecificationVersion.v1_1, false)]
+
         [InlineData("bom-1.0.xml", ValidationBomFormat.xml, null, true)]
         [InlineData("bom-1.0.xml", ValidationBomFormat.xml, SpecificationVersion.v1_0, true)]
+
         [InlineData("bom-1.1.xml", ValidationBomFormat.autodetect, null, true)]
         [InlineData("bom-1.1.xml", ValidationBomFormat.xml, SpecificationVersion.v1_1, true)]
+
         [InlineData("bom-1.2.xml", ValidationBomFormat.autodetect, null, true)]
         [InlineData("bom-1.2.xml", ValidationBomFormat.xml, SpecificationVersion.v1_2, true)]
+
         [InlineData("bom-1.3.xml", ValidationBomFormat.autodetect, null, true)]
         [InlineData("bom-1.3.xml", ValidationBomFormat.xml, SpecificationVersion.v1_3, true)]
+
+        [InlineData("bom-1.4.xml", ValidationBomFormat.autodetect, null, true)]
+        [InlineData("bom-1.4.xml", ValidationBomFormat.xml, SpecificationVersion.v1_4, true)]
+
         [InlineData("bom-1.2.json", ValidationBomFormat.autodetect, null, true)]
+        [InlineData("bom-1.2.json", ValidationBomFormat.autodetect, SpecificationVersion.v1_3, false)]
+
         [InlineData("bom-1.2.json", ValidationBomFormat.json, null, true)]
         [InlineData("bom-1.2.json", ValidationBomFormat.json, SpecificationVersion.v1_2, true)]
+
         [InlineData("bom-1.3.json", ValidationBomFormat.autodetect, null, true)]
         [InlineData("bom-1.3.json", ValidationBomFormat.json, SpecificationVersion.v1_3, true)]
-        // these two are currently failing due to the .NET library throwing an exception
-        // [InlineData("bom-1.0.xml", CycloneDXFormat.json, false)]
-        // [InlineData("bom-1.2.json", CycloneDXFormat.xml, false)]
+
+        [InlineData("bom-1.4.json", ValidationBomFormat.autodetect, null, true)]
+        [InlineData("bom-1.4.json", ValidationBomFormat.json, SpecificationVersion.v1_4, true)]
         public async Task Validate(string inputFilename, ValidationBomFormat inputFormat, SpecificationVersion? inputVersion, bool valid)
         {
             var exitCode = await ValidateCommand.Validate(new ValidateCommandOptions
@@ -50,6 +62,7 @@ namespace CycloneDX.Cli.Tests
                 InputFile = Path.Combine("Resources", inputFilename),
                 InputFormat = inputFormat,
                 InputVersion = inputVersion,
+                FailOnErrors = true,
             }).ConfigureAwait(false);
             
             if (valid)

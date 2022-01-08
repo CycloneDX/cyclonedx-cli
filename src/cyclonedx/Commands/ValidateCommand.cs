@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 using System;
+using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.Diagnostics.Contracts;
@@ -57,28 +58,71 @@ namespace CycloneDX.Cli.Commands
                 return (int)ExitCode.IOError;
             }
 
-            if (!options.InputVersion.HasValue)
-            {
-                options.InputVersion = SpecificationVersion.v1_4;
-            }
-
             ValidationResult validationResult = null;
 
-            switch (options.InputFormat)
+            if (options.InputVersion.HasValue)
             {
-                case ValidationBomFormat.xml:
+                if (options.InputFormat == ValidationBomFormat.xml)
+                {
                     Console.WriteLine("Validating XML BOM...");
                     validationResult = Xml.Validator.Validate(inputBom, options.InputVersion.Value);
-                    break;
-                case ValidationBomFormat.json:
+                }
+                else if (options.InputFormat == ValidationBomFormat.json)
+                {
                     Console.WriteLine("Validating JSON BOM...");
                     validationResult = Json.Validator.Validate(inputBom, options.InputVersion.Value);
-                    break;
+                }
+            }
+            else if (options.InputFormat == ValidationBomFormat.xml)
+            {
+                validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_4);
+                if (!validationResult.Valid)
+                {
+                    validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_3);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_2);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_1);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_0);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult.Messages = new List<string>
+                    {
+                        "Unable to validate against any XML schemas."
+                    };
+                }
+            }
+            else if (options.InputFormat == ValidationBomFormat.json)
+            {
+                validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_4);
+                if (!validationResult.Valid)
+                {
+                    validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_3);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_2);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult.Messages = new List<string>
+                    {
+                        "Unable to validate against any JSON schemas."
+                    };
+                }
             }
 
             if (validationResult == null)
             {
-                Console.WriteLine("There was an issue with the supplied parameters. Unable to check validity of BOM.");
+                Console.WriteLine("Unable There was an issue with the supplied parameters. Unable to check validity of BOM.");
                 return (int)ExitCode.ParameterValidationError;
             }
             else
@@ -89,14 +133,16 @@ namespace CycloneDX.Cli.Commands
                     Console.WriteLine(message);
                 }
 
-                if (options.FailOnErrors && !validationResult.Valid)
+                if (validationResult.Valid)
                 {
-                    return (int)ExitCode.OkFail;
+                    Console.WriteLine("BOM validated successfully.");
+                    return (int)ExitCode.Ok;
                 }
-                
-                Console.WriteLine("BOM validated successfully.");
-
-                return (int)ExitCode.Ok;
+                else
+                {
+                    Console.WriteLine("BOM is not valid.");
+                    return options.FailOnErrors ? (int)ExitCode.OkFail : (int)ExitCode.Ok;
+                }
             }
         }
 
