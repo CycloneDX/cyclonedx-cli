@@ -378,7 +378,7 @@ Permission to modify and redistribute is granted under the terms of the Apache 2
 Pull requests are welcome. But please read the
 [CycloneDX contributing guidelines](https://github.com/CycloneDX/.github/blob/master/CONTRIBUTING.md) first.
 
-To build and test the solution locally you should have .NET 5
+To build and test the solution locally you should have .NET 6
 installed. Standard commands like `dotnet build` and `dotnet test` work.
 
 It is generally expected that pull requests will include relevant tests.
@@ -387,9 +387,3 @@ Build warnings will break the build.
 
 Please let us know if you are having trouble debugging a test that is failing
 for a platform that you don't have access to.
-
-Thanks to [Gitpod](https://gitpod.io/) there is a really easy way of creating
-a ready to go development environment with VS Code. You can open a Gitpod
-hosted development environment in your browser.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/CycloneDX/cyclonedx-cli)
