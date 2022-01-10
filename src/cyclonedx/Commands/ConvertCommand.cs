@@ -31,8 +31,9 @@ namespace CycloneDX.Cli.Commands
             var subCommand = new Command("convert", "Convert between different BOM formats");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
-            subCommand.Add(new Option<ConvertInputFormat>("--input-format", "Specify input file format."));
-            subCommand.Add(new Option<ConvertOutputFormat>("--output-format", "Specify output file format."));
+            subCommand.Add(new Option<ConvertFormat>("--input-format", "Specify input file format."));
+            subCommand.Add(new Option<ConvertFormat>("--output-format", "Specify output file format."));
+            subCommand.Add(new Option<SpecificationVersion>("--output-version", "Specify output BOM specification version. (ignored for CSV and SPDX formats)"));
             subCommand.Handler = CommandHandler.Create<ConvertCommandOptions>(Convert);
             rootCommand.Add(subCommand);
         }
@@ -43,7 +44,7 @@ namespace CycloneDX.Cli.Commands
             var inputBom = await CliUtils.InputBomHelper(options.InputFile, options.InputFormat).ConfigureAwait(false);
             if (inputBom == null) return (int)ExitCode.ParameterValidationError;
 
-            if (options.OutputFormat == ConvertOutputFormat.autodetect)
+            if (options.OutputFormat == ConvertFormat.autodetect)
             {
                 if (string.IsNullOrEmpty(options.OutputFile))
                 {
@@ -51,16 +52,16 @@ namespace CycloneDX.Cli.Commands
                     return (int)ExitCode.ParameterValidationError;
                 }
 
-                options.OutputFormat = CliUtils.AutoDetectConvertCommandOutputBomFormat(options.OutputFile);
+                options.OutputFormat = CliUtils.AutoDetectConvertBomFormat(options.OutputFile);
                 
-                if (options.OutputFormat == ConvertOutputFormat.autodetect)
+                if (options.OutputFormat == ConvertFormat.autodetect)
                 {
                     await Console.Error.WriteLineAsync("Unable to auto-detect output format from output filename").ConfigureAwait(false);
                     return (int)ExitCode.ParameterValidationError;
                 }
             }
 
-            return await CliUtils.OutputBomHelper(inputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
+            return await CliUtils.OutputBomHelper(inputBom, options.OutputFormat, options.OutputVersion, options.OutputFile).ConfigureAwait(false);
         }
     }
 }

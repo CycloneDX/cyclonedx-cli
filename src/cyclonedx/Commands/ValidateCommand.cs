@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 using System;
+using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.Diagnostics.Contracts;
@@ -33,7 +34,8 @@ namespace CycloneDX.Cli.Commands
             Contract.Requires(rootCommand != null);
             var subCommand = new Command("validate", "Validate a BOM");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
-            subCommand.Add(new Option<CycloneDXFormat>("--input-format", "Specify input file format."));
+            subCommand.Add(new Option<ValidationBomFormat>("--input-format", "Specify input file format."));
+            subCommand.Add(new Option<SpecificationVersion?>("--input-version", "Specify input file specification version (defaults to v1.4)"));
             subCommand.Add(new Option<bool>("--fail-on-errors", "Fail on validation errors (return a non-zero exit code)"));
             subCommand.Handler = CommandHandler.Create<ValidateCommandOptions>(Validate);
             rootCommand.Add(subCommand);
@@ -43,7 +45,7 @@ namespace CycloneDX.Cli.Commands
         {
             Contract.Requires(options != null);
             ValidateInputFormatValue(options);
-            if (options.InputFormat == CycloneDXFormat.autodetect)
+            if (options.InputFormat == ValidationBomFormat.autodetect)
             {
                 await Console.Error.WriteLineAsync("Unable to auto-detect input format").ConfigureAwait(false);
                 return (int)ExitCode.ParameterValidationError;
@@ -56,72 +58,106 @@ namespace CycloneDX.Cli.Commands
                 return (int)ExitCode.IOError;
             }
 
-            var specificationVersion = SpecificationVersion.v1_3;
+            ValidationResult validationResult = null;
 
-            switch (options.InputFormat)
+            if (options.InputVersion.HasValue)
             {
-                case CycloneDXFormat.xml_v1_2:
-                case CycloneDXFormat.json_v1_2:
-                    specificationVersion = SpecificationVersion.v1_2;
-                    break;
-                case CycloneDXFormat.xml_v1_1:
-                    specificationVersion = SpecificationVersion.v1_1;
-                    break;
-                case CycloneDXFormat.xml_v1_0:
-                    specificationVersion = SpecificationVersion.v1_0;
-                    break;
+                if (options.InputFormat == ValidationBomFormat.xml)
+                {
+                    Console.WriteLine("Validating XML BOM...");
+                    validationResult = Xml.Validator.Validate(inputBom, options.InputVersion.Value);
+                }
+                else if (options.InputFormat == ValidationBomFormat.json)
+                {
+                    Console.WriteLine("Validating JSON BOM...");
+                    validationResult = Json.Validator.Validate(inputBom, options.InputVersion.Value);
+                }
+            }
+            else if (options.InputFormat == ValidationBomFormat.xml)
+            {
+                validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_4);
+                if (!validationResult.Valid)
+                {
+                    validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_3);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_2);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_1);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_0);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult.Messages = new List<string>
+                    {
+                        "Unable to validate against any XML schemas."
+                    };
+                }
+            }
+            else if (options.InputFormat == ValidationBomFormat.json)
+            {
+                validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_4);
+                if (!validationResult.Valid)
+                {
+                    validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_3);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_2);
+                }
+                if (!validationResult.Valid)
+                {
+                    validationResult.Messages = new List<string>
+                    {
+                        "Unable to validate against any JSON schemas."
+                    };
+                }
             }
 
-            ValidationResult validationResult;
-
-            if (options.InputFormat.ToString().StartsWith("json", StringComparison.InvariantCulture))
+            if (validationResult == null)
             {
-                Console.WriteLine("Validating JSON BOM...");
-                validationResult = Json.Validator.Validate(inputBom, specificationVersion);
+                Console.WriteLine("Unable There was an issue with the supplied parameters. Unable to check validity of BOM.");
+                return (int)ExitCode.ParameterValidationError;
             }
             else
             {
-                Console.WriteLine("Validating XML BOM...");
-                validationResult = Xml.Validator.Validate(inputBom, specificationVersion);
-            }
+                if (validationResult.Messages != null)
+                foreach (var message in validationResult.Messages)
+                {
+                    Console.WriteLine(message);
+                }
 
-            if (validationResult.Messages != null)
-            foreach (var message in validationResult.Messages)
-            {
-                Console.WriteLine(message);
+                if (validationResult.Valid)
+                {
+                    Console.WriteLine("BOM validated successfully.");
+                    return (int)ExitCode.Ok;
+                }
+                else
+                {
+                    Console.WriteLine("BOM is not valid.");
+                    return options.FailOnErrors ? (int)ExitCode.OkFail : (int)ExitCode.Ok;
+                }
             }
-
-            if (options.FailOnErrors && !validationResult.Valid)
-            {
-                return (int)ExitCode.OkFail;
-            }
-            
-            Console.WriteLine("BOM validated successfully.");
-
-            return (int)ExitCode.Ok;
         }
 
         private static void ValidateInputFormatValue(ValidateCommandOptions options)
         {
-            if (options.InputFormat == CycloneDXFormat.autodetect && !string.IsNullOrEmpty(options.InputFile))
+            if (options.InputFormat == ValidationBomFormat.autodetect && !string.IsNullOrEmpty(options.InputFile))
             {
                 if (options.InputFile.EndsWith(".json", StringComparison.InvariantCulture))
                 {
-                    options.InputFormat = CycloneDXFormat.json;
+                    options.InputFormat = ValidationBomFormat.json;
                 }
                 else if (options.InputFile.EndsWith(".xml", StringComparison.InvariantCulture))
                 {
-                    options.InputFormat = CycloneDXFormat.xml;
+                    options.InputFormat = ValidationBomFormat.xml;
                 }
-            }
-            
-            if (options.InputFormat == CycloneDXFormat.json)
-            {
-                options.InputFormat = CycloneDXFormat.json_v1_3;
-            }
-            else if (options.InputFormat == CycloneDXFormat.xml)
-            {
-                options.InputFormat = CycloneDXFormat.xml_v1_3;
             }
         }
 

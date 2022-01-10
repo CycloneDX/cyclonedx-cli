@@ -27,7 +27,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using AntPathMatching;
-using CycloneDX.Models.v1_3;
+using CycloneDX.Models;
 using CycloneDX.Cli.Commands;
 
 namespace CycloneDX.Cli.Commands.Add
@@ -41,8 +41,8 @@ namespace CycloneDX.Cli.Commands.Add
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename."));
             subCommand.Add(new Option<bool>("--no-input", "Use this option to indicate that there is no input BOM."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
-            subCommand.Add(new Option<BomFormat>("--input-format", "Specify input file format."));
-            subCommand.Add(new Option<BomFormat>("--output-format", "Specify output file format."));
+            subCommand.Add(new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."));
+            subCommand.Add(new Option<CycloneDXBomFormat>("--output-format", "Specify output file format."));
             subCommand.Add(new Option<string>("--base-path", "Base path for directory to process (defaults to current working directory if omitted)."));
             subCommand.Add(new Option<List<string>>("--include", "Apache Ant style path and file patterns to specify what to include (defaults to all files, separate patterns with a space)."));
             subCommand.Add(new Option<List<string>>("--exclude", "Apache Ant style path and file patterns to specify what to exclude (defaults to none, separate patterns with a space)."));
@@ -72,8 +72,8 @@ namespace CycloneDX.Cli.Commands.Add
             if (!bom.Metadata.Tools.Exists(tool => tool.Name == thisTool.Name && tool.Version == thisTool.Version))
                 bom.Metadata.Tools.Add(thisTool);
 
-            if (options.OutputFormat == BomFormat.autodetect) options.OutputFormat = CliUtils.AutoDetectBomFormat(options.OutputFile);
-            if (options.OutputFormat == BomFormat.autodetect)
+            if (options.OutputFormat == CycloneDXBomFormat.autodetect) options.OutputFormat = CliUtils.AutoDetectBomFormat(options.OutputFile);
+            if (options.OutputFormat == CycloneDXBomFormat.autodetect)
             {
                 Console.WriteLine($"Unable to auto-detect output format");
                 return (int)ExitCode.ParameterValidationError;

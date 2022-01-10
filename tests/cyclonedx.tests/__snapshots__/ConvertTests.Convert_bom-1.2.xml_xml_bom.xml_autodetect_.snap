@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" serialNumber="urn:uuid:f9bcf38b-e331-48b3-a541-28f5352a4509" version="1" xmlns="http://cyclonedx.org/schema/bom/1.3">
+<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" serialNumber="urn:uuid:f9bcf38b-e331-48b3-a541-28f5352a4509" version="1" xmlns="http://cyclonedx.org/schema/bom/1.4">
   <metadata>
     <component type="application">
       <name>Test</name>
       <version>1</version>
-      <hashes />
-      <externalReferences />
-      <components />
     </component>
   </metadata>
   <components>

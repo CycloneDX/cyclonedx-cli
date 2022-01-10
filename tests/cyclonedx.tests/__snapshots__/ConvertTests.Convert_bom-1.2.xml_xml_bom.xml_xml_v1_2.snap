@@ -4,9 +4,6 @@
     <component type="application">
       <name>Test</name>
       <version>1</version>
-      <hashes />
-      <externalReferences />
-      <components />
     </component>
   </metadata>
   <components>

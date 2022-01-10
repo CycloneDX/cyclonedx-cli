@@ -21,7 +21,8 @@ namespace CycloneDX.Cli.Commands
     {
         public string InputFile { get; set; }
         public string OutputFile { get; set; }
-        public ConvertInputFormat InputFormat { get; set; }
-        public ConvertOutputFormat OutputFormat { get; set; }
+        public ConvertFormat InputFormat { get; set; }
+        public ConvertFormat OutputFormat { get; set; }
+        public SpecificationVersion? OutputVersion { get; set; }
     }
 }

@@ -27,7 +27,8 @@ namespace CycloneDX.Cli.Commands
     public class ValidateCommandOptions
     {
         public string InputFile { get; set; }
-        public CycloneDXFormat InputFormat { get; set; }
+        public ValidationBomFormat InputFormat { get; set; }
+        public SpecificationVersion? InputVersion { get; set; }
         public bool FailOnErrors { get; set; }
     }
 }
