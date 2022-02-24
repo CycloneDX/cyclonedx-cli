@@ -29,7 +29,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v2.4.0
-      - uses: actions/setup-dotnet@v1.9.0
+      - uses: actions/setup-dotnet@v1.9.1
         with:
           dotnet-version: '6.0'
       # The tests should have already been run during the PR workflow, so this is really just a sanity check
