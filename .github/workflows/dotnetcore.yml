@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        runtime: [linux-x64, linux-musl-x64, linux-arm, linux-arm64, win-x64, win-x86, win-arm, win-arm64, osx-x64]
+        runtime: [linux-x64, linux-musl-x64, linux-arm, linux-arm64, win-x64, win-x86, win-arm, win-arm64, osx-x64, osx-arm64]
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v2.4.0

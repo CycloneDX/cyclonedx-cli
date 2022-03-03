@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <PublishTrimmed>true</PublishTrimmed>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <RuntimeIdentifiers>linux-x64;linux-musl-x64;linux-arm;linux-arm64;win-x64;win-x86;win-arm;win-arm64;osx-x64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>linux-x64;linux-musl-x64;linux-arm;linux-arm64;win-x64;win-x86;win-arm;win-arm64;osx-x64;osx-arm64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <PropertyGroup>
