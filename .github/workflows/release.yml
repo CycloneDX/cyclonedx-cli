@@ -27,6 +27,9 @@ jobs:
     name: Release
     runs-on: ubuntu-20.04
     timeout-minutes: 30
+    outputs:
+      # Used by the release-osx-arm64 job to upload the osx-arm64 binary
+      release_upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
       - uses: actions/checkout@v2.4.0
       - uses: actions/setup-dotnet@v1.9.0
@@ -45,7 +48,7 @@ jobs:
           REPO=cyclonedx/cyclonedx-cli
           dotnet build --configuration Release
           mkdir bin
-          for runtime in linux-x64 linux-musl-x64 linux-arm linux-arm64 win-x64 win-x86 win-arm win-arm64 osx-x64 osx-arm64
+          for runtime in linux-x64 linux-musl-x64 linux-arm linux-arm64 win-x64 win-x86 win-arm win-arm64 osx-x64
           do
             dotnet publish src/cyclonedx/cyclonedx.csproj -r $runtime --configuration Release /p:Version=$VERSION --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --output bin/$runtime
           done
@@ -161,12 +164,38 @@ jobs:
           asset_name: cyclonedx-osx-x64
           asset_content_type: application/octet-stream
 
+  # Binaries for Apple silicon must be signed, which can only be achieved on macOS.
+  # See https://github.com/dotnet/runtime/issues/49091#issuecomment-797029172
+  release-osx-arm64:
+    name: Release osx-arm64
+    needs: release
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: '6.0'
+
+      - name: Create binary
+        run: |
+          VERSION=`cat semver.txt`
+          echo "##[set-output name=version;]$VERSION"
+          dotnet build --configuration Release
+          mkdir bin
+          dotnet publish src/cyclonedx/cyclonedx.csproj -r osx-arm64 --configuration Release /p:Version=$VERSION --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --output bin/osx-arm64
+
+      # It is enough to "ad-hoc" sign the binary, we don't need a valid developer certificate for now.
+      - name: Sign binary
+        run: |
+          codesign -f -s - bin/osx-arm64/cyclonedx
+
       - name: Upload binary to github release
         uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ needs.release.outputs.release_upload_url }}
           asset_path: bin/osx-arm64/cyclonedx
           asset_name: cyclonedx-osx-arm64
           asset_content_type: application/octet-stream
