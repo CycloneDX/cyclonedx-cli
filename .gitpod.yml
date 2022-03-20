@@ -1,0 +1,11 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Restore dependencies
+    init: |
+      dotnet tool install --global dotnet-reportgenerator-globaltool
+      dotnet restore
+vscode:
+  extensions:
+    - muhammad-sammy.csharp
