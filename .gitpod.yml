@@ -1,10 +1,16 @@
 image:
   file: .gitpod.Dockerfile
 
+# Refer to for reasons https://github.com/gitpod-io/template-dotnet-core-cli-csharp/commit/9d01b88fa900c7802103a13ca0cc18b2b02c4752
 tasks:
   - name: Restore dependencies
     init: |
-      dotnet tool install --global dotnet-reportgenerator-globaltool
+      wget -O protoc.zip https://github.com/protocolbuffers/protobuf/releases/download/v3.15.8/protoc-3.15.8-linux-x86_64.zip
+      unzip protoc.zip -d /workspace/local
+      rm protoc.zip
+      mkdir -p /workspace/local/dotnet && curl -fsSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 6.0 --install-dir /workspace/local/dotnet
+      dotnet tool install --tool-path /workspace/local/bin dotnet-reportgenerator-globaltool
+      dotnet tool install --tool-path /workspace/local/bin dotnet-outdated-tool
       dotnet restore
 vscode:
   extensions:
