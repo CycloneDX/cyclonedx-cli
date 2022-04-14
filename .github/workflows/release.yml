@@ -31,7 +31,7 @@ jobs:
       # Used by the release-osx-arm64 job to upload the osx-arm64 binary
       release_upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3.0.1
       - uses: actions/setup-dotnet@v1.9.0
         with:
           dotnet-version: '6.0'
@@ -172,7 +172,7 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3.0.1
       - uses: actions/setup-dotnet@v1.9.0
         with:
           dotnet-version: '6.0'
