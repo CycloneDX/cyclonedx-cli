@@ -14,7 +14,7 @@
      /____/
 
 Usage:
-  cyclonedx [options] [command]
+  cyclonedx [command] [options]
 
 Options:
   --version         Show version information
@@ -54,7 +54,7 @@ files
   Add files to a BOM
 
 Usage:
-  cyclonedx [options] add files
+  cyclonedx add files [options]
 
 Options:
   --input-file <input-file>                       Input BOM filename.
@@ -82,7 +82,7 @@ analyze
   Analyze a BOM file
 
 Usage:
-  cyclonedx [options] analyze
+  cyclonedx analyze [options]
 
 Options:
   --input-file <input-file>                      Input BOM filename, will read from stdin if no value provided.
@@ -103,7 +103,7 @@ convert
   Convert between different BOM formats
 
 Usage:
-  cyclonedx [options] convert
+  cyclonedx convert [options]
 
 Options:
   --input-file <input-file>                                    Input BOM filename, will read from stdin if no value provided.
@@ -150,7 +150,7 @@ diff
   Generate a BOM diff
 
 Usage:
-  cyclonedx [options] diff <from-file> <to-file>
+  cyclonedx diff <from-file> <to-file> [options]
 
 Arguments:
   <from-file>  From BOM filename.
@@ -175,7 +175,7 @@ keygen
   Generates an RSA public/private key pair for BOM signing
 
 Usage:
-  cyclonedx [options] keygen
+  cyclonedx keygen [options]
 
 Options:
   --private-key-file <private-key-file>  Filename for generated private key file (defaults to "private.key")
@@ -189,7 +189,7 @@ merge
   Merge two or more BOMs
 
 Usage:
-  cyclonedx [options] merge
+  cyclonedx merge [options]
 
 Options:
   --input-files <input-files>                     Input BOM filenames (separate filenames with a space).
@@ -224,7 +224,7 @@ bom
   Sign the entire BOM document
 
 Usage:
-  cyclonedx [options] sign bom <bom-file>
+  cyclonedx sign bom <bom-file> [options]
 
 Arguments:
   <bom-file>  BOM filename
@@ -240,7 +240,7 @@ file
   Sign arbitrary files and generate a PKCS1 RSA SHA256 signature file
 
 Usage:
-  cyclonedx [options] sign file <file>
+  cyclonedx sign file <file> [options]
 
 Arguments:
   <file>  Filename of the file the signature will be created for
@@ -257,7 +257,7 @@ validate
   Validate a BOM
 
 Usage:
-  cyclonedx [options] validate
+  cyclonedx validate [options]
 
 Options:
   --input-file <input-file>                   Input BOM filename, will read from stdin if no value provided.
@@ -282,7 +282,7 @@ all
   Verify all signatures in a BOM
 
 Usage:
-  cyclonedx [options] verify all <bom-file>
+  cyclonedx verify all <bom-file> [options]
 
 Arguments:
   <bom-file>  BOM filename
@@ -298,7 +298,7 @@ file
   Verifies a PKCS1 RSA SHA256 signature file for an abritrary file
 
 Usage:
-  cyclonedx [options] verify file <file>
+  cyclonedx verify file <file> [options]
 
 Arguments:
   <file>  File the signature file is for
