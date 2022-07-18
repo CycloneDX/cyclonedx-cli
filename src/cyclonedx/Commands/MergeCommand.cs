@@ -93,7 +93,7 @@ namespace CycloneDX.Cli.Commands
             if (!outputToConsole)
             {
                 Console.WriteLine("Writing output file...");
-                Console.WriteLine($"    Total {outputBom.Components.Count} components");
+                Console.WriteLine($"    Total {outputBom.Components?.Count ?? 0} components");
             }
 
             return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
