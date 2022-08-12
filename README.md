@@ -312,6 +312,14 @@ Options:
 
 The CycloneDX CLI tool can also be run using docker `docker run cyclonedx/cyclonedx-cli`.
 
+# Homebrew
+
+For Linux and MacOS, the CLI can be installed via the [CycloneDX Homebrew tap](https://github.com/CycloneDX/homebrew-cyclonedx):
+
+```shell
+brew install cyclonedx/cyclonedx/cyclonedx-cli
+```
+
 # Supported Platforms
 
 Officially supported builds are available for these platforms:
@@ -328,6 +336,7 @@ Community supported builds are available for these platforms:
 - Windows ARM x64 (win-arm64)
 - Linux ARM (linux-arm)
 - Linux ARM x64 (linux-arm64)
+- MacOS ARM x64 (osx-arm64)
 
 .NET Core runtime dependencies are required.
 
