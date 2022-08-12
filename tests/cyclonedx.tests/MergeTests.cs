@@ -65,9 +65,9 @@ namespace CycloneDX.Cli.Tests
                 {
                     options.InputFiles.Add(Path.Combine("Resources", "Merge", inputFilename));
                 }
-                
+
                 var exitCode = await MergeCommand.Merge(options).ConfigureAwait(false);
-                
+
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(fullOutputPath);
                 Snapshot.Match(bom, SnapshotNameExtension.Create(hierarchical ? "Hierarchical" : "Flat", snapshotInputFilenames, inputFormat, outputFilename, outputFormat));

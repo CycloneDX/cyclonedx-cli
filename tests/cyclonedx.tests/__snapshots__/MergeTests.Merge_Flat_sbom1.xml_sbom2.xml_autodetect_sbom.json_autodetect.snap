@@ -2,6 +2,14 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.4",
   "version": 1,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "name": "thing1",
+      "version": "1",
+      "licenses": []
+    }
+  },
   "components": [
     {
       "type": "library",
