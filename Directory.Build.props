@@ -20,8 +20,8 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/CycloneDX/cyclonedx-cli.git</RepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <RestoreLockedMode>true</RestoreLockedMode>
+    <!-- <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile> -->
+    <!-- <RestoreLockedMode>true</RestoreLockedMode> -->
   </PropertyGroup>
 
 </Project>
