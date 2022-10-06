@@ -32,7 +32,7 @@ jobs:
       release_upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
       - uses: actions/checkout@v3.0.2
-      - uses: actions/setup-dotnet@v2.1.0
+      - uses: actions/setup-dotnet@v3.0.1
         with:
           dotnet-version: '6.0'
       # The tests should have already been run during the PR workflow, so this is really just a sanity check
@@ -173,7 +173,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3.0.2
-      - uses: actions/setup-dotnet@v2.1.0
+      - uses: actions/setup-dotnet@v3.0.1
         with:
           dotnet-version: '6.0'
 
