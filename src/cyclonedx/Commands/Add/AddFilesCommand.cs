@@ -83,7 +83,9 @@ namespace CycloneDX.Cli.Commands.Add
             {
                 options.BasePath = Directory.GetCurrentDirectory();
             }
+
             options.BasePath = Path.GetFullPath(options.BasePath);
+            if (!Path.EndsInDirectorySeparator(options.BasePath)) options.BasePath += Path.DirectorySeparatorChar;
 
             if (!outputToConsole) Console.WriteLine($"Processing base path {options.BasePath}");
 
@@ -114,17 +116,16 @@ namespace CycloneDX.Cli.Commands.Add
             if (files.Count > 0)
             {
                 if (bom.Components == null) bom.Components = new List<Component>();
-            
+
                 var existingFiles = bom.Components.Where<Component>(component => component.Type == Component.Classification.File);
 
                 foreach (var file in files)
                 {
-                    // Ant file names are prefixed with "/"
-                    var baseFilename = file.StartsWith("/", false, CultureInfo.InvariantCulture) ? file.Substring(1) : file;
+                    var baseFilename = Path.GetFileName(file);
                     if (!existingFiles.Any<Component>(component => component.Name == baseFilename))
                     {
                         if (!outputToConsole) Console.WriteLine($"Adding file {baseFilename}");
-                        var fullPath = Path.Combine(options.BasePath, baseFilename);
+                        var fullPath = Path.Combine(options.BasePath, file);
                         var fileComponent = new Component
                         {
                             Type = Component.Classification.File,
