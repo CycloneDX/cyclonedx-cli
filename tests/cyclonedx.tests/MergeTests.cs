@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xunit;
 using Snapshooter;
@@ -70,6 +71,8 @@ namespace CycloneDX.Cli.Tests
 
                 Assert.Equal(0, exitCode);
                 var bom = File.ReadAllText(fullOutputPath);
+                bom = Regex.Replace(bom, @"\s*""serialNumber"": "".*?"",\r?\n", ""); // json
+                bom = Regex.Replace(bom, @"\s+serialNumber="".*?""", ""); // xml
                 Snapshot.Match(bom, SnapshotNameExtension.Create(hierarchical ? "Hierarchical" : "Flat", snapshotInputFilenames, inputFormat, outputFilename, outputFormat));
             }
         }

@@ -102,6 +102,7 @@ namespace CycloneDX.Cli.Commands
             }
 
             outputBom.Version = 1;
+            outputBom.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
 
             if (!outputToConsole)
             {
