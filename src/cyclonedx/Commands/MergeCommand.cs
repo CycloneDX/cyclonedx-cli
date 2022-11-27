@@ -108,6 +108,7 @@ namespace CycloneDX.Cli.Commands
             {
                 Console.WriteLine("Writing output file...");
                 Console.WriteLine($"    Total {outputBom.Components?.Count ?? 0} components");
+                Console.WriteLine($"    Total {outputBom.Vulnerabilities?.Count ?? 0} vulnerabilities");
             }
 
             return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
