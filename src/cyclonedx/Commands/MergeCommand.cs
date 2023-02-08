@@ -80,14 +80,9 @@ namespace CycloneDX.Cli.Commands
             }
             else
             {
-                outputBom = CycloneDXUtils.FlatMerge(inputBoms);
+                outputBom = CycloneDXUtils.FlatMerge(inputBoms, bomSubject);
                 if (outputBom.Metadata is null) outputBom.Metadata = new Metadata();
-                if (bomSubject != null)
-                {
-                    // use the params provided if possible
-                    outputBom.Metadata.Component = bomSubject;
-                }
-                else
+                if (bomSubject == null)
                 {
                     // otherwise use the first non-null component from the input BOMs as the default
                     foreach (var bom in inputBoms)
