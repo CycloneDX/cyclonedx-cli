@@ -20,6 +20,7 @@ using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.Diagnostics.Contracts;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CycloneDX.Models;
@@ -102,21 +103,17 @@ namespace CycloneDX.Cli.Commands
             }
             else if (options.InputFormat == ValidationBomFormat.json)
             {
-                validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_4);
+                validationResult = Json.Validator.Validate(inputBom);
+
                 if (!validationResult.Valid)
                 {
-                    validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_3);
-                }
-                if (!validationResult.Valid)
-                {
-                    validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_2);
-                }
-                if (!validationResult.Valid)
-                {
-                    validationResult.Messages = new List<string>
+                    if (validationResult.Messages == null)
                     {
+                        validationResult.Messages = new List<string>();
+                    }
+                    validationResult.Messages = validationResult.Messages.Append(
                         "Unable to validate against any JSON schemas."
-                    };
+                    );
                 }
             }
 
