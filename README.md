@@ -192,6 +192,7 @@ Usage:
   cyclonedx merge [options]
 
 Options:
+  --input-file-list <input-file-list-file>        A single text file with input BOM filenames (one per line).
   --input-files <input-files>                     Input BOM filenames (separate filenames with a space).
   --output-file <output-file>                     Output BOM filename, will write to stdout if no value provided.
   --input-format <autodetect|json|protobuf|xml>   Specify input file format.
@@ -204,6 +205,11 @@ Options:
 
 Note: To perform a hierarchical merge all BOMs need the subject of the BOM
 described in the metadata component element.
+
+The `--input-file-list` option can be useful if you have so many filenames to
+merge that your shell interpreter command-line limit is exceeded if you list
+them all as `--input-files`, or if your path names have spaces. If you specify
+both options, the effective file lists will be concatenated before merge.
 
 ### Examples
 

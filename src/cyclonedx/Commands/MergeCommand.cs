@@ -22,6 +22,7 @@ using System.CommandLine.Invocation;
 using System.Threading.Tasks;
 using CycloneDX.Models;
 using CycloneDX.Utils;
+using System.IO;
 
 namespace CycloneDX.Cli.Commands
 {
@@ -31,6 +32,8 @@ namespace CycloneDX.Cli.Commands
         {
             Contract.Requires(rootCommand != null);
             var subCommand = new Command("merge", "Merge two or more BOMs");
+            subCommand.Add(new Option<string>("--input-file-list", "A single text file with input BOM filenames (one per line)."));
+            //TBD//subCommand.Add(new Option<string>("--input-file-list0", "A single text file with input BOM filenames (separated by 0x00 characters)."));
             subCommand.Add(new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space)."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
             subCommand.Add(new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."));
@@ -61,7 +64,12 @@ namespace CycloneDX.Cli.Commands
                 return (int)ExitCode.ParameterValidationError;
             }
 
-            var inputBoms = await InputBoms(options.InputFiles, options.InputFormat, outputToConsole).ConfigureAwait(false);
+            List<string> InputFiles = (List<string>)options.InputFiles;
+            if (options.InputFilesList != null)
+            {
+                InputFiles.AddRange(File.ReadAllLines(options.InputFilesList));
+            }
+            var inputBoms = await InputBoms(InputFiles, options.InputFormat, outputToConsole).ConfigureAwait(false);
 
             Component bomSubject = null;
             if (options.Group != null || options.Name != null || options.Version != null)
