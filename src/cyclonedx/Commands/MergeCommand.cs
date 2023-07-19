@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using CycloneDX.Models;
 using CycloneDX.Utils;
 using System.IO;
+using System.Collections.Immutable;
 
 namespace CycloneDX.Cli.Commands
 {
@@ -64,12 +65,25 @@ namespace CycloneDX.Cli.Commands
                 return (int)ExitCode.ParameterValidationError;
             }
 
-            List<string> InputFiles = (List<string>)options.InputFiles;
+            List<string> InputFiles;
+            if (options.InputFiles != null) {
+                InputFiles = (List<string>)options.InputFiles;
+            } else {
+                InputFiles = new List<string>();
+            }
+
+            Console.WriteLine($"Got " + InputFiles.Count + " individual input file name(s): ['" + string.Join("', '", InputFiles) + "']");
             if (options.InputFilesList != null)
             {
-                foreach (string OneInputFileList in options.InputFilesList) {
+                // For some reason, without an immutable list this claims
+                // modifications of the iterable during iteration and fails:
+                ImmutableList<string> InputFilesList = options.InputFilesList.ToImmutableList();
+                Console.WriteLine($"Got " + InputFilesList.Count + " file(s) with actual input file names: ['" + string.Join("', '", InputFilesList) + "']");
+                foreach (string OneInputFileList in InputFilesList) {
                     Console.WriteLine($"Adding to input file list from " + OneInputFileList);
-                    InputFiles.AddRange(File.ReadAllLines(OneInputFileList));
+                    string[] lines = File.ReadAllLines(OneInputFileList);
+                    InputFiles.AddRange(lines);
+                    Console.WriteLine($"Got " + lines.Length + " entries from " + OneInputFileList);
                 };
             }
             // TODO: Consider InputFiles.Distinct().ToList() -
