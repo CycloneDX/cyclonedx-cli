@@ -66,9 +66,12 @@ namespace CycloneDX.Cli.Commands
             }
 
             List<string> InputFiles;
-            if (options.InputFiles != null) {
+            if (options.InputFiles != null)
+            {
                 InputFiles = (List<string>)options.InputFiles;
-            } else {
+            }
+            else
+            {
                 InputFiles = new List<string>();
             }
 
@@ -79,7 +82,8 @@ namespace CycloneDX.Cli.Commands
                 // modifications of the iterable during iteration and fails:
                 ImmutableList<string> InputFilesList = options.InputFilesList.ToImmutableList();
                 Console.WriteLine($"Got " + InputFilesList.Count + " file(s) with actual input file names: ['" + string.Join("', '", InputFilesList) + "']");
-                foreach (string OneInputFileList in InputFilesList) {
+                foreach (string OneInputFileList in InputFilesList)
+                {
                     Console.WriteLine($"Adding to input file list from " + OneInputFileList);
                     string[] lines = File.ReadAllLines(OneInputFileList);
                     InputFiles.AddRange(lines);
@@ -91,7 +95,8 @@ namespace CycloneDX.Cli.Commands
             {
                 ImmutableList<string> InputFilesList0 = options.InputFilesList0.ToImmutableList();
                 Console.WriteLine($"Got " + InputFilesList0.Count + " file(s) with NUL-separated actual input file names: ['" + string.Join("', '", InputFilesList0) + "']");
-                foreach (string OneInputFileList in InputFilesList0) {
+                foreach (string OneInputFileList in InputFilesList0)
+                {
                     Console.WriteLine($"Adding to input file list from " + OneInputFileList);
                     string[] lines = File.ReadAllText(OneInputFileList).Split('\0');
                     InputFiles.AddRange(lines);
@@ -102,7 +107,8 @@ namespace CycloneDX.Cli.Commands
             // TODO: Consider InputFiles.Distinct().ToList() -
             //  but that requires C# 3.0 for extension method support,
             //  and .NET 3.5 to get the LINQ Enumerable class.
-            if (InputFiles.Count == 0) {
+            if (InputFiles.Count == 0)
+            {
                 // Revert to legacy (error-handling) behavior below
                 // in case the parameter was not passed
                 InputFiles = null;
