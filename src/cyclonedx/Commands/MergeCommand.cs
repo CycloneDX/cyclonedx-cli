@@ -84,11 +84,16 @@ namespace CycloneDX.Cli.Commands
                     string[] lines = File.ReadAllLines(OneInputFileList);
                     InputFiles.AddRange(lines);
                     Console.WriteLine($"Got " + lines.Length + " entries from " + OneInputFileList);
-                };
+                }
             }
             // TODO: Consider InputFiles.Distinct().ToList() -
             //  but that requires C# 3.0 for extension method support,
             //  and .NET 3.5 to get the LINQ Enumerable class.
+            if (InputFiles.Count == 0) {
+                // Revert to legacy (error-handling) behavior below
+                // in case the parameter was not passed
+                InputFiles = null;
+            }
             var inputBoms = await InputBoms(InputFiles, options.InputFormat, outputToConsole).ConfigureAwait(false);
 
             Component bomSubject = null;
