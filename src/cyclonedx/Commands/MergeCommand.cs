@@ -35,7 +35,7 @@ namespace CycloneDX.Cli.Commands
             var subCommand = new Command("merge", "Merge two or more BOMs");
             subCommand.Add(new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space)."));
             subCommand.Add(new Option<List<string>>("--input-files-list", "One or more text file(s) with input BOM filenames (one per line)."));
-            //TBD//subCommand.Add(new Option<List<string>>("--input-files-list0", "One or more text file(s) with input BOM filenames (separated by 0x00 characters)."));
+            subCommand.Add(new Option<List<string>>("--input-files-list0", "One or more text-like file(s) with input BOM filenames (separated by 0x00 characters)."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
             subCommand.Add(new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<CycloneDXBomFormat>("--output-format", "Specify output file format."));
@@ -86,6 +86,19 @@ namespace CycloneDX.Cli.Commands
                     Console.WriteLine($"Got " + lines.Length + " entries from " + OneInputFileList);
                 }
             }
+
+            if (options.InputFilesList0 != null)
+            {
+                ImmutableList<string> InputFilesList0 = options.InputFilesList0.ToImmutableList();
+                Console.WriteLine($"Got " + InputFilesList0.Count + " file(s) with NUL-separated actual input file names: ['" + string.Join("', '", InputFilesList0) + "']");
+                foreach (string OneInputFileList in InputFilesList0) {
+                    Console.WriteLine($"Adding to input file list from " + OneInputFileList);
+                    string[] lines = File.ReadAllText(OneInputFileList).Split('\0');
+                    InputFiles.AddRange(lines);
+                    Console.WriteLine($"Got " + lines.Length + " entries from " + OneInputFileList);
+                }
+            }
+
             // TODO: Consider InputFiles.Distinct().ToList() -
             //  but that requires C# 3.0 for extension method support,
             //  and .NET 3.5 to get the LINQ Enumerable class.

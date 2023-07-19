@@ -22,7 +22,7 @@ namespace CycloneDX.Cli.Commands
     {
         public IList<string> InputFiles { get; set; }
         public IList<string> InputFilesList { get; set; }
-        //TBD//public IList<string> InputFilesList0 { get; set; }
+        public IList<string> InputFilesList0 { get; set; }
         public string OutputFile { get; set; }
         public CycloneDXBomFormat InputFormat { get; set; }
         public CycloneDXBomFormat OutputFormat { get; set; }
