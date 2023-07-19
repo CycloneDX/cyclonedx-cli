@@ -135,7 +135,7 @@ namespace CycloneDX.Cli.Commands
                 // For some reason, without an immutable list this claims
                 // modifications of the iterable during iteration and fails:
                 ImmutableList<string> InputFilesList = options.InputFilesList.ToImmutableList();
-                Console.WriteLine($"Got " + InputFilesList.Count + " file(s) with actual input file names: ['" + string.Join("', '", InputFilesList) + "']");
+                Console.WriteLine($"Processing " + InputFilesList.Count + " file(s) with list of actual input file names: ['" + string.Join("', '", InputFilesList) + "']");
                 foreach (string OneInputFileList in InputFilesList)
                 {
                     Console.WriteLine($"Adding to input file list from " + OneInputFileList);
@@ -155,7 +155,7 @@ namespace CycloneDX.Cli.Commands
             if (options.InputFilesNulList != null)
             {
                 ImmutableList<string> InputFilesNulList = options.InputFilesNulList.ToImmutableList();
-                Console.WriteLine($"Got " + InputFilesNulList.Count + " file(s) with NUL-separated actual input file names: ['" + string.Join("', '", InputFilesNulList) + "']");
+                Console.WriteLine($"Processing " + InputFilesNulList.Count + " file(s) with NUL-separated list of actual input file names: ['" + string.Join("', '", InputFilesNulList) + "']");
                 foreach (string OneInputFileList in InputFilesNulList)
                 {
                     Console.WriteLine($"Adding to input file list from " + OneInputFileList);
@@ -177,6 +177,8 @@ namespace CycloneDX.Cli.Commands
                 // Revert to legacy (error-handling) behavior below
                 // in case the parameter was not passed
                 InputFiles = null;
+            } else {
+                Console.WriteLine($"Determined " + InputFiles.Count + " input files to merge");
             }
 
             return InputFiles;
