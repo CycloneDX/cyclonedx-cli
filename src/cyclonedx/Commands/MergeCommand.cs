@@ -67,10 +67,10 @@ namespace CycloneDX.Cli.Commands
             List<string> InputFiles = (List<string>)options.InputFiles;
             if (options.InputFilesList != null)
             {
-                ((List<string>)options.InputFilesList).ForEach(OneInputFileList => {
+                foreach (string OneInputFileList in options.InputFilesList) {
                     Console.WriteLine($"Adding to input file list from " + OneInputFileList);
                     InputFiles.AddRange(File.ReadAllLines(OneInputFileList));
-                });
+                };
             }
             // TODO: Consider InputFiles.Distinct().ToList() -
             //  but that requires C# 3.0 for extension method support,
