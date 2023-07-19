@@ -65,6 +65,60 @@ namespace CycloneDX.Cli.Commands
                 return (int)ExitCode.ParameterValidationError;
             }
 
+            var inputBoms = await InputBoms(DetermineInputFiles(options), options.InputFormat, outputToConsole).ConfigureAwait(false);
+
+            Component bomSubject = null;
+            if (options.Group != null || options.Name != null || options.Version != null)
+                bomSubject = new Component
+                {
+                    Type = Component.Classification.Application,
+                    Group = options.Group,
+                    Name = options.Name,
+                    Version = options.Version,
+                };
+
+            Bom outputBom;
+            if (options.Hierarchical)
+            {
+                outputBom = CycloneDXUtils.HierarchicalMerge(inputBoms, bomSubject);
+            }
+            else
+            {
+                outputBom = CycloneDXUtils.FlatMerge(inputBoms);
+                if (outputBom.Metadata is null) outputBom.Metadata = new Metadata();
+                if (bomSubject != null)
+                {
+                    // use the params provided if possible
+                    outputBom.Metadata.Component = bomSubject;
+                }
+                else
+                {
+                    // otherwise use the first non-null component from the input BOMs as the default
+                    foreach (var bom in inputBoms)
+                    {
+                        if (bom.Metadata != null && bom.Metadata.Component != null)
+                        {
+                            outputBom.Metadata.Component = bom.Metadata.Component;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            outputBom.Version = 1;
+            outputBom.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
+
+            if (!outputToConsole)
+            {
+                Console.WriteLine("Writing output file...");
+                Console.WriteLine($"    Total {outputBom.Components?.Count ?? 0} components");
+            }
+
+            return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
+        }
+
+        private static List<string> DetermineInputFiles(MergeCommandOptions options)
+        {
             List<string> InputFiles;
             if (options.InputFiles != null)
             {
@@ -124,56 +178,8 @@ namespace CycloneDX.Cli.Commands
                 // in case the parameter was not passed
                 InputFiles = null;
             }
-            var inputBoms = await InputBoms(InputFiles, options.InputFormat, outputToConsole).ConfigureAwait(false);
 
-            Component bomSubject = null;
-            if (options.Group != null || options.Name != null || options.Version != null)
-                bomSubject = new Component
-                {
-                    Type = Component.Classification.Application,
-                    Group = options.Group,
-                    Name = options.Name,
-                    Version = options.Version,
-                };
-
-            Bom outputBom;
-            if (options.Hierarchical)
-            {
-                outputBom = CycloneDXUtils.HierarchicalMerge(inputBoms, bomSubject);
-            }
-            else
-            {
-                outputBom = CycloneDXUtils.FlatMerge(inputBoms);
-                if (outputBom.Metadata is null) outputBom.Metadata = new Metadata();
-                if (bomSubject != null)
-                {
-                    // use the params provided if possible
-                    outputBom.Metadata.Component = bomSubject;
-                }
-                else
-                {
-                    // otherwise use the first non-null component from the input BOMs as the default
-                    foreach (var bom in inputBoms)
-                    {
-                        if(bom.Metadata != null && bom.Metadata.Component != null)
-                        {
-                            outputBom.Metadata.Component = bom.Metadata.Component;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            outputBom.Version = 1;
-            outputBom.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
-
-            if (!outputToConsole)
-            {
-                Console.WriteLine("Writing output file...");
-                Console.WriteLine($"    Total {outputBom.Components?.Count ?? 0} components");
-            }
-
-            return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
+            return InputFiles;
         }
 
         private static async Task<IEnumerable<Bom>> InputBoms(IEnumerable<string> inputFilenames, CycloneDXBomFormat inputFormat, bool outputToConsole)
