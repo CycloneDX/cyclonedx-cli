@@ -86,8 +86,15 @@ namespace CycloneDX.Cli.Commands
                 {
                     Console.WriteLine($"Adding to input file list from " + OneInputFileList);
                     string[] lines = File.ReadAllLines(OneInputFileList);
-                    InputFiles.AddRange(lines);
-                    Console.WriteLine($"Got " + lines.Length + " entries from " + OneInputFileList);
+                    int count = 0;
+                    foreach (string line in lines)
+                    {
+                        if (string.IsNullOrEmpty(line)) continue;
+                        if (InputFiles.Contains(line)) continue;
+                        InputFiles.Add(line);
+                        count++;
+                    }
+                    Console.WriteLine($"Got " + count + " new entries from " + OneInputFileList);
                 }
             }
 
@@ -99,14 +106,18 @@ namespace CycloneDX.Cli.Commands
                 {
                     Console.WriteLine($"Adding to input file list from " + OneInputFileList);
                     string[] lines = File.ReadAllText(OneInputFileList).Split('\0');
-                    InputFiles.AddRange(lines);
-                    Console.WriteLine($"Got " + lines.Length + " entries from " + OneInputFileList);
+                    int count = 0;
+                    foreach (string line in lines)
+                    {
+                        if (string.IsNullOrEmpty(line)) continue;
+                        if (InputFiles.Contains(line)) continue;
+                        InputFiles.Add(line);
+                        count++;
+                    }
+                    Console.WriteLine($"Got " + count + " new entries from " + OneInputFileList);
                 }
             }
 
-            // TODO: Consider InputFiles.Distinct().ToList() -
-            //  but that requires C# 3.0 for extension method support,
-            //  and .NET 3.5 to get the LINQ Enumerable class.
             if (InputFiles.Count == 0)
             {
                 // Revert to legacy (error-handling) behavior below
