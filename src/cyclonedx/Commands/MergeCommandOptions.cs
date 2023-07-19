@@ -20,8 +20,8 @@ namespace CycloneDX.Cli.Commands
 {
     public class MergeCommandOptions
     {
-        public string InputFilesList { get; set; }
-        //TBD//public string InputFilesList0 { get; set; }
+        public IList<string> InputFilesList { get; set; }
+        //TBD//public IList<string> InputFilesList0 { get; set; }
         public IList<string> InputFiles { get; set; }
         public string OutputFile { get; set; }
         public CycloneDXBomFormat InputFormat { get; set; }

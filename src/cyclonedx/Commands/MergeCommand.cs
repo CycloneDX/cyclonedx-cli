@@ -32,8 +32,8 @@ namespace CycloneDX.Cli.Commands
         {
             Contract.Requires(rootCommand != null);
             var subCommand = new Command("merge", "Merge two or more BOMs");
-            subCommand.Add(new Option<string>("--input-file-list", "A single text file with input BOM filenames (one per line)."));
-            //TBD//subCommand.Add(new Option<string>("--input-file-list0", "A single text file with input BOM filenames (separated by 0x00 characters)."));
+            subCommand.Add(new Option<List<string>>("--input-files-list", "One or more text file(s) with input BOM filenames (one per line)."));
+            //TBD//subCommand.Add(new Option<List<string>>("--input-files-list0", "One or more text file(s) with input BOM filenames (separated by 0x00 characters)."));
             subCommand.Add(new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space)."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
             subCommand.Add(new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."));
@@ -67,8 +67,14 @@ namespace CycloneDX.Cli.Commands
             List<string> InputFiles = (List<string>)options.InputFiles;
             if (options.InputFilesList != null)
             {
-                InputFiles.AddRange(File.ReadAllLines(options.InputFilesList));
+                ((List<string>)options.InputFilesList).ForEach(OneInputFileList => {
+                    Console.WriteLine($"Adding to input file list from " + OneInputFileList);
+                    InputFiles.AddRange(File.ReadAllLines(OneInputFileList));
+                });
             }
+            // TODO: Consider InputFiles.Distinct().ToList() -
+            //  but that requires C# 3.0 for extension method support,
+            //  and .NET 3.5 to get the LINQ Enumerable class.
             var inputBoms = await InputBoms(InputFiles, options.InputFormat, outputToConsole).ConfigureAwait(false);
 
             Component bomSubject = null;
