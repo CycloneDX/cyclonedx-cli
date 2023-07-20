@@ -15,8 +15,8 @@
   <ItemGroup>
     <PackageReference Include="CoderPatros.AntPathMatching" Version="0.1.1" />
     <PackageReference Include="CsvHelper" Version="29.0.0" />
-    <PackageReference Include="CycloneDX.Utils" Version="5.2.3" />
-    <PackageReference Include="CycloneDX.Spdx.Interop" Version="5.2.3" />
+    <PackageReference Include="CycloneDX.Utils" Version="5.4.0" />
+    <PackageReference Include="CycloneDX.Spdx.Interop" Version="5.4.0" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21308.1" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
   </ItemGroup>
