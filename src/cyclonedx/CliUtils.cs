@@ -154,7 +154,7 @@ namespace CycloneDX.Cli
                 }
             }
 
-            using var stream = filename == null ? Console.OpenStandardOutput() : File.OpenWrite(filename);
+            using var stream = filename == null ? Console.OpenStandardOutput() : File.Create(filename);
 
             switch (format)
             {
