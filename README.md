@@ -200,6 +200,8 @@ Options:
   --group <group>                                 Provide the group of software the merged BOM describes.
   --name <name>                                   Provide the name of software the merged BOM describes (required for hierarchical merging).
   --version <version>                             Provide the version of software the merged BOM describes (required for hierarchical merging).
+  --validate-output                               Perform validation of the resulting document before writing it, and do not write if it fails.
+  --validate-output-relaxed                       Perform validation of the resulting document, and still write the file for troubleshooting if it fails.
 ```
 
 Note: To perform a hierarchical merge all BOMs need the subject of the BOM
