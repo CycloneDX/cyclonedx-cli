@@ -109,6 +109,8 @@ namespace CycloneDX.Cli.Commands
             ValidationResult validationResult = null;
             if (options.ValidateOutput || options.ValidateOutputRelaxed)
             {
+                // Note that C# CLI args parser seems to set both booleans
+                // for one "--validate-output-relaxed" flag
                 Console.WriteLine("Validating merged BOM...");
 
                 // TOTHINK: let it pick versions (no arg) if current does not cut it...
@@ -130,9 +132,10 @@ namespace CycloneDX.Cli.Commands
                 else
                 {
                     Console.WriteLine("Merged BOM is not valid.");
-                    if (options.ValidateOutput)
+                    if (!(options.ValidateOutputRelaxed))
                     {
                         // Not-relaxed mode: abort!
+                        Console.WriteLine("NOT writing output file...");
                         Console.WriteLine($"    Total {outputBom.Components?.Count ?? 0} components");
                         return (int)ExitCode.SignatureFailedVerification;
                     }
