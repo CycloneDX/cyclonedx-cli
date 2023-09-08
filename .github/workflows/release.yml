@@ -1,4 +1,4 @@
-# This workflow is used for publishing the binaries and Docker image.
+# This workflow is used for publishing the binaries.
 #
 # Before triggering a release the `semver.txt` file should be updated in the
 # relevant branch.
@@ -53,15 +53,6 @@ jobs:
             dotnet publish src/cyclonedx/cyclonedx.csproj -r $runtime --configuration Release /p:Version=$VERSION --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --output bin/$runtime
           done
           docker build -f Dockerfile --build-arg VERSION=$VERSION -t $REPO:$VERSION -t $REPO:latest .
-
-      - name: Publish Docker image to Docker Hub
-        env:
-          DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-        run: |
-          REPO=cyclonedx/cyclonedx-cli
-          docker login --username coderpatros --password "$DOCKER_TOKEN"
-          docker push $REPO:latest
-          docker push $REPO:${{ steps.create_binaries.outputs.version }}
 
       - name: Create github release and git tag for release
         id: create_release
