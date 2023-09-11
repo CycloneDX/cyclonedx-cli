@@ -1,2 +1,2 @@
 ﻿Type,MimeType,Supplier,Author,Publisher,Group,Name,Version,Scope,LicenseExpressions,LicenseNames,Copyright,Cpe,Purl,Modified,SwidTagId,SwidName,SwidVersion,SwidTagVersion,SwidPatch,SwidTextContentType,SwidTextEncoding,SwidTextContent,SwidUrl,MD5,SHA-1,SHA-256,SHA-384,SHA-512,SHA3-256,SHA3-384,SHA3-512,BLAKE2b-256,BLAKE2b-384,BLAKE2b-512,BLAKE3,Description
-Application,,,Acme Super Heros,,,Acme Application,9.1.1,,,,,,,,swidgen-242eb18a-503e-ca37-393b-cf156ef09691_9.1.1,Acme Application,9.1.1,,,,,,,,,,,,,,,,,,,
+Application,,,Acme Super Heros,,,Acme Application,9.1.1,,,,,,,,swidgen-242eb18a-503e-ca37-393b-cf156ef09691_9.1.1,Acme Application,9.1.1,0,False,,,,,,,,,,,,,,,,,

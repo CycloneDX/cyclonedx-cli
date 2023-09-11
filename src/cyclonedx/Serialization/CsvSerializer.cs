@@ -175,8 +175,8 @@ namespace CycloneDX.Cli.Serialization
                             TagId = csvReader.GetField("SwidTagId").NullIfWhiteSpace(),
                             Name = csvReader.GetField("SwidName").NullIfWhiteSpace(),
                             Version = csvReader.GetField("SwidVersion").NullIfWhiteSpace(),
-                            TagVersion = csvReader.GetField<int?>("SwidTagVersion"),
-                            Patch = csvReader.GetField<bool?>("SwidPatch"),
+                            TagVersion = csvReader.GetField<int?>("SwidTagVersion").GetValueOrDefault(),
+                            Patch = csvReader.GetField<bool?>("SwidPatch").GetValueOrDefault(),
                             Text = new AttachedText
                             {
                                 ContentType = csvReader.GetField("SwidTextContentType").NullIfWhiteSpace(),

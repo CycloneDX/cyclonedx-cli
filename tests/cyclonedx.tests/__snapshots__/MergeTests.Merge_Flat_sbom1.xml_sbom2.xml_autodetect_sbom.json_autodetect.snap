@@ -1,7 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.4",
-  "version": 1,
+  "specVersion": "1.5",  "version": 1,
   "metadata": {
     "component": {
       "type": "application",
@@ -18,10 +17,23 @@
       "licenses": []
     },
     {
+      "type": "application",
+      "name": "thing1",
+      "version": "1",
+      "licenses": []
+    },
+    {
       "type": "framework",
       "name": "acme-framework",
       "version": "1.0.0",
       "licenses": []
+    },
+    {
+      "type": "application",
+      "name": "thing2",
+      "version": "1",
+      "licenses": []
     }
-  ]
+  ],
+  "vulnerabilities": []
 }
