@@ -1,5 +1,5 @@
 ﻿﻿<?xml version="1.0" encoding="utf-8"?>
-<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1" xmlns="http://cyclonedx.org/schema/bom/1.4">
+<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1" xmlns="http://cyclonedx.org/schema/bom/1.5">
   <components>
     <component type="library">
       <name>acme-example</name>

@@ -30,7 +30,7 @@ namespace CycloneDX.Cli.Commands
         public static void Configure(RootCommand rootCommand)
         {
             Contract.Requires(rootCommand != null);
-            var subCommand = new Command("merge", "Merge two or more BOMs");
+            var subCommand = new System.CommandLine.Command("merge", "Merge two or more BOMs");
             subCommand.Add(new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space)."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
             subCommand.Add(new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."));

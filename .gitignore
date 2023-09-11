@@ -8,3 +8,4 @@ coverage-report/
 coverage.cobertura.xml
 **/__snapshots__/__mismatch__/
 *.user
+.DS_Store
