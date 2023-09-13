@@ -1,4 +1,3320 @@
-Type,MimeType,Supplier,Author,Publisher,Group,Name,Version,Scope,LicenseExpressions,LicenseNames,Copyright,Cpe,Purl,Modified,SwidTagId,SwidName,SwidVersion,SwidTagVersion,SwidPatch,SwidTextContentType,SwidTextEncoding,SwidTextContent,SwidUrl,MD5,SHA-1,SHA-256,SHA-512,BLAKE2b-256,BLAKE2b-384,BLAKE2b-512,SHA-384,SHA3-256,SHA3-384,SHA3-512,BLAKE3,Description
-Application,,,Acme Super Heros,Acme Inc,com.acme,tomcat-catalina,9.0.14,required,Apache-2.0,,,,pkg:maven/com.acme/tomcat-catalina@9.0.14?packaging=jar,,,,,,,,,,,3942447fac867ae5cdb3229b658f4d48,e6b1000b94e835ffd37f4c6dcbdad43f4b48a02a,f498a8ff2dd007e29c2074f5e4b01a9a01775c3ff3aeaf6906ea503bc5791b7b,e8f33e424f3f4ed6db76a482fde1a5298970e442c531729119e37991884bdffab4f9426b7ee11fccd074eeda0634d71697d6f88a460dce0ac8d627a29f7d1282,,,,,,,,,Modified version of Apache Catalina
-Library,,Example Inc.,Example Super Heros,,org.example,mylibrary,1.0.0,required,EPL-2.0 OR GPL-2.0-with-classpath-exception,,Copyright Example Inc. All rights reserved.,cpe:/a:example:myapplication:1.0.0,pkg:maven/com.example/myapplication@1.0.0?packaging=war,False,,,,,,,,,,2342c2eaf1feb9a80195dbaddf2ebaa3,68b78babe00a053f9e35ec6a2d9080f5b90122b0,708f1f53b41f11f02d12a11b1a38d2905d47b099afc71a0f1124ef8582ec7313,387b7ae16b9cae45f830671541539bf544202faae5aac544a93b7b0a04f5f846fa2f4e81ef3f1677e13aed7496408a441f5657ab6d54423e56bf6f38da124aef,,,,,,,,,
-Framework,,,Example Super Heros,,com.example,myframework,1.0.0,required,,Some random license,,,pkg:maven/com.example/myframework@1.0.0?packaging=war,False,,,,,,,,,,cfcb0b64aacd2f81c1cd546543de965a,7fbeef2346c45d565c3341f037bce4e088af8a52,0384db3cec55d86a6898c489fdb75a8e75fe66b26639634983d2f3c3558493d1,854909cdb9e3ca183056837144aab6d8069b377bd66445087cc7157bf0c3f620418705dd0b83bdc2f73a508c2bdb316ca1809d75ee6972d02023a3e7dd655c79,,,,,,,,,"Example Inc, enterprise framework"
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "serialNumber": "urn:uuid:d4914de9-e12f-4318-b48c-d5acaef874c9",
+  "version": 1,
+  "metadata": {
+    "tools": [
+      {
+        "vendor": "CycloneDX",
+        "name": "CycloneDX module for .NET",
+        "version": "2.8.1.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "bom-ref": "Nevro.Regulated.Services.Cryptofunction@0.0.0",
+      "name": "Nevro.Regulated.Services.Cryptofunction",
+      "version": "0.0.0"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Amazon.Extensions.CognitoAuthentication@2.5.0",
+      "author": "Amazon Web Services",
+      "name": "Amazon.Extensions.CognitoAuthentication",
+      "version": "2.5.0",
+      "description": "An extension library to assist in the Amazon Cognito User Pools authentication process.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2482B3BE17DBBC3DAF5C22EF1279D72ECD539E005BB0E37EF66557292332449A9D9DE2647DD3075ADFA0CD0271733D36B37C80F0A8F89872E9167C360753781C"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-sdk-net-extensions-cognito/blob/master/LICENSE"
+          }
+        }
+      ],
+      "copyright": "2018-2023",
+      "purl": "pkg:nuget/Amazon.Extensions.CognitoAuthentication@2.5.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net-extensions-cognito/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/aws/aws-sdk-net-extensions-cognito/",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Amazon.Extensions.Configuration.SystemsManager@5.1.0",
+      "author": "Amazon Web Services",
+      "name": "Amazon.Extensions.Configuration.SystemsManager",
+      "version": "5.1.0",
+      "description": ".NET Configuration Extensions for AWS Systems Manager",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8C6E9C1B0E433782497BE7695255BF01AE9B3075D8F92B6DD7C68B6F3100AE6545C456ADB02A312BA5327B1400A8DA1405A898E2ACEA1348F639B9D1426259D4"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-dotnet-extensions-configuration/blob/master/LICENSE"
+          }
+        }
+      ],
+      "copyright": "2018-2023",
+      "purl": "pkg:nuget/Amazon.Extensions.Configuration.SystemsManager@5.1.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-dotnet-extensions-configuration/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/aws/aws-dotnet-extensions-configuration/",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Amazon.Lambda.APIGatewayEvents@2.6.0",
+      "author": "Amazon Web Services",
+      "name": "Amazon.Lambda.APIGatewayEvents",
+      "version": "2.6.0",
+      "description": "Amazon Lambda .NET Core support - API Gateway package.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8A57E6657ECE201CA67925DA9C61366CAD3EA9C262B2F9B5BC7028B73ED4E4276953CF789B66D6BD23509716DF0BC0CC8901851FE9C6909E46C1F0E68B7C6B39"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-lambda-dotnet/blob/master/LICENSE"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Amazon.Lambda.APIGatewayEvents@2.6.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-lambda-dotnet",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Amazon.Lambda.Core@2.1.0",
+      "author": "Amazon Web Services",
+      "name": "Amazon.Lambda.Core",
+      "version": "2.1.0",
+      "description": "Amazon Lambda .NET Core support - Core package.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "D03F7372F99D3F45C4E82538339216739A06202BE9CDCB400719C85C511C7D03E0044C46C29602EDFE65D8C31DE5B97EA2253CEB2E6AFEB009B496904A86AC7F"
+        }
+      ],
+      "purl": "pkg:nuget/Amazon.Lambda.Core@2.1.0",
+      "externalReferences": [
+        {
+          "url": "https://aws.amazon.com/lambda/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Amazon.Lambda.Serialization.SystemTextJson@2.3.1",
+      "author": "Amazon Web Services",
+      "name": "Amazon.Lambda.Serialization.SystemTextJson",
+      "version": "2.3.1",
+      "description": "Amazon Lambda .NET Core support - Serialization.Json with System.Text.Json.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4BF633D29B0B173C2ED32F018D38A89D16662C4A47B45488ECBA71CDD095C1CB6E8442C5E32D0ACB9725E5E9FD178CE8E2A73E73EFC9B0693781ACE4561AF831"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-lambda-dotnet/blob/master/LICENSE"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Amazon.Lambda.Serialization.SystemTextJson@2.3.1",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-lambda-dotnet",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWS.Logger.Core@3.1.0",
+      "author": "Amazon Web Services",
+      "name": "AWS.Logger.Core",
+      "version": "3.1.0",
+      "description": "AWS Core logging library used to send logging messages to Amazon CloudWatch Logs",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8AAF5DC6B666574B6BB972AF736F3CF1023649CE459D52AFDD578F8CEA67C79F84EF8C79BAF9DFE74C3DD7AE2AB66A4C6495424C995F3C45400953510E8E42C1"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-logging-dotnet/blob/master/LICENSE"
+          }
+        }
+      ],
+      "copyright": "Copyright 2016-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.",
+      "purl": "pkg:nuget/AWS.Logger.Core@3.1.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-logging-dotnet",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/aws/aws-logging-dotnet.git",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWS.Logger.SeriLog@3.2.0",
+      "author": "Amazon Web Services",
+      "name": "AWS.Logger.SeriLog",
+      "version": "3.2.0",
+      "description": "An AWS SeriLog sink that records logging messages to Amazon CloudWatch Logs.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9F8152AB1494F3762B8413926C98103C1937C31C1F5A91AF73F42B68EAAD2D8BE9CFA0F73FA2C62FED1B9178989930BAE22BEF1270AF476D74CA0439F0753AC2"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-logging-dotnet/blob/master/LICENSE"
+          }
+        }
+      ],
+      "copyright": "Copyright 2016-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.",
+      "purl": "pkg:nuget/AWS.Logger.SeriLog@3.2.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-logging-dotnet",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/aws/aws-logging-dotnet.git",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Aws4RequestSigner@1.0.3",
+      "author": "Aws4RequestSigner",
+      "name": "Aws4RequestSigner",
+      "version": "1.0.3",
+      "description": "Package Description",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7CC5B428EB88CF75B4A6C0F1645637F773CD77A2D90C6282CF5594649FC4D31A505AF85468408AB4882972662AF79C7B80358A4876AA949B8C79D305BDF677F8"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/tsibelman/aws-signer-v4-dot-net/blob/master/LICENSE"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Aws4RequestSigner@1.0.3",
+      "externalReferences": [
+        {
+          "url": "https://github.com/tsibelman/aws-signer-v4-dot-net",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/tsibelman/aws-signer-v4-dot-net",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.APIGateway@3.7.100.149",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.APIGateway",
+      "version": "3.7.100.149",
+      "description": "Amazon API Gateway helps developers deliver robust, secure and scalable mobile and web application backends. Amazon API Gateway allows developers to securely connect mobile and web applications to APIs that run on AWS Lambda, Amazon EC2, or other publicly addressable web services that are hosted outside of AWS.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "E4BD07F4326AD062D4C8D87A4B96FE25F02EFF0E69F1BE437C9BF0C23E3047A60181D4D95D618BC0F10B94036F4D096B84F85E0C306D5B14CCD3D44366F8DF31"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.APIGateway@3.7.100.149",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.AppConfigData@3.7.0.23",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.AppConfigData",
+      "version": "3.7.0.23",
+      "description": "AWS AppConfig Data is a new service that allows you to retrieve configuration deployed by AWS AppConfig. See the AppConfig user guide for more details on getting started. https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "280BC2CD6EF008ABC18108FD5C1E09B52BD1F787350446178AB9CCB0622478A62C3BAC523038F84F290FE994F1B477C83BDE6E2EE626F395144C336B5B9E7863"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-sdk-net/blob/master/License.txt"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.AppConfigData@3.7.0.23",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.CloudWatchLogs@3.7.0.5",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.CloudWatchLogs",
+      "version": "3.7.0.5",
+      "description": "Amazon CloudWatch is a monitoring service for AWS cloud resources and the applications you run on AWS. You can use Amazon CloudWatch to collect and track metrics, collect and monitor log files, and set alarms.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "56705E875E451385FB4CC595FDA3DA5909B9AA700ADE783A74B358F6992BECBCD540A2B2E10985F084D6018CEBBCA6FDDBA6364D5E13E8AACD9EDA6410E94DD7"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-sdk-net/blob/master/License.txt"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.CloudWatchLogs@3.7.0.5",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.CognitoIdentity@3.7.0.2",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.CognitoIdentity",
+      "version": "3.7.0.2",
+      "description": "Amazon Cognito is a service that makes it easy to save user data, such as app preferences or game state, in the AWS Cloud without writing any backend code or managing any infrastructure. With Amazon Cognito, you can focus on creating great app experiences instead of having to worry about building and managing a backend solution to handle identity management, network state, storage, and sync.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "CC379E4FF70A9762CA5EE89650422722DAD3031A670075E07BDF400EA4695E18C581499B18E25564E173B3A99272CA46E0793FFE20E6BCB770CFACD5F60C440A"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-sdk-net/blob/master/License.txt"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.CognitoIdentity@3.7.0.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.CognitoIdentityProvider@3.7.0.2",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.CognitoIdentityProvider",
+      "version": "3.7.0.2",
+      "description": "You can create a user pool in Amazon Cognito Identity to manage directories and users. You can authenticate a user to obtain tokens related to user identity and access policies. This API reference provides information about user pools in Amazon Cognito Identity, which is a new capability that is available as a beta.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "EA4485AFB4FCA3FF7CA9B41B1A2FFCD26123D51DC269B3948A57367B9388B1543AC50DF84C6C431D26A60F24C3427A646B9F7F5058B2E7E17501EBA3AC51AC96"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-sdk-net/blob/master/License.txt"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.CognitoIdentityProvider@3.7.0.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.Core@3.7.107.11",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.Core",
+      "version": "3.7.107.11",
+      "description": "The Amazon Web Services SDK for .NET - Core Runtime",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1C4088B8B62896B483AA82AA636AB5BA108B034F8825D82FF40A2193CB39561BCA11ADEAD00C6B8398E58C465CF4BC4F8758CA239641F8533E6D96B8664E338A"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.Core@3.7.107.11",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.DynamoDBv2@3.7.105.2",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.DynamoDBv2",
+      "version": "3.7.105.2",
+      "description": "Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "B8BFDC96FB2C53FB452BC68C84766673501DF6CA421495088BAE4FBDCDDE590E5A4C83E1403A11B2BDACB3869E172E4B8909CC27A1EB788DBADB5A7DDB7D03F4"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.DynamoDBv2@3.7.105.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.Extensions.NETCore.Setup@3.7.1",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.Extensions.NETCore.Setup",
+      "version": "3.7.1",
+      "description": "Extensions for the AWS SDK for .NET to integrate with .NET Core configuration and dependency injection frameworks.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "FD5BA128DB8DEC5BDCB4FF89C79666527CBA657713455394AF386C79D4867179254E51BE56495F444F3E71CB5184E9570D363F57DD0308B36255CAD7F9BD180F"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-sdk-net/blob/master/License.txt"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.Extensions.NETCore.Setup@3.7.1",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.KeyManagementService@3.7.104",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.KeyManagementService",
+      "version": "3.7.104",
+      "description": "AWS Key Management Service (KMS) is a managed service that makes it easy for you to create and control the encryption keys used to encrypt your data, and uses Hardware Security Modules (HSMs) to protect the security of your keys.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "C8C7F739279A380059B588D3A7DFF45A1DA1F084BA6B99DF3CD83B875B668377CABD3F1011199720C4595D714775DA1B18957619BABFEF8120C7158548263608"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.KeyManagementService@3.7.104",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.SecurityToken@3.7.0.2",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.SecurityToken",
+      "version": "3.7.0.2",
+      "description": "The AWS Security Token Service (AWS STS) enables you to provide trusted users with temporary credentials that provide controlled access to your AWS resources.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "F34DB1C6BA1CDA524EDD48CFBA9EAE41DA3682899FC125155F6D50D6E4FC1E67756A1EC8FFDC028F42471685D697C7AD58790703E619544DD7E9B5EE4C9E66D3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-sdk-net/blob/master/License.txt"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.SecurityToken@3.7.0.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/AWSSDK.SimpleSystemsManagement@3.7.12.9",
+      "author": "Amazon Web Services",
+      "name": "AWSSDK.SimpleSystemsManagement",
+      "version": "3.7.12.9",
+      "description": "Amazon EC2 Simple Systems Manager (SSM) enables you to manage a number of administrative and configuration tasks on your instances.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "B89BDAE512222DE2BA4CA87B29F2280ADA32658EAE2E9884CEB2E7730D2F0726E30EEA16FE0FFC7C653DFDB8609D4EBA3F02140AFD0B68CEA46C0CA81C9A5552"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aws/aws-sdk-net/blob/master/License.txt"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/AWSSDK.SimpleSystemsManagement@3.7.12.9",
+      "externalReferences": [
+        {
+          "url": "https://github.com/aws/aws-sdk-net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Correlate@4.0.0",
+      "author": "Martijn Bodeman",
+      "name": "Correlate",
+      "version": "4.0.0",
+      "description": "Correlate requests between microservices using a correlation ID.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "A1C415EE91756DD12AA5F338A983D8467AF4B32EBB455BAC86C853C2B9806DCCF4D3A8DD8B542C16CABF14E133568F7EED09F20A9D124714BC95C19782ABE538"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "Copyright \u00A9 2019",
+      "purl": "pkg:nuget/Correlate@4.0.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/skwasjer/Correlate",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/skwasjer/Correlate",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Correlate.Abstractions@4.0.0",
+      "author": "Martijn Bodeman",
+      "name": "Correlate.Abstractions",
+      "version": "4.0.0",
+      "description": "Provides abtractions to correlate requests between microservices.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9125C6A14653112EA676096FE450E140DFB88752F18EC5F86596D3D0022B35D7565AC9D96984EFE17D105465E61F6B81C5DF211D90550C95BC8276CC3EAE347E"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "Copyright \u00A9 2019",
+      "purl": "pkg:nuget/Correlate.Abstractions@4.0.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/skwasjer/Correlate",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/skwasjer/Correlate",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Correlate.DependencyInjection@4.0.0",
+      "author": "Martijn Bodeman",
+      "name": "Correlate.DependencyInjection",
+      "version": "4.0.0",
+      "description": "Dependency injection extensions for Correlate.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "753D738707D47BAA81ECA5647C39DE497ECD78C843648BF622FCC9B36FD025845E85B6CC402F853129CA1343CC9A3DF82290D9923CF4385F43EAF5273D05DA24"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "copyright": "Copyright \u00A9 2019",
+      "purl": "pkg:nuget/Correlate.DependencyInjection@4.0.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/skwasjer/Correlate",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/skwasjer/Correlate",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Destructurama.Attributed@3.1.0",
+      "author": "Serilog Contributors",
+      "name": "Destructurama.Attributed",
+      "version": "3.1.0",
+      "description": "Use attributes to control how complex types are logged to Serilog.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "375F5DDF8CB31C1A038648D702F3186B7E3D1CBF9086E4E60CA903C05A57B70B50B0FC7A59040101B0941763B81D2BE7645042B04940800E5AD922E56153E43E"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Destructurama.Attributed@3.1.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/destructurama",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/destructurama/attributed.git",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.CSharp@4.5.0",
+      "author": "Microsoft",
+      "name": "Microsoft.CSharp",
+      "version": "4.5.0",
+      "description": "Provides support for compilation and code generation, including dynamic, using the C# language.\n\nCommonly Used Types:\nMicrosoft.CSharp.RuntimeBinder.Binder\nMicrosoft.CSharp.RuntimeBinder.RuntimeBinderException\nMicrosoft.CSharp.RuntimeBinder.CSharpArgumentInfo\nMicrosoft.CSharp.RuntimeBinder.CSharpArgumentInfoFlags\nMicrosoft.CSharp.RuntimeBinder.CSharpBinderFlags\n \n30ab651fcb4354552bd4891619a0bdd81e0ebdbf \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "106A0199FDCD6B6A696E13DE3C313D3E55FCD6BD47B8E647E6DC01AEAEDCA2E25988F4E35270F7EB8F1B6A57AB4093BA109F128FEE37F97B91C10EEBFB7B44DF"
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.CSharp@4.5.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.EntityFrameworkCore@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.EntityFrameworkCore",
+      "version": "6.0.0",
+      "description": "Entity Framework Core is a modern object-database mapper for .NET. It supports LINQ queries, change tracking, updates, and schema migrations. EF Core works with SQL Server, Azure SQL Database, SQLite, Azure Cosmos DB, MySQL, PostgreSQL, and other databases through a provider plugin API.\n\nCommonly Used Types:\nMicrosoft.EntityFrameworkCore.DbContext\nMicrosoft.EntityFrameworkCore.DbSet",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0219867D8D6ED2B7BC278867D4F1903963BCA803CABFFD271AF28C2CFD81525F4731BD2D0249F60BD13336915E4C0A8E9E455A0A15080ED171DD3463A93729F7"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.EntityFrameworkCore@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://docs.microsoft.com/ef/core/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/efcore",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.EntityFrameworkCore.Abstractions@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.EntityFrameworkCore.Abstractions",
+      "version": "6.0.0",
+      "description": "Provides abstractions and attributes that are used to configure Entity Framework Core",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "17A5260B1100ABA06ED8808E3B91F59DA52D0917836CF033F42A3247A8F402D40937998258F97EFA8317B044B195A589BF3AF32F1124F9801FFA6E109D0FE138"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.EntityFrameworkCore.Abstractions@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://docs.microsoft.com/ef/core/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/efcore",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.EntityFrameworkCore.Analyzers@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.EntityFrameworkCore.Analyzers",
+      "version": "6.0.0",
+      "description": "CSharp Analyzers for Entity Framework Core.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "E264A045FB4B46F68BC0FA2E50BEED620AB435426DF54640122AEDF0E9C3E8147CA0BADA0051D6FAFF2437826E7BC6108314AFB56301AD1990BCC3D4284769BB"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.EntityFrameworkCore.Analyzers@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://docs.microsoft.com/ef/core/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/efcore",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Caching.Abstractions@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Caching.Abstractions",
+      "version": "6.0.0",
+      "description": "Caching abstractions for in-memory cache and distributed cache.\n\nCommonly Used Types:\nMicrosoft.Extensions.Caching.Distributed.IDistributedCache\nMicrosoft.Extensions.Caching.Memory.IMemoryCache",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1101F4BA4867980DA03AA494E6843ACD3DB2738AA3B7EFB01C5A2CC9291C767DFC2E04FC7E17FCFDB3628C98A329632232CF351CE584D94222FAF3C95E0EFDFF"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Caching.Abstractions@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Caching.Memory@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Caching.Memory",
+      "version": "6.0.0",
+      "description": "In-memory cache implementation of Microsoft.Extensions.Caching.Memory.IMemoryCache.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6690311B6D6CCF6D36DF58EF3D565704EC88A291251904FDABA8083CB89458A89BE8280F8E3A41709EFC16FA38B34064C53BD45A095DCD8F369B02659DE49B07"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Caching.Memory@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Configuration@2.0.2",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Configuration",
+      "version": "2.0.2",
+      "description": "Implementation of key-value pair based configuration for Microsoft.Extensions.Configuration. Includes the memory configuration provider.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "40549B5EF0292CD5F67E2E3BB4B06442731FF60CB860EF7DE59D36D36174B35129CF71D5EC491759A13A12CADE32AA3C44810C65EFFB985CD1F881C8F1820CD5"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aspnet/Configuration/blob/master/LICENSE.txt"
+          }
+        }
+      ],
+      "copyright": "Copyright \u00A9 Microsoft Corporation",
+      "purl": "pkg:nuget/Microsoft.Extensions.Configuration@2.0.2",
+      "externalReferences": [
+        {
+          "url": "https://asp.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/aspnet/Configuration",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Configuration.Abstractions@7.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Configuration.Abstractions",
+      "version": "7.0.0",
+      "description": "Abstractions of key-value pair based configuration.\n\nCommonly Used Types:\nMicrosoft.Extensions.Configuration.IConfiguration\nMicrosoft.Extensions.Configuration.IConfigurationBuilder\nMicrosoft.Extensions.Configuration.IConfigurationProvider\nMicrosoft.Extensions.Configuration.IConfigurationRoot\nMicrosoft.Extensions.Configuration.IConfigurationSection",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7871E5C4031DC57220F78749AD7427542E1FF7E7149E5859AC9F3E7AEA2AE2DBB159C9EBAAACAECE83427DF317D7357530428F1A680082CDABCAFE08D9128D0B"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Configuration.Abstractions@7.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Configuration.Binder@7.0.4",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Configuration.Binder",
+      "version": "7.0.4",
+      "description": "Functionality to bind an object to data in configuration providers for Microsoft.Extensions.Configuration.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "35D99ACC0267D2F38A4E5363ACE14913E5E1A355BF8A13B9A159FCD5413070EB0D3637704F4C2DDE006D470C9C3C670C6F8E065359FA004F282BEE259E51D6FC"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Configuration.Binder@7.0.4",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.DependencyInjection@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.DependencyInjection",
+      "version": "6.0.0",
+      "description": "Default implementation of dependency injection for Microsoft.Extensions.DependencyInjection.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "C25EEFA020A785D8608F8C5BC1B7D479AA3F9BB3295AAC41A1B6B81440EE8C2D686F28AB5F7C9BD8C762152AD8957CC71B7ABFA7D4B6C85592BFC27E5155928A"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.DependencyInjection@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "version": "6.0.0",
+      "description": "Abstractions for dependency injection.\n\nCommonly Used Types:\nMicrosoft.Extensions.DependencyInjection.IServiceCollection",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "015A392A362C81B35143B19C5DA4EAC0928CC2F2E13329AB2E945A15A5C9DEA077CD66B0C467C75F2DFE6F90C3E0BF2ECDC059D75096BAC39B4156A53F997BD2"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Http@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Http",
+      "version": "6.0.0",
+      "description": "The HttpClient factory is a pattern for configuring and retrieving named HttpClients in a composable way. The HttpClient factory provides extensibility to plug in DelegatingHandlers that address cross-cutting concerns such as service location, load balancing, and reliability. The default HttpClient factory provides built-in diagnostics and logging and manages the lifetimes of connections in a performant way.\n\nCommonly Used Types:\nSystem.Net.Http.IHttpClientFactory",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "C2FE14AF71F407E6260219E9686D21B1A9A80421946850C57AFB818C0CFD48F312AB9B4FF780402C7BDC753ACD25260095953C780A5CDFA85DEBF14605F1E1F4"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Http@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Logging@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Logging",
+      "version": "6.0.0",
+      "description": "Logging infrastructure default implementation for Microsoft.Extensions.Logging.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "F5DEC590A353B7FBB35FDA799C083DC07857C70FA0D46DAEC0E00C4950A8D65F42C6F399A86706E2D97EE51FB5042BE27F35637673A2479DC4F623590D597311"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Logging@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Logging.Abstractions@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Logging.Abstractions",
+      "version": "6.0.0",
+      "description": "Logging abstractions for Microsoft.Extensions.Logging.\n\nCommonly Used Types:\nMicrosoft.Extensions.Logging.ILogger\nMicrosoft.Extensions.Logging.ILoggerFactory\nMicrosoft.Extensions.Logging.ILogger\u003CTCategoryName\u003E\nMicrosoft.Extensions.Logging.LogLevel\nMicrosoft.Extensions.Logging.Logger\u003CT\u003E\nMicrosoft.Extensions.Logging.LoggerMessage\nMicrosoft.Extensions.Logging.Abstractions.NullLogger",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "BFB1B4B98242104803D1A65A1A051D0B8E481FBC987FA2F4B58A610AB459B4D24E8753C515C32A376DD2C6804D1CE2D39624B972A81C68E92481958E1A8A31DF"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Logging.Abstractions@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Options@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Options",
+      "version": "6.0.0",
+      "description": "Provides a strongly typed way of specifying and accessing settings using dependency injection.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3C34452BAC02193264B0563654BA5282A74B03EDE2B675AD25FA85EBD915BDCCA857158153EB4A4A024065EB4E9D7BC1EBBD23485493CD895C4D049ABA4A5DD2"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Options@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Options.ConfigurationExtensions@2.1.1",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Options.ConfigurationExtensions",
+      "version": "2.1.1",
+      "description": "Provides additional configuration specific functionality related to Options.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "C304CC52CE202F3518BC70C21FE3588236920A55F423A5E8DDF333A335C4E3D87156902B759E9429D9E14D4F935D023D736636C781A245050DBC26DF064FE785"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/aspnet/Options/blob/master/LICENSE.txt"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Options.ConfigurationExtensions@2.1.1",
+      "externalReferences": [
+        {
+          "url": "https://asp.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/aspnet/Options",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Primitives@6.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Primitives",
+      "version": "6.0.0",
+      "description": "Primitives shared by framework extensions. Commonly used types include:\n\nCommonly Used Types:\nMicrosoft.Extensions.Primitives.IChangeToken\nMicrosoft.Extensions.Primitives.StringValues\nMicrosoft.Extensions.Primitives.StringSegment",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0B2697F35557AEFF0784B10AE6A4EAFD7601BF706121ED6584A61879EC6E494514EC7A3E0DA0AA6BAA99F3F716F69030EC7C4C82F657C8DFDBACB637BAC4547F"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Primitives@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.Extensions.Primitives@7.0.0",
+      "author": "Microsoft",
+      "name": "Microsoft.Extensions.Primitives",
+      "version": "7.0.0",
+      "description": "Primitives shared by framework extensions. Commonly used types include:\n\nCommonly Used Types:\nMicrosoft.Extensions.Primitives.IChangeToken\nMicrosoft.Extensions.Primitives.StringValues\nMicrosoft.Extensions.Primitives.StringSegment",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "786F9E1AB7E2997B43E6D400444E2E43E84911ED3A9D38EAD247125263D225E7932A9C8BF0089DEC150977400A108B612D575916FB76FCDA4D4AC0886F0AA4D9"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.Extensions.Primitives@7.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.IdentityModel.Abstractions@6.30.1",
+      "author": "Microsoft",
+      "name": "Microsoft.IdentityModel.Abstractions",
+      "version": "6.30.1",
+      "description": "A package containing thin abstractions for Microsoft.IdentityModel.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "662A4BC69CDC1E23EAB14A32470F77AE4DDFFF6AA1DF5356813E692B44240CA2A6A20A91E5F518478600E83AF23C2F0A93457D2EF8206387F7BC166C73D58313"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.IdentityModel.Abstractions@6.30.1",
+      "externalReferences": [
+        {
+          "url": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.IdentityModel.JsonWebTokens@6.30.1",
+      "author": "Microsoft",
+      "name": "Microsoft.IdentityModel.JsonWebTokens",
+      "version": "6.30.1",
+      "description": "Includes types that provide support for creating, serializing and validating JSON Web Tokens.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "C9F06651060F652F03CA11E77ECC03A95501A732EB158795489D574ED4F6E58EE5EF4FB98F0E85AE1DD23196BFBCA2A5854F0878E868FAFE02A99D1949CDCECE"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.IdentityModel.JsonWebTokens@6.30.1",
+      "externalReferences": [
+        {
+          "url": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.IdentityModel.Logging@6.30.1",
+      "author": "Microsoft",
+      "name": "Microsoft.IdentityModel.Logging",
+      "version": "6.30.1",
+      "description": "Includes Event Source based logging support.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "815AC78032DEDDFD91A3A8E5B67E80C255BD8E88BBA2846428895514A274146BD852CF8EA8026114695D6E79B2F89EC446D4791DE590313AC8705E743FC16289"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.IdentityModel.Logging@6.30.1",
+      "externalReferences": [
+        {
+          "url": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.IdentityModel.Tokens@6.30.1",
+      "author": "Microsoft",
+      "name": "Microsoft.IdentityModel.Tokens",
+      "version": "6.30.1",
+      "description": "Includes types that provide support for SecurityTokens, Cryptographic operations: Signing, Verifying Signatures, Encryption.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7922D5881B495CDB3320A3BD5726F9DA7B8AE53DB00CF3209672FB1C5A2AA49C9B78F6A8CC30A1C94EC263DABAE9184D2B44948152DC1C8D5909288FF07D5295"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.IdentityModel.Tokens@6.30.1",
+      "externalReferences": [
+        {
+          "url": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.NETCore.Platforms@1.1.0",
+      "author": "Microsoft",
+      "name": "Microsoft.NETCore.Platforms",
+      "version": "1.1.0",
+      "description": "Provides runtime information required to resolve target framework, platform, and runtime specific implementations of .NETCore packages. \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6BF892C274596FE2C7164E3D8503B24E187F64D0B7BEC6D9B05EB95F04086FCEB7A85EA6B2685D42DC465C52F6F0E6F636C0B3FDDAC48F6F0125DFD83E92D106"
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NETCore.Platforms@1.1.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Microsoft.NETCore.Targets@1.1.0",
+      "author": "Microsoft",
+      "name": "Microsoft.NETCore.Targets",
+      "version": "1.1.0",
+      "description": "Provides supporting infrastructure for portable projects: support identifiers that define framework and runtime for support targets and packages that reference the minimum supported package versions when targeting these. \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "68E640DC159FCFD4578E9CEDD2C44924C8C0B1C0149B71E86B851601F71E57D513631830675959B799CEDA6C857FEFE37AD610A38B933FBCD2F2C258EBB041C6"
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/Microsoft.NETCore.Targets@1.1.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Nevro.Regulated.Common.Configuration.Sdk@1.0.4-beta-2371",
+      "author": "R\u0026D",
+      "name": "Nevro.Regulated.Common.Configuration.Sdk",
+      "version": "1.0.4-beta-2371",
+      "description": "Nevro Regulated Common Configuration SDK (netstandard2.1)",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "4DB9D113D0BD11C0EF10FF337D08379F995DFB29CF3223C47FE351A3989FE6D87E18EA8AC4568E84563602D79D3DF890E0AB8FA4942C836888FD10691C0527F5"
+        }
+      ],
+      "purl": "pkg:nuget/Nevro.Regulated.Common.Configuration.Sdk@1.0.4-beta-2371"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Nevro.Regulated.Common.Configuration.Utilities@2.0.3",
+      "author": "R\u0026D",
+      "name": "Nevro.Regulated.Common.Configuration.Utilities",
+      "version": "2.0.3",
+      "description": "Nevro Regulated Common Configuration Utilities (netstandard2.1)",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "14CB0184B7C2FB1459B39B1DE0BF5C190C111EA4E0D7F8DA9A832C36C6DA865ADA5473352A01B0A568069CFF41A338ABE3F4A351A0D15934710D34E413FD226B"
+        }
+      ],
+      "purl": "pkg:nuget/Nevro.Regulated.Common.Configuration.Utilities@2.0.3"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Nevro.Regulated.Common.Configuration.Utilities@2.0.3-beta-2365",
+      "author": "R\u0026D",
+      "name": "Nevro.Regulated.Common.Configuration.Utilities",
+      "version": "2.0.3-beta-2365",
+      "description": "Nevro Regulated Common Configuration Utilities (netstandard2.1)",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3276F38660B0ACE43B715AEE262E4717417DB669A147384A770B611D25AF7B47B25173F4C239CC0CA153DC57CB54E6D720B5F9E440958A3C5AF6788BE63ECFA6"
+        }
+      ],
+      "purl": "pkg:nuget/Nevro.Regulated.Common.Configuration.Utilities@2.0.3-beta-2365"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Nevro.Regulated.Common.Dynamo.Context@3.2.8-beta-2388",
+      "author": "R\u0026D",
+      "name": "Nevro.Regulated.Common.Dynamo.Context",
+      "version": "3.2.8-beta-2388",
+      "description": "Regulated Context package that enables easier access to dynamodb via the ContextFactory (netstandard2.1)",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "B27D56D1405B13284394D845F6D62E022F0EA834509451018F8B362D7721ACBCA306C9468AFE10C74B0B2D72AA0C6CFB8688A5173DEC7D59C436B3AB6E3A6D2A"
+        }
+      ],
+      "purl": "pkg:nuget/Nevro.Regulated.Common.Dynamo.Context@3.2.8-beta-2388"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Nevro.Regulated.Services.Common.Models@2.0.2-alpha-20230703-1822",
+      "author": "R\u0026D",
+      "name": "Nevro.Regulated.Services.Common.Models",
+      "version": "2.0.2-alpha-20230703-1822",
+      "description": "Nevro Regulated Services Common Models (netstandard2.1)",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "66C34C11293223ED84CEB520E0D2E0DB5B98D612B28B32B544A50741F34B2930F31FA61B36A602BF69283CE4ADC275CFDE3D9F5B4BFA552175DD41F0D1CACA9E"
+        }
+      ],
+      "purl": "pkg:nuget/Nevro.Regulated.Services.Common.Models@2.0.2-alpha-20230703-1822"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Nevro.Regulated.Services.Common.Models@2.0.2-beta-2365",
+      "author": "R\u0026D",
+      "name": "Nevro.Regulated.Services.Common.Models",
+      "version": "2.0.2-beta-2365",
+      "description": "Nevro Regulated Services Common Models (netstandard2.1)",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "13C267ED2FCDA6B2A2192739713776DD8E0A0940679F1C8137B54D4787B2892E67616AB229CE33CD50E058D628ADE7AF5C660220BBFD43373D6C1B2C047A1618"
+        }
+      ],
+      "purl": "pkg:nuget/Nevro.Regulated.Services.Common.Models@2.0.2-beta-2365"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Nevro.Regulated.Services.Core.Externals.Models@1.1.4",
+      "author": "R\u0026D",
+      "name": "Nevro.Regulated.Services.Core.Externals.Models",
+      "version": "1.1.4",
+      "description": "Nevro Regulated Services Core Externals Models (netstandard2.1)",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "B24A9D1A7B08BA0D2AE756859C87EA060736449FF83389F4F702157A3AC195A68CCCE6A07128296AB8895700A97F870EF14DB7D9F0C866BCDFC83BC86599F19C"
+        }
+      ],
+      "purl": "pkg:nuget/Nevro.Regulated.Services.Core.Externals.Models@1.1.4"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Nevro.Regulated.Services.Core.Security.Models@2.0.5",
+      "author": "Cryptofunction.Security.Models",
+      "name": "Nevro.Regulated.Services.Core.Security.Models",
+      "version": "2.0.5",
+      "description": "Package Description",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "1942168B044ED61A08F62FFE6005EC2F2278F73F7E715FCFC96935826DE5247C5C42DA541DEAB56107DCE33887C8F55B2F01C55B326F9D7B99C1F22E38FC15B9"
+        }
+      ],
+      "purl": "pkg:nuget/Nevro.Regulated.Services.Core.Security.Models@2.0.5"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Nevro.Regulated.Services.Core.Security.Sdk@2.0.5",
+      "author": "Security.Sdk",
+      "name": "Nevro.Regulated.Services.Core.Security.Sdk",
+      "version": "2.0.5",
+      "description": "Package Description",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "EE178BF5E5E6DF8AAC4866C631E51CFDF9CD1596955A2051AD6B7AFA9D453529A1A5C559C4F46CA5689C6CFC1B1CC5713F1D292892E9F5F2B8AC1FD12BAE313B"
+        }
+      ],
+      "purl": "pkg:nuget/Nevro.Regulated.Services.Core.Security.Sdk@2.0.5"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Newtonsoft.Json@13.0.1",
+      "author": "James Newton-King",
+      "name": "Newtonsoft.Json",
+      "version": "13.0.1",
+      "description": "Json.NET is a popular high-performance JSON framework for .NET",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "83731B662EAF05379A23F8446EF47BBC111349DD4358B7BD8B51383FE9CF637E2FE62F78CEA52A0D7BDD582DC6FBBB5837D4A7B1D53DCF37A0AE7473E21EE7B1"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "Copyright \u00A9 James Newton-King 2008",
+      "purl": "pkg:nuget/Newtonsoft.Json@13.0.1",
+      "externalReferences": [
+        {
+          "url": "https://www.newtonsoft.com/json",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/JamesNK/Newtonsoft.Json",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Newtonsoft.Json@13.0.3",
+      "author": "James Newton-King",
+      "name": "Newtonsoft.Json",
+      "version": "13.0.3",
+      "description": "Json.NET is a popular high-performance JSON framework for .NET",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "99B252BC77D1C5F5F7B51FD4EA7D5653E9961D7B3061CF9207F8643A9C7CC9965EEBC84D6467F2989BB4723B1A244915CC232A78F894E8B748CA882A7C89FB92"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "Copyright \u00A9 James Newton-King 2008",
+      "purl": "pkg:nuget/Newtonsoft.Json@13.0.3",
+      "externalReferences": [
+        {
+          "url": "https://www.newtonsoft.com/json",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/JamesNK/Newtonsoft.Json",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Polly@7.2.4",
+      "author": "Michael Wolfenden, App vNext",
+      "name": "Polly",
+      "version": "7.2.4",
+      "description": "Polly is a library that allows developers to express resilience and transient fault handling policies such as Retry, Circuit Breaker, Timeout, Bulkhead Isolation, and Fallback in a fluent and thread-safe manner.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7474FE0A7B24091DD7DD3EEC5338E210549EFD413EA802A356ECDBF1BE0FF2615F9D7EA0F143B1A6C30326E6446C54EAE838834B072058EB8FB316D2E6205CD9"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "copyright": "Copyright (c) 2023, App vNext",
+      "purl": "pkg:nuget/Polly@7.2.4",
+      "externalReferences": [
+        {
+          "url": "https://github.com/App-vNext/Polly",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/App-vNext/Polly",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Polly.Extensions.Http@3.0.0",
+      "author": "App vNext",
+      "name": "Polly.Extensions.Http",
+      "version": "3.0.0",
+      "description": "Polly.Extensions.Http is an extensions package containing opinionated convenience methods for configuring Polly policies to handle transient faults typical of calls through HttpClient.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9383EBF9F4E7795D05E2DEC740F8CF28D970B5C8456EB23A6B2DDF05DD681761F463BA15815580B3CC4F9E892FF011C042039AB13C4465DA06A2D62387C51221"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "copyright": "Copyright (c) 2019, App vNext",
+      "purl": "pkg:nuget/Polly.Extensions.Http@3.0.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/App-vNext/Polly.Extensions.Http",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/App-vNext/Polly.Extensions.Http.git",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Refit@6.3.2",
+      "author": ".NET Foundation and Contributors",
+      "name": "Refit",
+      "version": "6.3.2",
+      "description": "The automatic type-safe REST library for Xamarin and .NET",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "8A084A9457861C0BAB19D743EA2F511562E22D24FEC520B453C8F619BE4666E3D33F0466093F1C95E1B6CE3C0CAEE19B095173DACB9E12478566E0A52B40CF1A"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Refit@6.3.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/reactiveui/refit",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/reactiveui/refit",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Refit.HttpClientFactory@6.3.2",
+      "author": ".NET Foundation and Contributors",
+      "name": "Refit.HttpClientFactory",
+      "version": "6.3.2",
+      "description": "Refit HTTP Client Factory Extensions",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "97FEDC269DED05FF2792CAB466BB6D909BC2D07DDC7A98D984959DC3A43C7A33BEEF4905D430FBFF7C006BF84874DFD6BF5784C5AD4BE7BD8F4D7165018E41C3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Refit.HttpClientFactory@6.3.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/reactiveui/refit",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/reactiveui/refit",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Refit.Newtonsoft.Json@6.3.2",
+      "author": ".NET Foundation and Contributors",
+      "name": "Refit.Newtonsoft.Json",
+      "version": "6.3.2",
+      "description": "Refit Serializers for Newtonsoft.Json",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "EF2B9D64F898827D23965DAECA2AE06EC952F143B57B6BAD91393717C71D9D7C8C468987E521973D6E28DE370B0C4C715161053E71B4E1971679A24B75A05F0D"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Refit.Newtonsoft.Json@6.3.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/reactiveui/refit",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/reactiveui/refit",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Serilog@2.10.0",
+      "author": "Serilog Contributors",
+      "name": "Serilog",
+      "version": "2.10.0",
+      "description": "Simple .NET logging with fully-structured events",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9C19964D1126C2E99F546F1DA81764644FE39B153E3D8D725473221A6E0855F356776D2F40A8A5D04ECE4E420075D5B987650108A4FC9B32B4F56AD3D0792260"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Serilog@2.10.0",
+      "externalReferences": [
+        {
+          "url": "https://serilog.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/serilog/serilog.git",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Serilog@3.0.1",
+      "author": "Serilog Contributors",
+      "name": "Serilog",
+      "version": "3.0.1",
+      "description": "Simple .NET logging with fully-structured events",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "A75812368248026026257A0642D6FA7BE99AE1B766810B5559E9BAA004B268FC3E6AD0FFEFAC795455AECB9C016CAB41DAB3DC50EEDB399F34086B793EA49883"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Serilog@3.0.1",
+      "externalReferences": [
+        {
+          "url": "https://serilog.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/serilog/serilog.git",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Serilog.Exceptions@8.4.0",
+      "author": "Muhammad Rehan Saeed (RehanSaeed.com)",
+      "name": "Serilog.Exceptions",
+      "version": "8.4.0",
+      "description": "Log exception details and custom properties that are not output in Exception.ToString().",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "337EC59B928B7B916C17483BD1BF5EE0917E1477DE4A49E1FC9C971B61EDE51D5F8DF7AC77F8C004A350A4E288C178333C431F098508C3E02EE8A4930D6DBBAD"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "Copyright \u00A9 Muhammad Rehan Saeed. All rights Reserved",
+      "purl": "pkg:nuget/Serilog.Exceptions@8.4.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/RehanSaeed/Serilog.Exceptions",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/RehanSaeed/Serilog.Exceptions.git",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Serilog.Exceptions.EntityFrameworkCore@8.4.0",
+      "author": "Muhammad Rehan Saeed (RehanSaeed.com)",
+      "name": "Serilog.Exceptions.EntityFrameworkCore",
+      "version": "8.4.0",
+      "description": "Log exception details and custom properties that are not output in Exception.ToString(). Contains custom destructurers for Entity Framework Core exceptions.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3C369575A343F4A177CB246484D7A4CA070DB2C9C8FAE11548F7EB5528E87ECF3B2FE8FDE5B81583529FB3E9982F61B3FB4DFDD7503CCC7D57F69C03D0691A70"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "Copyright \u00A9 Muhammad Rehan Saeed. All rights Reserved",
+      "purl": "pkg:nuget/Serilog.Exceptions.EntityFrameworkCore@8.4.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/RehanSaeed/Serilog.Exceptions",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/RehanSaeed/Serilog.Exceptions.git",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Serilog.Sinks.Console@4.1.0",
+      "author": "Serilog Contributors",
+      "name": "Serilog.Sinks.Console",
+      "version": "4.1.0",
+      "description": "A Serilog sink that writes log events to the console/terminal.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "3CE2D33BF374074657F175402E07929B5952C1345CEEDCE8A6162B8FB98AB123A2B9CE9DAA6FE2309EF1B5E59FF1F59AC60017B89FD89767276DCB00EA5573F3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Serilog.Sinks.Console@4.1.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/serilog/serilog-sinks-console",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/serilog/serilog-sinks-console",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Serilog.Sinks.Datadog.Logs@0.5.2",
+      "author": "Datadog",
+      "name": "Serilog.Sinks.Datadog.Logs",
+      "version": "0.5.2",
+      "description": "Serilog Sink that sends log events to Datadog https://www.datadoghq.com/",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2B29158D22E069A7EF09E972FFCB23B1B10107B69707CE6FB463CCCAD2BE0F3F824086AC024994826335D3D56CB62633C71CA2007EE9B82E1B3DB4A047560A5C"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0",
+            "url": "https://github.com/DataDog/serilog-sinks-datadog-logs/blob/master/LICENSE"
+          }
+        }
+      ],
+      "copyright": "Datadog, Inc. 2018",
+      "purl": "pkg:nuget/Serilog.Sinks.Datadog.Logs@0.5.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/DataDog/serilog-sinks-datadog-logs/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/Serilog.Sinks.PeriodicBatching@3.0.0",
+      "author": "Serilog Contributors",
+      "name": "Serilog.Sinks.PeriodicBatching",
+      "version": "3.0.0",
+      "description": "Buffer batches of log events to be flushed asynchronously.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "E45D94EAA4E3576AE583367D2DFEB84EF7C9D5A5FE407E48CCD5D427FCCC63CF8F125EF624BE72FE78B9D3A42F23C2497FBBF158E7B6D9220C714CA9DBC80935"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:nuget/Serilog.Sinks.PeriodicBatching@3.0.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/serilog/serilog-sinks-periodicbatching",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/serilog/serilog-sinks-periodicbatching",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.CodeDom@7.0.0",
+      "author": "Microsoft",
+      "name": "System.CodeDom",
+      "version": "7.0.0",
+      "description": "Provides types that can be used to model the structure of a source code document and to output source code for that model in a supported language.\n\nCommonly Used Types:\nSystem.CodeDom.CodeObject\nSystem.CodeDom.Compiler.CodeDomProvider\nMicrosoft.CSharp.CSharpCodeProvider\nMicrosoft.VisualBasic.VBCodeProvider",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "EB3D7DECE2B09817D0E3606F8A2C0E0E94A0FC928F18AE5DD7D5C768606F01FE75C9D70D047C8F44F0ADE90A133C77C00F9BCE6CB88F09902A9D503AB2CBCCC3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.CodeDom@7.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Collections.Immutable@6.0.0",
+      "author": "Microsoft",
+      "name": "System.Collections.Immutable",
+      "version": "6.0.0",
+      "description": "This package provides collections that are thread safe and guaranteed to never change their contents, also known as immutable collections. Like strings, any methods that perform modifications will not change the existing instance but instead return a new instance. For efficiency reasons, the implementation uses a sharing mechanism to ensure that newly created instances share as much data as possible with the previous instance while ensuring that operations have a predictable time complexity.\n\nCommonly Used Types:\nSystem.Collections.Immutable.ImmutableArray\nSystem.Collections.Immutable.ImmutableArray\u003CT\u003E\nSystem.Collections.Immutable.ImmutableDictionary\nSystem.Collections.Immutable.ImmutableDictionary\u003CTKey,TValue\u003E\nSystem.Collections.Immutable.ImmutableHashSet\nSystem.Collections.Immutable.ImmutableHashSet\u003CT\u003E\nSystem.Collections.Immutable.ImmutableList\nSystem.Collections.Immutable.ImmutableList\u003CT\u003E\nSystem.Collections.Immutable.ImmutableQueue\nSystem.Collections.Immutable.ImmutableQueue\u003CT\u003E\nSystem.Collections.Immutable.ImmutableSortedDictionary\nSystem.Collections.Immutable.ImmutableSortedDictionary\u003CTKey,TValue\u003E\nSystem.Collections.Immutable.ImmutableSortedSet\nSystem.Collections.Immutable.ImmutableSortedSet\u003CT\u003E\nSystem.Collections.Immutable.ImmutableStack\nSystem.Collections.Immutable.ImmutableStack\u003CT\u003E",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "F8036412E384C5C5AF6D28F4EAB2543207D2EBBB16C47B70F6C471BC5AA4B9F44404C47D776D295191F20A89CAA898ABD73A2304DCAF77979174CED2D9160169"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Collections.Immutable@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.ComponentModel.Annotations@5.0.0",
+      "author": "Microsoft",
+      "name": "System.ComponentModel.Annotations",
+      "version": "5.0.0",
+      "description": "Provides attributes that are used to define metadata for objects used as data sources.\n\nCommonly Used Types:\nSystem.ComponentModel.DataAnnotations.ValidationResult\nSystem.ComponentModel.DataAnnotations.IValidatableObject\nSystem.ComponentModel.DataAnnotations.ValidationAttribute\nSystem.ComponentModel.DataAnnotations.RequiredAttribute\nSystem.ComponentModel.DataAnnotations.StringLengthAttribute\nSystem.ComponentModel.DataAnnotations.DisplayAttribute\nSystem.ComponentModel.DataAnnotations.RegularExpressionAttribute\nSystem.ComponentModel.DataAnnotations.DataTypeAttribute\nSystem.ComponentModel.DataAnnotations.RangeAttribute\nSystem.ComponentModel.DataAnnotations.KeyAttribute\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "589AAC4C669701CE7910F1A327294F15788D3ECFF1D6DF5D9255651E5201C5411C2312286FAB111A6F549FB4DE864C8414CFAF2A365DEEB6F068C1FFCE7C353C"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.ComponentModel.Annotations@5.0.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "website"
+        },
+        {
+          "url": "git://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Diagnostics.DiagnosticSource@6.0.0",
+      "author": "Microsoft",
+      "name": "System.Diagnostics.DiagnosticSource",
+      "version": "6.0.0",
+      "description": "Provides Classes that allow you to decouple code logging rich (unserializable) diagnostics/telemetry (e.g. framework) from code that consumes it (e.g. tools)\n\nCommonly Used Types:\nSystem.Diagnostics.DiagnosticListener\nSystem.Diagnostics.DiagnosticSource",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7589E6A3AE9B8AD7C7C4B8CD054D8B3E9E839FDF27EE147293B64A195CDA00FC36307CBEE3474BC5FC3BB2EB3132459F2F70BFFDA245FBF50300F807D9885466"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Diagnostics.DiagnosticSource@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Formats.Asn1@5.0.0",
+      "author": "Microsoft",
+      "name": "System.Formats.Asn1",
+      "version": "5.0.0",
+      "description": "Provides classes that can read and write the ASN.1 BER, CER, and DER data formats.\n\nCommonly Used Types:\nSystem.Formats.Asn1.AsnReader\nSystem.Formats.Asn1.AsnWriter\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "01C6999E0A8984F4CE94CB731748CD88113E5BD4411031BD281FE1EF637F973090AF49D00515E00FD87CE9801711C23A3119ECBDB2D1FE17247AC9E55B434B99"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Formats.Asn1@5.0.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "website"
+        },
+        {
+          "url": "git://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.IdentityModel.Tokens.Jwt@6.30.1",
+      "author": "Microsoft",
+      "name": "System.IdentityModel.Tokens.Jwt",
+      "version": "6.30.1",
+      "description": "Includes types that provide support for creating, serializing and validating JSON Web Tokens.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "6E9A9CA1196FB7A9D506F85FA9C0B3053E6AA0165F988A72C4DA444B2AC7A9400F57D14B994B820A0493A97DC6E587B1BB74E0C9FE348D5939000BA46B4D2B29"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.IdentityModel.Tokens.Jwt@6.30.1",
+      "externalReferences": [
+        {
+          "url": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Management@7.0.2",
+      "author": "Microsoft",
+      "name": "System.Management",
+      "version": "7.0.2",
+      "description": "Provides access to a rich set of management information and management events about the system, devices, and applications instrumented to the Windows Management Instrumentation (WMI) infrastructure.\n\nCommonly Used Types:\nSystem.Management.ManagementClass\nSystem.Management.ManagementObject\nSystem.Management.SelectQuery",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "9E00C0030D7FA1858FC0211D47261B6387FD9481EF9674B218CC217048F94C1FB1BBE23E72E27280FCD1852B5847A0C2F351157920BBC6F72452BA0CD32FD18E"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Management@7.0.2",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Net.Http.Json@6.0.0",
+      "author": "Microsoft",
+      "name": "System.Net.Http.Json",
+      "version": "6.0.0",
+      "description": "Provides extension methods for System.Net.Http.HttpClient and System.Net.Http.HttpContent that perform automatic serialization and deserialization using System.Text.Json.\n\nCommonly Used Types:\nSystem.Net.Http.Json.HttpClientJsonExtensions\nSystem.Net.Http.Json.HttpContentJsonExtensions\nSystem.Net.Http.Json.JsonContent",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "7AEEEAD4DE9CF4B2DCA64EA34F2E5693813969CC2056C8B5829CFAF3B9254F55E7CD4C36F8591D76B0471CD7F5B270BADEB8ABD30B0B2147181961927BB369AD"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Net.Http.Json@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Reflection.TypeExtensions@4.7.0",
+      "author": "Microsoft",
+      "name": "System.Reflection.TypeExtensions",
+      "version": "4.7.0",
+      "description": "Provides extensions methods for System.Type that are designed to be source-compatible with older framework reflection-based APIs.\n\nCommonly Used Types:\nSystem.Reflection.TypeExtensions\nSystem.Reflection.BindingFlags\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "43F7DCCC73B7E7B7EA4E7B503D9052C21B2D1C271916F82A3B006790EFA584CC92DA96010ED5F27D141B94ADD261737C1971CE109CE334CE53AF5DB3A7BDDCE8"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Reflection.TypeExtensions@4.7.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Runtime@4.3.0",
+      "author": "Microsoft",
+      "name": "System.Runtime",
+      "version": "4.3.0",
+      "description": "Provides the fundamental primitives, classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and exceptions. This packages represents the core package, and provides the minimal set of types required to build a managed application.\n\nCommonly Used Types:\nSystem.Object\nSystem.Exception\nSystem.Int16\nSystem.Int32\nSystem.Int64\nSystem.Enum\nSystem.String\nSystem.Char\nSystem.Boolean\nSystem.SByte\nSystem.Byte\nSystem.DateTime\nSystem.DateTimeOffset\nSystem.Single\nSystem.Double\nSystem.UInt16\nSystem.UInt32\nSystem.UInt64\nSystem.IDisposable\nSystem.Uri\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "92AB2249F08073CFAFDC4CFBD7DB36D651AD871B8D8BA961006982187DE374BF4A30AF93F15F73B05AF343F7A70CBD484B04D646570587636AE72171EB0714FB"
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Runtime@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Runtime.CompilerServices.Unsafe@6.0.0",
+      "author": "Microsoft",
+      "name": "System.Runtime.CompilerServices.Unsafe",
+      "version": "6.0.0",
+      "description": "Provides the System.Runtime.CompilerServices.Unsafe class, which provides generic, low-level functionality for manipulating pointers.\n\nCommonly Used Types:\nSystem.Runtime.CompilerServices.Unsafe",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "D4057301BE4EC4936F24B9CE003B5EC4D99681AB6D9B65D5393DD38D04CDEC37784AAA12C1A8B50AC3767ED878DAE425749490773FEC01E734F93CF1045822B3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Runtime.CompilerServices.Unsafe@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Security.Cryptography.Cng@4.5.0",
+      "author": "Microsoft",
+      "name": "System.Security.Cryptography.Cng",
+      "version": "4.5.0",
+      "description": "Provides cryptographic algorithm implementations and key management with Windows Cryptographic Next Generation API (CNG).\n\nCommonly Used Types:\nSystem.Security.Cryptography.RSACng\nSystem.Security.Cryptography.ECDsaCng\nSystem.Security.Cryptography.CngKey\n \n30ab651fcb4354552bd4891619a0bdd81e0ebdbf \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0EC1D266805E55ED9B0249CFC1DAE09C242581DF345D1712F15DDEBFDE76045F191388D48B68BBFAD21A16D87A99DF67BAB7B54892F685F42DE08823A4DC9BC5"
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Security.Cryptography.Cng@4.5.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Security.Cryptography.Cng@5.0.0",
+      "author": "Microsoft",
+      "name": "System.Security.Cryptography.Cng",
+      "version": "5.0.0",
+      "description": "Provides cryptographic algorithm implementations and key management with Windows Cryptographic Next Generation API (CNG).\n\nCommonly Used Types:\nSystem.Security.Cryptography.RSACng\nSystem.Security.Cryptography.ECDsaCng\nSystem.Security.Cryptography.CngKey\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "B6BBE402495487333EFF3F5B3E71A60CBCE66EF0F49752250BA829151A738C62F295382D4CFAA6F14BFBB670C14EE05039B8C4641C4D4B46C28488BACD0095F7"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Security.Cryptography.Cng@5.0.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "website"
+        },
+        {
+          "url": "git://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Security.Cryptography.OpenSsl@5.0.0",
+      "author": "Microsoft",
+      "name": "System.Security.Cryptography.OpenSsl",
+      "version": "5.0.0",
+      "description": "Provides cryptographic algorithm implementations and key management for non-Windows systems with OpenSSL.\n\nCommonly Used Types:\nSystem.Security.Cryptography.RSAOpenSsl\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "FBC3F8128F4731C91ED55E1B3CAE898C16878A523930060B72A3CA5477296C9996DCEEAA382C6EB419848AE4F77BA099BE4F1C138BF6C2A0B9277C28C6A105FD"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Security.Cryptography.OpenSsl@5.0.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "website"
+        },
+        {
+          "url": "git://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Text.Encoding@4.3.0",
+      "author": "Microsoft",
+      "name": "System.Text.Encoding",
+      "version": "4.3.0",
+      "description": "Provides base abstract encoding classes for converting blocks of characters to and from blocks of bytes.\n\nCommonly Used Types:\nSystem.Text.Encoding\nSystem.Text.DecoderFallbackException\nSystem.Text.Decoder\nSystem.Text.EncoderFallbackException\nSystem.Text.Encoder\nSystem.Text.EncoderFallback\nSystem.Text.EncoderFallbackBuffer\nSystem.Text.DecoderFallback\nSystem.Text.DecoderFallbackBuffer\nSystem.Text.DecoderExceptionFallback\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "062220F8A59A4833884F37BA8C64329F183AE276803EDA861C1C03ACB682B62C6C6B96CA891F1DA4F38703B81EDC2D092508B3244FAC7E4CF5C15F8100A01867"
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation.  All rights reserved.",
+      "purl": "pkg:nuget/System.Text.Encoding@4.3.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Text.Encodings.Web@4.7.2",
+      "author": "Microsoft",
+      "name": "System.Text.Encodings.Web",
+      "version": "4.7.2",
+      "description": "Provides types for encoding and escaping strings for use in JavaScript, HyperText Markup Language (HTML), and uniform resource locators (URL).\n\nCommonly Used Types:\nSystem.Text.Encodings.Web.HtmlEncoder\nSystem.Text.Encodings.Web.UrlEncoder\nSystem.Text.Encodings.Web.JavaScriptEncoder\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "C3ACF16FFCED4DB6AC9E6677B29BD5CDD442DE19A897A9E5E088156BE7039DF4C850F01ACE18F61B7773C93EDC9D9A3D9D11BB8F40D6AC24537BD5B4E024B423"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Text.Encodings.Web@4.7.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Text.Encodings.Web@6.0.0",
+      "author": "Microsoft",
+      "name": "System.Text.Encodings.Web",
+      "version": "6.0.0",
+      "description": "Provides types for encoding and escaping strings for use in JavaScript, HyperText Markup Language (HTML), and uniform resource locators (URL).\n\nCommonly Used Types:\nSystem.Text.Encodings.Web.HtmlEncoder\nSystem.Text.Encodings.Web.UrlEncoder\nSystem.Text.Encodings.Web.JavaScriptEncoder",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0F26AFEEAA709EA1F05EF87058408DD9DF640C869D7398B2C9C270268DDF21A9208CD7D2BFA1F7FBD8A5CEAB735DD22D470A3689627C9C4FADC0EA5FE76237FA"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Text.Encodings.Web@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Text.Json@4.7.2",
+      "author": "Microsoft",
+      "name": "System.Text.Json",
+      "version": "4.7.2",
+      "description": "Provides high-performance and low-allocating types that serialize objects to JavaScript Object Notation (JSON) text and deserialize JSON text to objects, with UTF-8 support built-in. Also provides types to read and write JSON text encoded as UTF-8, and to create an in-memory document object model (DOM), that is read-only, for random access of the JSON elements within a structured view of the data.\n\nCommonly Used Types:\nSystem.Text.Json.JsonSerializer\nSystem.Text.Json.JsonDocument\nSystem.Text.Json.JsonElement\nSystem.Text.Json.Utf8JsonWriter\nSystem.Text.Json.Utf8JsonReader\n \nWhen using NuGet 3.x this package requires at least version 3.4.",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "345D15C74A9AC6DDABEEBA349B9BA027E48B423972984FF202EA74B5413DD502236817746A82485C840A0CFC818179B94548731DB5F361B07A4D11BDDA20F50F"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Text.Json@4.7.2",
+      "externalReferences": [
+        {
+          "url": "https://github.com/dotnet/corefx",
+          "type": "website"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:nuget/System.Text.Json@6.0.0",
+      "author": "Microsoft",
+      "name": "System.Text.Json",
+      "version": "6.0.0",
+      "description": "Provides high-performance and low-allocating types that serialize objects to JavaScript Object Notation (JSON) text and deserialize JSON text to objects, with UTF-8 support built-in. Also provides types to read and write JSON text encoded as UTF-8, and to create an in-memory document object model (DOM), that is read-only, for random access of the JSON elements within a structured view of the data.\n\nCommonly Used Types:\nSystem.Text.Json.JsonSerializer\nSystem.Text.Json.JsonDocument\nSystem.Text.Json.JsonElement\nSystem.Text.Json.Utf8JsonWriter\nSystem.Text.Json.Utf8JsonReader",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "167B4EE8D1277A5D8BD6B4FBE0A3B3A708519235FB005EA98CAFDD5B30E17758EFEB0A87DCD068AF289400D841F4D2CD24550DF882D1927C47EC6FF4FB8781FF"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "\u00A9 Microsoft Corporation. All rights reserved.",
+      "purl": "pkg:nuget/System.Text.Json@6.0.0",
+      "externalReferences": [
+        {
+          "url": "https://dot.net/",
+          "type": "website"
+        },
+        {
+          "url": "https://github.com/dotnet/runtime",
+          "type": "vcs"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "Nevro.Regulated.Services.Cryptofunction@0.0.0",
+      "dependsOn": [
+        "pkg:nuget/Amazon.Lambda.APIGatewayEvents@2.6.0",
+        "pkg:nuget/Amazon.Lambda.Core@2.1.0",
+        "pkg:nuget/Amazon.Lambda.Serialization.SystemTextJson@2.3.1",
+        "pkg:nuget/AWSSDK.APIGateway@3.7.100.149",
+        "pkg:nuget/AWSSDK.Core@3.7.107.11",
+        "pkg:nuget/AWSSDK.KeyManagementService@3.7.104",
+        "pkg:nuget/Destructurama.Attributed@3.1.0",
+        "pkg:nuget/Microsoft.Extensions.Configuration.Binder@7.0.4",
+        "pkg:nuget/Nevro.Regulated.Common.Configuration.Sdk@1.0.4-beta-2371",
+        "pkg:nuget/Nevro.Regulated.Common.Configuration.Utilities@2.0.3",
+        "pkg:nuget/Nevro.Regulated.Common.Dynamo.Context@3.2.8-beta-2388",
+        "pkg:nuget/Nevro.Regulated.Services.Core.Externals.Models@1.1.4",
+        "pkg:nuget/Nevro.Regulated.Services.Core.Security.Sdk@2.0.5",
+        "pkg:nuget/Refit@6.3.2",
+        "pkg:nuget/Serilog.Sinks.Console@4.1.0",
+        "pkg:nuget/System.IdentityModel.Tokens.Jwt@6.30.1",
+        "pkg:nuget/SonarAnalyzer.CSharp@9.4.0.72892",
+        "pkg:nuget/System.Security.Cryptography.Cng@5.0.0",
+        "pkg:nuget/System.Security.Cryptography.OpenSsl@5.0.0",
+        "pkg:nuget/Amazon.Extensions.CognitoAuthentication@2.5.0",
+        "pkg:nuget/Polly@7.2.4",
+        "pkg:nuget/Polly.Extensions.Http@3.0.0",
+        "pkg:nuget/System.Management@7.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Amazon.Extensions.CognitoAuthentication@2.5.0",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.CognitoIdentity@3.7.0.2",
+        "pkg:nuget/AWSSDK.CognitoIdentityProvider@3.7.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Amazon.Extensions.Configuration.SystemsManager@5.1.0",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.AppConfigData@3.7.0.23",
+        "pkg:nuget/AWSSDK.Extensions.NETCore.Setup@3.7.1",
+        "pkg:nuget/AWSSDK.SimpleSystemsManagement@3.7.12.9",
+        "pkg:nuget/Microsoft.Extensions.Configuration@2.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Amazon.Lambda.APIGatewayEvents@2.6.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Amazon.Lambda.Core@2.1.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Amazon.Lambda.Serialization.SystemTextJson@2.3.1",
+      "dependsOn": [
+        "pkg:nuget/Amazon.Lambda.Core@2.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWS.Logger.Core@3.1.0",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.CloudWatchLogs@3.7.0.5"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWS.Logger.SeriLog@3.2.0",
+      "dependsOn": [
+        "pkg:nuget/AWS.Logger.Core@3.1.0",
+        "pkg:nuget/Microsoft.Extensions.Configuration.Abstractions@7.0.0",
+        "pkg:nuget/Serilog@3.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Aws4RequestSigner@1.0.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.APIGateway@3.7.100.149",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.AppConfigData@3.7.0.23",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.CloudWatchLogs@3.7.0.5",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.CognitoIdentity@3.7.0.2",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11",
+        "pkg:nuget/AWSSDK.SecurityToken@3.7.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.CognitoIdentityProvider@3.7.0.2",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.Core@3.7.107.11",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.DynamoDBv2@3.7.105.2",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.Extensions.NETCore.Setup@3.7.1",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11",
+        "pkg:nuget/Microsoft.Extensions.Configuration.Abstractions@7.0.0",
+        "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Logging.Abstractions@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.KeyManagementService@3.7.104",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.SecurityToken@3.7.0.2",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/AWSSDK.SimpleSystemsManagement@3.7.12.9",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Correlate.Abstractions@4.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Correlate.DependencyInjection@4.0.0",
+      "dependsOn": [
+        "pkg:nuget/Correlate@4.0.0",
+        "pkg:nuget/Microsoft.Extensions.Http@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Correlate@4.0.0",
+      "dependsOn": [
+        "pkg:nuget/Correlate.Abstractions@4.0.0",
+        "pkg:nuget/Microsoft.Extensions.Logging.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Options@6.0.0",
+        "pkg:nuget/System.Diagnostics.DiagnosticSource@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Destructurama.Attributed@3.1.0",
+      "dependsOn": [
+        "pkg:nuget/Serilog@3.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.CSharp@4.5.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.EntityFrameworkCore.Abstractions@6.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.EntityFrameworkCore.Analyzers@6.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.EntityFrameworkCore@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.EntityFrameworkCore.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.EntityFrameworkCore.Analyzers@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Caching.Memory@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.DependencyInjection@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Logging@6.0.0",
+        "pkg:nuget/System.Collections.Immutable@6.0.0",
+        "pkg:nuget/System.Diagnostics.DiagnosticSource@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Caching.Abstractions@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.Primitives@7.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Caching.Memory@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.Caching.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Logging.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Options@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Primitives@7.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Configuration.Abstractions@7.0.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.Primitives@7.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Configuration.Binder@7.0.4",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.Configuration.Abstractions@7.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Configuration@2.0.2",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.Configuration.Abstractions@7.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@6.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.DependencyInjection@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@6.0.0",
+        "pkg:nuget/System.Runtime.CompilerServices.Unsafe@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Http@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Logging@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Logging.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Options@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Logging.Abstractions@6.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Logging@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.DependencyInjection@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Logging.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Options@6.0.0",
+        "pkg:nuget/System.Diagnostics.DiagnosticSource@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Options.ConfigurationExtensions@2.1.1",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.Configuration.Abstractions@7.0.0",
+        "pkg:nuget/Microsoft.Extensions.Configuration.Binder@7.0.4",
+        "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Options@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Options@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@6.0.0",
+        "pkg:nuget/Microsoft.Extensions.Primitives@7.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Primitives@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/System.Runtime.CompilerServices.Unsafe@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.Extensions.Primitives@7.0.0",
+      "dependsOn": [
+        "pkg:nuget/System.Runtime.CompilerServices.Unsafe@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.IdentityModel.Abstractions@6.30.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.IdentityModel.JsonWebTokens@6.30.1",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.IdentityModel.Tokens@6.30.1",
+        "pkg:nuget/System.Text.Encoding@4.3.0",
+        "pkg:nuget/System.Text.Encodings.Web@6.0.0",
+        "pkg:nuget/System.Text.Json@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.IdentityModel.Logging@6.30.1",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.IdentityModel.Abstractions@6.30.1"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.IdentityModel.Tokens@6.30.1",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.CSharp@4.5.0",
+        "pkg:nuget/Microsoft.IdentityModel.Logging@6.30.1",
+        "pkg:nuget/System.Security.Cryptography.Cng@4.5.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.NETCore.Platforms@1.1.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Microsoft.NETCore.Targets@1.1.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Nevro.Regulated.Common.Configuration.Sdk@1.0.4-beta-2371",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.Core@3.7.107.11",
+        "pkg:nuget/Aws4RequestSigner@1.0.3",
+        "pkg:nuget/Correlate.DependencyInjection@4.0.0",
+        "pkg:nuget/Refit.HttpClientFactory@6.3.2",
+        "pkg:nuget/Refit.Newtonsoft.Json@6.3.2",
+        "pkg:nuget/Serilog@3.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Nevro.Regulated.Common.Configuration.Utilities@2.0.3",
+      "dependsOn": [
+        "pkg:nuget/AWS.Logger.SeriLog@3.2.0",
+        "pkg:nuget/Amazon.Extensions.Configuration.SystemsManager@5.1.0",
+        "pkg:nuget/Correlate.DependencyInjection@4.0.0",
+        "pkg:nuget/Newtonsoft.Json@13.0.3",
+        "pkg:nuget/Serilog.Exceptions.EntityFrameworkCore@8.4.0",
+        "pkg:nuget/Serilog.Sinks.Datadog.Logs@0.5.2"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Nevro.Regulated.Common.Configuration.Utilities@2.0.3-beta-2365",
+      "dependsOn": [
+        "pkg:nuget/AWS.Logger.SeriLog@3.2.0",
+        "pkg:nuget/Amazon.Extensions.Configuration.SystemsManager@5.1.0",
+        "pkg:nuget/Correlate.DependencyInjection@4.0.0",
+        "pkg:nuget/Newtonsoft.Json@13.0.3",
+        "pkg:nuget/Serilog.Exceptions.EntityFrameworkCore@8.4.0",
+        "pkg:nuget/Serilog.Sinks.Datadog.Logs@0.5.2"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Nevro.Regulated.Common.Dynamo.Context@3.2.8-beta-2388",
+      "dependsOn": [
+        "pkg:nuget/AWSSDK.DynamoDBv2@3.7.105.2",
+        "pkg:nuget/Nevro.Regulated.Common.Configuration.Utilities@2.0.3",
+        "pkg:nuget/Nevro.Regulated.Services.Common.Models@2.0.2-beta-2365"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Nevro.Regulated.Services.Common.Models@2.0.2-alpha-20230703-1822",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Nevro.Regulated.Services.Common.Models@2.0.2-beta-2365",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Nevro.Regulated.Services.Core.Externals.Models@1.1.4",
+      "dependsOn": [
+        "pkg:nuget/Nevro.Regulated.Services.Common.Models@2.0.2-beta-2365",
+        "pkg:nuget/System.ComponentModel.Annotations@5.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Nevro.Regulated.Services.Core.Security.Models@2.0.5",
+      "dependsOn": [
+        "pkg:nuget/Destructurama.Attributed@3.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Nevro.Regulated.Services.Core.Security.Sdk@2.0.5",
+      "dependsOn": [
+        "pkg:nuget/Nevro.Regulated.Common.Configuration.Sdk@1.0.4-beta-2371",
+        "pkg:nuget/Nevro.Regulated.Services.Core.Security.Models@2.0.5",
+        "pkg:nuget/Refit@6.3.2"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Newtonsoft.Json@13.0.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Newtonsoft.Json@13.0.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Polly.Extensions.Http@3.0.0",
+      "dependsOn": [
+        "pkg:nuget/Polly@7.2.4"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Polly@7.2.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Refit.HttpClientFactory@6.3.2",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.Http@6.0.0",
+        "pkg:nuget/Refit@6.3.2"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Refit.Newtonsoft.Json@6.3.2",
+      "dependsOn": [
+        "pkg:nuget/Newtonsoft.Json@13.0.3",
+        "pkg:nuget/Refit@6.3.2"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Refit@6.3.2",
+      "dependsOn": [
+        "pkg:nuget/System.Net.Http.Json@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Serilog.Exceptions.EntityFrameworkCore@8.4.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.EntityFrameworkCore@6.0.0",
+        "pkg:nuget/Serilog.Exceptions@8.4.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Serilog.Exceptions@8.4.0",
+      "dependsOn": [
+        "pkg:nuget/Serilog@3.0.1",
+        "pkg:nuget/System.Reflection.TypeExtensions@4.7.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Serilog.Sinks.Console@4.1.0",
+      "dependsOn": [
+        "pkg:nuget/Serilog@3.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Serilog.Sinks.Datadog.Logs@0.5.2",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.Extensions.Options.ConfigurationExtensions@2.1.1",
+        "pkg:nuget/Serilog@3.0.1",
+        "pkg:nuget/Serilog.Sinks.PeriodicBatching@3.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Serilog.Sinks.PeriodicBatching@3.0.0",
+      "dependsOn": [
+        "pkg:nuget/Serilog@3.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/Serilog@2.10.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/Serilog@3.0.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/SonarAnalyzer.CSharp@9.4.0.72892",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/System.CodeDom@7.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/System.Collections.Immutable@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/System.Runtime.CompilerServices.Unsafe@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/System.ComponentModel.Annotations@5.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/System.Diagnostics.DiagnosticSource@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/System.Runtime.CompilerServices.Unsafe@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/System.Formats.Asn1@5.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/System.IdentityModel.Tokens.Jwt@6.30.1",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.IdentityModel.JsonWebTokens@6.30.1",
+        "pkg:nuget/Microsoft.IdentityModel.Tokens@6.30.1"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/System.Management@7.0.2",
+      "dependsOn": [
+        "pkg:nuget/System.CodeDom@7.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/System.Net.Http.Json@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/System.Text.Json@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/System.Reflection.TypeExtensions@4.7.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/System.Runtime.CompilerServices.Unsafe@6.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/System.Runtime@4.3.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.NETCore.Platforms@1.1.0",
+        "pkg:nuget/Microsoft.NETCore.Targets@1.1.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/System.Security.Cryptography.Cng@4.5.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/System.Security.Cryptography.Cng@5.0.0",
+      "dependsOn": [
+        "pkg:nuget/System.Formats.Asn1@5.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/System.Security.Cryptography.OpenSsl@5.0.0",
+      "dependsOn": [
+        "pkg:nuget/System.Formats.Asn1@5.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/System.Text.Encoding@4.3.0",
+      "dependsOn": [
+        "pkg:nuget/Microsoft.NETCore.Platforms@1.1.0",
+        "pkg:nuget/Microsoft.NETCore.Targets@1.1.0",
+        "pkg:nuget/System.Runtime@4.3.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/System.Text.Encodings.Web@4.7.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/System.Text.Encodings.Web@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/System.Runtime.CompilerServices.Unsafe@6.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:nuget/System.Text.Json@4.7.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:nuget/System.Text.Json@6.0.0",
+      "dependsOn": [
+        "pkg:nuget/System.Runtime.CompilerServices.Unsafe@6.0.0",
+        "pkg:nuget/System.Text.Encodings.Web@6.0.0"
+      ]
+    }
+  ]
+}
