@@ -22,6 +22,8 @@ using System.CommandLine.Invocation;
 using System.Threading.Tasks;
 using CycloneDX.Models;
 using CycloneDX.Utils;
+using System.IO;
+using System.Collections.Immutable;
 
 namespace CycloneDX.Cli.Commands
 {
@@ -32,6 +34,8 @@ namespace CycloneDX.Cli.Commands
             Contract.Requires(rootCommand != null);
             var subCommand = new System.CommandLine.Command("merge", "Merge two or more BOMs");
             subCommand.Add(new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space)."));
+            subCommand.Add(new Option<List<string>>("--input-files-list", "One or more text file(s) with input BOM filenames (one per line)."));
+            subCommand.Add(new Option<List<string>>("--input-files-nul-list", "One or more text-like file(s) with input BOM filenames (separated by 0x00 characters)."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
             subCommand.Add(new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<CycloneDXBomFormat>("--output-format", "Specify output file format."));
@@ -61,7 +65,7 @@ namespace CycloneDX.Cli.Commands
                 return (int)ExitCode.ParameterValidationError;
             }
 
-            var inputBoms = await InputBoms(options.InputFiles, options.InputFormat, outputToConsole).ConfigureAwait(false);
+            var inputBoms = await InputBoms(DetermineInputFiles(options), options.InputFormat, outputToConsole).ConfigureAwait(false);
 
             Component bomSubject = null;
             if (options.Group != null || options.Name != null || options.Version != null)
@@ -92,7 +96,7 @@ namespace CycloneDX.Cli.Commands
                     // otherwise use the first non-null component from the input BOMs as the default
                     foreach (var bom in inputBoms)
                     {
-                        if(bom.Metadata != null && bom.Metadata.Component != null)
+                        if (bom.Metadata != null && bom.Metadata.Component != null)
                         {
                             outputBom.Metadata.Component = bom.Metadata.Component;
                             break;
@@ -111,6 +115,73 @@ namespace CycloneDX.Cli.Commands
             }
 
             return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
+        }
+
+        private static List<string> DetermineInputFiles(MergeCommandOptions options)
+        {
+            List<string> InputFiles;
+            if (options.InputFiles != null)
+            {
+                InputFiles = (List<string>)options.InputFiles;
+            }
+            else
+            {
+                InputFiles = new List<string>();
+            }
+
+            Console.WriteLine($"Got " + InputFiles.Count + " individual input file name(s): ['" + string.Join("', '", InputFiles) + "']");
+            if (options.InputFilesList != null)
+            {
+                // For some reason, without an immutable list this claims
+                // modifications of the iterable during iteration and fails:
+                ImmutableList<string> InputFilesList = options.InputFilesList.ToImmutableList();
+                Console.WriteLine($"Processing " + InputFilesList.Count + " file(s) with list of actual input file names: ['" + string.Join("', '", InputFilesList) + "']");
+                foreach (string OneInputFileList in InputFilesList)
+                {
+                    Console.WriteLine($"Adding to input file list from " + OneInputFileList);
+                    string[] lines = File.ReadAllLines(OneInputFileList);
+                    int count = 0;
+                    foreach (string line in lines)
+                    {
+                        if (string.IsNullOrEmpty(line)) continue;
+                        if (InputFiles.Contains(line)) continue;
+                        InputFiles.Add(line);
+                        count++;
+                    }
+                    Console.WriteLine($"Got " + count + " new entries from " + OneInputFileList);
+                }
+            }
+
+            if (options.InputFilesNulList != null)
+            {
+                ImmutableList<string> InputFilesNulList = options.InputFilesNulList.ToImmutableList();
+                Console.WriteLine($"Processing " + InputFilesNulList.Count + " file(s) with NUL-separated list of actual input file names: ['" + string.Join("', '", InputFilesNulList) + "']");
+                foreach (string OneInputFileList in InputFilesNulList)
+                {
+                    Console.WriteLine($"Adding to input file list from " + OneInputFileList);
+                    string[] lines = File.ReadAllText(OneInputFileList).Split('\0');
+                    int count = 0;
+                    foreach (string line in lines)
+                    {
+                        if (string.IsNullOrEmpty(line)) continue;
+                        if (InputFiles.Contains(line)) continue;
+                        InputFiles.Add(line);
+                        count++;
+                    }
+                    Console.WriteLine($"Got " + count + " new entries from " + OneInputFileList);
+                }
+            }
+
+            if (InputFiles.Count == 0)
+            {
+                // Revert to legacy (error-handling) behavior below
+                // in case the parameter was not passed
+                InputFiles = null;
+            } else {
+                Console.WriteLine($"Determined " + InputFiles.Count + " input files to merge");
+            }
+
+            return InputFiles;
         }
 
         private static async Task<IEnumerable<Bom>> InputBoms(IEnumerable<string> inputFilenames, CycloneDXBomFormat inputFormat, bool outputToConsole)
