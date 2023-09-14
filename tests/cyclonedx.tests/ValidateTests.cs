@@ -44,6 +44,9 @@ namespace CycloneDX.Cli.Tests
         [InlineData("bom-1.4.xml", ValidationBomFormat.autodetect, null, true)]
         [InlineData("bom-1.4.xml", ValidationBomFormat.xml, SpecificationVersion.v1_4, true)]
 
+        [InlineData("bom-1.5.xml", ValidationBomFormat.autodetect, null, true)]
+        [InlineData("bom-1.5.xml", ValidationBomFormat.xml, SpecificationVersion.v1_5, true)]
+
         [InlineData("bom-1.2.json", ValidationBomFormat.autodetect, null, true)]
         [InlineData("bom-1.2.json", ValidationBomFormat.autodetect, SpecificationVersion.v1_3, false)]
 
@@ -55,6 +58,9 @@ namespace CycloneDX.Cli.Tests
 
         [InlineData("bom-1.4.json", ValidationBomFormat.autodetect, null, true)]
         [InlineData("bom-1.4.json", ValidationBomFormat.json, SpecificationVersion.v1_4, true)]
+        
+        [InlineData("bom-1.5.json", ValidationBomFormat.autodetect, null, true)]
+        [InlineData("bom-1.5.json", ValidationBomFormat.json, SpecificationVersion.v1_5, true)]
         public async Task Validate(string inputFilename, ValidationBomFormat inputFormat, SpecificationVersion? inputVersion, bool valid)
         {
             var exitCode = await ValidateCommand.Validate(new ValidateCommandOptions

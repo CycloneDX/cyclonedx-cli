@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1" xmlns="http://cyclonedx.org/schema/bom/1.4">
+<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1" xmlns="http://cyclonedx.org/schema/bom/1.5">
   <metadata>
     <component type="application">
       <name>thing1</name>
@@ -11,9 +11,17 @@
       <name>acme-library</name>
       <version>1.0.0</version>
     </component>
+    <component type="application">
+      <name>thing1</name>
+      <version>1</version>
+    </component>
     <component type="framework">
       <name>acme-framework</name>
       <version>1.0.0</version>
+    </component>
+    <component type="application">
+      <name>thing2</name>
+      <version>1</version>
     </component>
   </components>
 </bom>

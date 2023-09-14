@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <PublishTrimmed>true</PublishTrimmed>
+<!--    <PublishTrimmed>true</PublishTrimmed>-->
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <RuntimeIdentifiers>linux-x64;linux-musl-x64;linux-arm;linux-arm64;win-x64;win-x86;win-arm;win-arm64;osx-x64;osx-arm64</RuntimeIdentifiers>
   </PropertyGroup>
@@ -15,8 +15,8 @@
   <ItemGroup>
     <PackageReference Include="CoderPatros.AntPathMatching" Version="0.1.1" />
     <PackageReference Include="CsvHelper" Version="29.0.0" />
-    <PackageReference Include="CycloneDX.Utils" Version="5.2.3" />
-    <PackageReference Include="CycloneDX.Spdx.Interop" Version="5.2.3" />
+    <PackageReference Include="CycloneDX.Utils" Version="6.0.0" />
+    <PackageReference Include="CycloneDX.Spdx.Interop" Version="6.0.0" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21308.1" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
   </ItemGroup>

@@ -32,7 +32,7 @@ namespace CycloneDX.Cli.Commands
         public static void Configure(RootCommand rootCommand)
         {
             Contract.Requires(rootCommand != null);
-            var subCommand = new Command("merge", "Merge two or more BOMs");
+            var subCommand = new System.CommandLine.Command("merge", "Merge two or more BOMs");
             subCommand.Add(new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space)."));
             subCommand.Add(new Option<List<string>>("--input-files-list", "One or more text file(s) with input BOM filenames (one per line)."));
             subCommand.Add(new Option<List<string>>("--input-files-nul-list", "One or more text-like file(s) with input BOM filenames (separated by 0x00 characters)."));

@@ -34,10 +34,10 @@ namespace CycloneDX.Cli.Commands.Add
 {
     public static class AddFilesCommand
     {
-        public static void Configure(Command rootCommand)
+        public static void Configure(System.CommandLine.Command rootCommand)
         {
             Contract.Requires(rootCommand != null);
-            var subCommand = new Command("files", "Add files to a BOM");
+            var subCommand = new System.CommandLine.Command("files", "Add files to a BOM");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename."));
             subCommand.Add(new Option<bool>("--no-input", "Use this option to indicate that there is no input BOM."));
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
@@ -55,10 +55,9 @@ namespace CycloneDX.Cli.Commands.Add
             Contract.Requires(options != null);
             var outputToConsole = string.IsNullOrEmpty(options.OutputFile);
 
-            var thisTool = new Tool
+            var thisTool = new Component
             {
                 Name = "CycloneDX CLI",
-                Vendor = "CycloneDX",
                 Version = Assembly.GetExecutingAssembly().GetName().Version.ToString(),
             };
 
@@ -68,9 +67,10 @@ namespace CycloneDX.Cli.Commands.Add
             if (bom.SerialNumber is null) bom.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
             if (bom.Metadata is null) bom.Metadata = new Metadata();
             bom.Metadata.Timestamp = DateTime.UtcNow;
-            if (bom.Metadata.Tools is null) bom.Metadata.Tools = new List<Tool>();
-            if (!bom.Metadata.Tools.Exists(tool => tool.Name == thisTool.Name && tool.Version == thisTool.Version))
-                bom.Metadata.Tools.Add(thisTool);
+            if (bom.Metadata.Tools is null) bom.Metadata.Tools = new ToolChoices();
+            if (bom.Metadata.Tools.Components is null) bom.Metadata.Tools.Components = new List<Component>();
+            if (!bom.Metadata.Tools.Components.Exists(tool => tool.Name == thisTool.Name && tool.Version == thisTool.Version))
+                bom.Metadata.Tools.Components.Add(thisTool);
 
             if (options.OutputFormat == CycloneDXBomFormat.autodetect) options.OutputFormat = CliUtils.AutoDetectBomFormat(options.OutputFile);
             if (options.OutputFormat == CycloneDXBomFormat.autodetect)
