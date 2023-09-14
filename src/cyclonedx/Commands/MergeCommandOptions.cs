@@ -28,5 +28,7 @@ namespace CycloneDX.Cli.Commands
         public string Group { get; set; }
         public string Name { get; set; }
         public string Version { get; set; }
+        public bool ValidateOutput { get; set; }
+        public bool ValidateOutputRelaxed { get; set; }
     }
 }
