@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.4",
+  "specVersion": "1.5",
   "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
   "version": 1,
   "metadata": {
@@ -131,12 +131,12 @@
         ],
         "commits": [
           {
-            "uid": "123",
-            "url": "",
+            "uid": "7638417db6d59f3c431d3e1f261cc637155684cd",
+            "url": "https://location/to/7638417db6d59f3c431d3e1f261cc637155684cd",
             "author": {
               "timestamp": "2018-11-13T20:20:39Z",
-              "name": "",
-              "email": "example@example.com"
+              "name": "me",
+              "email": "me@acme.org"
             }
           }
         ]

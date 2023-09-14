@@ -32,7 +32,7 @@ namespace CycloneDX.Cli.Commands
         public static void Configure(RootCommand rootCommand)
         {
             Contract.Requires(rootCommand != null);
-            var subCommand = new Command("validate", "Validate a BOM");
+            var subCommand = new System.CommandLine.Command("validate", "Validate a BOM");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
             subCommand.Add(new Option<ValidationBomFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<SpecificationVersion?>("--input-version", "Specify input file specification version (defaults to v1.4)"));
@@ -75,7 +75,11 @@ namespace CycloneDX.Cli.Commands
             }
             else if (options.InputFormat == ValidationBomFormat.xml)
             {
-                validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_4);
+                validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_5);
+                if (!validationResult.Valid)
+                {
+                    validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_4);
+                }
                 if (!validationResult.Valid)
                 {
                     validationResult = Xml.Validator.Validate(inputBom, SpecificationVersion.v1_3);
@@ -102,7 +106,11 @@ namespace CycloneDX.Cli.Commands
             }
             else if (options.InputFormat == ValidationBomFormat.json)
             {
-                validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_4);
+                validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_5);
+                if (!validationResult.Valid)
+                {
+                    validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_4);
+                }
                 if (!validationResult.Valid)
                 {
                     validationResult = Json.Validator.Validate(inputBom, SpecificationVersion.v1_3);
