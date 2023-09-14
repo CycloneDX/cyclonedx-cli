@@ -60,10 +60,20 @@ namespace CycloneDX.Cli.Tests
         [InlineData("bom-1.4.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, null)]
         [InlineData("bom-1.4.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, SpecificationVersion.v1_4)]
 
+        [InlineData("bom-1.5.xml", ConvertFormat.autodetect, "bom.xml", ConvertFormat.autodetect, null)]
+        [InlineData("bom-1.5.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.autodetect, null)]
+        [InlineData("bom-1.5.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, null)]
+        [InlineData("bom-1.5.xml", ConvertFormat.xml, "bom.xml", ConvertFormat.xml, SpecificationVersion.v1_5)]
+
         [InlineData("bom-1.4.json", ConvertFormat.autodetect, "bom.json", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.4.json", ConvertFormat.json, "bom.json", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.4.json", ConvertFormat.json, "bom.json", ConvertFormat.json, null)]
         [InlineData("bom-1.4.json", ConvertFormat.json, "bom.json", ConvertFormat.json, SpecificationVersion.v1_4)]
+
+        [InlineData("bom-1.5.json", ConvertFormat.autodetect, "bom.json", ConvertFormat.autodetect, null)]
+        [InlineData("bom-1.5.json", ConvertFormat.json, "bom.json", ConvertFormat.autodetect, null)]
+        [InlineData("bom-1.5.json", ConvertFormat.json, "bom.json", ConvertFormat.json, null)]
+        [InlineData("bom-1.5.json", ConvertFormat.json, "bom.json", ConvertFormat.json, SpecificationVersion.v1_5)]
 
         [InlineData("bom.csv", ConvertFormat.autodetect, "bom.csv", ConvertFormat.autodetect, null)]
         [InlineData("bom.csv", ConvertFormat.csv, "bom.csv", ConvertFormat.autodetect, null)]

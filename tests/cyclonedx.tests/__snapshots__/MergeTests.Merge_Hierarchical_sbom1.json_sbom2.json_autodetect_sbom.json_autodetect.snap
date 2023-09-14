@@ -1,8 +1,8 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.4",
-  "version": 1,
+  "specVersion": "1.5",  "version": 1,
   "metadata": {
+    "tools": null,
     "component": {
       "type": "application",
       "bom-ref": "Thing@1",
