@@ -35,7 +35,7 @@ namespace CycloneDX.Cli.Commands
             var subCommand = new System.CommandLine.Command("validate", "Validate a BOM");
             subCommand.Add(new Option<string>("--input-file", "Input BOM filename, will read from stdin if no value provided."));
             subCommand.Add(new Option<ValidationBomFormat>("--input-format", "Specify input file format."));
-            subCommand.Add(new Option<SpecificationVersion?>("--input-version", "Specify input file specification version (defaults to v1.4)"));
+            subCommand.Add(new Option<SpecificationVersion?>("--input-version", "Specify input file specification version (defaults to v1.5)"));
             subCommand.Add(new Option<bool>("--fail-on-errors", "Fail on validation errors (return a non-zero exit code)"));
             subCommand.Handler = CommandHandler.Create<ValidateCommandOptions>(Validate);
             rootCommand.Add(subCommand);
