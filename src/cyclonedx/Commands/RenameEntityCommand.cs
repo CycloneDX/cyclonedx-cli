@@ -51,11 +51,11 @@ namespace CycloneDX.Cli.Commands
             if (options.OutputFormat == CycloneDXBomFormat.autodetect)
             {
                 options.OutputFormat = CliUtils.AutoDetectBomFormat(options.OutputFile);
-            }
-            if (options.OutputFormat == CycloneDXBomFormat.autodetect)
-            {
-                Console.WriteLine($"Unable to auto-detect output format");
-                return (int)ExitCode.ParameterValidationError;
+                if (options.OutputFormat == CycloneDXBomFormat.autodetect)
+                {
+                    Console.WriteLine($"Unable to auto-detect output format");
+                    return (int)ExitCode.ParameterValidationError;
+                }
             }
 
             Console.WriteLine($"Loading input document...");
