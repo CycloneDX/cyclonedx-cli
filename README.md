@@ -295,7 +295,7 @@ Options:
 
 ```
 file
-  Verifies a PKCS1 RSA SHA256 signature file for an abritrary file
+  Verifies a PKCS1 RSA SHA256 signature file for an arbitrary file
 
 Usage:
   cyclonedx verify file <file> [options]
