@@ -58,6 +58,7 @@ namespace CycloneDX.Cli.Commands.Add
             var thisTool = new Component
             {
                 Name = "CycloneDX CLI",
+                Type = Component.Classification.Application,
                 Version = Assembly.GetExecutingAssembly().GetName().Version.ToString(),
             };
 
