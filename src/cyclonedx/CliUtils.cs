@@ -1,4 +1,4 @@
-// This file is part of CycloneDX CLI Tool
+﻿// This file is part of CycloneDX CLI Tool
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -154,7 +154,7 @@ namespace CycloneDX.Cli
                 }
             }
 
-            using var stream = filename == null ? Console.OpenStandardOutput() : File.OpenWrite(filename);
+            using var stream = filename == null ? Console.OpenStandardOutput() : File.Create(filename);
 
             switch (format)
             {
