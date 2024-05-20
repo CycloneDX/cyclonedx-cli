@@ -3,6 +3,9 @@ name: .NET Core CI
 
 on: [pull_request, workflow_dispatch]
 
+env:
+  SNAPSHOOTER_STRICT_MODE: true
+
 jobs:
   # Fail if there are build warnings
   #
@@ -64,6 +67,10 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: sudo ln -s "$GITHUB_WORKSPACE" /_
       shell: bash
+    - name: SnapshooterHotfixSymlinkWindows  
+      if: matrix.os == 'windows-latest'
+      run:  New-Item -ItemType SymbolicLink -Path "/_" -Target "$env:GITHUB_WORKSPACE"
+      shell: pwsh
       
     - name: Tests
       run: |
