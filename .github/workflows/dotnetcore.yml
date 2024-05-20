@@ -3,6 +3,9 @@ name: .NET Core CI
 
 on: [pull_request, workflow_dispatch]
 
+env:
+  SNAPSHOOTER_STRICT_MODE: true
+
 jobs:
   # Fail if there are build warnings
   #
@@ -49,7 +52,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+#       os: [ubuntu-latest, windows-latest, macos-latest]
+#       macos currently disabled. see issue https://github.com/SwissLife-OSS/snapshooter/issues/196.
+        os: [ubuntu-latest, windows-latest]
     timeout-minutes: 30
     
     steps:
@@ -58,6 +63,15 @@ jobs:
       with:
         dotnet-version: '6.0'
 
+    - name: SnapshooterHotfixSymlinkLinux    
+      if: matrix.os == 'ubuntu-latest'
+      run: sudo ln -s "$GITHUB_WORKSPACE" /_
+      shell: bash
+    - name: SnapshooterHotfixSymlinkWindows  
+      if: matrix.os == 'windows-latest'
+      run:  New-Item -ItemType SymbolicLink -Path "/_" -Target "$env:GITHUB_WORKSPACE"
+      shell: pwsh
+      
     - name: Tests
       run: |
         dotnet restore
