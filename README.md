@@ -110,7 +110,7 @@ Options:
   --output-file <output-file>                                  Output BOM filename, will write to stdout if no value provided.
   --input-format <autodetect|csv|json|protobuf|spdxjson|xml>   Specify input file format.
   --output-format <autodetect|csv|json|protobuf|spdxjson|xml>  Specify output file format.
-  --output-version <v1_0|v1_1|v1_2|v1_3|v1_4>                  Specify output BOM specification version. (ignored for CSV and SPDX formats)  
+  --output-version <v1_0|v1_1|v1_2|v1_3|v1_4|v1_5>                  Specify output BOM specification version. (ignored for CSV and SPDX formats)  
 ```
 
 ### Examples
@@ -262,7 +262,7 @@ Usage:
 Options:
   --input-file <input-file>                   Input BOM filename, will read from stdin if no value provided.
   --input-format <autodetect|json|xml>        Specify input file format.
-  --input-version <v1_0|v1_1|v1_2|v1_3|v1_4>  Specify input file specification version (defaults to v1.4)
+  --input-version <v1_0|v1_1|v1_2|v1_3|v1_4|v1_5>  Specify input file specification version (defaults to v1.5)
   --fail-on-errors                            Fail on validation errors (return a non-zero exit code)
 ```
 
