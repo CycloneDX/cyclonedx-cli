@@ -89,7 +89,9 @@ namespace CycloneDX.Cli.Commands
                 }
                 else
                 {
-                    // otherwise use the first non-null component from the input BOMs as the default
+                    // otherwise use the first non-null component from the input
+                    // BOMs as the default; note CleanupMetadataComponent() below
+                    // to ensure that such bom-ref exists in the document only once.
                     foreach (var bom in inputBoms)
                     {
                         if(bom.Metadata != null && bom.Metadata.Component != null)
@@ -101,8 +103,19 @@ namespace CycloneDX.Cli.Commands
                 }
             }
 
+            outputBom = CycloneDXUtils.CleanupMetadataComponent(outputBom);
+            outputBom = CycloneDXUtils.CleanupEmptyLists(outputBom);
+
             outputBom.Version = 1;
             outputBom.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
+            if (outputBom.Metadata is null)
+            {
+                outputBom.Metadata = new Metadata();
+            }
+            if (outputBom.Metadata.Timestamp is null)
+            {
+                outputBom.Metadata.Timestamp = DateTime.Now;
+            }
 
             if (!outputToConsole)
             {
