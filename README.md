@@ -193,6 +193,8 @@ Usage:
 
 Options:
   --input-files <input-files>                     Input BOM filenames (separate filenames with a space).
+  --input-files-list <input-files-list-files>     One or more text file(s) with input BOM filenames (one per line).
+  --input-files-nul-list <input-files-list-files> One or more text-like file(s) with input BOM filenames (separated by 0x00 characters).
   --output-file <output-file>                     Output BOM filename, will write to stdout if no value provided.
   --input-format <autodetect|json|protobuf|xml>   Specify input file format.
   --output-format <autodetect|json|protobuf|xml>  Specify output file format.
@@ -204,6 +206,24 @@ Options:
 
 Note: To perform a hierarchical merge all BOMs need the subject of the BOM
 described in the metadata component element.
+
+The `--input-files-list` option can be useful if you have so many filenames to
+merge that your shell interpreter command-line limit is exceeded if you list
+them all as `--input-files`, or if your path names have spaces.
+
+The related `--input-files-nul-list` is intended for lists prepared by commands
+like `find ... -print0` and makes sense on filesystems where carriage-return
+and/or line-feed characters may validly be present in a path name component.
+Note: behavior with multi-byte encodings (Unicode family) where a 0x00 byte
+can be part of a character may be undefined.
+
+If you specify several of these options, the effective file lists will be
+concatenated before the actual merge (first the individual `--input-files`,
+then the contents of `--input-files-list`, and finally the contents of
+`--input-files-nul-list`). If you have a document crafted to describe the
+root of your product hierarchy tree, it is recommended to list it as the
+first of individual `--input-files` (or otherwise on first line among used
+lists).
 
 ### Examples
 
