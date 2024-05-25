@@ -39,6 +39,8 @@ namespace CycloneDX.Cli.Commands
             subCommand.Add(new Option<string>("--group", "Provide the group of software the merged BOM describes."));
             subCommand.Add(new Option<string>("--name", "Provide the name of software the merged BOM describes (required for hierarchical merging)."));
             subCommand.Add(new Option<string>("--version", "Provide the version of software the merged BOM describes (required for hierarchical merging)."));
+            subCommand.Add(new Option<bool>("--validate-output", "Perform validation of the resulting document before writing it, and do not write if it fails."));
+            subCommand.Add(new Option<bool>("--validate-output-relaxed", "Perform validation of the resulting document, and still write the file for troubleshooting if it fails."));
             subCommand.Handler = CommandHandler.Create<MergeCommandOptions>(Merge);
             rootCommand.Add(subCommand);
         }
@@ -104,13 +106,55 @@ namespace CycloneDX.Cli.Commands
             outputBom.Version = 1;
             outputBom.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
 
+            ValidationResult validationResult = null;
+            if (options.ValidateOutput || options.ValidateOutputRelaxed)
+            {
+                // Note that C# CLI args parser seems to set both booleans
+                // for one "--validate-output-relaxed" flag
+                Console.WriteLine("Validating merged BOM...");
+
+                // TOTHINK: let it pick versions (no arg) if current does not cut it...
+                // else SpecificationVersionHelpers.CurrentVersion ?
+                validationResult = Json.Validator.Validate(Json.Serializer.Serialize(outputBom), outputBom.SpecVersion);
+
+                if (validationResult.Messages != null)
+                {
+                    foreach (var message in validationResult.Messages)
+                    {
+                        Console.WriteLine(message);
+                    }
+                }
+
+                if (validationResult.Valid)
+                {
+                    Console.WriteLine("Merged BOM validated successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Merged BOM is not valid.");
+                    if (!(options.ValidateOutputRelaxed))
+                    {
+                        // Not-relaxed mode: abort!
+                        Console.WriteLine("NOT writing output file...");
+                        Console.WriteLine($"    Total {outputBom.Components?.Count ?? 0} components");
+                        return (int)ExitCode.SignatureFailedVerification;
+                    }
+                }
+            }
+
             if (!outputToConsole)
             {
                 Console.WriteLine("Writing output file...");
                 Console.WriteLine($"    Total {outputBom.Components?.Count ?? 0} components");
             }
 
-            return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
+            int res = await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
+            if (validationResult != null && (!validationResult.Valid))
+            {
+                // Relaxed mode: abort after writing the file!
+                return (int)ExitCode.SignatureFailedVerification;
+            }
+            return res;
         }
 
         private static async Task<IEnumerable<Bom>> InputBoms(IEnumerable<string> inputFilenames, CycloneDXBomFormat inputFormat, bool outputToConsole)
