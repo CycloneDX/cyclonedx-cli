@@ -1,4 +1,4 @@
-// This file is part of CycloneDX CLI Tool
+﻿// This file is part of CycloneDX CLI Tool
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -29,20 +29,23 @@ namespace CycloneDX.Cli.Tests
     public class MergeTests
     {
         [Theory]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.autodetect, true, null, "Thing", "1")]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.json, "sbom.json", CycloneDXBomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.xml", "sbom2.xml"}, CycloneDXBomFormat.xml, "sbom.xml", CycloneDXBomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.xml"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.autodetect, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.json, false, null, null, null)]
-        [InlineData(new string[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.xml, false, null, null, null)]
+        [InlineData(new[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.autodetect, null, true, null, "Thing", "1")]
+        [InlineData(new[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.autodetect, null, false, null, null, null)]
+        [InlineData(new[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.autodetect, null, false, null, null, null)]
+        [InlineData(new[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.json, "sbom.json", CycloneDXBomFormat.autodetect, null, false, null, null, null)]
+        [InlineData(new[] { "sbom1.json", "sbom2.json" }, CycloneDXBomFormat.json, "sbom.json", CycloneDXBomFormat.autodetect, SpecificationVersion.v1_4, false, null, null, null)]
+        [InlineData(new[] { "sbom1.xml", "sbom2.xml"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.autodetect, null, false, null, null, null)]
+        [InlineData(new[] { "sbom1.xml", "sbom2.xml" }, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.autodetect, SpecificationVersion.v1_4, false, null, null, null)]
+        [InlineData(new[] { "sbom1.xml", "sbom2.xml"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.autodetect, null, false, null, null, null)]
+        [InlineData(new[] { "sbom1.xml", "sbom2.xml"}, CycloneDXBomFormat.xml, "sbom.xml", CycloneDXBomFormat.autodetect, null, false, null, null, null)]
+        [InlineData(new[] { "sbom1.json", "sbom2.xml"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.autodetect, null, false, null, null, null)]
+        [InlineData(new[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.json", CycloneDXBomFormat.json, null, false, null, null, null)]
+        [InlineData(new[] { "sbom1.json", "sbom2.json"}, CycloneDXBomFormat.autodetect, "sbom.xml", CycloneDXBomFormat.xml, null, false, null, null, null)]
         public async Task Merge(
             string[] inputFilenames,
             CycloneDXBomFormat inputFormat,
             string outputFilename, CycloneDXBomFormat outputFormat,
+            SpecificationVersion? outputVersion,
             bool hierarchical,
             string group, string name, string version
         )
@@ -57,6 +60,7 @@ namespace CycloneDX.Cli.Tests
                     InputFormat = inputFormat,
                     OutputFile = fullOutputPath,
                     OutputFormat = outputFormat,
+                    OutputVersion = outputVersion,
                     Hierarchical = hierarchical,
                     Group = group,
                     Name = name,
@@ -73,7 +77,7 @@ namespace CycloneDX.Cli.Tests
                 var bom = File.ReadAllText(fullOutputPath);
                 bom = Regex.Replace(bom, @"\s*""serialNumber"": "".*?"",\r?\n", ""); // json
                 bom = Regex.Replace(bom, @"\s+serialNumber="".*?""", ""); // xml
-                Snapshot.Match(bom, SnapshotNameExtension.Create(hierarchical ? "Hierarchical" : "Flat", snapshotInputFilenames, inputFormat, outputFilename, outputFormat));
+                Snapshot.Match(bom, SnapshotNameExtension.Create(hierarchical ? "Hierarchical" : "Flat", snapshotInputFilenames, inputFormat, outputFilename, outputFormat, outputVersion));
             }
         }
     }
