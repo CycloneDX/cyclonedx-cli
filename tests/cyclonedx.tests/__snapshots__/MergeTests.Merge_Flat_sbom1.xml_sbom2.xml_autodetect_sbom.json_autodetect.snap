@@ -5,34 +5,29 @@
     "component": {
       "type": "application",
       "name": "thing1",
-      "version": "1",
-      "licenses": []
+      "version": "1"
     }
   },
   "components": [
     {
       "type": "library",
       "name": "acme-library",
-      "version": "1.0.0",
-      "licenses": []
+      "version": "1.0.0"
     },
     {
       "type": "application",
       "name": "thing1",
-      "version": "1",
-      "licenses": []
+      "version": "1"
     },
     {
       "type": "framework",
       "name": "acme-framework",
-      "version": "1.0.0",
-      "licenses": []
+      "version": "1.0.0"
     },
     {
       "type": "application",
       "name": "thing2",
-      "version": "1",
-      "licenses": []
+      "version": "1"
     }
   ],
   "vulnerabilities": []
