@@ -1,4 +1,4 @@
-﻿// This file is part of CycloneDX CLI Tool
+// This file is part of CycloneDX CLI Tool
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -18,16 +18,13 @@ using System.Collections.Generic;
 
 namespace CycloneDX.Cli.Commands
 {
-    public class MergeCommandOptions
+    public class RenameEntityCommandOptions
     {
-        public IList<string> InputFiles { get; set; }
+        public string InputFile { get; set; }
         public string OutputFile { get; set; }
+        public string OldRef { get; set; }
+        public string NewRef { get; set; }
         public CycloneDXBomFormat InputFormat { get; set; }
         public CycloneDXBomFormat OutputFormat { get; set; }
-        public SpecificationVersion? OutputVersion { get; set; }
-        public bool Hierarchical { get; set; }
-        public string Group { get; set; }
-        public string Name { get; set; }
-        public string Version { get; set; }
     }
 }

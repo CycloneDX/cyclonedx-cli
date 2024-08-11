@@ -35,6 +35,7 @@ namespace CycloneDX.Cli.Commands
             subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
             subCommand.Add(new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<CycloneDXBomFormat>("--output-format", "Specify output file format."));
+            subCommand.Add(new Option<SpecificationVersion>("--output-version", "Specify output BOM specification version."));
             subCommand.Add(new Option<bool>("--hierarchical", "Perform a hierarchical merge."));
             subCommand.Add(new Option<string>("--group", "Provide the group of software the merged BOM describes."));
             subCommand.Add(new Option<string>("--name", "Provide the name of software the merged BOM describes (required for hierarchical merging)."));
@@ -110,7 +111,7 @@ namespace CycloneDX.Cli.Commands
                 Console.WriteLine($"    Total {outputBom.Components?.Count ?? 0} components");
             }
 
-            return await CliUtils.OutputBomHelper(outputBom, options.OutputFormat, options.OutputFile).ConfigureAwait(false);
+            return await CliUtils.OutputBomHelper(outputBom, (ConvertFormat)options.OutputFormat, options.OutputVersion, options.OutputFile).ConfigureAwait(false);
         }
 
         private static async Task<IEnumerable<Bom>> InputBoms(IEnumerable<string> inputFilenames, CycloneDXBomFormat inputFormat, bool outputToConsole)
