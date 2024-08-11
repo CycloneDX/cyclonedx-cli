@@ -58,6 +58,9 @@ namespace CycloneDX.Cli.Tests
 
         [InlineData("bom-1.4.json", ValidationBomFormat.autodetect, null, true)]
         [InlineData("bom-1.4.json", ValidationBomFormat.json, SpecificationVersion.v1_4, true)]
+
+        [InlineData("bom-1.4-invalid.json", ValidationBomFormat.autodetect, null, false)]
+        [InlineData("bom-1.4-invalid.json", ValidationBomFormat.json, SpecificationVersion.v1_4, false)]
         
         [InlineData("bom-1.5.json", ValidationBomFormat.autodetect, null, true)]
         [InlineData("bom-1.5.json", ValidationBomFormat.json, SpecificationVersion.v1_5, true)]
