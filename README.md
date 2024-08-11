@@ -192,14 +192,15 @@ Usage:
   cyclonedx merge [options]
 
 Options:
-  --input-files <input-files>                     Input BOM filenames (separate filenames with a space).
-  --output-file <output-file>                     Output BOM filename, will write to stdout if no value provided.
-  --input-format <autodetect|json|protobuf|xml>   Specify input file format.
-  --output-format <autodetect|json|protobuf|xml>  Specify output file format.
-  --hierarchical                                  Perform a hierarchical merge.
-  --group <group>                                 Provide the group of software the merged BOM describes.
-  --name <name>                                   Provide the name of software the merged BOM describes (required for hierarchical merging).
-  --version <version>                             Provide the version of software the merged BOM describes (required for hierarchical merging).
+  --input-files <input-files>                      Input BOM filenames (separate filenames with a space).
+  --output-file <output-file>                      Output BOM filename, will write to stdout if no value provided.
+  --input-format <autodetect|json|protobuf|xml>    Specify input file format.
+  --output-format <autodetect|json|protobuf|xml>   Specify output file format.
+  --output-version <v1_0|v1_1|v1_2|v1_3|v1_4|v1_5> Specify output BOM specification version.
+  --hierarchical                                   Perform a hierarchical merge.
+  --group <group>                                  Provide the group of software the merged BOM describes.
+  --name <name>                                    Provide the name of software the merged BOM describes (required for hierarchical merging).
+  --version <version>                              Provide the version of software the merged BOM describes (required for hierarchical merging).
 ```
 
 Note: To perform a hierarchical merge all BOMs need the subject of the BOM
