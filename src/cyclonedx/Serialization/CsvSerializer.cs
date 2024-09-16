@@ -1,4 +1,4 @@
-// This file is part of CycloneDX CLI Tool
+﻿// This file is part of CycloneDX CLI Tool
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -76,7 +76,9 @@ namespace CycloneDX.Cli.Serialization
                         csv.WriteField(c.Type);
                         csv.WriteField(c.MimeType);
                         csv.WriteField(c.Supplier?.Name);
+#pragma warning disable CS0618 // Type or member is obsolete
                         csv.WriteField(c.Author);
+#pragma warning restore CS0618 // Type or member is obsolete
                         csv.WriteField(c.Publisher);
                         csv.WriteField(c.Group);
                         csv.WriteField(c.Name);
@@ -151,6 +153,7 @@ namespace CycloneDX.Cli.Serialization
                 csvReader.ReadHeader();
                 while (csvReader.Read())
                 {
+#pragma warning disable CS0618 // Type or member is obsolete
                     var component = new Component
                     {
                         Type = csvReader.GetField<Component.Classification?>("Type") ?? Component.Classification.Library,
@@ -190,6 +193,7 @@ namespace CycloneDX.Cli.Serialization
                         // external references not supported
                         // sub-components not supported
                     };
+#pragma warning restore CS0618 // Type or member is obsolete
                     if (component.Supplier.Name == null) component.Supplier = null;
                     if (component.Swid.Text.Content == null) component.Swid.Text = null;
                     if (component.Swid.TagId == null) component.Swid = null;
