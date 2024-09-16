@@ -4,7 +4,7 @@
   "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
   "version": 1,
   "metadata": {
-    "timestamp": "2020-04-13T20:20:39Z",
+    "timestamp": "2070-07-26T16:41:18Z",
     "tools": [
       {
         "vendor": "Awesome Vendor",
@@ -134,7 +134,7 @@
             "uid": "123",
             "url": "",
             "author": {
-              "timestamp": "2018-11-13T20:20:39Z",
+              "timestamp": "2067-09-26T16:41:18Z",
               "name": "",
               "email": ""
             }

@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.5",  "version": 1,
+  "specVersion": "1.6",  "version": 1,
   "metadata": {
     "tools": {},
     "component": {
@@ -46,5 +46,19 @@
         "thing2@1"
       ]
     }
-  ]
+  ],
+  "declarations": {
+    "assessors": [],
+    "attestations": [],
+    "claims": [],
+    "evidence": [],
+    "targets": {
+      "organizations": [],
+      "components": [],
+      "services": []
+    }
+  },
+  "definitions": {
+    "standards": []
+  }
 }

@@ -1,33 +1,53 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.5",  "version": 1,
+  "specVersion": "1.6",  "version": 1,
   "metadata": {
     "component": {
       "type": "application",
+      "authors": [],
       "name": "thing1",
-      "version": "1"
+      "version": "1",
+      "tags": [],
+      "omniborId": [],
+      "swhid": []
     }
   },
   "components": [
     {
       "type": "library",
+      "authors": [],
       "name": "acme-library",
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tags": [],
+      "omniborId": [],
+      "swhid": []
     },
     {
       "type": "application",
+      "authors": [],
       "name": "thing1",
-      "version": "1"
+      "version": "1",
+      "tags": [],
+      "omniborId": [],
+      "swhid": []
     },
     {
       "type": "framework",
+      "authors": [],
       "name": "acme-framework",
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tags": [],
+      "omniborId": [],
+      "swhid": []
     },
     {
       "type": "application",
+      "authors": [],
       "name": "thing2",
-      "version": "1"
+      "version": "1",
+      "tags": [],
+      "omniborId": [],
+      "swhid": []
     }
   ],
   "vulnerabilities": []
