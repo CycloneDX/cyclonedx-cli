@@ -1,4 +1,4 @@
-// This file is part of CycloneDX CLI Tool
+﻿// This file is part of CycloneDX CLI Tool
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -74,6 +74,11 @@ namespace CycloneDX.Cli.Tests
         [InlineData("bom-1.5.json", ConvertFormat.json, "bom.json", ConvertFormat.autodetect, null)]
         [InlineData("bom-1.5.json", ConvertFormat.json, "bom.json", ConvertFormat.json, null)]
         [InlineData("bom-1.5.json", ConvertFormat.json, "bom.json", ConvertFormat.json, SpecificationVersion.v1_5)]
+
+        [InlineData("bom-1.6.json", ConvertFormat.autodetect, "bom.json", ConvertFormat.autodetect, null)]
+        [InlineData("bom-1.6.json", ConvertFormat.json, "bom.json", ConvertFormat.autodetect, null)]
+        [InlineData("bom-1.6.json", ConvertFormat.json, "bom.json", ConvertFormat.json, null)]
+        [InlineData("bom-1.6.json", ConvertFormat.json, "bom.json", ConvertFormat.json, SpecificationVersion.v1_6)]
 
         [InlineData("bom.csv", ConvertFormat.autodetect, "bom.csv", ConvertFormat.autodetect, null)]
         [InlineData("bom.csv", ConvertFormat.csv, "bom.csv", ConvertFormat.autodetect, null)]
