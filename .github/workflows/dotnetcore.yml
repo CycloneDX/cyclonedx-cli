@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-20.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v4.2.1
       - uses: actions/setup-dotnet@v3.0.2
         with:
           dotnet-version: '6.0'
@@ -34,7 +34,7 @@ jobs:
         runtime: [linux-x64, linux-musl-x64, linux-arm, linux-arm64, win-x64, win-x86, win-arm, win-arm64, osx-x64, osx-arm64]
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v4.2.1
       - uses: actions/setup-dotnet@v3.0.2
         with:
           dotnet-version: '6.0'
@@ -58,7 +58,7 @@ jobs:
     timeout-minutes: 30
     
     steps:
-    - uses: actions/checkout@v3.1.0
+    - uses: actions/checkout@v4.2.1
     - uses: actions/setup-dotnet@v3.0.2
       with:
         dotnet-version: '6.0'
