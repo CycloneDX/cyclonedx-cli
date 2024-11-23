@@ -22,6 +22,7 @@ using System.CommandLine.Invocation;
 using System.Threading.Tasks;
 using CycloneDX.Models;
 using CycloneDX.Utils;
+using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands
 {
