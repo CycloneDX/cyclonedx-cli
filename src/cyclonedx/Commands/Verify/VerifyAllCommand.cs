@@ -58,7 +58,7 @@ namespace CycloneDX.Cli.Commands.Verify
                 bom.Load(options.BomFile);
 
                 Console.WriteLine("Reading signatures...");
-                var signatures = bom.GetElementsByTagName("Signature");
+                var signatures = bom.GetElementsByTagName("Signature", "http://www.w3.org/2000/09/xmldsig#");
 
                 if (signatures.Count == 0)
                 {
