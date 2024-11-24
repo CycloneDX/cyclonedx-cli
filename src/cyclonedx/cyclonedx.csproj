@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -15,8 +15,8 @@
   <ItemGroup>
     <PackageReference Include="CoderPatros.AntPathMatching" Version="0.1.1" />
     <PackageReference Include="CsvHelper" Version="29.0.0" />
-    <PackageReference Include="CycloneDX.Utils" Version="8.0.0" />
-    <PackageReference Include="CycloneDX.Spdx.Interop" Version="8.0.0" />
+    <PackageReference Include="CycloneDX.Utils" Version="8.0.3" />
+    <PackageReference Include="CycloneDX.Spdx.Interop" Version="8.0.3" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21308.1" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
   </ItemGroup>
