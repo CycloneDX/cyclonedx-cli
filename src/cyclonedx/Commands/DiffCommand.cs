@@ -17,6 +17,7 @@
 using System;
 using System.CommandLine;
 using System.CommandLine.Invocation;
+using System.CommandLine.NamingConventionBinder;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;

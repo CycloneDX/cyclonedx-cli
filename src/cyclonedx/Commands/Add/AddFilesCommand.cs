@@ -29,6 +29,7 @@ using System.Threading.Tasks;
 using AntPathMatching;
 using CycloneDX.Models;
 using CycloneDX.Cli.Commands;
+using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands.Add
 {
