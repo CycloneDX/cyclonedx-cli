@@ -57,6 +57,10 @@ namespace CycloneDX.Cli
             {
                 return ConvertFormat.csv;
             }
+            if (fileExtension == ".md")
+            {
+                return ConvertFormat.markdown;
+            }
             else if (filename.ToLowerInvariant().EndsWith(".spdx.json", StringComparison.InvariantCulture))
             {
                 return ConvertFormat.spdxjson;
@@ -116,7 +120,7 @@ namespace CycloneDX.Cli
                 }
             }
 
-            
+
             if (format == ConvertFormat.csv)
             {
                 using var inputStream = filename == null ? Console.OpenStandardInput() : File.OpenRead(filename);
@@ -210,6 +214,11 @@ namespace CycloneDX.Cli
                     var bomString = CsvSerializer.Serialize(bom);
                     var bomBytes = Encoding.UTF8.GetBytes(bomString);
                     stream.Write(bomBytes);
+                    break;
+                case ConvertFormat.markdown:
+                    var mdString = MarkdownSerializer.Serialize(bom);
+                    var mdBytes = Encoding.UTF8.GetBytes(mdString);
+                    stream.Write(mdBytes);
                     break;
                 case ConvertFormat.spdxjson:
                     var spdxDoc = bom.ToSpdx();
