@@ -47,6 +47,7 @@ namespace CycloneDX.Cli
             DiffCommand.Configure(rootCommand);
             KeyGenCommand.Configure(rootCommand);
             MergeCommand.Configure(rootCommand);
+            RenameEntityCommand.Configure(rootCommand);
             SignCommand.Configure(rootCommand);
             ValidateCommand.Configure(rootCommand);
             VerifyCommand.Configure(rootCommand);
