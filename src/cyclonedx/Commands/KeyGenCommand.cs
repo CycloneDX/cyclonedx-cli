@@ -37,7 +37,7 @@ namespace CycloneDX.Cli.Commands
         public static async Task<int> KeyGen(KeyGenCommandOptions options)
         {
             Console.WriteLine("Generating new public/private key pair...");
-            using (RSA rsa = new RSACryptoServiceProvider(2048))
+            using (var rsa = new RSACryptoServiceProvider(2048))
             {
                 var publicKeyFilename = string.IsNullOrEmpty(options.PublicKeyFile) ? "public.key" : options.PublicKeyFile;
                 Console.WriteLine($"Saving public key to {publicKeyFilename}");
