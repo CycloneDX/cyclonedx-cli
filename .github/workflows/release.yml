@@ -28,7 +28,7 @@ env:
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     outputs:
       # Used by the release-osx-arm64 job to upload the osx-arm64 binary
