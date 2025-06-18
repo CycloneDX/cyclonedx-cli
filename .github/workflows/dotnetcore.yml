@@ -14,7 +14,7 @@ jobs:
   # This can be done by running `dotnet clean` before running `dotnet build`
   build-warnings:
     name: Build warnings check
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3.1.0
@@ -28,7 +28,7 @@ jobs:
   # We end up targeting a range of runtimes, make sure they all build
   build:
     name: Runtime build check
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         runtime: [linux-x64, linux-musl-x64, linux-arm, linux-arm64, win-x64, win-x86, win-arm64, osx-x64, osx-arm64]
