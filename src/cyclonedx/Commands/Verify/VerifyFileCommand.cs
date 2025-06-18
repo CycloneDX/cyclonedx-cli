@@ -21,6 +21,7 @@ using System.CommandLine.Invocation;
 using System.IO;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands.Verify
 {

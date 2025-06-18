@@ -24,6 +24,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Xml;
+using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands.Sign
 {

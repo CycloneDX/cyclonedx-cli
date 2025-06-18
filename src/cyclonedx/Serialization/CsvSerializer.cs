@@ -61,7 +61,7 @@ namespace CycloneDX.Cli.Serialization
                     csv.WriteField("SwidTextEncoding");
                     csv.WriteField("SwidTextContent");
                     csv.WriteField("SwidUrl");
-                    var hashAlgorithms = Enum.GetValues(typeof(Hash.HashAlgorithm)).Cast<Hash.HashAlgorithm>();
+                    var hashAlgorithms = Enum.GetValues(typeof(Hash.HashAlgorithm)).Cast<Hash.HashAlgorithm>().ToList();
                     foreach (var hashAlgorithm in hashAlgorithms)
                     {
                         if (hashAlgorithm != Hash.HashAlgorithm.Null)
@@ -221,7 +221,7 @@ namespace CycloneDX.Cli.Serialization
                             if (!string.IsNullOrEmpty(hash.Content)) hashes.Add(hash);
                         }
                     }
-                    if (hashes.Any()) component.Hashes = hashes;
+                    if (hashes.Count != 0) component.Hashes = hashes;
 
                     var componentLicenses = new List<LicenseChoice>();
                     var licenseExpressions = csvReader.GetField("LicenseExpressions")?.Split(',');
@@ -261,7 +261,7 @@ namespace CycloneDX.Cli.Serialization
                             }
                         });
                     }
-                    if (componentLicenses.Any()) component.Licenses = componentLicenses;
+                    if (componentLicenses.Count != 0) component.Licenses = componentLicenses;
 
                     bom.Components.Add(component);
                 }
