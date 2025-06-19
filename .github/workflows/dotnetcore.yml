@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3.1.0
-      - uses: actions/setup-dotnet@v3.0.2
+      - uses: actions/setup-dotnet@v4.3.1
         with:
           dotnet-version: '8.0'
 
@@ -35,7 +35,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3.1.0
-      - uses: actions/setup-dotnet@v3.0.2
+      - uses: actions/setup-dotnet@v4.3.1
         with:
           dotnet-version: '8.0'
 
@@ -59,7 +59,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3.1.0
-    - uses: actions/setup-dotnet@v3.0.2
+    - uses: actions/setup-dotnet@v4.3.1
       with:
         dotnet-version: '8.0'
 
