@@ -45,8 +45,8 @@ namespace CycloneDX.Cli.Commands.Add
             subCommand.Add(new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<CycloneDXBomFormat>("--output-format", "Specify output file format."));
             subCommand.Add(new Option<string>("--base-path", "Base path for directory to process (defaults to current working directory if omitted)."));
-            subCommand.Add(new Option<List<string>>("--include", "Apache Ant style path and file patterns to specify what to include (defaults to all files, separate patterns with a space)."));
-            subCommand.Add(new Option<List<string>>("--exclude", "Apache Ant style path and file patterns to specify what to exclude (defaults to none, separate patterns with a space)."));
+            subCommand.Add(new Option<List<string>>("--include", "Apache Ant style path and file patterns to specify what to include (defaults to all files, separate patterns with a space).") { AllowMultipleArgumentsPerToken = true});
+            subCommand.Add(new Option<List<string>>("--exclude", "Apache Ant style path and file patterns to specify what to exclude (defaults to none, separate patterns with a space).") { AllowMultipleArgumentsPerToken = true });
             subCommand.Handler = CommandHandler.Create<AddFilesCommandOptions>(AddFiles);
             rootCommand.Add(subCommand);
         }

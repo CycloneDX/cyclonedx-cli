@@ -31,16 +31,18 @@ namespace CycloneDX.Cli.Commands
         public static void Configure(RootCommand rootCommand)
         {
             Contract.Requires(rootCommand != null);
-            var subCommand = new System.CommandLine.Command("merge", "Merge two or more BOMs");
-            subCommand.Add(new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space)."));
-            subCommand.Add(new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."));
-            subCommand.Add(new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."));
-            subCommand.Add(new Option<CycloneDXBomFormat>("--output-format", "Specify output file format."));
-            subCommand.Add(new Option<SpecificationVersion>("--output-version", "Specify output BOM specification version."));
-            subCommand.Add(new Option<bool>("--hierarchical", "Perform a hierarchical merge."));
-            subCommand.Add(new Option<string>("--group", "Provide the group of software the merged BOM describes."));
-            subCommand.Add(new Option<string>("--name", "Provide the name of software the merged BOM describes (required for hierarchical merging)."));
-            subCommand.Add(new Option<string>("--version", "Provide the version of software the merged BOM describes (required for hierarchical merging)."));
+            var subCommand = new System.CommandLine.Command("merge", "Merge two or more BOMs")
+            {
+                new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space).") { AllowMultipleArgumentsPerToken = true },
+                new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."),
+                new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."),
+                new Option<CycloneDXBomFormat>("--output-format", "Specify output file format."),
+                new Option<SpecificationVersion>("--output-version", "Specify output BOM specification version."),
+                new Option<bool>("--hierarchical", "Perform a hierarchical merge."),
+                new Option<string>("--group", "Provide the group of software the merged BOM describes."),
+                new Option<string>("--name", "Provide the name of software the merged BOM describes (required for hierarchical merging)."),
+                new Option<string>("--version", "Provide the version of software the merged BOM describes (required for hierarchical merging).")
+            };
             subCommand.Handler = CommandHandler.Create<MergeCommandOptions>(Merge);
             rootCommand.Add(subCommand);
         }
