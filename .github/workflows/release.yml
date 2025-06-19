@@ -154,16 +154,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: bin/win-arm/cyclonedx.exe
-          asset_name: cyclonedx-win-arm.exe
-          asset_content_type: application/octet-stream
-
-      - name: Upload binary to github release
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: bin/win-arm64/cyclonedx.exe
           asset_name: cyclonedx-win-arm64.exe
           asset_content_type: application/octet-stream
