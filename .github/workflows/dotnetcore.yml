@@ -6,6 +6,9 @@ on: [pull_request, workflow_dispatch]
 env:
   SNAPSHOOTER_STRICT_MODE: true
 
+# see https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token
+permissions: {}
+
 jobs:
   # Fail if there are build warnings
   #
