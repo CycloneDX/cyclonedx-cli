@@ -105,8 +105,12 @@ namespace CycloneDX.Cli.Commands
                 }
             }
 
-            outputBom.Version = 1;
-            outputBom.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
+            // Ensure that the new merged document has its own identity
+            // (new SerialNumber, Version=1, Timestamp...) and its Tools
+            // collection refers to this library and the program/tool
+            // like cyclonedx-cli which consumes it:
+            outputBom.BomMetadataUpdate(true);
+            outputBom.BomMetadataReferThisToolkit();
 
             if (!outputToConsole)
             {
