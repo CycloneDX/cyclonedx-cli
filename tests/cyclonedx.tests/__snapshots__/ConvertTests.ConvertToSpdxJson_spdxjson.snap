@@ -1,6 +1,6 @@
 ﻿{
   "SPDXID": "SPDXRef-DOCUMENT",
-  "spdxVersion": "SPDX-2.2",
+  "spdxVersion": "SPDX-2.3",
   "creationInfo": {
     "comment": "This package has been shipped in source and binary form.\nThe binaries were created with gcc 4.5.1 and expect to link to\ncompatible system run time libraries.",
     "created": "2010-01-29T18:30:22Z",
@@ -54,11 +54,11 @@
       "comment": "Another example reviewer."
     }
   ],
-  "documentNamespace": "http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301",
   "documentDescribes": [
     "SPDXRef-File",
     "SPDXRef-Package"
   ],
+  "documentNamespace": "http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301",
   "packages": [
     {
       "SPDXID": "SPDXRef-Package",
@@ -122,6 +122,7 @@
         ],
         "packageVerificationCodeValue": "d6a770ba38583ed4bb4525bd96e50461655d2758"
       },
+      "primaryPackagePurpose": "LIBRARY",
       "sourceInfo": "uses glibc-2_11-branch from git://sourceware.org/git/glibc.git.",
       "summary": "GNU C library.",
       "supplier": "Person: Jane Doe (jane.doe@example.com)",
@@ -129,22 +130,14 @@
     },
     {
       "SPDXID": "SPDXRef-fromDoap-1",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "homepage": "http://commons.apache.org/proper/commons-lang/",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "Apache Commons Lang",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION"
+      "primaryPackagePurpose": "LIBRARY"
     },
     {
       "SPDXID": "SPDXRef-fromDoap-0",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "https://search.maven.org/remotecontent?filepath=org/apache/jena/apache-jena/3.12.0/apache-jena-3.12.0.tar.gz",
       "externalRefs": [
         {
@@ -155,14 +148,8 @@
       ],
       "filesAnalyzed": false,
       "homepage": "http://www.openjena.org/",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "Jena",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "3.12.0"
     },
     {
@@ -181,13 +168,9 @@
       "licenseComments": "Other versions available for a commercial license",
       "licenseConcluded": "MPL-1.0",
       "licenseDeclared": "MPL-1.0",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "Saxon",
-      "originator": "NOASSERTION",
       "packageFileName": "saxonB-8.8.zip",
-      "supplier": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "8.8"
     }
   ],
