@@ -39,7 +39,7 @@ jobs:
       # Used by the release-osx-arm64 job to upload the osx-arm64 binary
       release_upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v4.2.2
       - uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435 #v3.11.1
       - uses: actions/setup-dotnet@v4.3.1
         with:
@@ -183,7 +183,7 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v4.2.2
       - uses: actions/setup-dotnet@v4.3.1
         with:
           dotnet-version: '8.0'
