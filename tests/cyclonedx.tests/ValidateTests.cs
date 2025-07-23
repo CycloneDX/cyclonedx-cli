@@ -78,7 +78,7 @@ namespace CycloneDX.Cli.Tests
                 InputFormat = inputFormat,
                 InputVersion = inputVersion,
                 FailOnErrors = true,
-            }).ConfigureAwait(false);
+            }).ConfigureAwait(true);
             
             if (valid)
             {

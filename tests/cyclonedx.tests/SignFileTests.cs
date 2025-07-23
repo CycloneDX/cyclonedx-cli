@@ -33,18 +33,18 @@ namespace CycloneDX.Cli.Tests
             using (var tempDirectory = new TempDirectory())
             {
                 var testFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.xml");
-                var fileContents = await File.ReadAllTextAsync(Path.Combine("Resources", "bom-1.3.xml")).ConfigureAwait(false);
+                var fileContents = await File.ReadAllTextAsync(Path.Combine("Resources", "bom-1.3.xml")).ConfigureAwait(true);
                 if (Environment.OSVersion.Platform == PlatformID.Win32NT)
                 {
                     fileContents = fileContents.Replace("\r\n", "\n");
                 }
-                await File.WriteAllTextAsync(testFilename, fileContents).ConfigureAwait(false);
+                await File.WriteAllTextAsync(testFilename, fileContents).ConfigureAwait(true);
 
                 var exitCode = await SignFileCommand.SignFile(new SignFileCommandOptions
                 {
                     File = testFilename,
                     KeyFile = Path.Combine("Resources", "private.key"),
-                }).ConfigureAwait(false);
+                }).ConfigureAwait(true);
                 
                 Assert.Equal(ExitCode.Ok, (ExitCode)exitCode);
 

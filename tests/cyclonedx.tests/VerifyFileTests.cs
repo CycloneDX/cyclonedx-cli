@@ -32,19 +32,19 @@ namespace CycloneDX.Cli.Tests
             {
                 var testFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.xml");
 
-                var fileContents = await File.ReadAllTextAsync(Path.Combine("Resources", "bom-1.3.xml")).ConfigureAwait(false);
+                var fileContents = await File.ReadAllTextAsync(Path.Combine("Resources", "bom-1.3.xml")).ConfigureAwait(true);
                 if (Environment.OSVersion.Platform == PlatformID.Win32NT)
                 {
                     fileContents = fileContents.Replace("\r\n", "\n");
                 }
-                await File.WriteAllTextAsync(testFilename, fileContents).ConfigureAwait(false);
+                await File.WriteAllTextAsync(testFilename, fileContents).ConfigureAwait(true);
 
                 var exitCode = await VerifyFileCommand.VerifyFile(new VerifyFileCommandOptions
                 {
                     File = testFilename,
                     KeyFile = Path.Combine("Resources", "public.key"),
                     SignatureFile = Path.Combine("Resources", "bom-1.3.xml.valid.sig"),
-                }).ConfigureAwait(false);
+                }).ConfigureAwait(true);
                 
                 Assert.Equal(ExitCode.Ok, (ExitCode)exitCode);
             }
@@ -57,19 +57,19 @@ namespace CycloneDX.Cli.Tests
             {
                 var testFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.xml");
 
-                var fileContents = await File.ReadAllTextAsync(Path.Combine("Resources", "bom-1.3.xml")).ConfigureAwait(false);
+                var fileContents = await File.ReadAllTextAsync(Path.Combine("Resources", "bom-1.3.xml")).ConfigureAwait(true);
                 if (Environment.OSVersion.Platform == PlatformID.Win32NT)
                 {
                     fileContents = fileContents.Replace("\r\n", "\n");
                 }
-                await File.WriteAllTextAsync(testFilename, fileContents).ConfigureAwait(false);
+                await File.WriteAllTextAsync(testFilename, fileContents).ConfigureAwait(true);
 
                 var exitCode = await VerifyFileCommand.VerifyFile(new VerifyFileCommandOptions
                 {
                     File = testFilename,
                     KeyFile = Path.Combine("Resources", "public.key"),
                     SignatureFile = Path.Combine("Resources", "bom-1.3.xml.invalid.sig"),
-                }).ConfigureAwait(false);
+                }).ConfigureAwait(true);
                 
                 Assert.Equal(ExitCode.SignatureFailedVerification, (ExitCode)exitCode);
             }
