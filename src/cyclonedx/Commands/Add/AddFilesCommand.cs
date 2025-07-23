@@ -18,8 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.CommandLine;
-using System.CommandLine.Invocation;
-using System.Globalization;
+using System.CommandLine.NamingConventionBinder;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -28,8 +27,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AntPathMatching;
 using CycloneDX.Models;
-using CycloneDX.Cli.Commands;
-using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands.Add
 {
