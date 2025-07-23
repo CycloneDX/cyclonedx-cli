@@ -6,6 +6,9 @@ on: [pull_request, workflow_dispatch]
 env:
   SNAPSHOOTER_STRICT_MODE: true
 
+# see https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token
+permissions: {}
+
 jobs:
   # Fail if there are build warnings
   #
@@ -14,13 +17,13 @@ jobs:
   # This can be done by running `dotnet clean` before running `dotnet build`
   build-warnings:
     name: Build warnings check
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: actions/setup-dotnet@v3.0.2
+      - uses: actions/setup-dotnet@v4.3.1
         with:
-          dotnet-version: '6.0'
+          dotnet-version: '8.0'
 
       - name: Build
         run: dotnet build /WarnAsError
@@ -28,23 +31,23 @@ jobs:
   # We end up targeting a range of runtimes, make sure they all build
   build:
     name: Runtime build check
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
-        runtime: [linux-x64, linux-musl-x64, linux-arm, linux-arm64, win-x64, win-x86, win-arm, win-arm64, osx-x64, osx-arm64]
+        runtime: [linux-x64, linux-musl-x64, linux-arm, linux-arm64, win-x64, win-x86, win-arm64, osx-x64, osx-arm64]
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: actions/setup-dotnet@v3.0.2
+      - uses: actions/setup-dotnet@v4.3.1
         with:
-          dotnet-version: '6.0'
+          dotnet-version: '8.0'
 
       - name: Build
         run: dotnet build src/cyclonedx/cyclonedx.csproj -r ${{ matrix.runtime }}
 
   # Fail if there are any failed tests
   #
-  # We support .NET 6.0 on Windows, Mac and Linux.
+  # We support .NET 8.0 on Windows, Mac and Linux.
   #
   # To check for failing tests locally run `dotnet test`.
   test:
@@ -59,9 +62,9 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4.2.2
-    - uses: actions/setup-dotnet@v3.0.2
+    - uses: actions/setup-dotnet@v4.3.1
       with:
-        dotnet-version: '6.0'
+        dotnet-version: '8.0'
 
     - name: SnapshooterHotfixSymlinkLinux    
       if: matrix.os == 'ubuntu-latest'
@@ -75,4 +78,4 @@ jobs:
     - name: Tests
       run: |
         dotnet restore
-        dotnet test --framework net6.0
+        dotnet test --framework net8.0

@@ -20,7 +20,7 @@
     </authors>
     <properties>
       <property name="spdx:spdxid">SPDXRef-DOCUMENT</property>
-      <property name="spdx:document:spdx-version">SPDX-2.2</property>
+      <property name="spdx:document:spdx-version">SPDX-2.3</property>
       <property name="spdx:comment">This document was created using CycloneDX.Spdx 2.0 using licenses from the web site.</property>
       <property name="spdx:document:name">SPDX-Tools-v2.0</property>
       <property name="spdx:document:document-namespace">http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301</property>
