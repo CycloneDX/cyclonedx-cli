@@ -13,13 +13,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CoderPatros.AntPathMatching" Version="0.1.1" />
-    <PackageReference Include="CsvHelper" Version="29.0.0" />
+    <PackageReference Include="CoderPatros.AntPathMatching" Version="1.0.0" />
+    <PackageReference Include="CsvHelper" Version="33.1.0" />
     <PackageReference Include="CycloneDX.Utils" Version="10.0.0" />
     <PackageReference Include="CycloneDX.Spdx.Interop" Version="10.0.0" />
-    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
-    <PackageReference Include="System.CommandLine.NamingConventionBinder" Version="2.0.0-beta4.22272.1" />
-    <PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta6.25358.103" />
+    <PackageReference Include="System.CommandLine.NamingConventionBinder" Version="2.0.0-beta5.25306.1" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.8" />
   </ItemGroup>
 
 </Project>
