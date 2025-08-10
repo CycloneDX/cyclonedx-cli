@@ -156,11 +156,11 @@ namespace CycloneDX.Cli.Commands
         {
             if (options.InputFormat == ValidationBomFormat.autodetect && !string.IsNullOrEmpty(options.InputFile))
             {
-                if (options.InputFile.EndsWith(".json", StringComparison.InvariantCulture))
+                if (options.InputFile.EndsWith(".json", StringComparison.InvariantCultureIgnoreCase))
                 {
                     options.InputFormat = ValidationBomFormat.json;
                 }
-                else if (options.InputFile.EndsWith(".xml", StringComparison.InvariantCulture))
+                else if (options.InputFile.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase))
                 {
                     options.InputFormat = ValidationBomFormat.xml;
                 }
