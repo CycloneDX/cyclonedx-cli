@@ -32,7 +32,7 @@ namespace CycloneDX.Cli.Tests
             {
                 BomFile = Path.Combine("Resources", "signed-bom.xml"),
                 KeyFile = Path.Combine("Resources", "public.key")
-            }).ConfigureAwait(false);
+            }).ConfigureAwait(true);
             
             Assert.Equal(ExitCode.Ok, (ExitCode)exitCode);
         }
@@ -44,7 +44,7 @@ namespace CycloneDX.Cli.Tests
             {
                 BomFile = Path.Combine("Resources", "signed-bom-modified.xml"),
                 KeyFile = Path.Combine("Resources", "public.key")
-            }).ConfigureAwait(false);
+            }).ConfigureAwait(true);
             
             Assert.Equal(ExitCode.SignatureFailedVerification, (ExitCode)exitCode);
         }

@@ -18,13 +18,10 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.CommandLine;
-using System.CommandLine.Invocation;
-using System.Globalization;
+using System.CommandLine.NamingConventionBinder;
 using System.IO;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
-using System.Xml;
-using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands.Sign
 {

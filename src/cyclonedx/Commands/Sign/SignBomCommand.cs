@@ -17,14 +17,13 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.CommandLine;
-using System.CommandLine.Invocation;
+using System.CommandLine.NamingConventionBinder;
 using System.Globalization;
 using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 using System.Xml;
-using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands.Sign
 {

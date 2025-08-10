@@ -39,7 +39,7 @@ namespace CycloneDX.Cli.Tests
                 {
                     BomFile = testFilename,
                     KeyFile = Path.Combine("Resources", "private.key"),
-                }).ConfigureAwait(false);
+                }).ConfigureAwait(true);
                 
                 Assert.Equal(ExitCode.Ok, (ExitCode)exitCode);
 
