@@ -141,7 +141,7 @@
       "downloadLocation": "https://search.maven.org/remotecontent?filepath=org/apache/jena/apache-jena/3.12.0/apache-jena-3.12.0.tar.gz",
       "externalRefs": [
         {
-          "referenceCategory": "PACKAGE_MANAGER",
+          "referenceCategory": "PACKAGE-MANAGER",
           "referenceLocator": "pkg:maven/org.apache.jena/apache-jena@3.12.0",
           "referenceType": "purl"
         }

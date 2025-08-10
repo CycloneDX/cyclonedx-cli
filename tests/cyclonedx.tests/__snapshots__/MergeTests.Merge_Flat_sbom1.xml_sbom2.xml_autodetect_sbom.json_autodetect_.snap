@@ -5,55 +5,30 @@
   "metadata": {
     "component": {
       "type": "application",
-      "authors": [],
       "name": "thing1",
-      "version": "1",
-      "omniborId": [],
-      "swhid": [],
-      "data": [],
-      "tags": []
+      "version": "1"
     }
   },
   "components": [
     {
       "type": "library",
-      "authors": [],
       "name": "acme-library",
-      "version": "1.0.0",
-      "omniborId": [],
-      "swhid": [],
-      "data": [],
-      "tags": []
+      "version": "1.0.0"
     },
     {
       "type": "application",
-      "authors": [],
       "name": "thing1",
-      "version": "1",
-      "omniborId": [],
-      "swhid": [],
-      "data": [],
-      "tags": []
+      "version": "1"
     },
     {
       "type": "framework",
-      "authors": [],
       "name": "acme-framework",
-      "version": "1.0.0",
-      "omniborId": [],
-      "swhid": [],
-      "data": [],
-      "tags": []
+      "version": "1.0.0"
     },
     {
       "type": "application",
-      "authors": [],
       "name": "thing2",
-      "version": "1",
-      "omniborId": [],
-      "swhid": [],
-      "data": [],
-      "tags": []
+      "version": "1"
     }
   ],
   "vulnerabilities": []
