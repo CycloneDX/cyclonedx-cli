@@ -107,6 +107,14 @@ namespace CycloneDX.Cli.Commands
 
             outputBom.Version = 1;
             outputBom.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
+            if (outputBom.Metadata == null)
+            {
+                outputBom.Metadata = new Metadata();
+            }
+            if (outputBom.Metadata.Timestamp == null)
+            {
+                outputBom.Metadata.Timestamp = DateTime.Now;
+            }
 
             if (!outputToConsole)
             {

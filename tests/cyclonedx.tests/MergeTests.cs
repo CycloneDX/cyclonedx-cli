@@ -77,6 +77,8 @@ namespace CycloneDX.Cli.Tests
                 var bom = File.ReadAllText(fullOutputPath);
                 bom = Regex.Replace(bom, @"\s*""serialNumber"": "".*?"",\r?\n", ""); // json
                 bom = Regex.Replace(bom, @"\s+serialNumber="".*?""", ""); // xml
+                bom = Regex.Replace(bom, @"\s*""timestamp"": "".*?"",\r?\n", ""); // json
+                bom = Regex.Replace(bom, @"\s+<timestamp>.*?</timestamp>", ""); // xml
                 Snapshot.Match(bom, SnapshotNameExtension.Create(hierarchical ? "Hierarchical" : "Flat", snapshotInputFilenames, inputFormat, outputFilename, outputFormat, outputVersion));
             }
         }
