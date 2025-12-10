@@ -4,6 +4,11 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
 <!--    <PublishTrimmed>true</PublishTrimmed>-->
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>dotnet-CycloneDX-cli</ToolCommandName>
+    <PackageId>CycloneDX.CLI</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageDescription>A command line tool for interacting with CycloneDX bill-of-material documents.</PackageDescription>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <RuntimeIdentifiers>linux-x64;linux-musl-x64;linux-arm;linux-arm64;win-x64;win-x86;win-arm64;osx-x64;osx-arm64</RuntimeIdentifiers>
   </PropertyGroup>
@@ -20,6 +25,10 @@
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
     <PackageReference Include="System.CommandLine.NamingConventionBinder" Version="2.0.0-beta4.22272.1" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" Condition="Exists('README.md')" />
   </ItemGroup>
 
 </Project>
