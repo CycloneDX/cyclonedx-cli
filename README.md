@@ -34,7 +34,7 @@ Commands:
 
 The CycloneDX CLI tool currently supports BOM analysis, modification, diffing, merging, format conversion, signing and verification.
 
-Conversion is supported between CycloneDX XML, JSON, Protobuf, CSV, and SPDX JSON v2.2.
+Conversion is supported between CycloneDX XML, JSON, Protobuf, CSV, and SPDX JSON v2.3.
 
 Binaries can be downloaded from the [releases page](https://github.com/CycloneDX/cyclonedx-cli/releases).
 
