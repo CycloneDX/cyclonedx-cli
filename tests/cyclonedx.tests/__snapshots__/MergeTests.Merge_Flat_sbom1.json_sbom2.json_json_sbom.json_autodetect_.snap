@@ -1,8 +1,7 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.6",  "version": 1,
-  "metadata": {
-    "component": {
+  "specVersion": "1.7",  "version": 1,
+  "metadata": {    "component": {
       "type": "application",
       "name": "thing1",
       "version": "1"
