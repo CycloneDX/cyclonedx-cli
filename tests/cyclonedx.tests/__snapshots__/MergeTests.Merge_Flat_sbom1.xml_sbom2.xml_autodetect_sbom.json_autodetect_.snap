@@ -1,34 +1,37 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
-  "version": 1,
-  "metadata": {
-    "component": {
+  "specVersion": "1.7",  "version": 1,
+  "metadata": {    "component": {
       "type": "application",
       "name": "thing1",
-      "version": "1"
+      "version": "1",
+      "patentAssertions": []
     }
   },
   "components": [
     {
       "type": "library",
       "name": "acme-library",
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "patentAssertions": []
     },
     {
       "type": "application",
       "name": "thing1",
-      "version": "1"
+      "version": "1",
+      "patentAssertions": []
     },
     {
       "type": "framework",
       "name": "acme-framework",
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "patentAssertions": []
     },
     {
       "type": "application",
       "name": "thing2",
-      "version": "1"
+      "version": "1",
+      "patentAssertions": []
     }
   ],
   "vulnerabilities": []
