@@ -24,7 +24,7 @@ using CycloneDX.Cli;
 
 namespace CycloneDX.Cli.Commands
 {
-    public static class ConvertCommand
+    internal static class ConvertCommand
     {
         internal static void Configure(RootCommand rootCommand)
         {

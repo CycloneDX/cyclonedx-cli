@@ -16,7 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 namespace CycloneDX.Cli.Commands
 {
-    public enum CommandOutputFormat
+    internal enum CommandOutputFormat
     {
         text,
         json

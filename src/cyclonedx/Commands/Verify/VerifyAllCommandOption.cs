@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace CycloneDX.Cli.Commands.Verify
 {
-    public class VerifyAllCommandOptions
+    internal class VerifyAllCommandOptions
     {
         public string BomFile { get; set; }
         public string KeyFile { get; set; }

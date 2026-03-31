@@ -28,7 +28,7 @@ using CycloneDX.Models;
 
 namespace CycloneDX.Cli.Commands
 {
-    public static class ValidateCommand
+    internal static class ValidateCommand
     {
 
         public static void Configure(RootCommand rootCommand)

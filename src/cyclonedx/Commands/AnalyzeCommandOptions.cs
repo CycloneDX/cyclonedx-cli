@@ -17,7 +17,7 @@
 
 namespace CycloneDX.Cli.Commands
 {
-    public class AnalyzeCommandOptions
+    internal class AnalyzeCommandOptions
     {
         public string InputFile { get; set; }
         public CycloneDXBomFormat InputFormat { get; set; }

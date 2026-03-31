@@ -16,10 +16,12 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 namespace CycloneDX.Cli.Commands
 {
+#pragma warning disable CA1515 // Used as public test method parameters
     public enum ValidationBomFormat
     {
         autodetect,
         xml,
         json,
     }
+#pragma warning restore CA1515
 }

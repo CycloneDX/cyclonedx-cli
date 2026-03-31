@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace CycloneDX.Cli.Commands.Add
 {
-    public class AddFilesCommandOptions
+    internal class AddFilesCommandOptions
     {
         public string InputFile { get; set; }
         public bool NoInput { get; set; }

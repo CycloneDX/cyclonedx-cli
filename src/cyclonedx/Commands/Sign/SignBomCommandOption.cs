@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace CycloneDX.Cli.Commands.Sign
 {
-    public class SignBomCommandOptions
+    internal class SignBomCommandOptions
     {
         public string BomFile { get; set; }
         public string KeyFile { get; set; }

@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace CycloneDX.Cli.Commands.Sign
 {
-    public class SignFileCommandOptions
+    internal class SignFileCommandOptions
     {
         public string File { get; set; }
         public string KeyFile { get; set; }

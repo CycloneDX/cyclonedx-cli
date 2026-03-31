@@ -17,7 +17,7 @@
 
 namespace CycloneDX.Cli.Commands
 {
-    public class ConvertCommandOptions
+    internal class ConvertCommandOptions
     {
         public string InputFile { get; set; }
         public string OutputFile { get; set; }

@@ -24,7 +24,7 @@ using CycloneDX.Models;
 
 namespace CycloneDX.Cli.Commands
 {
-    public class ValidateCommandOptions
+    internal class ValidateCommandOptions
     {
         public string InputFile { get; set; }
         public ValidationBomFormat InputFormat { get; set; }

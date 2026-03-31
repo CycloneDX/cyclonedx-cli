@@ -26,7 +26,7 @@ using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands
 {
-    public static class MergeCommand
+    internal static class MergeCommand
     {
         public static void Configure(RootCommand rootCommand)
         {

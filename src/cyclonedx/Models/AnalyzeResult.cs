@@ -19,7 +19,7 @@ using CycloneDX.Models;
 
 namespace CycloneDX.Cli.Models
 {
-    public class AnalyzeResult
+    internal class AnalyzeResult
     {
         public Dictionary<string,List<Component>> MultipleComponentVersions { get; set; } 
     }

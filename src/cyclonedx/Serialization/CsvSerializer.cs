@@ -27,7 +27,7 @@ using CycloneDX.Models;
 
 namespace CycloneDX.Cli.Serialization
 {
-    public static class CsvSerializer
+    internal static class CsvSerializer
     {
         public static string Serialize(Bom bom)
         {
@@ -61,7 +61,7 @@ namespace CycloneDX.Cli.Serialization
                     csv.WriteField("SwidTextEncoding");
                     csv.WriteField("SwidTextContent");
                     csv.WriteField("SwidUrl");
-                    var hashAlgorithms = Enum.GetValues(typeof(Hash.HashAlgorithm)).Cast<Hash.HashAlgorithm>().ToList();
+                    var hashAlgorithms = Enum.GetValues<Hash.HashAlgorithm>().ToList();
                     foreach (var hashAlgorithm in hashAlgorithms)
                     {
                         if (hashAlgorithm != Hash.HashAlgorithm.Null)
@@ -209,7 +209,7 @@ namespace CycloneDX.Cli.Serialization
                         }
                     }
 
-                    var hashAlgorithms = Enum.GetValues(typeof(Hash.HashAlgorithm)).Cast<Hash.HashAlgorithm>();
+                    var hashAlgorithms = Enum.GetValues<Hash.HashAlgorithm>();
                     var hashes = new List<Hash>();
                     foreach (var hashAlgorithm in hashAlgorithms)
                     {
