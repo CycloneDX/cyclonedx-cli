@@ -62,7 +62,7 @@ jobs:
           REPO=cyclonedx/cyclonedx-cli
           dotnet build --configuration Release
           mkdir bin
-          for runtime in linux-x64 linux-musl-x64 linux-arm linux-arm64 win-x64 win-x86 win-arm64 osx-x64
+          for runtime in linux-x64 linux-musl-x64 linux-arm linux-arm64 linux-musl-arm win-x64 win-x86 win-arm64 osx-x64
           do
             dotnet publish src/cyclonedx/cyclonedx.csproj -r $runtime --configuration Release /p:Version=$VERSION --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --output bin/$runtime
           done
@@ -131,6 +131,16 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: bin/linux-arm64/cyclonedx
           asset_name: cyclonedx-linux-arm64
+          asset_content_type: application/octet-stream
+
+      - name: Upload binary to github release
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/linux-musl-arm/cyclonedx
+          asset_name: cyclonedx-linux-musl-arm
           asset_content_type: application/octet-stream
 
       - name: Upload binary to github release
