@@ -21,7 +21,7 @@ using CycloneDX.Cli.Commands;
 
 namespace CycloneDX.Cli
 {
-    public static class Program
+    internal static class Program
     {
         private const string CycloneDx = @"
    ______           __                 ____ _  __    ________    ____

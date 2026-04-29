@@ -28,7 +28,7 @@ using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands.Verify
 {
-    public static class VerifyAllCommand
+    internal static class VerifyAllCommand
     {
         public static void Configure(Command rootCommand)
         {

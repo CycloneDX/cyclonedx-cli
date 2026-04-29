@@ -17,6 +17,7 @@
 namespace CycloneDX.Cli.Commands
 {
     // WARNING: keep this in sync with BomFormat
+#pragma warning disable CA1515 // Used as public test method parameters
     public enum ConvertFormat
     {
         autodetect,
@@ -26,4 +27,5 @@ namespace CycloneDX.Cli.Commands
         csv,
         spdxjson,
     }
+#pragma warning restore CA1515
 }

@@ -28,7 +28,7 @@ using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands.Sign
 {
-    public static class SignBomCommand
+    internal static class SignBomCommand
     {
         public static void Configure(Command rootCommand)
         {

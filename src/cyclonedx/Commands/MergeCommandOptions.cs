@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace CycloneDX.Cli.Commands
 {
-    public class MergeCommandOptions
+    internal class MergeCommandOptions
     {
         public IList<string> InputFiles { get; set; }
         public string OutputFile { get; set; }

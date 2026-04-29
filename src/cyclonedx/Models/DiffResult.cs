@@ -20,7 +20,7 @@ using CycloneDX.Utils;
 
 namespace CycloneDX.Cli.Models
 {
-    public class DiffResult
+    internal class DiffResult
     {
         public Dictionary<string,DiffItem<Component>> ComponentVersions { get; set; }
     }

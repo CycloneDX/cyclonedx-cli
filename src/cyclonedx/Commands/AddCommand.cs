@@ -21,7 +21,7 @@ using CycloneDX.Cli.Commands.Add;
 
 namespace CycloneDX.Cli.Commands
 {
-    public static class AddCommand
+    internal static class AddCommand
     {
         public static void Configure(RootCommand rootCommand)
         {

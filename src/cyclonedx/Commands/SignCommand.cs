@@ -21,7 +21,7 @@ using CycloneDX.Cli.Commands.Sign;
 
 namespace CycloneDX.Cli.Commands
 {
-    public static class SignCommand
+    internal static class SignCommand
     {
         public static void Configure(RootCommand rootCommand)
         {

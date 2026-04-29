@@ -17,7 +17,7 @@
 
 namespace CycloneDX.Cli.Commands
 {
-    public class KeyGenCommandOptions
+    internal class KeyGenCommandOptions
     {
         public string PrivateKeyFile { get; set; }
         public string PublicKeyFile { get; set; }

@@ -21,7 +21,7 @@ using CycloneDX.Cli.Commands.Verify;
 
 namespace CycloneDX.Cli.Commands
 {
-    public static class VerifyCommand
+    internal static class VerifyCommand
     {
         public static void Configure(RootCommand rootCommand)
         {

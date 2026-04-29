@@ -33,7 +33,7 @@ using System.CommandLine.NamingConventionBinder;
 
 namespace CycloneDX.Cli.Commands.Add
 {
-    public static class AddFilesCommand
+    internal static class AddFilesCommand
     {
         public static void Configure(System.CommandLine.Command rootCommand)
         {

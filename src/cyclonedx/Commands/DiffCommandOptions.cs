@@ -17,7 +17,7 @@
 
 namespace CycloneDX.Cli.Commands
 {
-    public class DiffCommandOptions
+    internal class DiffCommandOptions
     {
         public string FromFile { get; set; }
         public string ToFile { get; set; }

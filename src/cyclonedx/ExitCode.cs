@@ -17,7 +17,7 @@
 
 namespace CycloneDX.Cli
 {
-    public enum ExitCode
+    internal enum ExitCode
     {
         Ok,
         OkFail,
