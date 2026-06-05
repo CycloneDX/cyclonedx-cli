@@ -214,6 +214,55 @@ Merge two XML formatted BOMs:
 Merging two BOMs and piping output to additional tools:  
 `cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-format json | grep "something"`
 
+## Rename Entity command
+
+Rename an entity identified by "bom-ref" (formally a "refType") in the document
+and/or back-references to such entity (formally a "refLinkType", typically as
+a "ref" property; or certain lists' items).
+
+```
+rename-entity
+  Rename an entity identified by a "bom-ref" (including back-references to it) in the BOM document
+
+Usage:
+  cyclonedx [options] rename-entity
+
+Options:
+  --input-file <input-file>                       Input BOM filename.
+  --output-file <output-file>                     Output BOM filename, will write to stdout if no value provided.
+  --old-ref <old-ref>                             Old value of "bom-ref" entity identifier (or "ref" values or certain list items pointing to it).
+  --new-ref <new-ref>                             New value of "bom-ref" entity identifier (or "ref" values or certain list items pointing to it).
+  --input-format <autodetect|json|protobuf|xml>   Specify input file format.
+  --output-format <autodetect|json|protobuf|xml>  Specify output file format.
+```
+
+Keep in mind that these identifiers are arbitrary strings that have a meaning
+within the Bom document (and should uniquely identify one entity in its scope).
+While in some cases these identifiers are meaningful (e.g. "purl" values used
+as "bom-ref" by the cyclonedx-maven-plugin), they may also validly be random
+UUIDs or collision-prone strings like "1", "2", "3"...
+
+They may be opportunistically used as anchors for cross-document references,
+so in some cases a back-reference may point to a string for which there is no
+"bom-ref" in the same document (see relevant CycloneDX specification version
+for details).
+
+This renaming operation also modifies the output document metadata, to reflect
+the modification compared to the input document.
+
+Basic error-checking, such as attempt to re-use an already existing identifier,
+is performed.
+
+### Examples
+
+Rename an entity:
+```
+cyclonedx rename-entity --input-file sbom.json --output-format xml \
+  --oldref "pkg:maven/org.yaml/snakeyaml@1.33?type=jar" \
+  --newref "thirdpartylibs:org.yaml:snakeyaml:1.33:jar" \
+| grep "thirdparty"
+```
+
 ## Sign Command
 
 Sign a BOM or file
