@@ -67,6 +67,9 @@ jobs:
             dotnet publish src/cyclonedx/cyclonedx.csproj -r $runtime --configuration Release /p:Version=$VERSION --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesInSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --output bin/$runtime
           done
          
+          dotnet pack src/cyclonedx/cyclonedx.csproj --configuration Release /p:Version=$VERSION /p:PackageOutputPath=bin/nuget
+          dotnet nuget push bin/nuget/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
           docker login --username coderpatros --password "$DOCKER_TOKEN"
           docker buildx build \
             --sbom=true \
