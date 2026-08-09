@@ -26,6 +26,7 @@ namespace CycloneDX.Cli.Commands
         protobuf,
         csv,
         spdxjson,
+        markdown,
     }
 #pragma warning restore CA1515
 }
