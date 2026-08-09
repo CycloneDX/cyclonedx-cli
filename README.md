@@ -41,7 +41,7 @@ Binaries can be downloaded from the [releases page](https://github.com/CycloneDX
 Note: The CycloneDX CLI tool is built for automation use cases. Any commands that have the `--input-file` option also support feeding input from stdin. Likewise, any commands that have the `--output-file` option support output to stdout. However, you will need to supply the input/output formats.
 
 For example:  
-`cat bom.json | cyclonedx-cli convert --input-format json --output-format xml > bom.xml`
+`cat bom.json | cyclonedx convert --input-format json --output-format xml > bom.xml`
 
 # Commands
 
@@ -70,10 +70,10 @@ Options:
 #### Examples
 
 Generating a source code BOM, excluding Git repository directory:  
-`cyclonedx-cli add files --no-input --output-format json --exclude /.git/**`
+`cyclonedx add files --no-input --output-format json --exclude /.git/**`
 
 Adding build output files, from `bin` directory, to existing BOM:  
-`cyclonedx-cli add files --input-file bom.json --output-format json --base-path bin`
+`cyclonedx add files --input-file bom.json --output-format json --base-path bin`
 
 ## Analyze Command
 
@@ -94,7 +94,7 @@ Options:
 ### Examples
 
 Reporting on components that are included multiple times with different versions:  
-`cyclonedx-cli analyze --input-file sbom.xml --multiple-component-versions`
+`cyclonedx analyze --input-file sbom.xml --multiple-component-versions`
 
 ## Convert Command
 
@@ -116,10 +116,10 @@ Options:
 ### Examples
 
 Converting from XML to JSON format:  
-`cyclonedx-cli convert --input-file sbom.xml --output-file sbom.json`
+`cyclonedx convert --input-file sbom.xml --output-file sbom.json`
 
 Converting from XML to JSON format and piping output to additional tools:  
-`cyclonedx-cli convert --input-file sbom.xml --output-format json | grep "somthing"`
+`cyclonedx convert --input-file sbom.xml --output-format json | grep "somthing"`
 
 ### CSV Format
 
@@ -166,7 +166,7 @@ Options:
 ### Examples
 
 Reporting on components with version changes:  
-`cyclonedx-cli diff sbom-from.xml sbom-to.xml --component-versions`
+`cyclonedx diff sbom-from.xml sbom-to.xml --component-versions`
 
 ## Keygen Command
 
@@ -209,10 +209,10 @@ described in the metadata component element.
 ### Examples
 
 Merge two XML formatted BOMs:  
-`cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-file sbom_all.xml`
+`cyclonedx merge --input-files sbom1.xml sbom2.xml --output-file sbom_all.xml`
 
 Merging two BOMs and piping output to additional tools:  
-`cyclonedx-cli merge --input-files sbom1.xml sbom2.xml --output-format json | grep "something"`
+`cyclonedx merge --input-files sbom1.xml sbom2.xml --output-format json | grep "something"`
 
 ## Sign Command
 
@@ -270,7 +270,7 @@ Options:
 ### Examples
 
 Validate BOM and return non-zero exit code (handy for automatically "breaking" a build, etc)  
-`cyclonedx-cli validate --input-file sbom.xml --fail-on-errors`
+`cyclonedx validate --input-file sbom.xml --fail-on-errors`
 
 ## Verify Command
 
