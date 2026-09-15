@@ -1,0 +1,47 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "bom-ref": "app",
+      "name": "app",
+      "version": "1"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "linked-lib",
+      "name": "linked-lib",
+      "version": "1.0.0",
+      "scope": "required"
+    },
+    {
+      "type": "library",
+      "bom-ref": "orphan-lib",
+      "name": "orphan-lib",
+      "version": "1.0.0",
+      "scope": "required"
+    },
+    {
+      "type": "library",
+      "bom-ref": "orphan-test-lib",
+      "name": "orphan-test-lib",
+      "version": "1.0.0",
+      "scope": "excluded"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "app",
+      "dependsOn": ["linked-lib"]
+    },
+    {
+      "ref": "linked-lib",
+      "dependsOn": []
+    }
+  ]
+}
