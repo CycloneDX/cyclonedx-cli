@@ -24,5 +24,6 @@ namespace CycloneDX.Cli.Commands
         public ConvertFormat InputFormat { get; set; }
         public ConvertFormat OutputFormat { get; set; }
         public SpecificationVersion? OutputVersion { get; set; }
+        public bool StripEmptyLists { get; set; }
     }
 }

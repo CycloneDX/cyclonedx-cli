@@ -22,6 +22,7 @@ using CycloneDX.Models;
 using CycloneDX.Spdx.Interop;
 using CycloneDX.Cli.Commands;
 using CycloneDX.Cli.Serialization;
+using CycloneDX.Utils;
 
 namespace CycloneDX.Cli
 {
@@ -174,7 +175,7 @@ namespace CycloneDX.Cli
             return 0;
         }
 
-        public static async Task<int> OutputBomHelper(Bom bom, ConvertFormat format, SpecificationVersion? outputVersion, string filename)
+        public static async Task<int> OutputBomHelper(Bom bom, ConvertFormat format, SpecificationVersion? outputVersion, string filename, bool stripEmptyLists = false)
         {
             if (filename == null && format == ConvertFormat.autodetect)
             {
@@ -192,6 +193,16 @@ namespace CycloneDX.Cli
             }
 
             bom.SpecVersion = outputVersion.HasValue ? outputVersion.Value : SpecificationVersionHelpers.CurrentVersion;
+
+            // Downgrading to an older spec version already collapses empty
+            // (non-null, zero-count) lists to null as a side effect of the
+            // protobuf deep-copy CopyBomAndDowngrade uses -- but the current
+            // spec version is serialized without going through that copy,
+            // so its empty lists survive unless pruned here explicitly.
+            if (stripEmptyLists)
+            {
+                CycloneDXUtils.CleanupEmptyListsDeep(bom);
+            }
 
             using var stream = filename == null ? Console.OpenStandardOutput() : File.Create(filename);
 
