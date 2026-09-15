@@ -80,11 +80,19 @@ namespace CycloneDX.Cli.Commands
             Bom outputBom;
             if (options.Hierarchical)
             {
+#if NET8_0_OR_GREATER
+                outputBom = CycloneDXUtils.HierarchicalMerge(inputBoms, bomSubject, MergeStrategy.Default());
+#else
                 outputBom = CycloneDXUtils.HierarchicalMerge(inputBoms, bomSubject);
+#endif
             }
             else
             {
+#if NET8_0_OR_GREATER
+                outputBom = CycloneDXUtils.FlatMerge(inputBoms, MergeStrategy.Default());
+#else
                 outputBom = CycloneDXUtils.FlatMerge(inputBoms);
+#endif
                 if (outputBom.Metadata is null) outputBom.Metadata = new Metadata();
                 if (bomSubject != null)
                 {
