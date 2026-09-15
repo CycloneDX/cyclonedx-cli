@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.CommandLine;
 using System.CommandLine.Invocation;
+using System.IO;
 using System.Threading.Tasks;
 using CycloneDX.Models;
 using CycloneDX.Utils;
@@ -34,6 +35,8 @@ namespace CycloneDX.Cli.Commands
             var subCommand = new System.CommandLine.Command("merge", "Merge two or more BOMs")
             {
                 new Option<List<string>>("--input-files", "Input BOM filenames (separate filenames with a space).") { AllowMultipleArgumentsPerToken = true },
+                new Option<List<string>>("--input-files-list", "One or more text file(s) with input BOM filenames (one per line). Combined with --input-files, useful to exceed OS/shell command-line length limits when merging many BOMs.") { AllowMultipleArgumentsPerToken = true },
+                new Option<List<string>>("--input-files-nul-list", "One or more text-like file(s) with input BOM filenames (separated by 0x00 characters, e.g. from `find -print0`).") { AllowMultipleArgumentsPerToken = true },
                 new Option<string>("--output-file", "Output BOM filename, will write to stdout if no value provided."),
                 new Option<CycloneDXBomFormat>("--input-format", "Specify input file format."),
                 new Option<CycloneDXBomFormat>("--output-format", "Specify output file format."),
@@ -41,7 +44,10 @@ namespace CycloneDX.Cli.Commands
                 new Option<bool>("--hierarchical", "Perform a hierarchical merge."),
                 new Option<string>("--group", "Provide the group of software the merged BOM describes."),
                 new Option<string>("--name", "Provide the name of software the merged BOM describes (required for hierarchical merging)."),
-                new Option<string>("--version", "Provide the version of software the merged BOM describes (required for hierarchical merging).")
+                new Option<string>("--version", "Provide the version of software the merged BOM describes (required for hierarchical merging)."),
+#if NET8_0_OR_GREATER
+                new Option<ComponentConflictResolution>("--component-conflict-resolution", "How to resolve two equivalent (same type/name/version/group/purl) but not-identical Components, e.g. differing only by Scope. Default: squash, preferring the more permissive Scope."),
+#endif
             };
             subCommand.Handler = CommandHandler.Create<MergeCommandOptions>(Merge);
             rootCommand.Add(subCommand);
@@ -65,7 +71,7 @@ namespace CycloneDX.Cli.Commands
                 return (int)ExitCode.ParameterValidationError;
             }
 
-            var inputBoms = await InputBoms(options.InputFiles, options.InputFormat, outputToConsole).ConfigureAwait(false);
+            var inputBoms = await InputBoms(DetermineInputFiles(options), options.InputFormat, outputToConsole).ConfigureAwait(false);
 
             Component bomSubject = null;
             if (options.Group != null || options.Name != null || options.Version != null)
@@ -77,23 +83,37 @@ namespace CycloneDX.Cli.Commands
                     Version = options.Version,
                 };
 
+#if NET8_0_OR_GREATER
+            var mergeStrategy = MergeStrategy.Default();
+            if (options.ComponentConflictResolution.HasValue)
+            {
+                mergeStrategy.ComponentConflictResolution = options.ComponentConflictResolution.Value;
+            }
+#endif
+
             Bom outputBom;
             if (options.Hierarchical)
             {
+#if NET8_0_OR_GREATER
+                outputBom = CycloneDXUtils.HierarchicalMerge(inputBoms, bomSubject, mergeStrategy);
+#else
                 outputBom = CycloneDXUtils.HierarchicalMerge(inputBoms, bomSubject);
+#endif
             }
             else
             {
-                outputBom = CycloneDXUtils.FlatMerge(inputBoms);
+#if NET8_0_OR_GREATER
+                outputBom = CycloneDXUtils.FlatMerge(inputBoms, bomSubject, mergeStrategy);
+#else
+                outputBom = CycloneDXUtils.FlatMerge(inputBoms, bomSubject);
+#endif
                 if (outputBom.Metadata is null) outputBom.Metadata = new Metadata();
-                if (bomSubject != null)
+                if (bomSubject is null)
                 {
-                    // use the params provided if possible
-                    outputBom.Metadata.Component = bomSubject;
-                }
-                else
-                {
-                    // otherwise use the first non-null component from the input BOMs as the default
+                    // otherwise use the first non-null component from the input
+                    // BOMs as the default; note CleanupMetadataComponent below,
+                    // since that same component may also already be present
+                    // in outputBom.Components.
                     foreach (var bom in inputBoms)
                     {
                         if(bom.Metadata != null && bom.Metadata.Component != null)
@@ -105,6 +125,18 @@ namespace CycloneDX.Cli.Commands
                 }
             }
 
+#if NET8_0_OR_GREATER
+            outputBom = CycloneDXUtils.CleanupMetadataComponent(outputBom, mergeStrategy);
+            outputBom = CycloneDXUtils.CleanupEmptyLists(outputBom);
+#endif
+
+            // Ensure that the merged document has its own identity (new
+            // SerialNumber, Version=1, Timestamp...) and that its Tools
+            // collection records the library and program that produced it.
+#if NET8_0_OR_GREATER
+            outputBom.BomMetadataUpdate(true);
+            outputBom.BomMetadataReferThisToolkit();
+#else
             outputBom.Version = 1;
             outputBom.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
             if (outputBom.Metadata == null)
@@ -115,6 +147,7 @@ namespace CycloneDX.Cli.Commands
             {
                 outputBom.Metadata.Timestamp = DateTime.Now;
             }
+#endif
 
             if (!outputToConsole)
             {
@@ -123,6 +156,60 @@ namespace CycloneDX.Cli.Commands
             }
 
             return await CliUtils.OutputBomHelper(outputBom, (ConvertFormat)options.OutputFormat, options.OutputVersion, options.OutputFile).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Combines --input-files with any filenames listed inside
+        /// --input-files-list (one per line) and --input-files-nul-list
+        /// (0x00-separated) files, deduplicating as it goes. Lets callers
+        /// exceed OS/shell command-line length or argument-count limits
+        /// when merging many BOMs, by passing a generated list file
+        /// instead of one --input-files argument per BOM.
+        /// </summary>
+        private static List<string> DetermineInputFiles(MergeCommandOptions options)
+        {
+            var inputFiles = options.InputFiles != null ? new List<string>(options.InputFiles) : new List<string>();
+
+            if (options.InputFilesList != null)
+            {
+                foreach (var oneList in options.InputFilesList)
+                {
+                    Console.WriteLine($"Adding to input file list from {oneList}");
+                    var count = 0;
+                    foreach (var line in File.ReadAllLines(oneList))
+                    {
+                        if (string.IsNullOrEmpty(line) || inputFiles.Contains(line))
+                        {
+                            continue;
+                        }
+                        inputFiles.Add(line);
+                        count++;
+                    }
+                    Console.WriteLine($"Got {count} new entries from {oneList}");
+                }
+            }
+
+            if (options.InputFilesNulList != null)
+            {
+                foreach (var oneList in options.InputFilesNulList)
+                {
+                    Console.WriteLine($"Adding to input file list from {oneList}");
+                    var count = 0;
+                    foreach (var line in File.ReadAllText(oneList).Split('\0'))
+                    {
+                        if (string.IsNullOrEmpty(line) || inputFiles.Contains(line))
+                        {
+                            continue;
+                        }
+                        inputFiles.Add(line);
+                        count++;
+                    }
+                    Console.WriteLine($"Got {count} new entries from {oneList}");
+                }
+            }
+
+            Console.WriteLine($"Determined {inputFiles.Count} input file(s) to merge");
+            return inputFiles;
         }
 
         private static async Task<IEnumerable<Bom>> InputBoms(IEnumerable<string> inputFilenames, CycloneDXBomFormat inputFormat, bool outputToConsole)
