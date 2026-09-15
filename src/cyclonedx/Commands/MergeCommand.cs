@@ -41,7 +41,10 @@ namespace CycloneDX.Cli.Commands
                 new Option<bool>("--hierarchical", "Perform a hierarchical merge."),
                 new Option<string>("--group", "Provide the group of software the merged BOM describes."),
                 new Option<string>("--name", "Provide the name of software the merged BOM describes (required for hierarchical merging)."),
-                new Option<string>("--version", "Provide the version of software the merged BOM describes (required for hierarchical merging).")
+                new Option<string>("--version", "Provide the version of software the merged BOM describes (required for hierarchical merging)."),
+#if NET8_0_OR_GREATER
+                new Option<ComponentConflictResolution>("--component-conflict-resolution", "How to resolve two equivalent (same type/name/version/group/purl) but not-identical Components, e.g. differing only by Scope. Default: squash, preferring the more permissive Scope."),
+#endif
             };
             subCommand.Handler = CommandHandler.Create<MergeCommandOptions>(Merge);
             rootCommand.Add(subCommand);
@@ -77,14 +80,30 @@ namespace CycloneDX.Cli.Commands
                     Version = options.Version,
                 };
 
+#if NET8_0_OR_GREATER
+            var mergeStrategy = MergeStrategy.Default();
+            if (options.ComponentConflictResolution.HasValue)
+            {
+                mergeStrategy.ComponentConflictResolution = options.ComponentConflictResolution.Value;
+            }
+#endif
+
             Bom outputBom;
             if (options.Hierarchical)
             {
+#if NET8_0_OR_GREATER
+                outputBom = CycloneDXUtils.HierarchicalMerge(inputBoms, bomSubject, mergeStrategy);
+#else
                 outputBom = CycloneDXUtils.HierarchicalMerge(inputBoms, bomSubject);
+#endif
             }
             else
             {
+#if NET8_0_OR_GREATER
+                outputBom = CycloneDXUtils.FlatMerge(inputBoms, mergeStrategy);
+#else
                 outputBom = CycloneDXUtils.FlatMerge(inputBoms);
+#endif
                 if (outputBom.Metadata is null) outputBom.Metadata = new Metadata();
                 if (bomSubject != null)
                 {
