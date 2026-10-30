@@ -71,6 +71,7 @@ namespace CycloneDX.Cli.Serialization
 
                     csv.NextRecord();
 
+                    if (bom.Components != null)
                     foreach (var c in bom.Components)
                     {
                         csv.WriteField(c.Type);

@@ -118,6 +118,31 @@ namespace CycloneDX.Cli.Tests
         }
 
         [Theory]
+        [InlineData("json", "{\"bomFormat\":\"CycloneDX\",\"specVersion\":\"1.7\",\"version\":1}")]
+        [InlineData("json", "{\"bomFormat\":\"CycloneDX\",\"specVersion\":\"1.7\",\"version\":1,\"components\":[]}")]
+        [InlineData("xml", "<bom xmlns=\"http://cyclonedx.org/schema/bom/1.7\" version=\"1\" />")]
+        [InlineData("xml", "<bom xmlns=\"http://cyclonedx.org/schema/bom/1.7\" version=\"1\"><components /></bom>")]
+        public async Task ConvertEmptyBomToCsv(string extension, string input)
+        {
+            using (var tempDirectory = new TempDirectory())
+            {
+                var inputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom." + extension);
+                var outputFilename = Path.Combine(tempDirectory.DirectoryPath, "bom.csv");
+                await File.WriteAllTextAsync(inputFilename, input).ConfigureAwait(false);
+
+                var exitCode = await Program.Main(new[]
+                {
+                    "convert", "--input-file", inputFilename, "--output-file", outputFilename
+                }).ConfigureAwait(false);
+
+                Assert.Equal(0, exitCode);
+                var lines = await File.ReadAllLinesAsync(outputFilename).ConfigureAwait(false);
+                Assert.Single(lines);
+                Assert.StartsWith("Type,MimeType,", lines[0]);
+            }
+        }
+
+        [Theory]
         [InlineData(ConvertFormat.autodetect)]
         [InlineData(ConvertFormat.spdxjson)]
         public async Task ConvertToSpdxJson(ConvertFormat outputFormat)
