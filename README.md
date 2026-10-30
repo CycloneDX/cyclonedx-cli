@@ -387,7 +387,7 @@ Permission to modify and redistribute is granted under the terms of the Apache 2
 Pull requests are welcome. But please read the
 [CycloneDX contributing guidelines](https://github.com/CycloneDX/.github/blob/master/CONTRIBUTING.md) first.
 
-To build and test the solution locally you should have .NET 8
+To build and test the solution locally you should have the .NET 10 SDK
 installed. Standard commands like `dotnet build` and `dotnet test` work.
 
 It is generally expected that pull requests will include relevant tests.
