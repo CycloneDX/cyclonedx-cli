@@ -79,6 +79,12 @@ namespace CycloneDX.Cli.Tests
                 bom = Regex.Replace(bom, @"\s+serialNumber="".*?""", ""); // xml
                 bom = Regex.Replace(bom, @"\s*""timestamp"": "".*?"",\r?\n", ""); // json
                 bom = Regex.Replace(bom, @"\s+<timestamp>.*?</timestamp>", ""); // xml
+                // The tools list embeds this build's assembly names/versions
+                // (e.g. "testhost" under `dotnet test` vs. the real CLI
+                // executable otherwise), which are environment-specific --
+                // strip the whole block before snapshotting.
+                bom = Regex.Replace(bom, @"\s*""tools"":\s*\[.*?\],?", "", RegexOptions.Singleline); // json
+                bom = Regex.Replace(bom, @"\s*<tools>.*?</tools>", "", RegexOptions.Singleline); // xml
                 Snapshot.Match(bom, SnapshotNameExtension.Create(hierarchical ? "Hierarchical" : "Flat", snapshotInputFilenames, inputFormat, outputFilename, outputFormat, outputVersion));
             }
         }

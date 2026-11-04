@@ -35,6 +35,7 @@ namespace CycloneDX.Cli.Commands
             subCommand.Add(new Option<ConvertFormat>("--input-format", "Specify input file format."));
             subCommand.Add(new Option<ConvertFormat>("--output-format", "Specify output file format."));
             subCommand.Add(new Option<SpecificationVersion>("--output-version", "Specify output BOM specification version. (ignored for CSV and SPDX formats)"));
+            subCommand.Add(new Option<bool>("--strip-empty-lists", "Omit empty list properties (e.g. \"licenses\": [], \"dependsOn\": []) from the output instead of writing them out. Schema-valid either way; this just avoids redundant clutter."));
             subCommand.Handler = CommandHandler.Create<ConvertCommandOptions>(Convert);
             rootCommand.Add(subCommand);
         }
@@ -62,7 +63,7 @@ namespace CycloneDX.Cli.Commands
                 }
             }
 
-            return await CliUtils.OutputBomHelper(inputBom, options.OutputFormat, options.OutputVersion, options.OutputFile).ConfigureAwait(false);
+            return await CliUtils.OutputBomHelper(inputBom, options.OutputFormat, options.OutputVersion, options.OutputFile, options.StripEmptyLists).ConfigureAwait(false);
         }
     }
 }

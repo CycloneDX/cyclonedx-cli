@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1" xmlns="http://cyclonedx.org/schema/bom/1.4">
+  <metadata>
+    <component type="application" bom-ref="app-1">
+      <name>thing1</name>
+      <version>1</version>
+    </component>
+  </metadata>
+  <components>
+    <component type="library" bom-ref="lib-new">
+      <name>acme-library</name>
+      <version>1.0.0</version>
+    </component>
+  </components>
+  <dependencies>
+    <dependency ref="app-1">
+      <dependency ref="lib-new" />
+    </dependency>
+    <dependency ref="lib-new" />
+  </dependencies>
+</bom>
