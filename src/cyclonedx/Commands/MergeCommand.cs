@@ -78,6 +78,19 @@ namespace CycloneDX.Cli.Commands
 
             var inputBoms = await InputBoms(DetermineInputFiles(options), options.InputFormat, outputToConsole).ConfigureAwait(false);
 
+#if NET8_0_OR_GREATER
+            // Component/ExternalReference/LicenseChoice equality compares
+            // serialized forms, so an empty list (as the XML parser leaves,
+            // e.g. "hashes": []) and an absent one (as the JSON parser
+            // leaves) would look different, and the otherwise-identical
+            // entries from an XML and a JSON input would both be kept.
+            // Normalize before merging, regardless of --strip-empty-lists.
+            foreach (var inputBom in inputBoms)
+            {
+                CycloneDXUtils.CleanupEmptyListsDeep(inputBom);
+            }
+#endif
+
             Component bomSubject = null;
             if (options.Group != null || options.Name != null || options.Version != null)
                 bomSubject = new Component
